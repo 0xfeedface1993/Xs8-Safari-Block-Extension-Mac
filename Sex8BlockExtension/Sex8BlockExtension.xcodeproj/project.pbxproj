@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */; };
+		27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */; };
+		27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */; };
+		27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C301EEFD1EF00258BDC /* Main.storyboard */; };
+		27AD7C3D1EEFD1EF00258BDC /* Sex8BlockExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C3C1EEFD1EF00258BDC /* Sex8BlockExtensionTests.swift */; };
+		27AD7C481EEFD1EF00258BDC /* Sex8BlockExtensionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C471EEFD1EF00258BDC /* Sex8BlockExtensionUITests.swift */; };
+		27AD7C5C1EEFD20D00258BDC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
+		27AD7C5F1EEFD20D00258BDC /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C5E1EEFD20D00258BDC /* blockerList.json */; };
+		27AD7C631EEFD20D00258BDC /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */; };
+		27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27AD7C591EEFD20D00258BDC /* ADBlock.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27AD7C391EEFD1EF00258BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27AD7C261EEFD1EE00258BDC;
+			remoteInfo = Sex8BlockExtension;
+		};
+		27AD7C441EEFD1EF00258BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27AD7C261EEFD1EE00258BDC;
+			remoteInfo = Sex8BlockExtension;
+		};
+		27AD7C651EEFD20D00258BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27AD7C581EEFD20D00258BDC;
+			remoteInfo = ADBlock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sex8BlockExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27AD7C311EEFD1EF00258BDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27AD7C331EEFD1EF00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27AD7C381EEFD1EF00258BDC /* Sex8BlockExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sex8BlockExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AD7C3C1EEFD1EF00258BDC /* Sex8BlockExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex8BlockExtensionTests.swift; sourceTree = "<group>"; };
+		27AD7C3E1EEFD1EF00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27AD7C431EEFD1EF00258BDC /* Sex8BlockExtensionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sex8BlockExtensionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AD7C471EEFD1EF00258BDC /* Sex8BlockExtensionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex8BlockExtensionUITests.swift; sourceTree = "<group>"; };
+		27AD7C491EEFD1EF00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27AD7C591EEFD20D00258BDC /* ADBlock.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ADBlock.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		27AD7C5E1EEFD20D00258BDC /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADBlock.entitlements; sourceTree = "<group>"; };
+		27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
+		27AD7C641EEFD20D00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27AD7C241EEFD1EE00258BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C351EEFD1EF00258BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C401EEFD1EF00258BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C561EEFD20D00258BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C5C1EEFD20D00258BDC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27AD7C1E1EEFD1EE00258BDC = {
+			isa = PBXGroup;
+			children = (
+				27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */,
+				27AD7C3B1EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
+				27AD7C461EEFD1EF00258BDC /* Sex8BlockExtensionUITests */,
+				27AD7C5D1EEFD20D00258BDC /* ADBlock */,
+				27AD7C5A1EEFD20D00258BDC /* Frameworks */,
+				27AD7C281EEFD1EE00258BDC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27AD7C281EEFD1EE00258BDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */,
+				27AD7C381EEFD1EF00258BDC /* Sex8BlockExtensionTests.xctest */,
+				27AD7C431EEFD1EF00258BDC /* Sex8BlockExtensionUITests.xctest */,
+				27AD7C591EEFD20D00258BDC /* ADBlock.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */,
+				27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */,
+				27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */,
+				27AD7C301EEFD1EF00258BDC /* Main.storyboard */,
+				27AD7C331EEFD1EF00258BDC /* Info.plist */,
+			);
+			path = Sex8BlockExtension;
+			sourceTree = "<group>";
+		};
+		27AD7C3B1EEFD1EF00258BDC /* Sex8BlockExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C3C1EEFD1EF00258BDC /* Sex8BlockExtensionTests.swift */,
+				27AD7C3E1EEFD1EF00258BDC /* Info.plist */,
+			);
+			path = Sex8BlockExtensionTests;
+			sourceTree = "<group>";
+		};
+		27AD7C461EEFD1EF00258BDC /* Sex8BlockExtensionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C471EEFD1EF00258BDC /* Sex8BlockExtensionUITests.swift */,
+				27AD7C491EEFD1EF00258BDC /* Info.plist */,
+			);
+			path = Sex8BlockExtensionUITests;
+			sourceTree = "<group>";
+		};
+		27AD7C5A1EEFD20D00258BDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27AD7C5D1EEFD20D00258BDC /* ADBlock */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C5E1EEFD20D00258BDC /* blockerList.json */,
+				27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */,
+				27AD7C641EEFD20D00258BDC /* Info.plist */,
+				27AD7C601EEFD20D00258BDC /* Supporting Files */,
+			);
+			path = ADBlock;
+			sourceTree = "<group>";
+		};
+		27AD7C601EEFD20D00258BDC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27AD7C4C1EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtension" */;
+			buildPhases = (
+				27AD7C231EEFD1EE00258BDC /* Sources */,
+				27AD7C241EEFD1EE00258BDC /* Frameworks */,
+				27AD7C251EEFD1EE00258BDC /* Resources */,
+				27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27AD7C661EEFD20D00258BDC /* PBXTargetDependency */,
+			);
+			name = Sex8BlockExtension;
+			productName = Sex8BlockExtension;
+			productReference = 27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		27AD7C371EEFD1EF00258BDC /* Sex8BlockExtensionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27AD7C4F1EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtensionTests" */;
+			buildPhases = (
+				27AD7C341EEFD1EF00258BDC /* Sources */,
+				27AD7C351EEFD1EF00258BDC /* Frameworks */,
+				27AD7C361EEFD1EF00258BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27AD7C3A1EEFD1EF00258BDC /* PBXTargetDependency */,
+			);
+			name = Sex8BlockExtensionTests;
+			productName = Sex8BlockExtensionTests;
+			productReference = 27AD7C381EEFD1EF00258BDC /* Sex8BlockExtensionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		27AD7C421EEFD1EF00258BDC /* Sex8BlockExtensionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27AD7C521EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtensionUITests" */;
+			buildPhases = (
+				27AD7C3F1EEFD1EF00258BDC /* Sources */,
+				27AD7C401EEFD1EF00258BDC /* Frameworks */,
+				27AD7C411EEFD1EF00258BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27AD7C451EEFD1EF00258BDC /* PBXTargetDependency */,
+			);
+			name = Sex8BlockExtensionUITests;
+			productName = Sex8BlockExtensionUITests;
+			productReference = 27AD7C431EEFD1EF00258BDC /* Sex8BlockExtensionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		27AD7C581EEFD20D00258BDC /* ADBlock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27AD7C681EEFD20D00258BDC /* Build configuration list for PBXNativeTarget "ADBlock" */;
+			buildPhases = (
+				27AD7C551EEFD20D00258BDC /* Sources */,
+				27AD7C561EEFD20D00258BDC /* Frameworks */,
+				27AD7C571EEFD20D00258BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ADBlock;
+			productName = ADBlock;
+			productReference = 27AD7C591EEFD20D00258BDC /* ADBlock.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27AD7C1F1EEFD1EE00258BDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = ascp;
+				TargetAttributes = {
+					27AD7C261EEFD1EE00258BDC = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+					};
+					27AD7C371EEFD1EF00258BDC = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 27AD7C261EEFD1EE00258BDC;
+					};
+					27AD7C421EEFD1EF00258BDC = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 27AD7C261EEFD1EE00258BDC;
+					};
+					27AD7C581EEFD20D00258BDC = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 27AD7C221EEFD1EE00258BDC /* Build configuration list for PBXProject "Sex8BlockExtension" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27AD7C1E1EEFD1EE00258BDC;
+			productRefGroup = 27AD7C281EEFD1EE00258BDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */,
+				27AD7C371EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
+				27AD7C421EEFD1EF00258BDC /* Sex8BlockExtensionUITests */,
+				27AD7C581EEFD20D00258BDC /* ADBlock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27AD7C251EEFD1EE00258BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */,
+				27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C361EEFD1EF00258BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C411EEFD1EF00258BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C571EEFD20D00258BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C5F1EEFD20D00258BDC /* blockerList.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27AD7C231EEFD1EE00258BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
+				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C341EEFD1EF00258BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C3D1EEFD1EF00258BDC /* Sex8BlockExtensionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C3F1EEFD1EF00258BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C481EEFD1EF00258BDC /* Sex8BlockExtensionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD7C551EEFD20D00258BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AD7C631EEFD20D00258BDC /* ContentBlockerRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27AD7C3A1EEFD1EF00258BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */;
+			targetProxy = 27AD7C391EEFD1EF00258BDC /* PBXContainerItemProxy */;
+		};
+		27AD7C451EEFD1EF00258BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */;
+			targetProxy = 27AD7C441EEFD1EF00258BDC /* PBXContainerItemProxy */;
+		};
+		27AD7C661EEFD20D00258BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27AD7C581EEFD20D00258BDC /* ADBlock */;
+			targetProxy = 27AD7C651EEFD20D00258BDC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27AD7C301EEFD1EF00258BDC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27AD7C311EEFD1EF00258BDC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27AD7C4A1EEFD1EF00258BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		27AD7C4B1EEFD1EF00258BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		27AD7C4D1EEFD1EF00258BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		27AD7C4E1EEFD1EF00258BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		27AD7C501EEFD1EF00258BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
+			};
+			name = Debug;
+		};
+		27AD7C511EEFD1EF00258BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
+			};
+			name = Release;
+		};
+		27AD7C531EEFD1EF00258BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtensionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Sex8BlockExtension;
+			};
+			name = Debug;
+		};
+		27AD7C541EEFD1EF00258BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = Sex8BlockExtensionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Sex8BlockExtension;
+			};
+			name = Release;
+		};
+		27AD7C691EEFD20D00258BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ADBlock/ADBlock.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = ADBlock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtension.ADBlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		27AD7C6A1EEFD20D00258BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ADBlock/ADBlock.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = A272626J38;
+				INFOPLIST_FILE = ADBlock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtension.ADBlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27AD7C221EEFD1EE00258BDC /* Build configuration list for PBXProject "Sex8BlockExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AD7C4A1EEFD1EF00258BDC /* Debug */,
+				27AD7C4B1EEFD1EF00258BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27AD7C4C1EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AD7C4D1EEFD1EF00258BDC /* Debug */,
+				27AD7C4E1EEFD1EF00258BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27AD7C4F1EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtensionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AD7C501EEFD1EF00258BDC /* Debug */,
+				27AD7C511EEFD1EF00258BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27AD7C521EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtensionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AD7C531EEFD1EF00258BDC /* Debug */,
+				27AD7C541EEFD1EF00258BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27AD7C681EEFD20D00258BDC /* Build configuration list for PBXNativeTarget "ADBlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AD7C691EEFD20D00258BDC /* Debug */,
+				27AD7C6A1EEFD20D00258BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+}
