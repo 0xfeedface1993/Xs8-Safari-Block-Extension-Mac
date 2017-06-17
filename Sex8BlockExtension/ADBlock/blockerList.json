@@ -128,6 +128,36 @@
   "if-domian":["xbluntan.net", "sex8.cc"],
   "url-filter": ".*"
   }
+  },
+  {
+  "action": {
+  "type": "css-display-none",
+  "selector":"div.div-list"
+  },
+  "trigger": {
+  "if-domian":["xbluntan.net", "sex8.cc"],
+  "url-filter": ".*"
+  }
+  },
+  {
+  "action": {
+  "type": "css-display-none",
+  "selector":"#nv"
+  },
+  "trigger": {
+  "if-domian":["xbluntan.net", "sex8.cc"],
+  "url-filter": ".*"
+  }
+  },
+  {
+  "action": {
+  "type": "css-display-none",
+  "selector":"#toptb"
+  },
+  "trigger": {
+  "if-domian":["xbluntan.net", "sex8.cc"],
+  "url-filter": ".*"
+  }
   }
   ]
 
