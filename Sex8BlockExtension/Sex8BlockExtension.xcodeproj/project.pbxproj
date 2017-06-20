@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
+		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
+		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
+		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
+		24BA90DD1EF597B6002BE480 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DC1EF597B6002BE480 /* script.js */; };
+		24BA90DF1EF597B6002BE480 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */; };
+		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */; };
 		27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */; };
 		27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */; };
@@ -20,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		24BA90E01EF597B6002BE480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24BA90CE1EF597B6002BE480;
+			remoteInfo = Torrilste;
+		};
 		27AD7C391EEFD1EF00258BDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
@@ -51,6 +65,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */,
+				24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +73,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
+		24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		24BA90D91EF597B6002BE480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sex8BlockExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +102,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		24BA90CC1EF597B6002BE480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27AD7C241EEFD1EE00258BDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,6 +142,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24BA90D11EF597B6002BE480 /* Torrilste */ = {
+			isa = PBXGroup;
+			children = (
+				24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */,
+				24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */,
+				24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */,
+				24BA90DB1EF597B6002BE480 /* Info.plist */,
+				24BA90DC1EF597B6002BE480 /* script.js */,
+				24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */,
+				24BA90D21EF597B6002BE480 /* Supporting Files */,
+			);
+			path = Torrilste;
+			sourceTree = "<group>";
+		};
+		24BA90D21EF597B6002BE480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24BA90D31EF597B6002BE480 /* Torrilste.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +171,7 @@
 				27AD7C3B1EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
 				27AD7C461EEFD1EF00258BDC /* Sex8BlockExtensionUITests */,
 				27AD7C5D1EEFD20D00258BDC /* ADBlock */,
+				24BA90D11EF597B6002BE480 /* Torrilste */,
 				27AD7C5A1EEFD20D00258BDC /* Frameworks */,
 				27AD7C281EEFD1EE00258BDC /* Products */,
 			);
@@ -130,6 +184,7 @@
 				27AD7C381EEFD1EF00258BDC /* Sex8BlockExtensionTests.xctest */,
 				27AD7C431EEFD1EF00258BDC /* Sex8BlockExtensionUITests.xctest */,
 				27AD7C591EEFD20D00258BDC /* ADBlock.appex */,
+				24BA90CF1EF597B6002BE480 /* Torrilste.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +249,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		24BA90CE1EF597B6002BE480 /* Torrilste */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24BA90E31EF597B6002BE480 /* Build configuration list for PBXNativeTarget "Torrilste" */;
+			buildPhases = (
+				24BA90CB1EF597B6002BE480 /* Sources */,
+				24BA90CC1EF597B6002BE480 /* Frameworks */,
+				24BA90CD1EF597B6002BE480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Torrilste;
+			productName = Torrilste;
+			productReference = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27AD7C4C1EEFD1EF00258BDC /* Build configuration list for PBXNativeTarget "Sex8BlockExtension" */;
@@ -207,6 +279,7 @@
 			);
 			dependencies = (
 				27AD7C661EEFD20D00258BDC /* PBXTargetDependency */,
+				24BA90E11EF597B6002BE480 /* PBXTargetDependency */,
 			);
 			name = Sex8BlockExtension;
 			productName = Sex8BlockExtension;
@@ -276,6 +349,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = ascp;
 				TargetAttributes = {
+					24BA90CE1EF597B6002BE480 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 69TXR99ENR;
+						ProvisioningStyle = Automatic;
+					};
 					27AD7C261EEFD1EE00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 69TXR99ENR;
@@ -317,11 +395,22 @@
 				27AD7C371EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
 				27AD7C421EEFD1EF00258BDC /* Sex8BlockExtensionUITests */,
 				27AD7C581EEFD20D00258BDC /* ADBlock */,
+				24BA90CE1EF597B6002BE480 /* Torrilste */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		24BA90CD1EF597B6002BE480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24BA90DF1EF597B6002BE480 /* ToolbarItemIcon.pdf in Resources */,
+				24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */,
+				24BA90DD1EF597B6002BE480 /* script.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27AD7C251EEFD1EE00258BDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +445,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		24BA90CB1EF597B6002BE480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */,
+				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27AD7C231EEFD1EE00258BDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,6 +490,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24BA90E11EF597B6002BE480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24BA90CE1EF597B6002BE480 /* Torrilste */;
+			targetProxy = 24BA90E01EF597B6002BE480 /* PBXContainerItemProxy */;
+		};
 		27AD7C3A1EEFD1EF00258BDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */;
@@ -410,6 +513,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24BA90D91EF597B6002BE480 /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
 		27AD7C301EEFD1EF00258BDC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -421,6 +532,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		24BA90E41EF597B6002BE480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Torrilste/Torrilste.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 69TXR99ENR;
+				INFOPLIST_FILE = Torrilste/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		24BA90E51EF597B6002BE480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Torrilste/Torrilste.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 69TXR99ENR;
+				INFOPLIST_FILE = Torrilste/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		27AD7C4A1EEFD1EF00258BDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -523,7 +666,7 @@
 				DEVELOPMENT_TEAM = 69TXR99ENR;
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.ADBlock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -540,7 +683,7 @@
 				DEVELOPMENT_TEAM = 69TXR99ENR;
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.ADBlock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -617,7 +760,7 @@
 				DEVELOPMENT_TEAM = 69TXR99ENR;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.ADBlock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -633,7 +776,7 @@
 				DEVELOPMENT_TEAM = 69TXR99ENR;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.ADBlock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -644,6 +787,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		24BA90E31EF597B6002BE480 /* Build configuration list for PBXNativeTarget "Torrilste" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24BA90E41EF597B6002BE480 /* Debug */,
+				24BA90E51EF597B6002BE480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		27AD7C221EEFD1EE00258BDC /* Build configuration list for PBXProject "Sex8BlockExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

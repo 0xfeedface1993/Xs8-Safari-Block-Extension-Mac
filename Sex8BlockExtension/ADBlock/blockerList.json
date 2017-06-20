@@ -1,163 +1,243 @@
- [
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"a.qd-block"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.a_sxfl"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.lt-body3"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"#location_list"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.uk-header"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.a_sxmu"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.partner-list"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.carousel_container"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.easy-guide"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.bm div.a_sxc"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div>span>a"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.bm_c.cl.pbn"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"section.global_video_bottom_dbtc"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"div.div-list"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"#nv"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  },
-  {
-  "action": {
-  "type": "css-display-none",
-  "selector":"#toptb"
-  },
-  "trigger": {
-  "if-domian":["xbluntan.net", "sex8.cc"],
-  "url-filter": ".*"
-  }
-  }
-  ]
+[
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"a.qd-block"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.a_sxfl"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.lt-body3"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#location_list"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.uk-header"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.a_sxmu"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.partner-list"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.carousel_container"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.easy-guide"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.bm div.a_sxc"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div>span>a"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.bm_c.cl.pbn"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"section.global_video_bottom_dbtc"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.div-list"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#nv"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#toptb"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {"action": {
+ "type": "css-display-none",
+ "selector":"#asx_text"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.lt-container2.lt-a-contain"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.bottom"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.a_pt"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#v_e6_action"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#toubiao"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#p_btn"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"tr.ad"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ }
+ ]
+ 
 
