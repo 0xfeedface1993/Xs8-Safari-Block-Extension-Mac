@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13154.30" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Link" representedClassName="Link" syncable="YES" codeGenerationType="class">
+        <attribute name="creattime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="linknet" maxCount="1" deletionRule="Nullify" destinationEntity="NetDisk" inverseName="link" inverseEntity="NetDisk" syncable="YES"/>
+    </entity>
+    <entity name="NetDisk" representedClassName="NetDisk" syncable="YES" codeGenerationType="class">
+        <attribute name="creattime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passwod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="link" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="linknet" inverseEntity="Link" syncable="YES"/>
+        <relationship name="pic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pic" inverseName="picnet" inverseEntity="Pic" syncable="YES"/>
+    </entity>
+    <entity name="Pic" representedClassName="Pic" syncable="YES" codeGenerationType="class">
+        <attribute name="creattime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="pic" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="picnet" maxCount="1" deletionRule="Nullify" destinationEntity="NetDisk" inverseName="pic" inverseEntity="NetDisk" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NetDisk" positionX="-207" positionY="-63" width="108" height="133"/>
+        <element name="Link" positionX="-441" positionY="-49" width="99" height="88"/>
+        <element name="Pic" positionX="16" positionY="-58" width="128" height="88"/>
+    </elements>
+</model>

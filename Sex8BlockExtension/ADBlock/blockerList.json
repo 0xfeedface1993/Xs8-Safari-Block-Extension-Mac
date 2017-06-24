@@ -22,7 +22,7 @@
  {
  "action": {
  "type": "css-display-none",
- "selector":"div.lt-body3"
+ "selector":".a_xsfl"
  },
  "trigger": {
  "if-domian":["xbluntan.net", "sex8.cc"],
@@ -236,6 +236,52 @@
  "trigger": {
  "if-domian":["xbluntan.net", "sex8.cc"],
  "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "img.s8bbs.com/04b22ce33ea24089740dd4c36b3cd7a5.jpg"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".plc.plm"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".pob.cl>p"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".zxy"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "xbluntan.net/plugin-e6-rebate.html"
  }
  }
  ]

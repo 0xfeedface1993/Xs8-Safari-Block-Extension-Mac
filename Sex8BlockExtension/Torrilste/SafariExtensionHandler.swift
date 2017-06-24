@@ -9,11 +9,17 @@
 import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
-        page.getPropertiesWithCompletionHandler { properties in
-            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+//        page.getPropertiesWithCompletionHandler { properties in
+//            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+//        }
+        switch messageName {
+        case "CatchDownloadLinks":
+            print("\(userInfo ?? [:])")
+            break
+        default:
+            break
         }
     }
     
@@ -24,7 +30,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             tab in
             tab?.getActivePage(completionHandler: {
                 page in
-                page!.dispatchMessageToScript(withName: "download", userInfo: nil)
+                page!.dispatchMessageToScript(withName: "copyDonloadLink", userInfo: ["b":"a"])
+                print("post it!")
             })
         })
     }

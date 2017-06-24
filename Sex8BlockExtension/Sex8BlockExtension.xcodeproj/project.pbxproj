@@ -14,6 +14,8 @@
 		24BA90DD1EF597B6002BE480 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DC1EF597B6002BE480 /* script.js */; };
 		24BA90DF1EF597B6002BE480 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
+		278B8B261EFE831900E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */; };
 		27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */; };
 		27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */; };
@@ -81,6 +83,7 @@
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NetdiskModel.xcdatamodel; sourceTree = "<group>"; };
 		27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sex8BlockExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,9 +167,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		278B8AE81EFE7C9600E20296 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				278B8AE81EFE7C9600E20296 /* CoreData */,
 				27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */,
 				27AD7C3B1EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
 				27AD7C461EEFD1EF00258BDC /* Sex8BlockExtensionUITests */,
@@ -353,6 +365,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 69TXR99ENR;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					27AD7C261EEFD1EE00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -450,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */,
+				278B8B261EFE831900E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
+				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -649,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -842,6 +861,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
+			);
+			currentVersion = 278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */;
+			path = NetdiskModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
 }
