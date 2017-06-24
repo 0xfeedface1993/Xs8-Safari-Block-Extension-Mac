@@ -33,35 +33,45 @@ class ViewController: NSViewController {
 //            fatalError("Error initializing mom from: \(modelURL)")
 //        }
         let app = NSApplication.shared().delegate as! AppDelegate
-        let psc = app.persistentContainer.persistentStoreCoordinator
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = psc
-        
+        let managedObjectContext = app.managedObjectContext
+
         let netdisk = NSEntityDescription.insertNewObject(forEntityName: "NetDisk", into: managedObjectContext) as! NetDisk
         netdisk.creattime = NSDate()
         netdisk.fileName = "testfile-\(UUID().uuidString).rar"
         netdisk.title = "badboy"
         netdisk.passwod = "unlock"
-        
+
         do {
             try managedObjectContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+//        app.resetAllRecords(in: "NetDisk")
     }
     
     @IBAction func extract(_ sender: Any) {
         let app = NSApplication.shared().delegate as! AppDelegate
-        let psc = app.persistentContainer
-        let managedObjectContext = psc.viewContext
+        let managedObjectContext = app.managedObjectContext
         
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
         
         do {
             let fetchedEmployees = try managedObjectContext.fetch(employeesFetch)
             var str = ""
+            let calender = Calendar.current
             for item in fetchedEmployees {
-                str += "filename:\(item.fileName ?? "bad")\ntime:\(item.creattime ?? NSDate())\n"
+                var comp = calender.dateComponents([.year, .month, .day, .hour, .minute], from: item.creattime! as Date)
+                comp.timeZone = TimeZone(identifier: "Asia/Beijing")
+                let cool = "\(comp.year!)/\(comp.month!)/\(comp.day!) \(comp.hour!):\(comp.minute!)"
+                str += "\n\n标题：\(item.title ?? "bad")\n文件名:\(item.fileName ?? "bad")\n解压密码：\(item.passwod ?? "bad")\n创建时间:\(cool)\n"
+                
+                for link in item.link?.allObjects as? [Link] ?? [] {
+                    str += "下载地址：\(link.link ?? "bad")\n"
+                }
+                
+                for link in item.pic?.allObjects as? [Pic] ?? [] {
+                    str += "图片地址：\(link.pic ?? "bad")\n"
+                }
             }
             label.stringValue = str
             print(str)
@@ -71,6 +81,7 @@ class ViewController: NSViewController {
     }
     
     @IBOutlet weak var extract: NSButton!
+    
     
 }
 

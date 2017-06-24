@@ -42,7 +42,7 @@ function getDownloadLinks(parentDode) {
             var hrefx = aTag.getAttribute('href');
             if (hrefx.indexOf("http://") >= 0) {
                 validateA.push(hrefx);
-                alert(hrefx);
+//                alert(hrefx);
             }
         }
     }
@@ -51,7 +51,7 @@ function getDownloadLinks(parentDode) {
         for (var j = 0; j < gm.length; j++) {
             var link = gm[j];
             validateA.push(link.innerHTML);
-            alert(link.innerHTML);
+//            alert(link.innerHTML);
         }
     }
     
@@ -64,7 +64,7 @@ function getDownloadLinks(parentDode) {
             if (!(aLink != null && aLink.length > 0) && nodes <= 0) {
                 if (link.innerHTML.indexOf("http://") >= 0) {
                     validateA.push(link.innerHTML);
-                    alert(link.innerHTML);
+//                    alert(link.innerHTML);
                 }
             }
         }
