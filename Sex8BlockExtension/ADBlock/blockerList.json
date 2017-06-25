@@ -283,6 +283,16 @@
  "trigger": {
  "url-filter": "xbluntan.net/plugin-e6-rebate.html"
  }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".lt-body3"
+ },
+ "trigger": {
+ "if-domian":["xbluntan.net", "sex8.cc"],
+ "url-filter": ".*"
+ }
  }
  ]
  
