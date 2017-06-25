@@ -771,7 +771,61 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12.5" y="690.5"/>
+            <point key="canvasLocation" x="76" y="776"/>
+        </scene>
+        <!--Pics Collection View Controller-->
+        <scene sceneID="hB5-wB-rNr">
+            <objects>
+                <viewController identifier="PicsCollectionViewController" storyboardIdentifier="PicsCollectionViewController" id="cff-Nq-Ge9" customClass="PicsCollectionViewController" customModule="Sex8BlockExtension" sceneMemberID="viewController">
+                    <view key="view" id="NlU-Hf-g6o">
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="354"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9L-h9-fbr">
+                                <rect key="frame" x="0.0" y="0.0" width="616" height="354"/>
+                                <clipView key="contentView" drawsBackground="NO" id="xNA-ja-EQF">
+                                    <rect key="frame" x="1" y="1" width="614" height="352"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="8KL-9S-STe">
+                                            <rect key="frame" x="0.0" y="0.0" width="614" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="fvj-D7-h7v">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="cff-Nq-Ge9" id="7rc-9F-yLh"/>
+                                                <outlet property="delegate" destination="cff-Nq-Ge9" id="cL6-ar-xD6"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="dc9-4z-gZN">
+                                    <rect key="frame" x="1" y="337" width="614" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tVX-5R-eE0">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="t9L-h9-fbr" firstAttribute="leading" secondItem="NlU-Hf-g6o" secondAttribute="leading" id="GWA-U3-XzI"/>
+                            <constraint firstItem="t9L-h9-fbr" firstAttribute="top" secondItem="NlU-Hf-g6o" secondAttribute="top" id="MOU-TZ-VoW"/>
+                            <constraint firstAttribute="trailing" secondItem="t9L-h9-fbr" secondAttribute="trailing" id="gFA-4F-khi"/>
+                            <constraint firstAttribute="bottom" secondItem="t9L-h9-fbr" secondAttribute="bottom" id="pge-9n-3hL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="8KL-9S-STe" id="sKb-4c-sw1"/>
+                    </connections>
+                </viewController>
+                <customObject id="lTg-gY-Qgb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="1257"/>
         </scene>
         <!--List Table View Controller-->
         <scene sceneID="XjH-d7-Gqo">
@@ -843,7 +897,7 @@
                 <customObject id="Vav-il-FMA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="6pP-rF-Uk7"/>
             </objects>
-            <point key="canvasLocation" x="669" y="690"/>
+            <point key="canvasLocation" x="782" y="775"/>
         </scene>
     </scenes>
 </document>

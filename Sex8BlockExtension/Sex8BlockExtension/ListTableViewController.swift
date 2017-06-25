@@ -19,6 +19,16 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     let IdenitfierKey = "identifier"
     let TitleKey = "title"
     var datas = [NetDisk]()
+    lazy var popver : NSPopover = {
+        let pop = NSPopover()
+        pop.animates = true
+        pop.appearance = NSAppearance(named: NSAppearanceNameAqua)
+        let storyboard = NSStoryboard(name: "Main", bundle: Bundle.main)
+        let xpics = storyboard.instantiateController(withIdentifier: "PicsCollectionViewController") as! PicsCollectionViewController
+        pop.contentViewController = xpics
+        pop.contentSize = CGSize(width: 800, height: 600)
+        return pop
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,12 +135,20 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         if row >= 0 {
-            NotificationCenter.default.post(name: SelectItemName, object: nil)
-        }   else    {
-            NotificationCenter.default.post(name: UnSelectItemName, object: nil)
+            if row == tableView.clickedRow, row != tableview.selectedRow {
+                NotificationCenter.default.post(name: SelectItemName, object: nil)
+                reloadImages(index: row)
+            }
         }
-        
+
         return true
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        if popver.isShown {
+            return
+        }
+        super.keyDown(with: event)
     }
     
     // 重新获取数据
@@ -185,8 +203,21 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     // 通知
     func showImages() {
-        if tableview.selectedRow >= 0 {
-            
+        if popver.isShown  {
+            popver.close()
+        }
+    }
+    
+    func reloadImages(index: Int) {
+        let pics = popver.contentViewController as! PicsCollectionViewController
+        pics.datas = datas[index].pic?.allObjects as? [Pic] ?? []
+        let rect = parent?.view.frame
+        if popver.isShown {
+            pics.clearCacheImages()
+            pics.collectionView.reloadData()
+            pics.collectionView.scroll(NSPoint(x: 0, y: 0))
+        }   else    {
+            popver.show(relativeTo: rect!, of: tableview, preferredEdge: .maxX)
         }
     }
     

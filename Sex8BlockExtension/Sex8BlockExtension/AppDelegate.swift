@@ -12,7 +12,6 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -202,6 +201,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         })
         
+    }
+    
+    func resetAllBadRecords() {
+        let context = managedObjectContext
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Pic")
+        deleteFetch.predicate = NSPredicate(format: "pic == NULL", argumentArray: nil)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
     }
 }
 
