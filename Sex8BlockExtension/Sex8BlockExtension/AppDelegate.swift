@@ -10,12 +10,21 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return false
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        for item in sender.windows {
+            item.makeKeyAndOrderFront(nil)
+            break
+        }
+        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -84,11 +93,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        
+        let options = [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true]
         let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "NetdiskModel.sql", relativeTo: dirURL)
         do {
-            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: nil)
-            let moc = NSManagedObjectContext(concurrencyType:.mainQueueConcurrencyType)
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: options)
+            let moc = NSManagedObjectContext(concurrencyType:.privateQueueConcurrencyType)
             moc.persistentStoreCoordinator = psc
             return moc
         } catch {
@@ -100,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func saveAction(_ sender: AnyObject?) {
         // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-        let context = persistentContainer.viewContext
+        let context = managedObjectContext//persistentContainer.viewContext
         
         if !context.commitEditing() {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
@@ -165,15 +174,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func resetAllRecords(in entity : String) {
-        let context = persistentContainer.viewContext
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        do {
-            try context.execute(deleteRequest)
-            try context.save()
-        } catch {
-            print ("There was an error")
-        }
+        let alert = NSAlert()
+        alert.addButton(withTitle: "清除")
+        alert.addButton(withTitle: "取消")
+        alert.messageText = "确定删除所有数据？"
+        alert.informativeText = "删除后不可恢复！"
+        alert.alertStyle = .warning
+        alert.beginSheetModal(for: NSApplication.shared().keyWindow!, completionHandler: {
+            code in
+            switch code {
+            case NSAlertFirstButtonReturn:
+                let context = self.managedObjectContext
+                let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+                do {
+                    try context.execute(deleteRequest)
+                    try context.save()
+                } catch {
+                    print ("There was an error")
+                }
+                break
+            case NSAlertSecondButtonReturn:
+                
+                break
+            default:
+                break
+            }
+        })
+        
     }
 }
+
+
 

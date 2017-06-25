@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
 		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
@@ -76,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
 		24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 				278B8B271EFEBF6000E20296 /* Sex8BlockExtension.entitlements */,
 				27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */,
 				27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */,
+				249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */,
 				27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */,
 				27AD7C301EEFD1EF00258BDC /* Main.storyboard */,
 				27AD7C331EEFD1EF00258BDC /* Info.plist */,
@@ -491,6 +495,7 @@
 				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
+				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,9 +885,10 @@
 		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */,
 				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
 			);
-			currentVersion = 278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */;
+			currentVersion = 249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */;
 			path = NetdiskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

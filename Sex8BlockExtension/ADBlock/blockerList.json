@@ -293,6 +293,14 @@
  "if-domian":["xbluntan.net", "sex8.cc"],
  "url-filter": ".*"
  }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "static2.keep4u.ru/2017/06/24/230561.jpg"
+ }
  }
  ]
  
