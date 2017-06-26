@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2438470E1F001EB400027E27 /* watting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2438470D1F001EB400027E27 /* watting.jpeg */; };
+		246A8E1E1F01436000F5E42B /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 246A8E1D1F01435F00F5E42B /* ToolbarItemIcon.pdf */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
@@ -17,7 +18,6 @@
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90DD1EF597B6002BE480 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DC1EF597B6002BE480 /* script.js */; };
-		24BA90DF1EF597B6002BE480 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		278B8B261EFE831900E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
@@ -83,6 +83,7 @@
 /* Begin PBXFileReference section */
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2438470D1F001EB400027E27 /* watting.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = watting.jpeg; path = ../../../../../Downloads/watting.jpeg; sourceTree = "<group>"; };
+		246A8E1D1F01435F00F5E42B /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ToolbarItemIcon.pdf; path = ../../../../ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		24BA90D91EF597B6002BE480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NetdiskModel.xcdatamodel; sourceTree = "<group>"; };
 		278B8B271EFEBF6000E20296 /* Sex8BlockExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sex8BlockExtension.entitlements; sourceTree = "<group>"; };
 		27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sex8BlockExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,11 +163,11 @@
 			isa = PBXGroup;
 			children = (
 				24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */,
+				246A8E1D1F01435F00F5E42B /* ToolbarItemIcon.pdf */,
 				24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */,
 				24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */,
 				24BA90DB1EF597B6002BE480 /* Info.plist */,
 				24BA90DC1EF597B6002BE480 /* script.js */,
-				24BA90DE1EF597B6002BE480 /* ToolbarItemIcon.pdf */,
 				24BA90D21EF597B6002BE480 /* Supporting Files */,
 			);
 			path = Torrilste;
@@ -451,8 +451,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				278B8B281EFEC19400E20296 /* NetdiskModel.xcdatamodeld in Resources */,
-				24BA90DF1EF597B6002BE480 /* ToolbarItemIcon.pdf in Resources */,
 				24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */,
+				246A8E1E1F01436000F5E42B /* ToolbarItemIcon.pdf in Resources */,
 				24BA90DD1EF597B6002BE480 /* script.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
