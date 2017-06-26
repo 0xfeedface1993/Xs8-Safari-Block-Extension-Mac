@@ -12,7 +12,6 @@
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
 		249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249F91321EFFEB950043B48D /* ImageCollectionItem.xib */; };
-		249F91381EFFF0680043B48D /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 249F91371EFFF0680043B48D /* timg.jpeg */; };
 		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
 		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
@@ -89,7 +88,6 @@
 		249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsCollectionViewController.swift; sourceTree = "<group>"; };
 		249F91311EFFEB950043B48D /* ImageCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionItem.swift; sourceTree = "<group>"; };
 		249F91321EFFEB950043B48D /* ImageCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionItem.xib; sourceTree = "<group>"; };
-		249F91371EFFF0680043B48D /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = ../../../../../Downloads/timg.jpeg; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
 		24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 				249F91311EFFEB950043B48D /* ImageCollectionItem.swift */,
 				249F91321EFFEB950043B48D /* ImageCollectionItem.xib */,
 				2438470D1F001EB400027E27 /* watting.jpeg */,
-				249F91371EFFF0680043B48D /* timg.jpeg */,
 				27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */,
 				27AD7C301EEFD1EF00258BDC /* Main.storyboard */,
 				27AD7C331EEFD1EF00258BDC /* Info.plist */,
@@ -466,7 +463,6 @@
 			files = (
 				249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */,
 				27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */,
-				249F91381EFFF0680043B48D /* timg.jpeg in Resources */,
 				27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */,
 				2438470E1F001EB400027E27 /* watting.jpeg in Resources */,
 			);
