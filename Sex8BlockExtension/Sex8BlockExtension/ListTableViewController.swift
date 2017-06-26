@@ -133,21 +133,38 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         
     }
     
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if row >= 0 {
-            if row == tableView.clickedRow, row != tableview.selectedRow {
+    func tableViewSelectionDidChange(_ notification: Notification) {
+//        print((notification.object as! NSTableView).selectedRow)
+        if let table = notification.object as? NSTableView {
+            if tableview.selectedRow >= 0 {
+                reloadImages(index: table.selectedRow)
                 NotificationCenter.default.post(name: SelectItemName, object: nil)
-                reloadImages(index: row)
+            }   else    {
+                popver.close()
+                NotificationCenter.default.post(name: UnSelectItemName, object: nil)
             }
         }
-
-        return true
     }
     
     override func keyDown(with event: NSEvent) {
-        if popver.isShown {
+        print(event.keyCode)
+        
+        switch event.keyCode {
+        case 53:
+            popver.close()
+            break
+        case 49:
+            if popver.isShown {
+                popver.close()
+            }   else    {
+                reloadImages(index: tableview.selectedRow)
+            }
+            
             return
+        default:
+            break
         }
+        
         super.keyDown(with: event)
     }
     
@@ -212,13 +229,12 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let pics = popver.contentViewController as! PicsCollectionViewController
         pics.datas = datas[index].pic?.allObjects as? [Pic] ?? []
         let rect = parent?.view.frame
-        if popver.isShown {
-            pics.clearCacheImages()
-            pics.collectionView.reloadData()
-            pics.collectionView.scroll(NSPoint(x: 0, y: 0))
-        }   else    {
+        if !popver.isShown {
             popver.show(relativeTo: rect!, of: tableview, preferredEdge: .maxX)
         }
+        pics.clearCacheImages()
+        pics.collectionView.reloadData()
+        pics.collectionView.scroll(NSPoint(x: 0, y: 0))
     }
     
 }

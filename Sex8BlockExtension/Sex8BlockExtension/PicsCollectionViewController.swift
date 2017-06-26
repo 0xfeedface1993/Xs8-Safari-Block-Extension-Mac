@@ -30,10 +30,10 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     
     //MARK: - NSCollectionViewDelegate
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        datas.forEach({
-            item in
-            print(item.pic ?? "")
-        })
+//        datas.forEach({
+//            item in
+//            print(item.pic ?? "")
+//        })
         return datas.count
     }
     
