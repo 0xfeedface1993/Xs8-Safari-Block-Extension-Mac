@@ -38,44 +38,6 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: ImageViewIdentifier, for: indexPath) as! ImageCollectionItem
         item.highImageView.image = downloadImages[indexPath.item]
-//        if !downloadedImagesIndex.contains(indexPath.item), !downloadingImagesIndex.contains(indexPath.item) {
-//            if let imageData = datas[indexPath.item].data, let image = NSImage(data: imageData as Data) {
-//                self.downloadedImagesIndex.append(indexPath.item)
-//                self.downloadImages[indexPath.item] = image
-//                item.highImageView.image = downloadImages[indexPath.item]
-//            }   else    {
-//                item.highImageView.image = self.defaultImage
-//                DispatchQueue.global().async {
-//                    if let urlString = self.datas[indexPath.item].pic, let url = URL(string: urlString) {
-//                        self.downloadingImagesIndex.append(indexPath.item)
-//                        let task = URLSession.shared.downloadTask(with: url, completionHandler: {
-//                            (url, response, error) in
-//                            if error == nil, let datURL = url, let img = NSImage(contentsOf: datURL) {
-//                                DispatchQueue.main.async {
-//                                    item.highImageView.image = img
-//                                    self.downloadedImagesIndex.append(indexPath.item)
-//                                    self.downloadImages[indexPath.item] = img
-//                                    if let indx = self.downloadingImagesIndex.index(of: indexPath.item) {
-//                                        self.downloadingImagesIndex.remove(at: indx)
-//                                    }
-//                                    let app = NSApplication.shared().delegate as! AppDelegate
-//                                    let pic = self.datas[indexPath.item]
-//                                    pic.data = img.tiffRepresentation as NSData?
-//                                    app.saveAction(nil)
-//                                }
-//                            }
-//                        })
-//                        self.executingTask.append(task)
-//                        task.resume()
-//                    }
-//                }
-//            }
-//        }   else if downloadingImagesIndex.contains(indexPath.item) {
-//            item.highImageView.image = self.defaultImage
-//        }   else if downloadedImagesIndex.contains(indexPath.item) {
-//            item.highImageView.image = downloadImages[indexPath.item]
-//        }
-        
         return item
     }
     
@@ -83,8 +45,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
         let item = downloadImages[indexPath.item]
         if let w = item?.size.width, let h = item?.size.height {
             let width = view.frame.size.width - 10
-            let height = width / w * h
-            return CGSize(width: width, height: height)
+            return CGSize(width: width, height: w > width - 10 ? width / w * h:h)
         }
         return CGSize(width: view.frame.size.width - 10, height: (view.frame.size.width - 10) / self.defaultImage!.size.width * self.defaultImage!.size.height)
     }
