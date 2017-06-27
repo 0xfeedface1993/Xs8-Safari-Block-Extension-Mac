@@ -10,6 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
+    @IBOutlet weak var collectionView: NSView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var extract: NSButton!
     
-    func select() {
+    func select(notification: NSNotification) {
         images.isEnabled = true
         address.isEnabled = true
     }

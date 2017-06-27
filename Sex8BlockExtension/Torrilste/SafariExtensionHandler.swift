@@ -52,6 +52,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         netdisk.fileName = data["fileName"] as? String
         netdisk.title = data["title"] as? String
         netdisk.passwod = data["passwod"] as? String
+        netdisk.pageurl = data["url"] as? String
         
         if let allLink = data["links"] as? [String] {
             for sLink in allLink {

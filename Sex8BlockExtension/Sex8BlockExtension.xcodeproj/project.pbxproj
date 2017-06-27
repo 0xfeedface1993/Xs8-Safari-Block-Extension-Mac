@@ -84,6 +84,7 @@
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2438470D1F001EB400027E27 /* watting.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = watting.jpeg; path = ../../../../../Downloads/watting.jpeg; sourceTree = "<group>"; };
+		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		246A8E1D1F01435F00F5E42B /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ToolbarItemIcon.pdf; path = ../../../../ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -917,12 +918,13 @@
 		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */,
 				2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */,
 				2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */,
 				249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */,
 				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
 			);
-			currentVersion = 2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */;
+			currentVersion = 2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */;
 			path = NetdiskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

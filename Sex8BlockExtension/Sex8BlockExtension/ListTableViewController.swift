@@ -138,7 +138,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         if let table = notification.object as? NSTableView {
             if tableview.selectedRow >= 0 {
                 reloadImages(index: table.selectedRow)
-                NotificationCenter.default.post(name: SelectItemName, object: nil)
+                let data = datas[table.selectedRow].pic?.allObjects as? [Pic] ?? []
+                NotificationCenter.default.post(name: SelectItemName, object: data)
             }   else    {
                 popver.close()
                 NotificationCenter.default.post(name: UnSelectItemName, object: nil)
@@ -226,15 +227,29 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func reloadImages(index: Int) {
-        let pics = popver.contentViewController as! PicsCollectionViewController
-        pics.datas = datas[index].pic?.allObjects as? [Pic] ?? []
-        let rect = parent?.view.frame
-        if !popver.isShown {
-            popver.show(relativeTo: rect!, of: tableview, preferredEdge: .maxX)
+//        let pics = popver.contentViewController as! PicsCollectionViewController
+//         let data = datas[index].pic?.allObjects as? [Pic] ?? []
+//        let rect = parent?.view.frame
+//        if !popver.isShown {
+//            popver.show(relativeTo: rect!, of: tableview, preferredEdge: .maxX)
+//        }
+//        pics.clearCacheImages()
+//        pics.collectionView.reloadData()
+//        pics.collectionView.scroll(NSPoint(x: 0, y: 0))
+//        NotificationCenter.default.post(name: SelectItemName, object: data)
+    }
+    
+    // 检查是否已经存在数据
+    func checkPropertyExist<T: NSFetchRequestResult>(entity: String, property: String, value: String) -> T? {
+        let fetch = NSFetchRequest<T>(entityName: entity)
+        fetch.predicate = NSPredicate(format: "SELF.\(property) == '\(value)'")
+        do {
+            let app = NSApplication.shared().delegate as! AppDelegate
+            let datas = try app.managedObjectContext.fetch(fetch)
+            return datas.first
+        } catch {
+            fatalError("Failed to fetch \(property): \(error)")
         }
-        pics.clearCacheImages()
-        pics.collectionView.reloadData()
-        pics.collectionView.scroll(NSPoint(x: 0, y: 0))
     }
     
 }

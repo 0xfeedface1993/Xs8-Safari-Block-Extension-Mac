@@ -18,8 +18,9 @@ function handleMessage(event) {
                 var fileName = getFileName(blocks);
                 fileName = fileName == null ? "未查询到文件名":fileName;
                 var titlex = document.getElementById("thread_subject").innerHTML;
+                var locationURL = document.location.href;
                 if (validateA && validateA.length > 0) {
-                    safari.extension.dispatchMessage("CatchDownloadLinks", {"links":validateA, "passwod":code, "title":titlex, "pics":pics, "fileName":fileName});
+                    safari.extension.dispatchMessage("CatchDownloadLinks", {"links":validateA, "passwod":code, "title":titlex, "pics":pics, "fileName":fileName, "url":locationURL});
                 }
             }   else    {
                 console.log("空空如也");
