@@ -22,32 +22,61 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
         super.viewDidLoad()
         // Do view setup here.
         collectionView.register(ImageCollectionItem.self, forItemWithIdentifier: ImageViewIdentifier)
+        let grid = NSCollectionViewFlowLayout()
+        collectionView.collectionViewLayout = grid
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSNotification.Name.NSWindowDidResize, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
         reloadImages()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSWindowDidResize, object: nil)
     }
     
     //MARK: - NSCollectionViewDelegate
-    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return datas.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: ImageViewIdentifier, for: indexPath) as! ImageCollectionItem
-        item.highImageView.image = downloadImages[indexPath.item]
+        item.highImageView.image = downloadImages[indexPath.section]
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        let item = downloadImages[indexPath.item]
+        let item = downloadImages[indexPath.section]
+        let padding : CGFloat = 10
         if let w = item?.size.width, let h = item?.size.height {
-            let width = view.frame.size.width - 10
-            return CGSize(width: width, height: w > width - 10 ? width / w * h:h)
+            let width : CGFloat = view.bounds.size.width - padding
+            return CGSize(width: width, height: w > width + padding ? (width / w * h):h)
         }
-        return CGSize(width: view.frame.size.width - 10, height: (view.frame.size.width - 10) / self.defaultImage!.size.width * self.defaultImage!.size.height)
+        return CGSize(width: view.bounds.size.width - padding, height: (view.bounds.size.width - padding) / self.defaultImage!.size.width * self.defaultImage!.size.height)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> EdgeInsets {
+        return NSEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: 0, height: 0)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {
+        return NSSize(width: 0, height: 0)
     }
     
     // 清除缓存
@@ -96,7 +125,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
                                     let pic = self.datas[index]
                                     pic.data = img.tiffRepresentation as NSData?
                                     app.saveAction(nil)
-                                    self.collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+                                    self.collectionView.reloadItems(at: [IndexPath(item: 0, section: index)])
                                     
                                 }
                             }
@@ -107,6 +136,11 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
                 }
             }
         }
+        collectionView.reloadData()
+    }
+    
+    // 窗口事件
+    func windowDidResize(notification: Notification) {
         collectionView.reloadData()
     }
 }

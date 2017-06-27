@@ -27,13 +27,15 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var address: NSButton!
     @IBOutlet weak var images: NSButton!
+    @IBOutlet weak var extract: NSButton!
+    @IBOutlet weak var pageURL: NSButton!
     
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
-
+    
     @IBAction func save(_ sender: Any) {
         let app = NSApplication.shared().delegate as! AppDelegate
         app.resetAllRecords(in: "NetDisk")
@@ -50,16 +52,24 @@ class ViewController: NSViewController {
         NotificationCenter.default.post(name: ShowImagesName, object: nil)
     }
     
-    @IBOutlet weak var extract: NSButton!
+    @IBAction func pageURLAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func addressShow(_ sender: Any) {
+        NotificationCenter.default.post(name: ShowDonwloadAddressName, object: nil)
+    }
     
     func select(notification: NSNotification) {
         images.isEnabled = true
         address.isEnabled = true
+        pageURL.isEnabled = true
     }
     
     func unselect() {
         images.isEnabled = false
         address.isEnabled = false
+        pageURL.isEnabled = false
     }
     
 }

@@ -13,6 +13,7 @@ let DeleteActionName = NSNotification.Name(rawValue: "deleteNetDisk")
 let SelectItemName = NSNotification.Name(rawValue: "selectItem")
 let UnSelectItemName = NSNotification.Name(rawValue: "unSelectItem")
 let ShowImagesName = NSNotification.Name(rawValue: "showImages")
+let ShowDonwloadAddressName = NSNotification.Name(rawValue: "showAddress")
 
 class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableview: NSTableView!
@@ -52,6 +53,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: TableViewRefreshName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(delete(notification:)), name: DeleteActionName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showImages), name: ShowImagesName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showAddress), name: ShowDonwloadAddressName, object: nil)
         
         reloadTableView(notification: nil)
     }
@@ -223,6 +225,13 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     func showImages() {
         if popver.isShown  {
             popver.close()
+        }
+    }
+    
+    func showAddress(notification: Notification) {
+        if tableview.selectedRow >= 0 {
+            let data = datas[tableview.selectedRow].link?.allObjects as? [Link] ?? []
+            print(data)
         }
     }
     
