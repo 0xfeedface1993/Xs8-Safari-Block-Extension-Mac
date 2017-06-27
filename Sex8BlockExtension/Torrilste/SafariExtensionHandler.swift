@@ -55,19 +55,27 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         if let allLink = data["links"] as? [String] {
             for sLink in allLink {
+                if let exitLink : Link = checkPropertyExist(entity: Link.className(), property: "link", value: sLink) {
+                    netdisk.addToLink(exitLink)
+                    continue
+                }
                 let link = NSEntityDescription.insertNewObject(forEntityName: "Link", into: managedObjectContext) as! Link
                 link.creattime = NSDate()
                 link.link = sLink
-                link.linknet = netdisk
+                link.addToLinknet(netdisk)
             }
         }
         
         if let allLink = data["pics"] as? [String]  {
             for sLink in allLink {
+                if let exitLink : Pic = checkPropertyExist(entity: Pic.className(), property: "pic", value: sLink) {
+                    netdisk.addToPic(exitLink)
+                    continue
+                }
                 let link = NSEntityDescription.insertNewObject(forEntityName: "Pic", into: managedObjectContext) as! Pic
                 link.creattime = NSDate()
                 link.pic = sLink
-                link.picnet = netdisk
+                link.addToPicnet(netdisk)
             }
         }
         
@@ -75,6 +83,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             try managedObjectContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    // 检查是否已经存在数据
+    func checkPropertyExist<T: NSFetchRequestResult>(entity: String, property: String, value: String) -> T? {
+        let fetch = NSFetchRequest<T>(entityName: entity)
+        fetch.predicate = NSPredicate(format: "SELF.\(property) == '\(value)'")
+        do {
+            let datas = try managedObjectContext.fetch(fetch)
+            return datas.first
+        } catch {
+            fatalError("Failed to fetch \(property): \(error)")
         }
     }
     
