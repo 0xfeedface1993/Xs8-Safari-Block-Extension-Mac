@@ -204,8 +204,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                     let managedObjectContext = app.managedObjectContext
                     do {
                         managedObjectContext.delete(self.datas[index])
-                        self.datas.remove(at: index)
                         try managedObjectContext.save()
+                        self.datas.remove(at: index)
                         self.tableview.reloadData()
                     } catch {
                         print ("There was an error: \(error)")
@@ -231,7 +231,10 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     func showAddress(notification: Notification) {
         if tableview.selectedRow >= 0 {
             let data = datas[tableview.selectedRow].link?.allObjects as? [Link] ?? []
-            print(data)
+            print(data.map({
+                item in
+                return item.link ?? ""
+            }))
         }
     }
     

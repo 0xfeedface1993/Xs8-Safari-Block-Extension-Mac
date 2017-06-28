@@ -39,6 +39,9 @@ function getDownloadLinks(parentDode) {
         console.log(dooms);
         for (var j = 0; j < dooms.length; j++) {
             var aTag = dooms[j];
+            if (aTag.childElementCount > 0) {
+                continue;
+            }
             console.log(aTag);
             var hrefx = aTag.getAttribute('href');
             if (hrefx.indexOf("http://") >= 0) {
@@ -78,7 +81,7 @@ function getDownloadLinks(parentDode) {
 // 获取解压密码
 function getPassword(parentDode) {
     var dooms = parentDode[0].innerHTML;
-    var prefixs = ["【解压密码】：", "【解壓密碼】: ", "【解壓密碼】："]
+    var prefixs = ["【解压密码】：", "【解壓密碼】: ", "【解壓密碼】：", "【解压密码】"]
     for (var j = 0; j < prefixs.length; j++) {
         var prefix = prefixs[j];
         var pIndex = dooms.indexOf(prefix);
