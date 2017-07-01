@@ -176,6 +176,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let app = NSApplication.shared().delegate as! AppDelegate
         let managedObjectContext = app.managedObjectContext
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
+        let sort = NSSortDescriptor(key: "creattime", ascending: false)
+        employeesFetch.sortDescriptors = [sort]
         
         do {
             datas = try managedObjectContext.fetch(employeesFetch)
@@ -204,8 +206,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                     let managedObjectContext = app.managedObjectContext
                     do {
                         managedObjectContext.delete(self.datas[index])
-                        try managedObjectContext.save()
                         self.datas.remove(at: index)
+                        try managedObjectContext.save()
                         self.tableview.reloadData()
                     } catch {
                         print ("There was an error: \(error)")
@@ -254,7 +256,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     // 检查是否已经存在数据
     func checkPropertyExist<T: NSFetchRequestResult>(entity: String, property: String, value: String) -> T? {
         let fetch = NSFetchRequest<T>(entityName: entity)
-        fetch.predicate = NSPredicate(format: "SELF.\(property) == '\(value)'")
+        fetch.predicate = NSPredicate(format: "\(property) == '\(value)'")
         do {
             let app = NSApplication.shared().delegate as! AppDelegate
             let datas = try app.managedObjectContext.fetch(fetch)

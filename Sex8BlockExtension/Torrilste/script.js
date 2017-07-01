@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     safari.extension.dispatchMessage("Hello World!");
     safari.self.addEventListener("message", handleMessage);
+    addMyNotification()
 });
 
 function handleMessage(event) {
@@ -21,11 +22,20 @@ function handleMessage(event) {
                 var locationURL = document.location.href;
                 if (validateA && validateA.length > 0) {
                     safari.extension.dispatchMessage("CatchDownloadLinks", {"links":validateA, "passwod":code, "title":titlex, "pics":pics, "fileName":fileName, "url":locationURL});
+                }   else    {
+                    showErrorNotification("数据为空");
                 }
             }   else    {
                 console.log("空空如也");
+                showErrorNotification("空空如也");
             }
         break;
+    case "saveOK":
+            showMyNotification("保存成功");
+            break;
+    case "notOK":
+            showErrorNotification("保存失败");
+            break;
     default:
         break;
     }
@@ -145,4 +155,40 @@ function getFileName(parentDode) {
     return null;
 }
 
+// 淡入淡出动画
 
+function addMyNotification() {
+    var nod = document.createElement("style"),
+    str = ".xts-notifier-center {position: fixed;text-align: center;font-weight: bold;color: white;height: 26px;width: 80px;top: 0%;left: 0%;margin-left: 40px;margin-top: 20px;border-radius: 6px;opacity: 0.0;z-index: 9999;font-size: 14px;align-content: center;-webkit-animation-name: xtsfadeIn;-webkit-animation-duration: 2s; -webkit-animation-iteration-count: 1; -webkit-animation-delay: 0s; -webkit-animation-timing-function: ease-in;}.xts-notifier-center-hide {opacity: 0.0;}@-webkit-keyframes xtsfadeIn {0% {opacity: 0;}50% {opacity: 1;}100% {opacity: 0; }}.xts-black {background: black;}.xts-red {background: red;}";
+    nod.type="text/css";
+    if(nod.styleSheet){         //ie下
+        nod.styleSheet.cssText = str;
+    } else {
+        nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))
+    }
+    document.body.appendChild(nod);
+    
+    var notitier = document.createElement("div");
+    notitier.id = "xts-notifer";//
+    notitier.className = "xts-notifier-center-hide";
+    notitier.innerHTML = "<span id='xts-notifer-content'>未知</span>";
+    document.body.appendChild(notitier);
+}
+
+function showMyNotification(info) {
+    document.getElementById('xts-notifer-content').innerHTML = info;
+    document.getElementById('xts-notifer').className = "xts-notifier-center xts-red";
+    setTimeout(function(){
+               document.getElementById('xts-notifer').className = "xts-notifier-center-hide";
+               document.getElementById('xts-notifer-content').innerHTML = "未知";
+               }, 2100);
+}
+
+function showErrorNotification(info) {
+    document.getElementById('xts-notifer-content').innerHTML = info;
+    document.getElementById('xts-notifer').className = "xts-notifier-center xts-black";
+    setTimeout(function(){
+               document.getElementById('xts-notifer').className = "xts-notifier-center-hide";
+               document.getElementById('xts-notifer-content').innerHTML = "未知";
+               }, 2100);
+}

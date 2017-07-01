@@ -851,7 +851,7 @@
                 </viewController>
                 <customObject id="lTg-gY-Qgb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255" y="1466"/>
+            <point key="canvasLocation" x="-530" y="1705"/>
         </scene>
         <!--List Table View Controller-->
         <scene sceneID="XjH-d7-Gqo">
@@ -923,7 +923,7 @@
                 <customObject id="Vav-il-FMA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="6pP-rF-Uk7"/>
             </objects>
-            <point key="canvasLocation" x="782" y="775"/>
+            <point key="canvasLocation" x="388" y="959"/>
         </scene>
     </scenes>
 </document>

@@ -17,7 +17,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         switch messageName {
         case "CatchDownloadLinks":
             print("\(userInfo ?? [:])")
-            saveDownloadLink(data: userInfo!)
+            saveDownloadLink(data: userInfo!, page: page)
             break
         default:
             break
@@ -46,7 +46,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return SafariExtensionViewController.shared
     }
     //MARK: - Core Data
-    func saveDownloadLink(data: [String : Any]) {
+    func saveDownloadLink(data: [String : Any], page: SFSafariPage) {
         let netdisk = NSEntityDescription.insertNewObject(forEntityName: "NetDisk", into: managedObjectContext) as! NetDisk
         netdisk.creattime = NSDate()
         netdisk.fileName = data["fileName"] as? String
@@ -82,7 +82,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         do {
             try managedObjectContext.save()
+            page.dispatchMessageToScript(withName: "saveOK", userInfo: nil)
         } catch {
+            page.dispatchMessageToScript(withName: "notOK", userInfo: nil)
             fatalError("Failure to save context: \(error)")
         }
     }
@@ -90,7 +92,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     // 检查是否已经存在数据
     func checkPropertyExist<T: NSFetchRequestResult>(entity: String, property: String, value: String) -> T? {
         let fetch = NSFetchRequest<T>(entityName: entity)
-        fetch.predicate = NSPredicate(format: "SELF.\(property) == '\(value)'")
+        fetch.predicate = NSPredicate(format: "\(property) == '\(value)'")
         do {
             let datas = try managedObjectContext.fetch(fetch)
             return datas.first
