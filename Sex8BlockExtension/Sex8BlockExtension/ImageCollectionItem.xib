@@ -8,28 +8,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ImageCollectionItem" customModule="Sex8BlockExtension" customModuleProvider="target">
             <connections>
-                <outlet property="highImageView" destination="x66-jR-Gt0" id="mB0-m6-AN6"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="207" height="147"/>
+            <rect key="frame" x="0.0" y="0.0" width="97" height="75"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x66-jR-Gt0">
-                    <rect key="frame" x="0.0" y="0.0" width="207" height="147"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="par-IB-kEX"/>
-                </imageView>
-            </subviews>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="x66-jR-Gt0" secondAttribute="trailing" id="0f9-hy-82V"/>
-                <constraint firstAttribute="bottom" secondItem="x66-jR-Gt0" secondAttribute="bottom" id="Z5V-fP-NY1"/>
-                <constraint firstItem="x66-jR-Gt0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Zfu-aT-d8d"/>
-                <constraint firstItem="x66-jR-Gt0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bbS-ya-Qaq"/>
-            </constraints>
-            <point key="canvasLocation" x="-268.5" y="81.5"/>
+            <point key="canvasLocation" x="-323.5" y="45.5"/>
         </customView>
     </objects>
 </document>

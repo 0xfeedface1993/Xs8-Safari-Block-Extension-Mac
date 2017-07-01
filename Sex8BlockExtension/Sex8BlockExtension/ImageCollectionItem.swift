@@ -9,11 +9,18 @@
 import Cocoa
 
 class ImageCollectionItem: NSCollectionViewItem {
-    @IBOutlet weak var highImageView: NSImageView!
+    let maleImageView = NSImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        view.addSubview(maleImageView)
+        maleImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let views = ["view":maleImageView] as [String:Any]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: views))
     }
     
 }

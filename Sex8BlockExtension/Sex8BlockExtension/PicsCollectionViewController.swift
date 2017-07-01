@@ -45,31 +45,32 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: ImageViewIdentifier, for: indexPath) as! ImageCollectionItem
-        item.highImageView.image = downloadImages[indexPath.section]
+        item.maleImageView.image = downloadImages[indexPath.section]
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let item = downloadImages[indexPath.section]
-        let padding : CGFloat = 10
+        let padding : CGFloat = 20
+        let width : CGFloat = view.bounds.size.width - padding
         if let w = item?.size.width, let h = item?.size.height {
-            let width : CGFloat = view.bounds.size.width - padding
-            return CGSize(width: width, height: w > width + padding ? (width / w * h):h)
+            let size = CGSize(width: width, height: w >= view.bounds.size.width ? (width / w * h):h)
+            return size
         }
-        return CGSize(width: view.bounds.size.width - padding, height: (view.bounds.size.width - padding) / self.defaultImage!.size.width * self.defaultImage!.size.height)
+        return CGSize(width: width, height: width / self.defaultImage!.size.width * self.defaultImage!.size.height)
     }
     
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> EdgeInsets {
-        return NSEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-    }
+//    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> EdgeInsets {
+//        return NSEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+//    }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 10
     }
-    
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+//
+//    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
         return NSSize(width: 0, height: 0)
