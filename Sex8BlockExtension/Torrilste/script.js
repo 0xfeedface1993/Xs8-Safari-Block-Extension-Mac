@@ -84,6 +84,23 @@ function getDownloadLinks(parentDode) {
         }
     }
     
+    var vle = parentDode[0].getElementsByTagName("ol");
+    if (vle != null && vle.length > 0) {
+        for (var j = 0; j < vle.length; j++) {
+            var link = vle[j];
+            var aLink = link.getElementsByTagName('li');
+            if (aLink != null && aLink.length > 0) {
+                for (var k = 0;k<aLink.length;k++){
+                    var item = aLink[k];
+                    if (item.innerHTML.indexOf("http://") >= 0) {
+                        validateA.push(item.innerHTML);
+//                        alert(item.innerHTML);
+                    }
+                }
+            }
+        }
+    }
+    
     return validateA;
 }
 
