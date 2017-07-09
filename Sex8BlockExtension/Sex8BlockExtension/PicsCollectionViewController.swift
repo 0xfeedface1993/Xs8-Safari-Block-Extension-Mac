@@ -12,7 +12,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     @IBOutlet weak var collectionView: NSCollectionView!
     let ImageViewIdentifier = "image"
     var datas = [Pic]()
-    let defaultImage = NSImage(named: "watting")
+    let defaultImage = NSImage(named: "watting.jpeg")
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
     var downloadImages = [Int:NSImage]()
