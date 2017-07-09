@@ -162,10 +162,10 @@ function getFileName(parentDode) {
             var brBreakIndex = sub.indexOf(brText);
             if (brBreakIndex >= 0) {
                 var code = sub.substring(pLength, brBreakIndex).replace(/：/, "");
-                return code;
+                return code != "" ? code:null;
             }   else    {
                 var code = sub.substring(pLength).replace(/：/, "");
-                return code;
+                return code != "" ? code:null;
             }
         }
     }
