@@ -161,11 +161,17 @@ function getFileName(parentDode) {
             var pLength = prefix.length;
             var brBreakIndex = sub.indexOf(brText);
             if (brBreakIndex >= 0) {
-                var code = sub.substring(pLength, brBreakIndex).replace(/：/, "");
-                return code != "" ? code:null;
+                var code = sub.substring(pLength, brBreakIndex);
+                console.log("raw filename:" + code);
+                code = code != "" ? code.replace(/：/g, ""):null;
+                console.log("cut filename:" + code);
+                return code;
             }   else    {
-                var code = sub.substring(pLength).replace(/：/, "");
-                return code != "" ? code:null;
+                var code = sub.substring(pLength);
+                console.log("raw filename:" + code);
+                code = code != "" ? code.replace(/：/g, ""):null;
+                console.log("cut filename:" + code);
+                return code;
             }
         }
     }

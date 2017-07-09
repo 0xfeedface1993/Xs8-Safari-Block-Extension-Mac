@@ -210,7 +210,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                         try managedObjectContext.save()
                         self.tableview.reloadData()
                     } catch {
-                        print ("There was an error: \(error)")
+                        print ("There was an error: \(error.localizedDescription)")
                     }
                     break
                 case NSAlertSecondButtonReturn:
