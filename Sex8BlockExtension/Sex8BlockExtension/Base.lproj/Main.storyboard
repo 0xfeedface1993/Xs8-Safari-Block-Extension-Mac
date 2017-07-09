@@ -930,24 +930,23 @@
             <objects>
                 <viewController id="C2F-OT-hYl" customClass="ImagesTableViewController" customModule="Sex8BlockExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="LUC-Jj-yQg">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="456" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYx-BD-SQH">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="93" horizontalPageScroll="10" verticalLineScroll="93" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYx-BD-SQH">
+                                <rect key="frame" x="0.0" y="0.0" width="456" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="FRf-1y-wxP">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <rect key="frame" x="1" y="1" width="454" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="QR7-eD-PLI">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="93" rowSizeStyle="automatic" viewBased="YES" id="QR7-eD-PLI">
+                                            <rect key="frame" x="0.0" y="0.0" width="454" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <tableColumns>
-                                                <tableColumn width="445" minWidth="40" maxWidth="1000" id="gBW-WN-8Df">
+                                                <tableColumn width="451" minWidth="40" maxWidth="4096" id="gBW-WN-8Df">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -961,21 +960,17 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="ImageCell" id="FQO-3r-z2d" customClass="ImageTableViewCell" customModule="Sex8BlockExtension" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="451" height="93"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-NK-0CX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="9bB-MA-a8I">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fg-Pj-DfY">
+                                                                    <rect key="frame" x="-3" y="-9" width="458" height="105"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sGq-Y8-bs1"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="textField" destination="T0h-NK-0CX" id="gqk-kz-HuS"/>
+                                                                <outlet property="myPlayBoy" destination="0fg-Pj-DfY" id="TDf-4p-cxf"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1005,7 +1000,7 @@
                 </viewController>
                 <customObject id="OD7-qw-73X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="1339"/>
+            <point key="canvasLocation" x="393" y="1339"/>
         </scene>
     </scenes>
 </document>

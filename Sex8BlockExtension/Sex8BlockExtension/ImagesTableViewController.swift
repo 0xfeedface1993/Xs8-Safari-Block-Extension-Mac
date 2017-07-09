@@ -45,7 +45,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         guard let cell = tableView.make(withIdentifier: ImageCellIdentifier, owner: self) as? ImageTableViewCell else {
             return nil
         }
-        cell.playboy.image = downloadImages[row]
+        cell.myPlayBoy.image = downloadImages[row]
         return cell
     }
     
@@ -55,19 +55,11 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         let width : CGFloat = view.bounds.size.width - padding
         if let h = item?.size.height, let w = item?.size.width {
             let height = w >= view.bounds.size.width ? (width / w * h):h
-            print(height)
+//            print(height)
             return height
         }
         let height = width / self.defaultImage!.size.width * self.defaultImage!.size.height
         return height
-    }
-    
-    func tableView(_ tableView: NSTableView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
-        return view.bounds.size.width
-    }
-    
-    func tableView(_ tableView: NSTableView, shouldSelect tableColumn: NSTableColumn?) -> Bool {
-        return false
     }
     
     // 重新获取数据
