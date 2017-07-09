@@ -11,7 +11,7 @@ import Cocoa
 class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableView: NSTableView!
     var datas = [Pic]()
-    let defaultImage = NSImage(named: "watting")
+    let defaultImage = NSImage(named: "watting.jpeg")
     let errorImage = NSImage(named: "error")
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
