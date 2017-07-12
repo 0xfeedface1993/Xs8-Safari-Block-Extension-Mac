@@ -140,7 +140,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         if let table = notification.object as? NSTableView {
             if tableview.selectedRow >= 0 {
                 reloadImages(index: table.selectedRow)
-                let data = datas[table.selectedRow].pic?.allObjects as? [Pic] ?? []
+                let data = datas[table.selectedRow]
                 NotificationCenter.default.post(name: SelectItemName, object: data)
             }   else    {
                 popver.close()

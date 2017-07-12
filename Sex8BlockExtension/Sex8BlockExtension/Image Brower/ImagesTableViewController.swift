@@ -139,7 +139,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     
     // 获取数据更新视图
     func select(notification: NSNotification) {
-        datas = notification.object as? [Pic] ?? []
+        datas = (notification.object as? NetDisk)?.pic?.allObjects as? [Pic] ?? []
         clearCacheImages()
         reloadImages()
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
 		2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2407E8B71F166E2500F6A61B /* AttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewController.swift; sourceTree = "<group>"; };
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2407E8B41F163F5700F6A61B /* Decripter */ = {
+			isa = PBXGroup;
+			children = (
+				249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */,
+				249F91311EFFEB950043B48D /* ImageCollectionItem.swift */,
+				249F91321EFFEB950043B48D /* ImageCollectionItem.xib */,
+			);
+			path = Decripter;
+			sourceTree = "<group>";
+		};
+		2407E8B51F163F8000F6A61B /* Image Brower */ = {
+			isa = PBXGroup;
+			children = (
+				2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */,
+				245EBE461F11307E00350B20 /* ImageTableViewCell.swift */,
+			);
+			path = "Image Brower";
+			sourceTree = "<group>";
+		};
+		2407E8B61F163FA700F6A61B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				270B6D301F127617007BA2BA /* error.png */,
+				270B6D2F1F127617007BA2BA /* watting.jpeg */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		24BA90D11EF597B6002BE480 /* Torrilste */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,20 +256,17 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				2407E8B61F163FA700F6A61B /* Image */,
+				2407E8B51F163F8000F6A61B /* Image Brower */,
+				2407E8B41F163F5700F6A61B /* Decripter */,
 				278B8B271EFEBF6000E20296 /* Sex8BlockExtension.entitlements */,
 				27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */,
 				27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */,
 				249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */,
-				249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */,
-				2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */,
-				249F91311EFFEB950043B48D /* ImageCollectionItem.swift */,
-				249F91321EFFEB950043B48D /* ImageCollectionItem.xib */,
-				245EBE461F11307E00350B20 /* ImageTableViewCell.swift */,
+				2407E8B71F166E2500F6A61B /* AttributeViewController.swift */,
 				27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */,
 				27AD7C301EEFD1EF00258BDC /* Main.storyboard */,
 				27AD7C331EEFD1EF00258BDC /* Info.plist */,
-				270B6D301F127617007BA2BA /* error.png */,
-				270B6D2F1F127617007BA2BA /* watting.jpeg */,
 			);
 			path = Sex8BlockExtension;
 			sourceTree = "<group>";
@@ -522,6 +549,7 @@
 				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
 				245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
+				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
