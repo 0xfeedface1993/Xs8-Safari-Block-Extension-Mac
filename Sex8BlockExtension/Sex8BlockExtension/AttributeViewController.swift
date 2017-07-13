@@ -56,16 +56,16 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
             if tableview.selectedRow >= 0 {
                 let pasteBoard = NSPasteboard.general()
                 pasteBoard.clearContents()
-                let copysObjects = [links![tableview.selectedRow].link]
-                pasteBoard.writeObjects(copysObjects as! [NSPasteboardWriting])
+                let copysObjects = [links?[tableview.selectedRow].link ?? ""]
+                pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
             }
             break
         case pageAddress:
             if tableview.selectedRow >= 0 {
                 let pasteBoard = NSPasteboard.general()
                 pasteBoard.clearContents()
-                let copysObjects = [net!.pageurl]
-                pasteBoard.writeObjects(copysObjects as! [NSPasteboardWriting])
+                let copysObjects = [net?.pageurl ?? ""]
+                pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
             }
             break
         default:
