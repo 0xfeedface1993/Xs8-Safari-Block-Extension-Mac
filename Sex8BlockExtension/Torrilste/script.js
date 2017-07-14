@@ -114,7 +114,6 @@ function getPassword(parentDode) {
         var pIndex = dooms.indexOf(prefix);
         if (pIndex >= 0) {
             var sub = dooms.slice(pIndex);
-//            var brText = "<br>";
             var brText = "<";
             var brLength = brText.length;
             var pLength = prefix.length;
@@ -148,34 +147,36 @@ function getPictureURLs(parentDode) {
 
 // 获取文件名
 function getFileName(parentDode) {
-    var dooms = parentDode[0].innerHTML;
-    var prefixs = ["【下载链接】"]
+    var dooms = parentDode[0].innerHTML.replace(/[\r\n]/g, "");
+    var prefixs = ["【下载地址】", "【下载链接】"]
     for (var j = 0; j < prefixs.length; j++) {
         var prefix = prefixs[j];
         var pIndex = dooms.indexOf(prefix);
         if (pIndex >= 0) {
-            var sub = dooms.slice(pIndex);
-            //            var brText = "<br>";
-            var brText = "<";
-            var brLength = brText.length;
-            var pLength = prefix.length;
-            var brBreakIndex = sub.indexOf(brText);
-            if (brBreakIndex >= 0) {
-                var code = sub.substring(pLength, brBreakIndex);
-                console.log("raw filename:" + code);
-                code = code != "" ? code.replace(/：/g, ""):null;
-                console.log("cut filename:" + code);
-                return code;
-            }   else    {
-                var code = sub.substring(pLength);
-                console.log("raw filename:" + code);
-                code = code != "" ? code.replace(/：/g, ""):null;
-                console.log("cut filename:" + code);
-                return code;
+            var sub = dooms.slice(pIndex + prefix.length);
+            var fileTypes = [".rar", ".zip"];
+            for (var k = 0;k<fileTypes.length;k++) {
+                var type = fileTypes[k];
+                var typeLength = type.length;
+                var typeIndex = sub.indexOf(type);
+                if(typeIndex >= 0){
+                    var beforeSub = sub.substring(0, typeIndex);
+                    var fileNameSub = deleteBrTagText(beforeSub);
+                    return fileNameSub == "" ? null:fileNameSub + type;
+                }
             }
         }
     }
     return null;
+}
+
+function deleteBrTagText(rawText){
+    var bIndex = rawText.indexOf(">");
+    if (bIndex >= 0) {
+        return deleteBrTagText(rawText.slice(bIndex + 1));
+    }   else    {
+        return rawText.replace(/[:： ]/g, "");
+    }
 }
 
 // 淡入淡出动画

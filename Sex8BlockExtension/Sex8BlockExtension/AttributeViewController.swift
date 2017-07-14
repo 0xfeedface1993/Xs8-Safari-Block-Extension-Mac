@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftToastermacOS
 
 class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var downloadAddress: NSTableView!
@@ -58,6 +59,10 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 pasteBoard.clearContents()
                 let copysObjects = [links?[tableview.selectedRow].link ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
+                view.toast("复制下载地址成功")
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                    tableview.deselectRow(tableview.selectedRow)
+                })
             }
             break
         case pageAddress:
@@ -66,6 +71,10 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 pasteBoard.clearContents()
                 let copysObjects = [net?.pageurl ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
+                view.toast("复制页面地址成功")
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                    tableview.deselectRow(tableview.selectedRow)
+                })
             }
             break
         default:

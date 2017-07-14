@@ -70,7 +70,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        if let coloum = tableColumn {
+        if let coloum = tableColumn, row < datas.count {
             switch coloum.identifier {
             case "title":
                 return datas[row].title
@@ -208,6 +208,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                         managedObjectContext.delete(self.datas[index])
                         self.datas.remove(at: index)
                         try managedObjectContext.save()
+                        if self.tableview.selectedRow >= 0 {
+                            self.tableview.deselectRow(self.tableview.selectedRow)
+                        }
                         self.tableview.reloadData()
                     } catch {
                         print ("There was an error: \(error.localizedDescription)")

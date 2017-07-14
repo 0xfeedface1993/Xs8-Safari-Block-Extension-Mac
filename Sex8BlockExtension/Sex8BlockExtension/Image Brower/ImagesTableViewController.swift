@@ -18,6 +18,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     var downloadImages = [Int:NSImage]()
     var executingTask = [URLSessionDownloadTask]()
     let ImageCellIdentifier = "ImageCell"
+    let zoom = NSStoryboard(name: "ZoomStoryboard", bundle: nil).instantiateController(withIdentifier: "ZoomKeeper") as? NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +122,16 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         }
         tableView.reloadData()
         tableView.scroll(CGPoint(x: 0, y: 0))
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let image = downloadImages[tableView.selectedRow]
+        
+        if tableView.selectedRow >= 0, image != defaultImage, image != errorImage {
+            zoom?.showWindow(zoom)
+            tableView.deselectRow(tableView.selectedRow)
+            NotificationCenter.default.post(name: ImagePickerNotification, object: image)
+        }
     }
     
     // 清除缓存

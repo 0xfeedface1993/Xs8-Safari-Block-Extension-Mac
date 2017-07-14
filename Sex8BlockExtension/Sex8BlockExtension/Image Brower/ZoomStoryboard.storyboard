@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="I0d-yj-5lU">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="VO9-xa-wFk">
+            <objects>
+                <windowController storyboardIdentifier="ZoomKeeper" id="I0d-yj-5lU" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KWo-HB-wJG">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="I0d-yj-5lU" id="pAR-tV-JCM"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="TRc-k5-fus" kind="relationship" relationship="window.shadowedContentViewController" id="CyF-4R-VNy"/>
+                    </connections>
+                </windowController>
+                <customObject id="X4v-rX-X4f" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="159"/>
+        </scene>
+        <!--Zoom Image View Controller-->
+        <scene sceneID="UNz-9d-gef">
+            <objects>
+                <viewController id="TRc-k5-fus" customClass="ZoomImageViewController" customModule="Sex8BlockExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="rMe-PM-zfb">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZAe-bj-wKs">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="liw-lQ-SqH"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ZAe-bj-wKs" id="EeK-g7-E3M"/>
+                    </connections>
+                </viewController>
+                <customObject id="XEr-D0-GDx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="134"/>
+        </scene>
+    </scenes>
+</document>

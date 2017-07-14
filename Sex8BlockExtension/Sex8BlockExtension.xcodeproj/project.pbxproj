@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
 		2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */; };
+		24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467AA51F1793BC00574160 /* ZoomImageViewController.swift */; };
+		24467AD01F1923AC00574160 /* SwiftToaster-macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
@@ -39,6 +42,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		24467ACA1F19237200574160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C07AB3D1EAC24C00010BBD7;
+			remoteInfo = "SwiftToaster-iOS";
+		};
+		24467ACC1F19237200574160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C07AB301EAC24B70010BBD7;
+			remoteInfo = SwiftToastermacOS;
+		};
+		24467ACE1F19239D00574160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C07AB2F1EAC24B70010BBD7;
+			remoteInfo = SwiftToastermacOS;
+		};
 		24BA90E01EF597B6002BE480 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
@@ -70,6 +94,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		24467AAE1F19228E00574160 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24467AD01F1923AC00574160 /* SwiftToaster-macOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,6 +124,9 @@
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
+		24467AA51F1793BC00574160 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
+		24467AC51F19237100574160 /* SwiftToaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftToaster.xcodeproj; path = SwiftToaster/SwiftToaster.xcodeproj; sourceTree = "<group>"; };
+		24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoomStoryboard.storyboard; sourceTree = "<group>"; };
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -184,6 +222,8 @@
 			children = (
 				2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */,
 				245EBE461F11307E00350B20 /* ImageTableViewCell.swift */,
+				24467AA51F1793BC00574160 /* ZoomImageViewController.swift */,
+				24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */,
 			);
 			path = "Image Brower";
 			sourceTree = "<group>";
@@ -195,6 +235,15 @@
 				270B6D2F1F127617007BA2BA /* watting.jpeg */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		24467AC61F19237100574160 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24467ACB1F19237200574160 /* SwiftToaster-iOS.framework */,
+				24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		24BA90D11EF597B6002BE480 /* Torrilste */ = {
@@ -230,6 +279,7 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				24467AC51F19237100574160 /* SwiftToaster.xcodeproj */,
 				278B8AE81EFE7C9600E20296 /* CoreData */,
 				27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */,
 				27AD7C3B1EEFD1EF00258BDC /* Sex8BlockExtensionTests */,
@@ -344,10 +394,12 @@
 				27AD7C241EEFD1EE00258BDC /* Frameworks */,
 				27AD7C251EEFD1EE00258BDC /* Resources */,
 				27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */,
+				24467AAE1F19228E00574160 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				24467ACF1F19239D00574160 /* PBXTargetDependency */,
 				27AD7C661EEFD20D00258BDC /* PBXTargetDependency */,
 				24BA90E11EF597B6002BE480 /* PBXTargetDependency */,
 			);
@@ -472,6 +524,12 @@
 			mainGroup = 27AD7C1E1EEFD1EE00258BDC;
 			productRefGroup = 27AD7C281EEFD1EE00258BDC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 24467AC61F19237100574160 /* Products */;
+					ProjectRef = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				27AD7C261EEFD1EE00258BDC /* Sex8BlockExtension */,
@@ -482,6 +540,24 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		24467ACB1F19237200574160 /* SwiftToaster-iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = "SwiftToaster-iOS.framework";
+			remoteRef = 24467ACA1F19237200574160 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = "SwiftToaster-macOS.framework";
+			path = SwiftToastermacOS.framework;
+			remoteRef = 24467ACC1F19237200574160 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		24BA90CD1EF597B6002BE480 /* Resources */ = {
@@ -503,6 +579,7 @@
 				27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */,
 				272ABF701F1277A8008FAE69 /* error.png in Resources */,
 				272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */,
+				24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */,
 				27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
+				24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */,
 				245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
@@ -585,6 +663,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24467ACF1F19239D00574160 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftToastermacOS;
+			targetProxy = 24467ACE1F19239D00574160 /* PBXContainerItemProxy */;
+		};
 		24BA90E11EF597B6002BE480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 24BA90CE1EF597B6002BE480 /* Torrilste */;
@@ -774,6 +857,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 69TXR99ENR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
@@ -792,6 +879,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 69TXR99ENR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
