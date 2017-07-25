@@ -65,59 +65,72 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     
     // 重新获取数据
     func reloadImages() {
-        for (index, pic) in datas.enumerated() {
-            if let imageData = pic.data, let image = NSImage(data: imageData as Data) {
-                downloadedImagesIndex.append(index)
-                downloadImages[index] = image
-            }   else    {
-                downloadingImagesIndex.append(index)
-                downloadImages[index] = defaultImage
-                DispatchQueue.global().async {
-                    if let urlString = pic.pic, let url = URL(string: urlString) {
-                        print(url)
-                        self.downloadingImagesIndex.append(index)
-                        DispatchQueue.main.async {
-                            let task = URLSession.shared.downloadTask(with: url, completionHandler: {
-                                (url, response, error) in
-                                self.downloadedImagesIndex.append(index)
-                                if let indx = self.downloadingImagesIndex.index(of: index) {
-                                    self.downloadingImagesIndex.remove(at: indx)
-                                }
-                                
-                                if error != nil {
-                                    self.downloadImages[index] = self.errorImage
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
-                                    }
-                                    
-                                    print("error : \(error.debugDescription)")
-                                    return
-                                }
-                                
-                                guard let datURL = url, let img = NSImage(contentsOf: datURL) else {
-                                    self.downloadImages[index] = self.errorImage
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
-                                    }
-                                    print("bad image data!")
-                                    return
-                                }
-                                
-                                self.downloadImages[index] = img
-                                
+        func downloadingImage(index: Int, pic: Pic) {
+            downloadingImagesIndex.append(index)
+            downloadImages[index] = defaultImage
+            DispatchQueue.global().async {
+                if let urlString = pic.pic, let url = URL(string: urlString) {
+                    print(url)
+                    self.downloadingImagesIndex.append(index)
+                    DispatchQueue.main.async {
+                        let task = URLSession.shared.downloadTask(with: url, completionHandler: {
+                            (url, response, error) in
+                            self.downloadedImagesIndex.append(index)
+                            if let indx = self.downloadingImagesIndex.index(of: index) {
+                                self.downloadingImagesIndex.remove(at: indx)
+                            }
+                            
+                            if error != nil {
+                                self.downloadImages[index] = self.errorImage
                                 DispatchQueue.main.async {
-                                    let app = NSApplication.shared().delegate as! AppDelegate
-                                    let pic = self.datas[index]
-                                    pic.data = img.tiffRepresentation as NSData?
-                                    app.saveAction(nil)
                                     self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
                                 }
-                            })
-                            self.executingTask.append(task)
-                            task.resume()
-                        }
+                                
+                                print("error : \(error.debugDescription)")
+                                return
+                            }
+                            
+                            guard let datURL = url, let img = NSImage(contentsOf: datURL) else {
+                                self.downloadImages[index] = self.errorImage
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
+                                }
+                                print("bad image data!")
+                                return
+                            }
+                            
+                            self.downloadImages[index] = img
+                            
+                            DispatchQueue.main.async {
+                                //                                    let app = NSApplication.shared().delegate as! AppDelegate
+                                //                                    pic.data = img.tiffRepresentation as NSData?
+                                //                                    app.saveAction(nil)
+                                let pic = self.datas[index]
+                                self.savePicInPictureDir(pic: pic)
+                                self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
+                            }
+                        })
+                        self.executingTask.append(task)
+                        task.resume()
                     }
                 }
+            }
+        }
+        
+        for (index, pic) in datas.enumerated() {
+            guard let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8"), let netDisks = pic.picnet?.allObjects as? [NetDisk], let dir = netDisks.first?.title?.replacingOccurrences(of: "/", with: "|"), dir != "", let picName = pic.filename  else {
+                continue
+            }
+            let filePath = url.appendingPathComponent(dir + "/" + picName)
+            if FileManager.default.fileExists(atPath: filePath.path) {
+                if let image = NSImage(contentsOfFile: filePath.path) {
+                    downloadedImagesIndex.append(index)
+                    downloadImages[index] = image
+                }   else    {
+                    downloadingImage(index: index, pic: pic)
+                }
+            }   else    {
+                downloadingImage(index: index, pic: pic)
             }
         }
         tableView.reloadData()
@@ -158,5 +171,47 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     // 窗口事件
     func windowDidResize(notification: Notification) {
         tableView.reloadData()
+    }
+    
+    func savePicInPictureDir(pic: Pic) {
+        do {
+            let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8")
+            let netDisks = pic.picnet?.allObjects as? [NetDisk] ?? []
+            for net in netDisks {
+                let manager = FileManager.default
+                let netName = net.title ?? UUID().uuidString
+                let secondURL = url?.appendingPathComponent(netName.replacingOccurrences(of: "/", with: "|"))
+                
+                if !manager.fileExists(atPath: secondURL?.path ?? "") {
+                    try manager.createDirectory(at: secondURL!, withIntermediateDirectories: true, attributes: nil)
+                }
+                
+                guard let pictureDomain = secondURL?.path, let img = pic.data, let urlString = pic.pic, let imageURL = URL(string: urlString) else {
+                    print("--- no pic url! ---")
+                    continue
+                }
+                
+                let imgData = img as Data
+                pic.filename = imageURL.lastPathComponent
+                let file = pictureDomain + "/" + imageURL.lastPathComponent
+                
+                guard manager.fileExists(atPath: file) else {
+                    print("--- FILE: " + file + " EXSIST! ---")
+                    continue
+                }
+                
+                if manager.createFile(atPath: file, contents: imgData, attributes: nil) {
+                    print("save image:" + file + " successful!")
+                }   else    {
+                    print("save image:" + file + " faild!")
+                }
+            }
+            DispatchQueue.main.sync {
+                let app = NSApp.delegate as! AppDelegate
+                app.saveAction(nil)
+            }
+        } catch {
+            fatalError("Failed to fetch employees: \(error.localizedDescription)")
+        }
     }
 }

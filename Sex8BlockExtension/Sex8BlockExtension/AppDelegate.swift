@@ -10,8 +10,16 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    @IBOutlet weak var openItem: NSMenuItem!
+    @IBAction func chooseDirection(_ sender: NSMenuItem) {
+        let fileManage = NSStoryboard(name: "FileManageStoryboard", bundle: Bundle.main)
+        let window = fileManage.instantiateInitialController() as! NSWindowController
+        NSApp.runModal(for: window.window!)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -93,7 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         let options = [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true]
-        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "NetdiskModel.sql", relativeTo: dirURL)
+        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "new.sqlite3", relativeTo: dirURL)
         do {
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: options)
             let moc = NSManagedObjectContext(concurrencyType:.privateQueueConcurrencyType)

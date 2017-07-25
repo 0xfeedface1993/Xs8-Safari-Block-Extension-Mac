@@ -117,7 +117,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
-        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "NetdiskModel.sql", relativeTo: dirURL)
+        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "new.sqlite3", relativeTo: dirURL)
         do {
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: nil)
             let moc = NSManagedObjectContext(concurrencyType:.mainQueueConcurrencyType)
@@ -161,7 +161,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
-        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "NetdiskModel.sql", relativeTo: dirURL)
+        let dirURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.kmvc.group.safari"), fileURL = URL(string: "new.sqlite3", relativeTo: dirURL)
         do {
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: nil)
             let moc = NSManagedObjectContext(concurrencyType:.privateQueueConcurrencyType)

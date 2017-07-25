@@ -12,6 +12,10 @@
 		24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467AA51F1793BC00574160 /* ZoomImageViewController.swift */; };
 		24467AD01F1923AC00574160 /* SwiftToaster-macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */; };
+		24467AD91F1A287600574160 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD81F1A287600574160 /* LoginStoryboard.storyboard */; };
+		24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */; };
+		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
+		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
@@ -127,6 +131,11 @@
 		24467AA51F1793BC00574160 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
 		24467AC51F19237100574160 /* SwiftToaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftToaster.xcodeproj; path = SwiftToaster/SwiftToaster.xcodeproj; sourceTree = "<group>"; };
 		24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoomStoryboard.storyboard; sourceTree = "<group>"; };
+		24467AD81F1A287600574160 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewCotroller.swift; sourceTree = "<group>"; };
+		24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FileManageStoryboard.storyboard; sourceTree = "<group>"; };
+		24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathSelectorViewController.swift; sourceTree = "<group>"; };
+		24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -246,6 +255,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		24467AD61F1A284B00574160 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				24467AD81F1A287600574160 /* LoginStoryboard.storyboard */,
+				24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		24467ADC1F1B1A4A00574160 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */,
+				24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		24BA90D11EF597B6002BE480 /* Torrilste */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +333,8 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				24467ADC1F1B1A4A00574160 /* File */,
+				24467AD61F1A284B00574160 /* Login */,
 				2407E8B61F163FA700F6A61B /* Image */,
 				2407E8B51F163F8000F6A61B /* Image Brower */,
 				2407E8B41F163F5700F6A61B /* Decripter */,
@@ -492,6 +521,9 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
 						};
 					};
 					27AD7C371EEFD1EF00258BDC = {
@@ -575,10 +607,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */,
 				249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */,
 				27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */,
 				272ABF701F1277A8008FAE69 /* error.png in Resources */,
 				272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */,
+				24467AD91F1A287600574160 /* LoginStoryboard.storyboard in Resources */,
 				24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */,
 				27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */,
 			);
@@ -631,6 +665,8 @@
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
+				24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */,
+				24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 			);
@@ -1049,13 +1085,14 @@
 		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */,
 				2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */,
 				2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */,
 				2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */,
 				249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */,
 				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
 			);
-			currentVersion = 2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */;
+			currentVersion = 24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */;
 			path = NetdiskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
