@@ -10,7 +10,7 @@
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
 		2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */; };
 		24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467AA51F1793BC00574160 /* ZoomImageViewController.swift */; };
-		24467AD01F1923AC00574160 /* SwiftToaster-macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24467ACD1F19237200574160 /* SwiftToastermacOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */; };
 		24467AD91F1A287600574160 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD81F1A287600574160 /* LoginStoryboard.storyboard */; };
 		24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */; };
@@ -104,7 +104,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24467AD01F1923AC00574160 /* SwiftToaster-macOS.framework in Embed Frameworks */,
+				24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				24467ACB1F19237200574160 /* SwiftToaster-iOS.framework */,
-				24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */,
+				24467ACD1F19237200574160 /* SwiftToastermacOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -586,10 +586,9 @@
 			remoteRef = 24467ACA1F19237200574160 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		24467ACD1F19237200574160 /* SwiftToaster-macOS.framework */ = {
+		24467ACD1F19237200574160 /* SwiftToastermacOS.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "SwiftToaster-macOS.framework";
 			path = SwiftToastermacOS.framework;
 			remoteRef = 24467ACC1F19237200574160 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -763,7 +762,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -780,7 +779,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -909,7 +908,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -932,7 +931,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -948,7 +947,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
 			};
@@ -965,7 +964,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
 			};
@@ -981,7 +980,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Sex8BlockExtension;
 			};
@@ -997,7 +996,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Sex8BlockExtension;
 			};
@@ -1015,7 +1014,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1032,7 +1031,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
