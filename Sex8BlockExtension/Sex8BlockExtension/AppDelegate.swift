@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
-        let fileManage = NSStoryboard(name: "FileManageStoryboard", bundle: Bundle.main)
+        let fileManage = NSStoryboard(name: NSStoryboard.Name(rawValue: "FileManageStoryboard"), bundle: Bundle.main)
         let window = fileManage.instantiateInitialController() as! NSWindowController
         NSApp.runModal(for: window.window!)
     }
@@ -127,7 +127,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } catch {
                 // Customize this code block to include application-specific recovery steps.
                 let nserror = error as NSError
-                NSApplication.shared().presentError(nserror)
+                NSApplication.shared.presentError(nserror)
             }
         }
     }
@@ -137,7 +137,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return persistentContainer.viewContext.undoManager
     }
     
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Save changes in the application's managed object context before the application terminates.
         let context = persistentContainer.viewContext
         
@@ -172,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButton(withTitle: cancelButton)
             
             let answer = alert.runModal()
-            if answer == NSAlertSecondButtonReturn {
+            if answer == NSApplication.ModalResponse.alertSecondButtonReturn {
                 return .terminateCancel
             }
         }
@@ -187,10 +187,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = "确定删除所有数据？"
         alert.informativeText = "删除后不可恢复！"
         alert.alertStyle = .warning
-        alert.beginSheetModal(for: NSApplication.shared().keyWindow!, completionHandler: {
+        alert.beginSheetModal(for: NSApplication.shared.keyWindow!, completionHandler: {
             code in
             switch code {
-            case NSAlertFirstButtonReturn:
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
                 let context = self.managedObjectContext
                 let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
@@ -201,7 +201,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     print ("There was an error")
                 }
                 break
-            case NSAlertSecondButtonReturn:
+            case NSApplication.ModalResponse.alertSecondButtonReturn:
                 
                 break
             default:

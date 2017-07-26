@@ -11,19 +11,19 @@ import Cocoa
 class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableView: NSTableView!
     var datas = [Pic]()
-    let defaultImage = NSImage(named: "watting.jpeg")
-    let errorImage = NSImage(named: "error")
+    let defaultImage = NSImage(named: NSImage.Name(rawValue: "watting.jpeg"))
+    let errorImage = NSImage(named: NSImage.Name(rawValue: "error"))
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
     var downloadImages = [Int:NSImage]()
     var executingTask = [URLSessionDownloadTask]()
     let ImageCellIdentifier = "ImageCell"
-    let zoom = NSStoryboard(name: "ZoomStoryboard", bundle: nil).instantiateController(withIdentifier: "ZoomKeeper") as? NSWindowController
+    let zoom = NSStoryboard(name: NSStoryboard.Name(rawValue: "ZoomStoryboard"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ZoomKeeper")) as? NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSWindow.didResizeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
     }
     
@@ -34,7 +34,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSWindow.didResizeNotification, object: nil)
     }
     
     // MARK: - NSTableViewDelegate
@@ -43,7 +43,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.make(withIdentifier: ImageCellIdentifier, owner: self) as? ImageTableViewCell else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: ImageCellIdentifier), owner: self) as? ImageTableViewCell else {
             return nil
         }
         cell.myPlayBoy.image = downloadImages[row]
@@ -162,14 +162,14 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     // 获取数据更新视图
-    func select(notification: NSNotification) {
+    @objc func select(notification: NSNotification) {
         datas = (notification.object as? NetDisk)?.pic?.allObjects as? [Pic] ?? []
         clearCacheImages()
         reloadImages()
     }
     
     // 窗口事件
-    func windowDidResize(notification: Notification) {
+    @objc func windowDidResize(notification: Notification) {
         tableView.reloadData()
     }
     

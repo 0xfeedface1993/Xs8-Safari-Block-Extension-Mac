@@ -31,7 +31,7 @@ class FilePathSelectorViewController: NSViewController {
             alert.beginSheetModal(for: view.window!, completionHandler: {
                 code in
                 switch code {
-                case NSAlertFirstButtonReturn:
+                case NSApplication.ModalResponse.alertFirstButtonReturn:
                     self.view.window?.close()
                     break
                 default:
@@ -83,7 +83,7 @@ class FilePathSelectorViewController: NSViewController {
     }
     
     func readAllImageAndSave(specifcalURL: URL?) {
-        let app = NSApplication.shared().delegate as! AppDelegate
+        let app = NSApplication.shared.delegate as! AppDelegate
         let managedObjectContext = app.managedObjectContext
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
         let sort = NSSortDescriptor(key: "creattime", ascending: false)

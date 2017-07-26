@@ -55,7 +55,7 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
         switch tableview {
         case downloadAddress:
             if tableview.selectedRow >= 0 {
-                let pasteBoard = NSPasteboard.general()
+                let pasteBoard = NSPasteboard.general
                 pasteBoard.clearContents()
                 let copysObjects = [links?[tableview.selectedRow].link ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
@@ -67,7 +67,7 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
             break
         case pageAddress:
             if tableview.selectedRow >= 0 {
-                let pasteBoard = NSPasteboard.general()
+                let pasteBoard = NSPasteboard.general
                 pasteBoard.clearContents()
                 let copysObjects = [net?.pageurl ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
@@ -83,7 +83,7 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     // 获取数据更新视图
-    func select(notification: NSNotification) {
+    @objc func select(notification: NSNotification) {
         net = notification.object as? NetDisk
         links = net?.link?.allObjects as? [Link] ?? []
         pageAddress.reloadData()

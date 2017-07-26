@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C07AB301EAC24B70010BBD7 /* SwiftToaster-macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "SwiftToaster-macOS.framework"; path = SwiftToastermacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C07AB301EAC24B70010BBD7 /* SwiftToastermacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftToastermacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C07AB321EAC24B70010BBD7 /* SwiftToaster-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftToaster-macOS.h"; sourceTree = "<group>"; };
 		5C07AB331EAC24B70010BBD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C07AB3D1EAC24C00010BBD7 /* SwiftToaster-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "SwiftToaster-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +61,7 @@
 		5C07AB211EAC249C0010BBD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C07AB301EAC24B70010BBD7 /* SwiftToaster-macOS.framework */,
+				5C07AB301EAC24B70010BBD7 /* SwiftToastermacOS.framework */,
 				5C07AB3D1EAC24C00010BBD7 /* SwiftToaster-iOS.framework */,
 			);
 			name = Products;
@@ -133,7 +133,7 @@
 			);
 			name = SwiftToastermacOS;
 			productName = "SwiftToaster-macOS";
-			productReference = 5C07AB301EAC24B70010BBD7 /* SwiftToaster-macOS.framework */;
+			productReference = 5C07AB301EAC24B70010BBD7 /* SwiftToastermacOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5C07AB3C1EAC24C00010BBD7 /* SwiftToaster-iOS */ = {
@@ -165,7 +165,7 @@
 				TargetAttributes = {
 					5C07AB2F1EAC24B70010BBD7 = {
 						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					5C07AB3C1EAC24C00010BBD7 = {
@@ -365,7 +365,8 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -391,7 +392,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
