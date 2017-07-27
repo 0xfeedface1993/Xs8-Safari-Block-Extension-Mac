@@ -18,25 +18,27 @@ class FilePathSelectorViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         do {
-            let url = try FileManager.default.url(for: .userDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            filePath.stringValue = url.path
-            readAllImageAndSave(specifcalURL: url)
+            let url = try FileManager.default.url(for: .picturesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            filePath.stringValue = url.appendingPathExtension("sex8").path
+//            readAllImageAndSave(specifcalURL: url)
         } catch {
             print("url fetch error!: \(error.localizedDescription)")
-            let alert = NSAlert()
-            alert.addButton(withTitle: "确定")
-            alert.messageText = "图片路径读取失败"
-            alert.informativeText = " \(error.localizedDescription)"
-            alert.alertStyle = .warning
-            alert.beginSheetModal(for: view.window!, completionHandler: {
-                code in
-                switch code {
-                case NSApplication.ModalResponse.alertFirstButtonReturn:
-                    self.view.window?.close()
-                    break
-                default:
-                    break
-                }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                let alert = NSAlert()
+                alert.addButton(withTitle: "确定")
+                alert.messageText = "图片路径读取失败"
+                alert.informativeText = " \(error.localizedDescription)"
+                alert.alertStyle = .warning
+                alert.beginSheetModal(for: NSApplication.shared.keyWindow!, completionHandler: {
+                    code in
+                    switch code {
+                    case NSApplication.ModalResponse.alertFirstButtonReturn:
+                        self.view.window?.close()
+                        break
+                    default:
+                        break
+                    }
+                })
             })
         }
         
