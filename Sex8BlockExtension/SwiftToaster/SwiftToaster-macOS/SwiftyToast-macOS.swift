@@ -43,14 +43,18 @@ open class SwiftToaster: NSObject {
     public override init() {}
     
     public init(_ message: String,
-                duration: TimeInterval = SwiftToasterDefault.duration,
-                textColor: NSColor = SwiftToasterDefault.textColor,
-                backgroundColor: NSColor = SwiftToasterDefault.backgroundColor,
-                alpha: CGFloat = SwiftToasterDefault.alpha) {
+                duration: TimeInterval?,
+                textColor: NSColor?,
+                backgroundColor: NSColor?,
+                alpha: CGFloat?) {
+//        duration = SwiftToasterDefault.duration
+//        textColor = SwiftToasterDefault.textColor,
+//        backgroundColor = SwiftToasterDefault.backgroundColor,
+//        alpha = SwiftToasterDefault.alpha
         self.message = message
-        self.textColor = textColor
-        self.backgroundColor = backgroundColor
-        self.alpha = alpha
+        self.textColor = textColor ?? SwiftToasterDefault.textColor
+        self.backgroundColor = backgroundColor ?? SwiftToasterDefault.backgroundColor
+        self.alpha = alpha ?? SwiftToasterDefault.alpha
     }
     
     open func show(inView aView: NSView) {
@@ -123,7 +127,7 @@ fileprivate class SwiftToasterView: NSView {
 // MARK: NSView Extensions
 extension NSView {
     // Set Constraints
-    public func useVFLs(_ vfls: [String], options opts: NSLayoutFormatOptions = [.alignAllBottom], metrics: [String : NSNumber]? = nil, views: [String: Any]? = nil) {
+    public func useVFLs(_ vfls: [String], options opts: NSLayoutConstraint.FormatOptions = [NSLayoutConstraint.FormatOptions.alignAllBottom], metrics: [String : NSNumber]? = nil, views: [String: Any]? = nil) {
         self.translatesAutoresizingMaskIntoConstraints = false
         for vfl in vfls {
             let constraints = NSLayoutConstraint.constraints(withVisualFormat: vfl, options: opts , metrics: metrics, views: views == nil ? ["self": self, "super": self.superview!] : views!)
@@ -132,14 +136,14 @@ extension NSView {
     }
     
     public func toast(_ message: String, textColor: NSColor = NSColor.white, backgroundColor: NSColor = NSColor.black, alpha: CGFloat = 1) {
-        let t = SwiftToaster(message, textColor: textColor, backgroundColor: backgroundColor, alpha: alpha)
+        let t = SwiftToaster(message, duration: SwiftToasterDefault.duration, textColor: textColor, backgroundColor: backgroundColor, alpha: alpha)
         t.show(inView: self)
     }
 }
 
 extension NSViewController {
     public func toast(_ message: String, textColor: NSColor = NSColor.white, backgroundColor: NSColor = NSColor.black, alpha: CGFloat = 1) {
-        let t = SwiftToaster(message, textColor: textColor, backgroundColor: backgroundColor, alpha: alpha)
+        let t = SwiftToaster(message, duration: SwiftToasterDefault.duration, textColor: textColor, backgroundColor: backgroundColor, alpha: alpha)
         t.show(inController: self)
     }
 }

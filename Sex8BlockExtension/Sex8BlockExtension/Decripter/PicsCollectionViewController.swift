@@ -10,9 +10,9 @@ import Cocoa
 
 class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: NSCollectionView!
-    let ImageViewIdentifier = "image"
+    let ImageViewIdentifier = NSUserInterfaceItemIdentifier("image")
     var datas = [Pic]()
-    let defaultImage = NSImage(named: "watting.jpeg")
+    let defaultImage = NSImage(named: NSImage.Name(rawValue: "watting.jpeg"))
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
     var downloadImages = [Int:NSImage]()
@@ -24,14 +24,14 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
         collectionView.register(ImageCollectionItem.self, forItemWithIdentifier: ImageViewIdentifier)
         let grid = NSCollectionViewFlowLayout()
         collectionView.collectionViewLayout = grid
-        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSWindow.didResizeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
         reloadImages()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSWindow.didResizeNotification, object: nil)
     }
     
     //MARK: - NSCollectionViewDelegate
@@ -95,7 +95,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     }
     
     // 获取数据更新视图
-    func select(notification: NSNotification) {
+    @objc func select(notification: NSNotification) {
         datas = notification.object as? [Pic] ?? []
         clearCacheImages()
         reloadImages()
@@ -122,7 +122,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
                                     if let indx = self.downloadingImagesIndex.index(of: index) {
                                         self.downloadingImagesIndex.remove(at: indx)
                                     }
-                                    let app = NSApplication.shared().delegate as! AppDelegate
+                                    let app = NSApplication.shared.delegate as! AppDelegate
                                     let pic = self.datas[index]
                                     pic.data = img.tiffRepresentation as NSData?
                                     app.saveAction(nil)
@@ -141,7 +141,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     }
     
     // 窗口事件
-    func windowDidResize(notification: Notification) {
+    @objc func windowDidResize(notification: Notification) {
         collectionView.reloadData()
     }
 }

@@ -11,19 +11,19 @@ import Cocoa
 class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableView: NSTableView!
     var datas = [Pic]()
-    let defaultImage = NSImage(named: "watting.jpeg")
-    let errorImage = NSImage(named: "error")
+    let defaultImage = NSImage(named: NSImage.Name(rawValue: "watting.jpeg"))
+    let errorImage = NSImage(named: NSImage.Name(rawValue: "error"))
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
     var downloadImages = [Int:NSImage]()
     var executingTask = [URLSessionDownloadTask]()
     let ImageCellIdentifier = "ImageCell"
-    let zoom = NSStoryboard(name: "ZoomStoryboard", bundle: nil).instantiateController(withIdentifier: "ZoomKeeper") as? NSWindowController
+    let zoom = NSStoryboard(name: NSStoryboard.Name(rawValue: "ZoomStoryboard"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ZoomKeeper")) as? NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSWindow.didResizeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
     }
     
@@ -34,7 +34,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSWindowDidResize, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSWindow.didResizeNotification, object: nil)
     }
     
     // MARK: - NSTableViewDelegate
@@ -43,7 +43,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.make(withIdentifier: ImageCellIdentifier, owner: self) as? ImageTableViewCell else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: ImageCellIdentifier), owner: self) as? ImageTableViewCell else {
             return nil
         }
         cell.myPlayBoy.image = downloadImages[row]
@@ -106,7 +106,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                                 //                                    pic.data = img.tiffRepresentation as NSData?
                                 //                                    app.saveAction(nil)
                                 let pic = self.datas[index]
-                                self.savePicInPictureDir(pic: pic)
+                                self.savePicInPictureDir(pic: pic, imageData: img.tiffRepresentation!)
                                 self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
                             }
                         })
@@ -118,20 +118,18 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         }
         
         for (index, pic) in datas.enumerated() {
-            guard let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8"), let netDisks = pic.picnet?.allObjects as? [NetDisk], let dir = netDisks.first?.title?.replacingOccurrences(of: "/", with: "|"), dir != "", let picName = pic.filename  else {
+            guard let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8"),
+                let netDisks = pic.picnet?.allObjects as? [NetDisk],
+                let dir = netDisks.first?.title?.replacingOccurrences(of: "/", with: "|"),
+                dir != "",
+                let picName = pic.filename,
+                FileManager.default.fileExists(atPath: url.appendingPathComponent(dir + "/" + picName).path),
+                let image = NSImage(contentsOfFile: url.appendingPathComponent(dir + "/" + picName).path)  else {
+                downloadingImage(index: index, pic: pic)
                 continue
             }
-            let filePath = url.appendingPathComponent(dir + "/" + picName)
-            if FileManager.default.fileExists(atPath: filePath.path) {
-                if let image = NSImage(contentsOfFile: filePath.path) {
-                    downloadedImagesIndex.append(index)
-                    downloadImages[index] = image
-                }   else    {
-                    downloadingImage(index: index, pic: pic)
-                }
-            }   else    {
-                downloadingImage(index: index, pic: pic)
-            }
+            downloadedImagesIndex.append(index)
+            downloadImages[index] = image
         }
         tableView.reloadData()
         tableView.scroll(CGPoint(x: 0, y: 0))
@@ -162,18 +160,18 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     // 获取数据更新视图
-    func select(notification: NSNotification) {
+    @objc func select(notification: NSNotification) {
         datas = (notification.object as? NetDisk)?.pic?.allObjects as? [Pic] ?? []
         clearCacheImages()
         reloadImages()
     }
     
     // 窗口事件
-    func windowDidResize(notification: Notification) {
+    @objc func windowDidResize(notification: Notification) {
         tableView.reloadData()
     }
     
-    func savePicInPictureDir(pic: Pic) {
+    func savePicInPictureDir(pic: Pic, imageData: Data) {
         do {
             let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8")
             let netDisks = pic.picnet?.allObjects as? [NetDisk] ?? []
@@ -186,16 +184,16 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                     try manager.createDirectory(at: secondURL!, withIntermediateDirectories: true, attributes: nil)
                 }
                 
-                guard let pictureDomain = secondURL?.path, let img = pic.data, let urlString = pic.pic, let imageURL = URL(string: urlString) else {
+                guard let pictureDomain = secondURL?.path, let urlString = pic.pic, let imageURL = URL(string: urlString) else {
                     print("--- no pic url! ---")
                     continue
                 }
                 
-                let imgData = img as Data
+                let imgData = imageData
                 pic.filename = imageURL.lastPathComponent
                 let file = pictureDomain + "/" + imageURL.lastPathComponent
                 
-                guard manager.fileExists(atPath: file) else {
+                guard !manager.fileExists(atPath: file) else {
                     print("--- FILE: " + file + " EXSIST! ---")
                     continue
                 }
@@ -206,10 +204,8 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                     print("save image:" + file + " faild!")
                 }
             }
-            DispatchQueue.main.sync {
-                let app = NSApp.delegate as! AppDelegate
-                app.saveAction(nil)
-            }
+            let app = NSApp.delegate as! AppDelegate
+            app.saveAction(nil)
         } catch {
             fatalError("Failed to fetch employees: \(error.localizedDescription)")
         }

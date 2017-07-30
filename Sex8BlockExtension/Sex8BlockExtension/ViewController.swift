@@ -16,8 +16,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         unselect()
-        NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(unselect), name: UnSelectItemName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.select), name: SelectItemName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.unselect), name: UnSelectItemName, object: nil)
     }
     
     deinit {
@@ -37,7 +37,7 @@ class ViewController: NSViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        let app = NSApplication.shared().delegate as! AppDelegate
+        let app = NSApplication.shared.delegate as! AppDelegate
         app.resetAllRecords(in: "NetDisk")
     }
     
@@ -60,13 +60,13 @@ class ViewController: NSViewController {
         NotificationCenter.default.post(name: ShowDonwloadAddressName, object: nil)
     }
     
-    func select(notification: NSNotification) {
+    @objc func select() {
         images.isEnabled = true
         address.isEnabled = true
         pageURL.isEnabled = true
     }
     
-    func unselect() {
+    @objc func unselect() {
         images.isEnabled = false
         address.isEnabled = false
         pageURL.isEnabled = false

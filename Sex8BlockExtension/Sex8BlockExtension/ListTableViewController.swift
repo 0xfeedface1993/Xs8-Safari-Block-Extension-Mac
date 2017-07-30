@@ -23,9 +23,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     lazy var popver : NSPopover = {
         let pop = NSPopover()
         pop.animates = true
-        pop.appearance = NSAppearance(named: NSAppearanceNameAqua)
-        let storyboard = NSStoryboard(name: "Main", bundle: Bundle.main)
-        let xpics = storyboard.instantiateController(withIdentifier: "PicsCollectionViewController") as! PicsCollectionViewController
+        pop.appearance = NSAppearance(named: NSAppearance.Name.aqua)
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main)
+        let xpics = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PicsCollectionViewController")) as! PicsCollectionViewController
         pop.contentViewController = xpics
         pop.contentSize = CGSize(width: 800, height: 600)
         return pop
@@ -44,7 +44,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                        [TitleKey:"文件名", IdenitfierKey:"filename"],
                        [TitleKey:"创建时间", IdenitfierKey:"careatetime"]]
         for item in coloums {
-            let coloum = NSTableColumn(identifier: item[IdenitfierKey]!)
+            let coloum = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: item[IdenitfierKey]!))
             coloum.title = item[TitleKey]!
             coloum.width = 150
             tableview.addTableColumn(coloum)
@@ -71,7 +71,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if let coloum = tableColumn, row < datas.count {
-            switch coloum.identifier {
+            switch coloum.identifier.rawValue {
             case "title":
                 return datas[row].title
                 
@@ -100,7 +100,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         if let coloum = tableColumn {
-            switch coloum.identifier {
+            switch coloum.identifier.rawValue {
             case "title":
                 datas[row].title = object as? String
                 break
@@ -113,14 +113,14 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             default:
                 break
             }
-            let app = NSApplication.shared().delegate as! AppDelegate
+            let app = NSApplication.shared.delegate as! AppDelegate
             app.saveAction(nil)
         }
     }
     
     func tableView(_ tableView: NSTableView, shouldEdit tableColumn: NSTableColumn?, row: Int) -> Bool {
         if let coloum = tableColumn {
-            switch coloum.identifier {
+            switch coloum.identifier.rawValue {
             case "careatetime":
                 return false
             default:
@@ -172,8 +172,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     // 重新获取数据
-    func reloadTableView(notification: Notification?) {
-        let app = NSApplication.shared().delegate as! AppDelegate
+    @objc func reloadTableView(notification: Notification?) {
+        let app = NSApplication.shared.delegate as! AppDelegate
         let managedObjectContext = app.managedObjectContext
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
         let sort = NSSortDescriptor(key: "creattime", ascending: false)
@@ -189,7 +189,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     // 删除
-    func delete(notification: Notification) {
+    @objc func delete(notification: Notification) {
         if tableview.selectedRow >= 0 {
             let alert = NSAlert()
             alert.addButton(withTitle: "删除")
@@ -200,9 +200,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             alert.beginSheetModal(for: view.window!, completionHandler: {
                 code in
                 switch code {
-                case NSAlertFirstButtonReturn:
+                case NSApplication.ModalResponse.alertFirstButtonReturn:
                     let index = self.tableview.selectedRow
-                    let app = NSApplication.shared().delegate as! AppDelegate
+                    let app = NSApplication.shared.delegate as! AppDelegate
                     let managedObjectContext = app.managedObjectContext
                     do {
                         managedObjectContext.delete(self.datas[index])
@@ -216,7 +216,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                         print ("There was an error: \(error.localizedDescription)")
                     }
                     break
-                case NSAlertSecondButtonReturn:
+                case NSApplication.ModalResponse.alertSecondButtonReturn:
                     
                     break
                 default:
@@ -227,13 +227,13 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     // 通知
-    func showImages() {
+    @objc func showImages() {
         if popver.isShown  {
             popver.close()
         }
     }
     
-    func showAddress(notification: Notification) {
+    @objc func showAddress(notification: Notification) {
         if tableview.selectedRow >= 0 {
             let data = datas[tableview.selectedRow].link?.allObjects as? [Link] ?? []
             print(data.map({
@@ -261,7 +261,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let fetch = NSFetchRequest<T>(entityName: entity)
         fetch.predicate = NSPredicate(format: "\(property) == '\(value)'")
         do {
-            let app = NSApplication.shared().delegate as! AppDelegate
+            let app = NSApplication.shared.delegate as! AppDelegate
             let datas = try app.managedObjectContext.fetch(fetch)
             return datas.first
         } catch {
