@@ -106,7 +106,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                                 //                                    pic.data = img.tiffRepresentation as NSData?
                                 //                                    app.saveAction(nil)
                                 let pic = self.datas[index]
-                                self.savePicInPictureDir(pic: pic)
+                                self.savePicInPictureDir(pic: pic, imageData: img.tiffRepresentation!)
                                 self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
                             }
                         })
@@ -118,20 +118,18 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         }
         
         for (index, pic) in datas.enumerated() {
-            guard let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8"), let netDisks = pic.picnet?.allObjects as? [NetDisk], let dir = netDisks.first?.title?.replacingOccurrences(of: "/", with: "|"), dir != "", let picName = pic.filename  else {
+            guard let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8"),
+                let netDisks = pic.picnet?.allObjects as? [NetDisk],
+                let dir = netDisks.first?.title?.replacingOccurrences(of: "/", with: "|"),
+                dir != "",
+                let picName = pic.filename,
+                FileManager.default.fileExists(atPath: url.appendingPathComponent(dir + "/" + picName).path),
+                let image = NSImage(contentsOfFile: url.appendingPathComponent(dir + "/" + picName).path)  else {
+                downloadingImage(index: index, pic: pic)
                 continue
             }
-            let filePath = url.appendingPathComponent(dir + "/" + picName)
-            if FileManager.default.fileExists(atPath: filePath.path) {
-                if let image = NSImage(contentsOfFile: filePath.path) {
-                    downloadedImagesIndex.append(index)
-                    downloadImages[index] = image
-                }   else    {
-                    downloadingImage(index: index, pic: pic)
-                }
-            }   else    {
-                downloadingImage(index: index, pic: pic)
-            }
+            downloadedImagesIndex.append(index)
+            downloadImages[index] = image
         }
         tableView.reloadData()
         tableView.scroll(CGPoint(x: 0, y: 0))
@@ -173,7 +171,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         tableView.reloadData()
     }
     
-    func savePicInPictureDir(pic: Pic) {
+    func savePicInPictureDir(pic: Pic, imageData: Data) {
         do {
             let url = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first?.appendingPathComponent("sex8")
             let netDisks = pic.picnet?.allObjects as? [NetDisk] ?? []
@@ -186,16 +184,16 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                     try manager.createDirectory(at: secondURL!, withIntermediateDirectories: true, attributes: nil)
                 }
                 
-                guard let pictureDomain = secondURL?.path, let img = pic.data, let urlString = pic.pic, let imageURL = URL(string: urlString) else {
+                guard let pictureDomain = secondURL?.path, let urlString = pic.pic, let imageURL = URL(string: urlString) else {
                     print("--- no pic url! ---")
                     continue
                 }
                 
-                let imgData = img as Data
+                let imgData = imageData
                 pic.filename = imageURL.lastPathComponent
                 let file = pictureDomain + "/" + imageURL.lastPathComponent
                 
-                guard manager.fileExists(atPath: file) else {
+                guard !manager.fileExists(atPath: file) else {
                     print("--- FILE: " + file + " EXSIST! ---")
                     continue
                 }
@@ -206,10 +204,8 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                     print("save image:" + file + " faild!")
                 }
             }
-            DispatchQueue.main.sync {
-                let app = NSApp.delegate as! AppDelegate
-                app.saveAction(nil)
-            }
+            let app = NSApp.delegate as! AppDelegate
+            app.saveAction(nil)
         } catch {
             fatalError("Failed to fetch employees: \(error.localizedDescription)")
         }
