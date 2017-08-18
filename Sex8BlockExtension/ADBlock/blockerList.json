@@ -550,7 +550,7 @@
  {
  "action": {
  "type": "css-display-none",
- "selector":"#page-content"
+ "selector":"a[target=_blank]"
  },
  "trigger": {
  "if-domian":["678pan.cc"],
@@ -558,5 +558,3 @@
  }
  }
  ]
- 
-
