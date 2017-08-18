@@ -342,7 +342,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -352,7 +352,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -362,7 +362,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -372,7 +372,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -382,7 +382,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -392,7 +392,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -402,7 +402,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -412,7 +412,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -422,7 +422,7 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
- "url-filter": ".*"
+ "url-filter": ".*feemoo.*"
  }
  },
  {
@@ -432,7 +432,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -442,7 +442,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -452,7 +452,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -462,7 +462,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -472,7 +472,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -482,7 +482,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -492,7 +492,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -502,7 +502,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -512,7 +512,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  }
  ,
@@ -523,7 +523,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  }
  ,
@@ -534,7 +534,7 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
@@ -544,17 +544,17 @@
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  },
  {
  "action": {
  "type": "css-display-none",
- "selector":"a[target=_blank]"
+ "selector":"a[href='http://www.678pan.com/vip.php']"
  },
  "trigger": {
  "if-domian":["678pan.cc"],
- "url-filter": ".*"
+ "url-filter": ".*678pan.*"
  }
  }
  ]
