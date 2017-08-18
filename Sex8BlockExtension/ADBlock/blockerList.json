@@ -317,6 +317,22 @@
  "trigger": {
  "url-filter": "http://ads.feemoo.com/*"
  }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "http://www.678pan.com/vip.php"
+ }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "http://99kk7.com/*"
+ }
  }
  ,
  {
@@ -406,6 +422,138 @@
  },
  "trigger": {
  "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".table.table-bordered.table-striped"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".navbar.navbar-inverse"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".span9"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#breadcrumbs"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#footer"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".pull-right"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".btn.btn-danger.btn-block"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".f14"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".txtgray"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ }
+ ,
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".color_btn.btn_green.txtwhite"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ }
+ ,
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div>div>table"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".bottom-hint"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#page-content"
+ },
+ "trigger": {
+ "if-domian":["678pan.cc"],
  "url-filter": ".*"
  }
  }
