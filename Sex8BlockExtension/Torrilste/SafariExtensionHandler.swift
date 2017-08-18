@@ -48,7 +48,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     //MARK: - Core Data
     func saveDownloadLink(data: [String : Any], page: SFSafariPage) {
         let netdisk = NSEntityDescription.insertNewObject(forEntityName: "NetDisk", into: managedObjectContext) as! NetDisk
-        netdisk.creattime = NSDate()
+        netdisk.creattime = Date()
         netdisk.fileName = data["fileName"] as? String
         netdisk.title = data["title"] as? String
         netdisk.passwod = data["passwod"] as? String
@@ -61,7 +61,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     continue
                 }
                 let link = NSEntityDescription.insertNewObject(forEntityName: "Link", into: managedObjectContext) as! Link
-                link.creattime = NSDate()
+                link.creattime = Date()
                 link.link = sLink
                 link.addToLinknet(netdisk)
             }
@@ -74,7 +74,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     continue
                 }
                 let link = NSEntityDescription.insertNewObject(forEntityName: "Pic", into: managedObjectContext) as! Pic
-                link.creattime = NSDate()
+                link.creattime = Date()
                 link.pic = sLink
                 link.addToPicnet(netdisk)
             }
@@ -111,9 +111,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         guard let modelURL = Bundle.main.url(forResource: "NetdiskModel", withExtension: "momd") else {
             fatalError("failed to find data model")
         }
-        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Failed to create model from file: \(modelURL)")
-        }
+        let mom = NSManagedObjectModel(contentsOf: modelURL)
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
@@ -155,9 +153,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         guard let modelURL = Bundle.main.url(forResource: "NetdiskModel", withExtension: "momd") else {
             fatalError("failed to find data model")
         }
-        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Failed to create model from file: \(modelURL)")
-        }
+        
+        let mom = NSManagedObjectModel(contentsOf: modelURL)
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         

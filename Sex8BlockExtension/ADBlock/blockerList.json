@@ -301,6 +301,113 @@
  "trigger": {
  "url-filter": "static2.keep4u.ru/2017/06/24/230561.jpg"
  }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "http://www.feemoo.com/vip.php"
+ }
+ },
+ {
+ "action": {
+ "type": "block"
+ },
+ "trigger": {
+ "url-filter": "http://ads.feemoo.com/*"
+ }
+ }
+ ,
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".barrage"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".col-md-4.col-sm-12.col-xs-12"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".clearfix.down_three"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".down_tl"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".col-md-6.col-sm-6.col-xs-12"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".index_list_ul"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".down_four.clearfix"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".left"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".nav.navbar-nav.clearfix"
+ },
+ "trigger": {
+ "if-domian":["feemoo.com"],
+ "url-filter": ".*"
+ }
  }
  ]
  

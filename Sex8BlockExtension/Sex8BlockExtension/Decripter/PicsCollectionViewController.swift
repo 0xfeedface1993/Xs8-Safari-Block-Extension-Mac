@@ -124,7 +124,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
                                     }
                                     let app = NSApplication.shared.delegate as! AppDelegate
                                     let pic = self.datas[index]
-                                    pic.data = img.tiffRepresentation as NSData?
+                                    pic.data = img.tiffRepresentation
                                     app.saveAction(nil)
                                     self.collectionView.reloadItems(at: [IndexPath(item: 0, section: index)])
                                     

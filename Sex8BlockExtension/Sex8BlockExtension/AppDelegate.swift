@@ -51,9 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let modelURL = Bundle.main.url(forResource: "NetdiskModel", withExtension: "momd") else {
             fatalError("failed to find data model")
         }
-        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Failed to create model from file: \(modelURL)")
-        }
+        let mom = NSManagedObjectModel(contentsOf: modelURL)
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
@@ -95,9 +93,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let modelURL = Bundle.main.url(forResource: "NetdiskModel", withExtension: "momd") else {
             fatalError("failed to find data model")
         }
-        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Failed to create model from file: \(modelURL)")
-        }
+        let mom = NSManagedObjectModel(contentsOf: modelURL)
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         let options = [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true]
