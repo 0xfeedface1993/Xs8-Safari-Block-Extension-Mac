@@ -17,6 +17,7 @@
 		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
 		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
+		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
@@ -139,6 +140,7 @@
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
+		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
 		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */,
 				24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */,
 				24BA90DB1EF597B6002BE480 /* Info.plist */,
+				2477731E1F46C8EE005125D7 /* inject.css */,
 				24BA90DC1EF597B6002BE480 /* script.js */,
 				24BA90D21EF597B6002BE480 /* Supporting Files */,
 			);
@@ -600,6 +603,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247773201F46C94B005125D7 /* inject.css in Resources */,
 				278B8B281EFEC19400E20296 /* NetdiskModel.xcdatamodeld in Resources */,
 				24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */,
 				272ABF721F1277BF008FAE69 /* ToolbarItemIcon.pdf in Resources */,
