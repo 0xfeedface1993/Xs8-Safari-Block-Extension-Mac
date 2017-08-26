@@ -111,7 +111,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         guard let modelURL = Bundle.main.url(forResource: "NetdiskModel", withExtension: "momd") else {
             fatalError("failed to find data model")
         }
-        let mom = NSManagedObjectModel(contentsOf: modelURL)
+        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Failed to create model from file: \(modelURL)")
+        }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
@@ -154,7 +156,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             fatalError("failed to find data model")
         }
         
-        let mom = NSManagedObjectModel(contentsOf: modelURL)
+        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Failed to create model from file: \(modelURL)")
+        }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
