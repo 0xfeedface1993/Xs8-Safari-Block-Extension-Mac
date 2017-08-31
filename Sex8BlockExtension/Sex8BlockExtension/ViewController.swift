@@ -11,6 +11,9 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
     @IBOutlet weak var collectionView: NSView!
+    @IBOutlet weak var head: NSImageView!
+    @IBOutlet weak var username: NSTextField!
+    @IBOutlet weak var userprofile: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,7 @@ class ViewController: NSViewController {
         NotificationCenter.default.removeObserver(self, name: UnSelectItemName, object: nil)
     }
 
-    @IBOutlet weak var address: NSButton!
-    @IBOutlet weak var images: NSButton!
     @IBOutlet weak var extract: NSButton!
-    @IBOutlet weak var pageURL: NSButton!
     
     override var representedObject: Any? {
         didSet {
@@ -48,29 +48,18 @@ class ViewController: NSViewController {
         NotificationCenter.default.post(name: DeleteActionName, object: nil)
     }
     
-    @IBAction func showPicture(_ sender: Any) {
-        NotificationCenter.default.post(name: ShowImagesName, object: nil)
-    }
-    
-    @IBAction func pageURLAction(_ sender: Any) {
+    @objc func select() {
         
     }
     
-    @IBAction func addressShow(_ sender: Any) {
-        NotificationCenter.default.post(name: ShowDonwloadAddressName, object: nil)
-    }
-    
-    @objc func select() {
-        images.isEnabled = true
-        address.isEnabled = true
-        pageURL.isEnabled = true
-    }
-    
     @objc func unselect() {
-        images.isEnabled = false
-        address.isEnabled = false
-        pageURL.isEnabled = false
+        
     }
+    
+}
+
+// MARK: - Login Fun
+extension ViewController {
     
 }
 

@@ -8,6 +8,11 @@
 
 import Cocoa
 
+struct LoginResult {
+    var code : String
+    var describle : String
+}
+
 class LoginViewCotroller: NSViewController {
 
     override func viewDidLoad() {
@@ -15,4 +20,7 @@ class LoginViewCotroller: NSViewController {
         // Do view setup here.
     }
     
+    func login(callback: ((LoginResult) -> Void)?) -> Void {
+        
+    }
 }
