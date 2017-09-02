@@ -1,3 +1,8 @@
 .thread-img {
 	height: 290px !important;
 }
+
+img.zoom {
+    width: 100% !important;
+    height: auto !important;
+}
