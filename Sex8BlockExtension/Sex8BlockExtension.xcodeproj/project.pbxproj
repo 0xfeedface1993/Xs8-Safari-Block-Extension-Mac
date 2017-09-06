@@ -22,12 +22,15 @@
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
 		249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249F91321EFFEB950043B48D /* ImageCollectionItem.xib */; };
+		24A886561F5D6334007336BD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886551F5D6334007336BD /* UserInfo.swift */; };
+		24A886581F5FE873007336BD /* TapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886571F5FE873007336BD /* TapImageView.swift */; };
 		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
 		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90DD1EF597B6002BE480 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90DC1EF597B6002BE480 /* script.js */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24FA6ACF1F5FFF7D005853EA /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
 		272ABF701F1277A8008FAE69 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D301F127617007BA2BA /* error.png */; };
 		272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D2F1F127617007BA2BA /* watting.jpeg */; };
 		272ABF721F1277BF008FAE69 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */; };
@@ -146,6 +149,8 @@
 		249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsCollectionViewController.swift; sourceTree = "<group>"; };
 		249F91311EFFEB950043B48D /* ImageCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionItem.swift; sourceTree = "<group>"; };
 		249F91321EFFEB950043B48D /* ImageCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionItem.xib; sourceTree = "<group>"; };
+		24A886551F5D6334007336BD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		24A886571F5FE873007336BD /* TapImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImageView.swift; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
 		24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 		24BA90D91EF597B6002BE480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		24FA6ACE1F5FFF7D005853EA /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		270B6D2F1F127617007BA2BA /* watting.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watting.jpeg; sourceTree = "<group>"; };
 		270B6D301F127617007BA2BA /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NetdiskModel.xcdatamodel; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 		24467AD61F1A284B00574160 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				24A886531F5D6322007336BD /* UserInfo */,
 				24467AD81F1A287600574160 /* LoginStoryboard.storyboard */,
 				24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */,
 			);
@@ -273,6 +280,14 @@
 				24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */,
 			);
 			path = File;
+			sourceTree = "<group>";
+		};
+		24A886531F5D6322007336BD /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				24A886551F5D6334007336BD /* UserInfo.swift */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		24BA90D11EF597B6002BE480 /* Torrilste */ = {
@@ -296,6 +311,14 @@
 				24BA90D31EF597B6002BE480 /* Torrilste.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24FA6ACC1F5FF0F9005853EA /* SubClass */ = {
+			isa = PBXGroup;
+			children = (
+				24A886571F5FE873007336BD /* TapImageView.swift */,
+			);
+			path = SubClass;
 			sourceTree = "<group>";
 		};
 		278B8AE81EFE7C9600E20296 /* CoreData */ = {
@@ -336,6 +359,7 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				24FA6ACC1F5FF0F9005853EA /* SubClass */,
 				24467ADC1F1B1A4A00574160 /* File */,
 				24467AD61F1A284B00574160 /* Login */,
 				2407E8B61F163FA700F6A61B /* Image */,
@@ -349,6 +373,7 @@
 				27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */,
 				27AD7C301EEFD1EF00258BDC /* Main.storyboard */,
 				27AD7C331EEFD1EF00258BDC /* Info.plist */,
+				24FA6ACE1F5FFF7D005853EA /* WebService.swift */,
 			);
 			path = Sex8BlockExtension;
 			sourceTree = "<group>";
@@ -668,12 +693,15 @@
 				27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */,
 				24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */,
 				245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */,
+				24FA6ACF1F5FFF7D005853EA /* WebService.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
+				24A886561F5D6334007336BD /* UserInfo.swift in Sources */,
 				24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */,
+				24A886581F5FE873007336BD /* TapImageView.swift in Sources */,
 				24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,

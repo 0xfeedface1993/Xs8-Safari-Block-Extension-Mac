@@ -11,9 +11,11 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
     @IBOutlet weak var collectionView: NSView!
-    @IBOutlet weak var head: NSImageView!
+    @IBOutlet weak var head: TapImageView!
     @IBOutlet weak var username: NSTextField!
     @IBOutlet weak var userprofile: NSTextField!
+    
+    let login = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "LoginStoryboard"), bundle: Bundle.main).instantiateInitialController() as! NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,15 @@ class ViewController: NSViewController {
         unselect()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.select), name: SelectItemName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.unselect), name: UnSelectItemName, object: nil)
+        head.tapBlock = {
+            image in
+            let app = NSApp.delegate as! AppDelegate
+            if let _ = app.user {
+                
+            }   else    {
+                self.login.showWindow(nil)
+            }
+        }
     }
     
     deinit {
@@ -55,7 +66,6 @@ class ViewController: NSViewController {
     @objc func unselect() {
         
     }
-    
 }
 
 // MARK: - Login Fun

@@ -10,6 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var user : User?
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
         let fileManage = NSStoryboard(name: NSStoryboard.Name(rawValue: "FileManageStoryboard"), bundle: Bundle.main)
@@ -27,11 +28,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        for item in sender.windows {
-            item.makeKeyAndOrderFront(nil)
-            break
+        // 当前还显示窗口就不管了
+        guard !flag else {
+            return false
         }
-        return true
+        // 只重新打开主页窗口
+        for item in sender.windows {
+            if let main = item.identifier?.rawValue, main == "main" {
+                item.makeKeyAndOrderFront(nil)
+                return true
+            }
+        }
+        return false
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -39,7 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
