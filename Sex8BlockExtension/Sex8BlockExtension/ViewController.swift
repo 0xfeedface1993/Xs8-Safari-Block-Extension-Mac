@@ -38,6 +38,10 @@ class ViewController: NSViewController {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
         NotificationCenter.default.removeObserver(self, name: UnSelectItemName, object: nil)
     }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+    }
 
     @IBOutlet weak var extract: NSButton!
     

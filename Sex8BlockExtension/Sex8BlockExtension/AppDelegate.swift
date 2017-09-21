@@ -27,6 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
     
+    func applicationWillBecomeActive(_ notification: Notification) {
+        NotificationCenter.default.post(name: TableViewRefreshName, object: nil)
+//        print("active")
+    }
+    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         // 当前还显示窗口就不管了
         guard !flag else {

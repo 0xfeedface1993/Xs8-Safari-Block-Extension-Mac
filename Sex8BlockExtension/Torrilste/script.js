@@ -101,6 +101,16 @@ function getDownloadLinks(parentDode) {
         }
     }
     
+    var fonts = parentDode[0].getElementsByTagName('font');
+    if (fonts != null && fonts.length > 0) {
+        for (var j = 0; j < fonts.length; j++) {
+            var ft = fonts[j];
+            if (ft.innerHTML.indexOf("http://") >= 0) {
+                validateA.push(ft.innerHTML);
+            }
+        }
+    }
+    
     return validateA;
 }
 

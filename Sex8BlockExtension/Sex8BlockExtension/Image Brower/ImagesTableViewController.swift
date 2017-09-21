@@ -55,10 +55,10 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         let padding : CGFloat = 0
         let width : CGFloat = view.bounds.size.width - padding
         if let h = item?.size.height, let w = item?.size.width {
-            let height = w >= view.bounds.size.width ? (width / w * h):h
-//            print(height)
+            let height = w > view.bounds.size.width ? (width / w * h):h
             return height
         }
+        print("using defalut height")
         let height = width / self.defaultImage!.size.width * self.defaultImage!.size.height
         return height
     }
@@ -102,12 +102,10 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
                             self.downloadImages[index] = img
                             
                             DispatchQueue.main.async {
-                                //                                    let app = NSApplication.shared().delegate as! AppDelegate
-                                //                                    pic.data = img.tiffRepresentation as NSData?
-                                //                                    app.saveAction(nil)
                                 let pic = self.datas[index]
                                 self.savePicInPictureDir(pic: pic, imageData: img.tiffRepresentation!)
                                 self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
+                                self.tableView.noteHeightOfRows(withIndexesChanged: [index])
                             }
                         })
                         self.executingTask.append(task)

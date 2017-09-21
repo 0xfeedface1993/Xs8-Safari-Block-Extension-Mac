@@ -12,6 +12,8 @@ import SwiftToastermacOS
 class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var downloadAddress: NSTableView!
     @IBOutlet weak var pageAddress: NSTableView!
+    @IBOutlet weak var addressBg: NSScrollView!
+    @IBOutlet weak var pageBg: NSScrollView!
     var net:NetDisk?
     var links:[Link]?
     
@@ -19,6 +21,14 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
         super.viewDidLoad()
         // Do view setup here.
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
     }
     
     //MARK: - NSTableView Delegate

@@ -33,6 +33,14 @@ class ZoomImageViewController: NSViewController {
             return
         }
         imageView.image = image
+        
+        var size = NSSize(width: image.size.width, height: image.size.height)
+        if size.width > NSScreen.main!.frame.size.width || size.height > NSScreen.main!.frame.size.width {
+            size.width = NSScreen.main!.frame.size.width
+            size.height = NSScreen.main!.frame.size.height
+        }
+        
+        view.window?.setFrameOrigin(NSPoint(x: 0, y: 0))
+        view.window?.setContentSize(NSSize(width: size.width, height: size.height))
     }
-    
 }

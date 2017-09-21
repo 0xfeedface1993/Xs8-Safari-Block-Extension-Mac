@@ -54,7 +54,6 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.addObserver(self, selector: #selector(delete(notification:)), name: DeleteActionName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showImages), name: ShowImagesName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAddress), name: ShowDonwloadAddressName, object: nil)
-        
         reloadTableView(notification: nil)
     }
     
@@ -62,6 +61,13 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.removeObserver(self, name: TableViewRefreshName, object: nil)
         NotificationCenter.default.removeObserver(self, name: DeleteActionName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowImagesName, object: nil)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.view.window?.makeFirstResponder(self.tableview)
+        }
     }
     
     //MARK: - NSTableViewDelegate
@@ -180,8 +186,14 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         employeesFetch.sortDescriptors = [sort]
         
         do {
+            let oldCount = datas.count
             datas = try managedObjectContext.fetch(employeesFetch)
             tableview.reloadData()
+            if datas.count > 0, oldCount != datas.count {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                    self.tableview.selectRowIndexes([0], byExtendingSelection: false)
+                })
+            }
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }
@@ -268,5 +280,4 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             fatalError("Failed to fetch \(property): \(error)")
         }
     }
-    
 }
