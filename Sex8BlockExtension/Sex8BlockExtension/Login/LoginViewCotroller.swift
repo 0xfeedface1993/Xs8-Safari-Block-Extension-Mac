@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CryptoSwift
 
 struct LoginResult {
     var code : String
@@ -41,11 +42,88 @@ class LoginViewCotroller: NSViewController {
         password.isEnabled = false
         
         progress.startAnimation(nil)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            self.progress.stopAnimation(nil)
-            self.loginButton.isEnabled = true
-            self.userid.isEnabled = true
-            self.password.isEnabled = true
+        
+        let encryptPassword = password.stringValue.sha256().uppercased()
+        print(password.stringValue + " &&& " + encryptPassword)
+        
+        let webservice = Webservice.share
+        let caller = WebserviceCaller<LoginResopnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "login", paras: ["account":userid.stringValue, "password":encryptPassword]) { (data, err, severErr) in
+            DispatchQueue.main.async {
+                self.progress.stopAnimation(nil)
+                self.loginButton.isEnabled = true
+                self.userid.isEnabled = true
+                self.password.isEnabled = true
+            }
+            if let e = err {
+                DispatchQueue.main.async {
+                    let alert = NSAlert()
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "OK")
+                    guard e is WebserviceError else {
+                        alert.messageText = e.localizedDescription
+                        alert.beginSheetModal(for: NSApplication.shared.keyWindow!, completionHandler: { (response) in
+                            
+                        })
+                        return
+                    }
+                    
+                    switch e as! WebserviceError {
+                    case .badResponseJson(let message):
+                        alert.messageText = message
+                        break
+                    case .badURL(let message):
+                        alert.messageText = message
+                        break
+                    case .badSendJson(let message):
+                        alert.messageText = message
+                        break
+                    case .emptyResponseData(let message):
+                        alert.messageText = message
+                        break
+                    }
+                    
+                    alert.beginSheetModal(for: NSApplication.shared.keyWindow!, completionHandler: { (response) in
+                        
+                    })
+                }
+                return
+            }
+            if let err = severErr {
+                DispatchQueue.main.async {
+                    let alert = NSAlert()
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "OK")
+                    alert.messageText = "错误码：\(err.code), \(err.info)"
+                    alert.beginSheetModal(for: NSApplication.shared.keyWindow!, completionHandler: { (response) in
+                        
+                    })
+                }
+                return
+            }
+            if let user = data {
+                print("id: \(user.id), name: \(user.name)")
+                DispatchQueue.main.async {
+                    self.view.window?.close()
+                }
+            }
         }
+        do {
+            try webservice.read(caller: caller)
+        } catch {
+            print(error)
+        }
+    }
+}
+
+extension Dictionary {
+    func postParams() -> String {
+        if let dic = self as? [String:String] {
+            var paras = ""
+            dic.forEach({ (item) in
+                paras += "\(item.key)=\(item.value)&"
+            })
+            return paras
+        }
+        return ""
     }
 }
