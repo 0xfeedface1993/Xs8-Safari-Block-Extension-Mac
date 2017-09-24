@@ -85,8 +85,7 @@ class FilePathSelectorViewController: NSViewController {
     }
     
     func readAllImageAndSave(specifcalURL: URL?) {
-        let app = NSApplication.shared.delegate as! AppDelegate
-        let managedObjectContext = app.managedObjectContext
+        let managedObjectContext = DataBase.share.managedObjectContext
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
         let sort = NSSortDescriptor(key: "creattime", ascending: false)
         employeesFetch.sortDescriptors = [sort]

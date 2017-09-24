@@ -270,7 +270,7 @@
                                 <rect key="frame" x="69" y="15" width="205" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="kkJ-ji-QBM">
-                                        <rect key="frame" x="-6" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="-6" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="清除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lCH-V2-1Sp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -280,7 +280,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="1Zh-hN-h03">
-                                        <rect key="frame" x="69" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="69" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="提取" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Reu-8F-DlM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -290,7 +290,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-YJ-DqA">
-                                        <rect key="frame" x="144" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="144" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kjf-o0-3Zk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -314,16 +314,30 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ZB-sn-3rw">
+                                <rect key="frame" x="293" y="15" width="263" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="5xx-3o-STc"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="w4d-SP-d4Z">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ibN-iT-dRO" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0Yn-82-AmG"/>
+                            <constraint firstAttribute="bottom" secondItem="4ZB-sn-3rw" secondAttribute="bottom" constant="15" id="2AG-9B-PGW"/>
                             <constraint firstItem="v6e-R6-1UG" firstAttribute="centerX" secondItem="x2K-hw-4mx" secondAttribute="centerX" id="D3D-FK-ikB"/>
                             <constraint firstItem="x2K-hw-4mx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DEL-nv-LV0"/>
                             <constraint firstItem="x2K-hw-4mx" firstAttribute="top" secondItem="s2B-bw-6BZ" secondAttribute="bottom" constant="8" id="JdW-36-6i4"/>
                             <constraint firstItem="2A1-aP-Uxa" firstAttribute="top" secondItem="qqo-pt-M4g" secondAttribute="top" id="M2y-sg-eXv"/>
                             <constraint firstAttribute="bottom" secondItem="ibN-iT-dRO" secondAttribute="bottom" constant="100" id="N24-kx-xEl"/>
                             <constraint firstItem="qqo-pt-M4g" firstAttribute="leading" secondItem="2A1-aP-Uxa" secondAttribute="trailing" constant="10" id="NVf-zN-YKn"/>
+                            <constraint firstItem="4ZB-sn-3rw" firstAttribute="top" secondItem="v6e-R6-1UG" secondAttribute="top" constant="10" id="Pnj-Pb-gQ2"/>
                             <constraint firstItem="bqi-cA-Tq3" firstAttribute="top" secondItem="2A1-aP-Uxa" secondAttribute="bottom" constant="14" id="d2o-0S-e0R"/>
+                            <constraint firstItem="4ZB-sn-3rw" firstAttribute="leading" secondItem="v6e-R6-1UG" secondAttribute="trailing" constant="21" id="dcd-gK-9OY"/>
                             <constraint firstAttribute="bottom" secondItem="qqo-pt-M4g" secondAttribute="bottom" constant="20" id="f4W-WL-Vi6"/>
                             <constraint firstItem="v6e-R6-1UG" firstAttribute="top" secondItem="x2K-hw-4mx" secondAttribute="bottom" constant="17" id="fJH-EV-nT6"/>
                             <constraint firstItem="2A1-aP-Uxa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="fX5-WS-HnV"/>
@@ -341,7 +355,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ibN-iT-dRO" id="eVw-z3-6hX"/>
-                        <outlet property="extract" destination="1Zh-hN-h03" id="uXZ-2o-I8C"/>
+                        <outlet property="extenalText" destination="4ZB-sn-3rw" id="qFk-4k-6Kr"/>
+                        <outlet property="extract" destination="1Zh-hN-h03" id="688-6g-Bey"/>
                         <outlet property="head" destination="qqo-pt-M4g" id="vjN-sP-v4a"/>
                         <outlet property="save" destination="kkJ-ji-QBM" id="774-Oe-VlN"/>
                         <outlet property="username" destination="2A1-aP-Uxa" id="DCT-v3-0Ja"/>
@@ -417,11 +432,11 @@
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rku-z1-aE2">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <clipView key="contentView" id="CrE-w1-Ttf">
-                                    <rect key="frame" x="1" y="0.0" width="448" height="299"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="284"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="TSf-vY-OYd" id="IHa-8g-AAF">
-                                            <rect key="frame" x="0.0" y="0.0" width="468" height="276"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="261"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -449,10 +464,10 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="na5-et-HRC">
-                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
+                                    <rect key="frame" x="1" y="284" width="448" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Tps-XM-Lpt">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Tps-XM-Lpt">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -499,7 +514,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <tableColumns>
-                                                <tableColumn width="451" minWidth="40" maxWidth="4096" id="gBW-WN-8Df">
+                                                <tableColumn identifier="" width="451" minWidth="40" maxWidth="4096" id="gBW-WN-8Df">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -537,7 +552,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Z36-pa-0ov">
-                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="EXX-UN-fOl">

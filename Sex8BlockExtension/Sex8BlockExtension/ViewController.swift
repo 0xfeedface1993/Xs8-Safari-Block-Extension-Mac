@@ -8,12 +8,16 @@
 
 import Cocoa
 
+let StopFetchName = NSNotification.Name.init("stopFetching")
+let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")
+
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
     @IBOutlet weak var collectionView: NSView!
     @IBOutlet weak var head: TapImageView!
     @IBOutlet weak var username: NSTextField!
     @IBOutlet weak var userprofile: NSTextField!
+    @IBOutlet weak var extenalText: NSTextField!
     
     let login = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "LoginStoryboard"), bundle: Bundle.main).instantiateInitialController() as! NSWindowController
     
@@ -23,6 +27,8 @@ class ViewController: NSViewController {
         unselect()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.select), name: SelectItemName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.unselect), name: UnSelectItemName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopFetch), name: StopFetchName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.showExtennalText(notification:)), name: ShowExtennalTextName, object: nil)
         head.tapBlock = {
             image in
             let app = NSApp.delegate as! AppDelegate
@@ -37,6 +43,8 @@ class ViewController: NSViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: SelectItemName, object: nil)
         NotificationCenter.default.removeObserver(self, name: UnSelectItemName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: StopFetchName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: ShowExtennalTextName, object: nil)
     }
     
     override func viewDidAppear() {
@@ -57,8 +65,22 @@ class ViewController: NSViewController {
     }
     
     @IBAction func extract(_ sender: Any) {
-        NotificationCenter.default.post(name: TableViewRefreshName, object: nil)
+        let fetchButton = sender as! NSButton
+        if fetchButton.tag == 110 {
+            stopFetch()
+        }   else    {
+            fetchButton.tag = 110
+            fetchButton.title = "停止"
+        }
+        NotificationCenter.default.post(name: TableViewRefreshName, object: fetchButton)
     }
+    
+    @objc func stopFetch() {
+        extract.tag = 112
+        extract.title = "抓取数据"
+        self.extenalText.stringValue = ""
+    }
+    
     @IBAction func deleteAction(_ sender: Any) {
         NotificationCenter.default.post(name: DeleteActionName, object: nil)
     }
@@ -69,6 +91,12 @@ class ViewController: NSViewController {
     
     @objc func unselect() {
         
+    }
+    
+    @objc func showExtennalText(notification: NSNotification?) {
+        if let text = notification?.object as? String {
+            self.extenalText.stringValue = text
+        }
     }
 }
 
