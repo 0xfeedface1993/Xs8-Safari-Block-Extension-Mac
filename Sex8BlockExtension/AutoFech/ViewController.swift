@@ -31,7 +31,7 @@ class ViewController: NSViewController {
             return ""
         }
     }()
-    let bot = FetchBot()
+    let bot = FetchBot(start: 1, offset: 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +58,7 @@ class ViewController: NSViewController {
 //        let command = Command(type: .page, script: "login();", url: fetchURL.url, completion: nil)
 //        commands.append(command)
 //        executeCommand()  
-        bot.test()
-//        webview
+        bot.start()
     }
 
     override var representedObject: Any? {
@@ -118,7 +117,10 @@ extension ViewController : WKNavigationDelegate, WKScriptMessageHandler {
         list.removeAll()
         let maxPage = 1
         for i in 1...maxPage {
-            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i)
+            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i, maker: {
+                item in
+                return ""
+            })
             let command = Command(type: .page, script: "readNetDiskList();", url: fetchURL.url, completion: { (result) in
                 if let data = result as? [[String:Any]] {
                     for part in data {
@@ -190,16 +192,21 @@ enum FetchBoard : Int {
     case netDisk = 103
 }
 
-struct FetchURL {
+struct FetchURL : Equatable {
     var site : String
     var board : FetchBoard
     var page : Int
+    var maker : (FetchURL) -> String
     var url : URL {
         get {
 //            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
-            let temp = URL(string: "http://\(site)")!;
-            return temp
+//            let temp = URL(string: "http://\(site)")!;
+            return URL(string: maker(self))!;
         }
+    }
+    
+    static func ==(lhs: FetchURL, rhs: FetchURL) -> Bool {
+        return lhs.url == rhs.url
     }
 }
 

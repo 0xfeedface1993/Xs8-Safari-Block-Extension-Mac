@@ -451,8 +451,8 @@ extension ListTableViewController : WKNavigationDelegate, WKScriptMessageHandler
     func loadList() {
         print("start fatching!")
         list.removeAll()
-        let maxPage = 30
-        for i in 7...maxPage {
+        let maxPage = 2
+        for i in 1...maxPage {
             let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i)
             let command = Command(type: .page, script: "readNetDiskList();", url: fetchURL.url, completion: { (result) in
                 self.showProgress(text: "正在获取第\(i)页数据...")

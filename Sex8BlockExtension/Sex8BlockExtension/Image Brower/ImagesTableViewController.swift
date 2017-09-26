@@ -25,6 +25,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         // Do view setup here.
         NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)), name: NSWindow.didResizeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(select), name: SelectItemName, object: nil)
+//        tableView.isHidden = true
     }
     
     override func viewWillAppear() {
