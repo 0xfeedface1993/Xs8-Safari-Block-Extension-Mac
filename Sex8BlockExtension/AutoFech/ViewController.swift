@@ -31,32 +31,35 @@ class ViewController: NSViewController {
             return ""
         }
     }()
+    let bot = FetchBot()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        userContentController.add(self, name: PageDataMessage)
-        userContentController.addUserScript(WKUserScript(source: fetchJS, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
-        
-        let configuration = WKWebViewConfiguration()
-        configuration.userContentController = userContentController
-        
-        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), configuration: configuration)
-        webview.translatesAutoresizingMaskIntoConstraints = false
-        webview.navigationDelegate = self
-        bg.addSubview(webview)
-        
-        bg.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v]|", options: [], metrics: nil, views: ["v":webview]))
-        bg.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v]|", options: [], metrics: nil, views: ["v":webview]))
-        
-        webview.isHidden = true
-        
-        let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: 1)
-        let command = Command(type: .page, script: "login();", url: fetchURL.url, completion: nil)
-        commands.append(command)
-        executeCommand()
+//        userContentController.add(self, name: PageDataMessage)
+//        userContentController.addUserScript(WKUserScript(source: fetchJS, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+//
+//        let configuration = WKWebViewConfiguration()
+//        configuration.userContentController = userContentController
+//
+//        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), configuration: configuration)
+//        webview.translatesAutoresizingMaskIntoConstraints = false
+//        webview.navigationDelegate = self
+//        bg.addSubview(webview)
+//
+//        bg.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v]|", options: [], metrics: nil, views: ["v":webview]))
+//        bg.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v]|", options: [], metrics: nil, views: ["v":webview]))
+//
+//        webview.isHidden = true
+//
+//        let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: 1)
+//        let command = Command(type: .page, script: "login();", url: fetchURL.url, completion: nil)
+//        commands.append(command)
+//        executeCommand()  
+        bot.test()
+//        webview
     }
 
     override var representedObject: Any? {
@@ -193,7 +196,8 @@ struct FetchURL {
     var page : Int
     var url : URL {
         get {
-            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
+//            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
+            let temp = URL(string: "http://\(site)")!;
             return temp
         }
     }

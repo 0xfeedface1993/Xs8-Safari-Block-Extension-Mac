@@ -115,6 +115,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.addObserver(self, selector: #selector(delete(notification:)), name: DeleteActionName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showImages), name: ShowImagesName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAddress), name: ShowDonwloadAddressName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(uploadServer(notification:)), name: UploadName, object: nil)
         reloadTableView(notification: nil)
         
         userContentController.add(self, name: PageDataMessage)
@@ -138,12 +139,53 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.removeObserver(self, name: TableViewRefreshName, object: nil)
         NotificationCenter.default.removeObserver(self, name: DeleteActionName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowImagesName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UploadName, object: nil)
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             self.view.window?.makeFirstResponder(self.tableview)
+        }
+    }
+    
+    @objc func uploadServer(notification: NSNotification?) {
+        let webservice = Webservice.share
+        if let flag = notification?.object as? Int, flag == 444 {
+            webservice.cancelAllTask()
+            return
+        }
+        let encoder = JSONEncoder()
+        for (index, data) in datas.enumerated() {
+            let links = (data.link?.allObjects as? [Link] ?? []).map({ $0.link! })
+            let pics = (data.pic?.allObjects as? [Pic] ?? []).map({ $0.pic! })
+            let title = data.title ?? UUID().uuidString
+            let page = data.pageurl ?? ""
+            let dic = MovieModal(title: title, page: page, pics: pics, downloads: links)
+            do {
+                let json = try encoder.encode(dic)
+                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
+                    if index < self.datas.count - 1 {
+                        DispatchQueue.main.async {
+                            self.showProgress(text: "已提交第 \(index)/\(self.datas.count) 项数据...")
+                        }
+                    }   else    {
+                        DispatchQueue.main.async {
+                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
+                        }
+                    }
+                    guard let message = result else {
+                        if let e = err {
+                            print("error: \(e)")
+                        }
+                        return
+                    }
+                    print("movieID: \(message.movieID)")
+                })
+                try webservice.read(caller: caller)
+            } catch {
+                print("upload faild: json error \(error)")
+            }
         }
     }
     
@@ -409,8 +451,8 @@ extension ListTableViewController : WKNavigationDelegate, WKScriptMessageHandler
     func loadList() {
         print("start fatching!")
         list.removeAll()
-        let maxPage = 5
-        for i in 1...maxPage {
+        let maxPage = 30
+        for i in 7...maxPage {
             let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i)
             let command = Command(type: .page, script: "readNetDiskList();", url: fetchURL.url, completion: { (result) in
                 self.showProgress(text: "正在获取第\(i)页数据...")

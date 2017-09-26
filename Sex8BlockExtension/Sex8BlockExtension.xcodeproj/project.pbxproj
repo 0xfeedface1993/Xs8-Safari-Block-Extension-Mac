@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
 		2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */; };
+		243AFE321F790FAA00D090D7 /* BackgroundFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243AFE311F790FAA00D090D7 /* BackgroundFetch.swift */; };
+		243AFE341F790FF000D090D7 /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243AFE331F790FF000D090D7 /* FetchBot.swift */; };
+		243AFE361F794D7C00D090D7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 243AFE351F7949BD00D090D7 /* test.html */; };
 		24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467AA51F1793BC00574160 /* ZoomImageViewController.swift */; };
 		24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24467ACD1F19237200574160 /* SwiftToastermacOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */; };
@@ -185,6 +188,9 @@
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
+		243AFE311F790FAA00D090D7 /* BackgroundFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetch.swift; sourceTree = "<group>"; };
+		243AFE331F790FF000D090D7 /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
+		243AFE351F7949BD00D090D7 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		24467AA51F1793BC00574160 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
 		24467AC51F19237100574160 /* SwiftToaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftToaster.xcodeproj; path = SwiftToaster/SwiftToaster.xcodeproj; sourceTree = "<group>"; };
 		24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoomStoryboard.storyboard; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				274AA3ED1F776C940058E21A /* fetch.js */,
+				243AFE351F7949BD00D090D7 /* test.html */,
 				274AA3BA1F7694660058E21A /* AppDelegate.swift */,
 				274AA3BC1F7694660058E21A /* ViewController.swift */,
 				274AA3C11F7694660058E21A /* Assets.xcassets */,
@@ -441,6 +448,8 @@
 				274AA3C61F7694660058E21A /* Info.plist */,
 				274AA3C71F7694660058E21A /* AutoFech.entitlements */,
 				274AA3BE1F7694660058E21A /* AutoFech.xcdatamodeld */,
+				243AFE311F790FAA00D090D7 /* BackgroundFetch.swift */,
+				243AFE331F790FF000D090D7 /* FetchBot.swift */,
 			);
 			path = AutoFech;
 			sourceTree = "<group>";
@@ -887,6 +896,7 @@
 				274AA3C21F7694660058E21A /* Assets.xcassets in Resources */,
 				274AA3EB1F775ED60058E21A /* NetdiskModel.xcdatamodeld in Resources */,
 				274AA3C51F7694660058E21A /* Main.storyboard in Resources */,
+				243AFE361F794D7C00D090D7 /* test.html in Resources */,
 				274AA3EE1F776C950058E21A /* fetch.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -961,8 +971,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243AFE341F790FF000D090D7 /* FetchBot.swift in Sources */,
 				274AA3C01F7694660058E21A /* AutoFech.xcdatamodeld in Sources */,
 				274AA3EA1F775ECF0058E21A /* NetdiskModel.xcdatamodeld in Sources */,
+				243AFE321F790FAA00D090D7 /* BackgroundFetch.swift in Sources */,
 				274AA3BD1F7694660058E21A /* ViewController.swift in Sources */,
 				274AA3BB1F7694660058E21A /* AppDelegate.swift in Sources */,
 				274AA3F41F7773820058E21A /* CoreDataExtension.swift in Sources */,

@@ -18,3 +18,14 @@ struct LoginResopnse : Codable {
     var name : String
     var info : String
 }
+
+struct MovieAddRespnse : Codable {
+    var movieID : String
+}
+
+struct MovieModal : Codable {
+    var title : String
+    var page : String
+    var pics : [String]
+    var downloads : [String]
+}

@@ -114,8 +114,20 @@ function getDownloadLinks(parentDode) {
     if (gm != null && gm.length > 0) {
         for (var j = 0; j < gm.length; j++) {
             var link = gm[j];
-            validateA.push(link.innerHTML);
-            //            alert(link.innerHTML);
+            var nodes = link.childElementCount;
+            if (nodes.length <= 0) {
+                validateA.push(link.innerHTML);
+            } else {
+//                var aTags = link.getElementsByTagName('a');
+//                if (aTags != null && aTags.length > 0) {
+//                    for (var k = 0; k < aTags.length; k++) {
+//                        var aTag = aTags[k];
+//                        if (aTag.innerHTML.indexOf("http://") >= 0) {
+//                            validateA.push(aTag.innerHTML);
+//                        }
+//                    }
+//                }
+            }
         }
     }
     
@@ -125,8 +137,8 @@ function getDownloadLinks(parentDode) {
             var link = aks[j];
             var aLink = link.getElementsByTagName('a');
             var nodes = aLink.childElementCount;
-            if (!(aLink != null && aLink.length > 0) && nodes <= 0) {
-                if (link.innerHTML.indexOf("http://") >= 0) {
+            if (!(aLink != null && aLink.length > 0) ) {
+                if (link.innerHTML.indexOf("http://") >= 0 && nodes <= 0) {
                     validateA.push(link.innerHTML);
                     //                    alert(link.innerHTML);
                 }
@@ -181,10 +193,10 @@ function getPassword(parentDode) {
             var brBreakIndex = sub.indexOf(brText);
             if (brBreakIndex >= 0) {
                 var code = sub.substring(pLength, brBreakIndex);
-                return code;
+                return code.replace(/:/g, '').replace(/\s/g, '');
             }   else    {
                 var code = sub.substring(pLength);
-                return code;
+                return code.replace(/:/g, '').replace(/\s/g, '');
             }
         }
     }

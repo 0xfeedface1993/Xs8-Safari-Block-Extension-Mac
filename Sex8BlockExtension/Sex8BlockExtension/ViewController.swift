@@ -10,6 +10,7 @@ import Cocoa
 
 let StopFetchName = NSNotification.Name.init("stopFetching")
 let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")
+let UploadName = NSNotification.Name.init("UploadName")
 
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
@@ -77,7 +78,7 @@ class ViewController: NSViewController {
     
     @objc func stopFetch() {
         extract.tag = 112
-        extract.title = "抓取数据"
+        extract.title = "提取"
         self.extenalText.stringValue = ""
     }
     
@@ -91,6 +92,17 @@ class ViewController: NSViewController {
     
     @objc func unselect() {
         
+    }
+    @IBOutlet weak var upload: NSButton!
+    
+    @IBAction func uploadAction(_ sender: Any) {
+        if upload.title == "上传" {
+            upload.title = "停止"
+            NotificationCenter.default.post(name: UploadName, object: nil)
+        }   else    {
+            upload.title = "上传"
+            NotificationCenter.default.post(name: UploadName, object: 444)
+        }
     }
     
     @objc func showExtennalText(notification: NSNotification?) {
