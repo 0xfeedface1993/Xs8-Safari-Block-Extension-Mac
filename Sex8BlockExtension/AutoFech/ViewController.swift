@@ -31,7 +31,7 @@ class ViewController: NSViewController {
             return ""
         }
     }()
-    let bot = FetchBot(start: 1, offset: 3)
+    let bot = FetchBot(start: 1, offset: 2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -206,7 +206,7 @@ struct ListItem : Equatable {
 // MARK: - FetchBot Delegate
 extension ViewController : FetchBotDelegate {
     func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
-        let message = "正在接收 \(index)/\(bot.count) 项数据..."
+        let message = "正在接收 \(index) 项数据..."
         print(message)
     }
     
@@ -218,5 +218,6 @@ extension ViewController : FetchBotDelegate {
     func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
         let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
         print(message)
+        print(contents)
     }
 }

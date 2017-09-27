@@ -15,6 +15,7 @@ enum FetchBoard : Int {
     case netDisk = 103
 }
 
+/// 列表页面链接信息
 struct FetchURL : Equatable {
     var site : String
     var board : FetchBoard
@@ -22,8 +23,6 @@ struct FetchURL : Equatable {
     var maker : (FetchURL) -> String
     var url : URL {
         get {
-            //            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
-            //            let temp = URL(string: "http://\(site)")!;
             return URL(string: maker(self))!;
         }
     }
@@ -33,6 +32,7 @@ struct FetchURL : Equatable {
     }
 }
 
+/// 抓取内容页面信息模型
 struct ContentInfo {
     var title : String
     var msk : String
@@ -54,47 +54,50 @@ struct ContentInfo {
     }
 }
 
+/// 内容信息正则规则选项
 struct InfoRuleOption {
+    /// 是否有码
     static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【是否有码】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    /// 影片时间
     static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片时间】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：])+")
+    /// 影片大小
     static let size = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片大小】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    /// 影片格式
     static let format = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片格式】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    /// 解压密码
     static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【解壓密碼】)|(【解压密码】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    /// 下载链接
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: false, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
+    /// 图片链接
     static let imageLink = ParserTagRule(tag: "img", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href")], inTagRegexString: " \\w+=\"\\w+\" \\w+=\"\\w+\\(\\w+, \\w+\\.\\w+, \\d+, \\d+, \\d+\\)\" \\w+=\"zoom\" \\w+=\"\\w+://[\\w\\.]+[/\\w\\-\\.]+\" \\w+=\"\\w+\\(\\w+\\)\" \\w+=\"\\d+\" \\w+=\"\\d+\" \\w+=\"\\w?\" /", hasSuffix: false, innerRegex: nil)
+    /// 主内容标签
     static let main = ParserTagRule(tag: "td", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"t_f\" \\w+=\"postmessage_\\d+\"", hasSuffix: true, innerRegex: nil)
 }
 
+/// 列表页面正则规则选项
 struct PageRuleOption {
+    /// 内容页面链接
     static let link = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "href")], inTagRegexString: " href=\"\\w+(\\-[\\d]+)+.\\w+\" \\w+=\"\\w+\\(\\w+\\)\" class=\"s xst\"", hasSuffix: true, innerRegex: nil)
 }
 
-
 /// 自动抓取机器人
 class FetchBot {
+    let backgroundQueue = DispatchQueue.global()
+    let backgroundGroup = DispatchGroup()
     var delegate : FetchBotDelegate?
     var contentDatas = [ContentInfo]()
-    var runTasks = [FetchURL]() {
-        didSet {
-            if runTasks.count + badTasks.count == self.count, self.count != 0 {
-                print("success \(runTasks.count), faild \(badTasks.count), count \(self.count), spend time: \(Date().timeIntervalSince(startTime!)) s")
-                delegate?.bot(self, didFinishedContents: contentDatas, failedLink: badTasks)
-            }
-        }
-    }
-    var badTasks = [FetchURL]() {
-        didSet {
-            if runTasks.count + badTasks.count == self.count, self.count != 0 {
-                print("success \(runTasks.count), faild \(badTasks.count), count \(self.count), spend time: \(Date().timeIntervalSince(startTime!)) s")
-                delegate?.bot(self, didFinishedContents: contentDatas, failedLink: badTasks)
-            }
-        }
-    }
+    var runTasks = [FetchURL]()
+    var badTasks = [FetchURL]()
     var startPage: UInt = 1
     var pageOffset: UInt = 0
     var count : Int = 0
     var startTime : Date?
     
+    /// 初始化方法
+    ///
+    /// - Parameters:
+    ///   - start: 开始页面，大于1
+    ///   - offset: 结束页面 = start + offset
     init(start: UInt = 1, offset: UInt = 0) {
         self.startPage = start > 0 ? start:1
         self.pageOffset = offset
@@ -107,62 +110,76 @@ class FetchBot {
         count = 0
         contentDatas.removeAll()
         delegate?.bot(didStartBot: self)
-        fetchNetDiskPageLinkAndTitle(start: startPage, offset: pageOffset)
+        fetchGroup(start: startPage, offset: pageOffset)
     }
     
-    private func fetchNetDiskPageLinkAndTitle(start: UInt, offset: UInt) {
-        var pages = [FetchURL]()
+    func fetchGroup(start: UInt, offset: UInt) {
         let maker : (FetchURL) -> String = { (s) -> String in
             "http://\(s.site)/forum-\(s.board.rawValue)-\(s.page).html"
         }
+        let topQueue = DispatchQueue(label: "com.ascp.top")
+        let group = DispatchGroup()
         
         for i in start...(start + offset) {
             let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: Int(i), maker: maker)
-            pages.append(fetchURL)
+            let request = browserRequest(url: fetchURL.url)
+            
+            topQueue.async(group: group, execute: DispatchWorkItem(block: {
+                let topSem = DispatchSemaphore(value: 0)
+                
+                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, err) in
+                    guard let result = data, let html = String(data: result, encoding: .utf8) else {
+                        if let e = err {
+                            print(e)
+                        }
+                        self.badTasks.append(fetchURL)
+                        topSem.signal()
+                        return
+                    }
+                    
+                    if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
+                        print("---------- robot detected! ----------")
+                        self.badTasks.append(fetchURL)
+                        topSem.signal()
+                        return
+                    }
+                    
+                    let rule = PageRuleOption.link
+                    self.runTasks.append(fetchURL)
+                    
+                    print("---------- 开始解析 \(i) 页面 ----------")
+                    
+                    if let pages = parse(string:html, rule: rule) {
+                        let contentQueue = DispatchQueue(label: "com.ascp.content")
+                        let contentGroup = DispatchGroup()
+
+                        print("+++ 解析到 \(pages.count) 个内容链接")
+
+                        for (offset, page) in pages.enumerated() {
+                            let title = page.innerHTML
+                            guard let href = page.attributes["href"] else {
+                                continue
+                            }
+                            self.count += 1
+                            contentQueue.async(group: contentGroup, execute: DispatchWorkItem(block: {
+                                self.fetchMainContent(title: title, link: href, page: fetchURL.page, index: offset)
+                            }))
+                        }
+
+                        contentGroup.notify(queue: contentQueue, execute: {
+                            topSem.signal()
+                        })
+                    }
+                })
+                
+                task.resume()
+                
+                topSem.wait()
+            }))
         }
         
-        pages.enumerated().forEach { (index, fetchURL) in
-            var request = URLRequest(url: fetchURL.url)
-            request.httpMethod = "GET"
-            request.addValue("zh-CN,zh;q=0.8,en;q=0.6", forHTTPHeaderField: "Accept-Language")
-            request.addValue("Refer", forHTTPHeaderField: "http://xbluntan.net")
-            request.addValue("1", forHTTPHeaderField: "Upgrade-Insecure-Requests")
-            request.addValue("max-age=0", forHTTPHeaderField: "Cache-Control")
-            request.addValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
-            request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36", forHTTPHeaderField: "User-Agent")
-            request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", forHTTPHeaderField: "Accept")
-            
-            let task = URLSession.shared.dataTask(with: request) { (data, response, err) in
-                guard let result = data, let html = String(data: result, encoding: .utf8) else {
-                    if let e = err {
-                        print(e)
-                    }
-                    self.badTasks.append(fetchURL)
-                    return
-                }
-                
-                if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
-                    print("---------- robot detected! ----------")
-                    self.badTasks.append(fetchURL)
-                    return
-                }
-                
-                let rule = PageRuleOption.link
-                if let pages = parse(string:html, rule: rule) {
-                    for page in pages {
-                        let title = page.innerHTML
-                        guard let href = page.attributes["href"] else {
-                            continue
-                        }
-                        self.count += 1
-                        self.fetchMainContent(title: title, link: href, page: fetchURL.page, index: index)
-//                        print("find link: \(href)")
-                    }
-                }
-                //self.runTasks.remove(at: self.runTasks.index(of: task))
-                self.runTasks.append(fetchURL)
-            }
-            task.resume()
+        group.notify(queue: topQueue) {
+            self.delegate?.bot(self, didFinishedContents: self.contentDatas, failedLink: self.badTasks)
         }
     }
     
@@ -171,15 +188,8 @@ class FetchBot {
             "http://\(s.site)/\(link)"
         }
         let linkURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: page, maker: linkMaker)
-        var request = URLRequest(url: linkURL.url)
-        request.httpMethod = "GET"
-        request.addValue("zh-CN,zh;q=0.8,en;q=0.6", forHTTPHeaderField: "Accept-Language")
-        request.addValue("Refer", forHTTPHeaderField: "http://xbluntan.net")
-        request.addValue("1", forHTTPHeaderField: "Upgrade-Insecure-Requests")
-        request.addValue("max-age=0", forHTTPHeaderField: "Cache-Control")
-        request.addValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
-        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36", forHTTPHeaderField: "User-Agent")
-        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        let request = browserRequest(url: linkURL.url)
+        let sem = DispatchSemaphore(value: 0)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, err) in
             guard let result = data, let html = String(data: result, encoding: .utf8) else {
@@ -197,6 +207,7 @@ class FetchBot {
             }
             
             let rule = InfoRuleOption.main
+            print("++++ \(page)页\(index)项 parser: \(link)")
             if let mainContent = parse(string:html, rule: rule)?.first?.innerHTML {
                 var info = ContentInfo()
                 info.title =  title
@@ -242,12 +253,14 @@ class FetchBot {
                 }
                 
                 self.contentDatas.append(info)
-                self.delegate?.bot(self, didLoardContent: info, atIndexPath: index)
+                self.delegate?.bot(self, didLoardContent: info, atIndexPath: self.contentDatas.count)
             }
             self.runTasks.append(linkURL)
+            sem.signal()
         }
         task.resume()
-//        runTasks.append(task)
+        
+        sem.wait()
     }
 }
 
@@ -255,5 +268,23 @@ protocol FetchBotDelegate {
     func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int)
     func bot(didStartBot bot: FetchBot)
     func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL])
+}
+
+
+/// 模仿浏览器URL请求
+///
+/// - Parameter url: URL对象
+/// - Returns: URLRequest请求对象
+func browserRequest(url : URL) -> URLRequest {
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    request.addValue("zh-CN,zh;q=0.8,en;q=0.6", forHTTPHeaderField: "Accept-Language")
+    request.addValue("Refer", forHTTPHeaderField: "http://xbluntan.net")
+    request.addValue("1", forHTTPHeaderField: "Upgrade-Insecure-Requests")
+    request.addValue("max-age=0", forHTTPHeaderField: "Cache-Control")
+    request.addValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
+    request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36", forHTTPHeaderField: "User-Agent")
+    request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", forHTTPHeaderField: "Accept")
+    return request
 }
 

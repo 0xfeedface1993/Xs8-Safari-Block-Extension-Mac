@@ -62,7 +62,7 @@ func parse(string: String, rule: ParserTagRule) -> [ParserResult]? {
     do {
         let tagRegex = try NSRegularExpression(pattern: rule.regex, options: .caseInsensitive)
         let result = tagRegex.matches(in: string, options: NSRegularExpression.MatchingOptions.init(rawValue: 0), range: NSMakeRange(0, (string as NSString).length))
-        let tagPrefixPrint = rule.isTagPaser ? "+++ tag +++":"--- no tag ---"
+//        let tagPrefixPrint = rule.isTagPaser ? "+++ tag +++":"--- no tag ---"
         if result.count > 0 {
             for checkingRes in result {
                 var range = checkingRes.range
