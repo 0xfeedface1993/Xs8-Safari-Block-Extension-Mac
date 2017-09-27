@@ -31,7 +31,7 @@ class ViewController: NSViewController {
             return ""
         }
     }()
-    let bot = FetchBot(start: 1, offset: 10)
+    let bot = FetchBot(start: 1, offset: 3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,8 @@ class ViewController: NSViewController {
 //        let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: 1)
 //        let command = Command(type: .page, script: "login();", url: fetchURL.url, completion: nil)
 //        commands.append(command)
-//        executeCommand()  
+//        executeCommand()
+        bot.delegate = self
         bot.start()
     }
 
@@ -186,30 +187,6 @@ extension ViewController : WKNavigationDelegate, WKScriptMessageHandler {
     }
 }
 
-
-/// struct
-enum FetchBoard : Int {
-    case netDisk = 103
-}
-
-struct FetchURL : Equatable {
-    var site : String
-    var board : FetchBoard
-    var page : Int
-    var maker : (FetchURL) -> String
-    var url : URL {
-        get {
-//            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
-//            let temp = URL(string: "http://\(site)")!;
-            return URL(string: maker(self))!;
-        }
-    }
-    
-    static func ==(lhs: FetchURL, rhs: FetchURL) -> Bool {
-        return lhs.url == rhs.url
-    }
-}
-
 struct ListItem : Equatable {
     var title : String
     var href : String
@@ -222,5 +199,24 @@ struct ListItem : Equatable {
     
     static func ==(lhs: ListItem, rhs: ListItem) -> Bool {
         return lhs.title == rhs.title && lhs.href == rhs.href
+    }
+}
+
+
+// MARK: - FetchBot Delegate
+extension ViewController : FetchBotDelegate {
+    func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
+        let message = "正在接收 \(index)/\(bot.count) 项数据..."
+        print(message)
+    }
+    
+    func bot(didStartBot bot: FetchBot) {
+        let message = "正在加载链接数据..."
+        print(message)
+    }
+    
+    func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
+        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
+        print(message)
     }
 }

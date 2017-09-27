@@ -9,6 +9,30 @@
 import Foundation
 
 // struct
+
+/// struct
+enum FetchBoard : Int {
+    case netDisk = 103
+}
+
+struct FetchURL : Equatable {
+    var site : String
+    var board : FetchBoard
+    var page : Int
+    var maker : (FetchURL) -> String
+    var url : URL {
+        get {
+            //            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
+            //            let temp = URL(string: "http://\(site)")!;
+            return URL(string: maker(self))!;
+        }
+    }
+    
+    static func ==(lhs: FetchURL, rhs: FetchURL) -> Bool {
+        return lhs.url == rhs.url
+    }
+}
+
 struct ContentInfo {
     var title : String
     var msk : String
@@ -48,28 +72,21 @@ struct PageRuleOption {
 
 /// 自动抓取机器人
 class FetchBot {
+    var delegate : FetchBotDelegate?
     var contentDatas = [ContentInfo]()
     var runTasks = [FetchURL]() {
         didSet {
-            if runTasks.count + badTasks.count == self.count {
+            if runTasks.count + badTasks.count == self.count, self.count != 0 {
                 print("success \(runTasks.count), faild \(badTasks.count), count \(self.count), spend time: \(Date().timeIntervalSince(startTime!)) s")
-//                print(contentDatas)
-//                for item in contentDatas {
-//                    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-//                    print(item)
-//                }
+                delegate?.bot(self, didFinishedContents: contentDatas, failedLink: badTasks)
             }
         }
     }
     var badTasks = [FetchURL]() {
         didSet {
-            if runTasks.count + badTasks.count == self.count {
+            if runTasks.count + badTasks.count == self.count, self.count != 0 {
                 print("success \(runTasks.count), faild \(badTasks.count), count \(self.count), spend time: \(Date().timeIntervalSince(startTime!)) s")
-//                print(contentDatas)
-//                for item in contentDatas {
-//                    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-//                    print(item)
-//                }
+                delegate?.bot(self, didFinishedContents: contentDatas, failedLink: badTasks)
             }
         }
     }
@@ -79,12 +96,17 @@ class FetchBot {
     var startTime : Date?
     
     init(start: UInt = 1, offset: UInt = 0) {
-        self.startPage = start
+        self.startPage = start > 0 ? start:1
         self.pageOffset = offset
     }
     
     func start() {
         startTime = Date()
+        runTasks.removeAll()
+        badTasks.removeAll()
+        count = 0
+        contentDatas.removeAll()
+        delegate?.bot(didStartBot: self)
         fetchNetDiskPageLinkAndTitle(start: startPage, offset: pageOffset)
     }
     
@@ -99,7 +121,7 @@ class FetchBot {
             pages.append(fetchURL)
         }
         
-        pages.forEach { (fetchURL) in
+        pages.enumerated().forEach { (index, fetchURL) in
             var request = URLRequest(url: fetchURL.url)
             request.httpMethod = "GET"
             request.addValue("zh-CN,zh;q=0.8,en;q=0.6", forHTTPHeaderField: "Accept-Language")
@@ -133,7 +155,7 @@ class FetchBot {
                             continue
                         }
                         self.count += 1
-                        self.fetchMainContent(title: title, link: href, page: fetchURL.page)
+                        self.fetchMainContent(title: title, link: href, page: fetchURL.page, index: index)
 //                        print("find link: \(href)")
                     }
                 }
@@ -144,7 +166,7 @@ class FetchBot {
         }
     }
     
-    private func fetchMainContent(title: String, link: String, page: Int) {
+    private func fetchMainContent(title: String, link: String, page: Int, index: Int) {
         let linkMaker : (FetchURL) -> String = { (s) -> String in
             "http://\(s.site)/\(link)"
         }
@@ -220,6 +242,7 @@ class FetchBot {
                 }
                 
                 self.contentDatas.append(info)
+                self.delegate?.bot(self, didLoardContent: info, atIndexPath: index)
             }
             self.runTasks.append(linkURL)
         }
@@ -227,3 +250,10 @@ class FetchBot {
 //        runTasks.append(task)
     }
 }
+
+protocol FetchBotDelegate {
+    func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int)
+    func bot(didStartBot bot: FetchBot)
+    func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL])
+}
+
