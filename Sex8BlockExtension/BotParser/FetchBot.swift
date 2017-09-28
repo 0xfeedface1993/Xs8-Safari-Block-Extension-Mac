@@ -9,6 +9,20 @@
 import Foundation
 
 // struct
+struct ListItem : Equatable {
+    var title : String
+    var href : String
+    var previewImages : [String]
+    init(data: [String:Any]) {
+        title = data["title"] as? String ?? ""
+        href = data["href"] as? String ?? ""
+        previewImages = data["images"] as? [String] ?? []
+    }
+    
+    static func ==(lhs: ListItem, rhs: ListItem) -> Bool {
+        return lhs.title == rhs.title && lhs.href == rhs.href
+    }
+}
 
 /// struct
 enum FetchBoard : Int {
@@ -117,6 +131,10 @@ class FetchBot {
 //        DispatchQueue.global().async {
 //            self.serialFetch(start: self.startPage, offset: self.pageOffset)
 //        }
+    }
+    
+    func stop() {
+        
     }
     
     private func serialFetch(start: UInt, offset: UInt) {
