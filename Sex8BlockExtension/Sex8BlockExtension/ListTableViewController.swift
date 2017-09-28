@@ -45,7 +45,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return ""
         }
     }()
-    let bot = FetchBot(start: 15, offset: 0)
+    let bot = FetchBot(start: 1, offset: 30)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -73,7 +73,7 @@ struct ContentInfo {
 /// 内容信息正则规则选项
 struct InfoRuleOption {
     /// 是否有码
-    static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【是否有码】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【是否有码】)|(【有碼無碼】)|(【影片说明】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
     /// 影片时间
     static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片时间】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：])+")
     /// 影片大小
