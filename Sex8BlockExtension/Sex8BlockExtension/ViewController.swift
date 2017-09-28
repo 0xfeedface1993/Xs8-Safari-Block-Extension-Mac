@@ -117,3 +117,58 @@ extension ViewController {
     
 }
 
+//// MARK: - FetchBot Delegate
+//extension ViewController : FetchBotDelegate {
+//    func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
+//        let message = "正在接收 \(index) 项数据..."
+//        print(message)
+//    }
+//    
+//    func bot(didStartBot bot: FetchBot) {
+//        let message = "正在加载链接数据..."
+//        print(message)
+//    }
+//    
+//    func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
+//        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
+//        print(message)
+//        
+//        let webservice = Webservice.share
+//        let encoder = JSONEncoder()
+//        for (index, data) in contents.enumerated() {
+//            let links = data.downloafLink
+//            let pics = data.imageLink
+//            let title = data.title
+//            let page = data.page
+//            let dic = MovieModal(title: title, page: page, pics: pics, downloads: links)
+//            do {
+//                let json = try encoder.encode(dic)
+//                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
+//                    if index < contents.count - 1 {
+//                        DispatchQueue.main.async {
+//                            //                            self.showProgress(text: "已提交第 \(index)/\(self.datas.count) 项数据...")
+//                            print("已提交第 \(index)/\(contents.count) 项数据...")
+//                        }
+//                    }   else    {
+//                        DispatchQueue.main.async {
+//                            //                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
+//                            print("已提交 \(contents.count) 项数据")
+//                        }
+//                    }
+//                    guard let message = result else {
+//                        if let e = err {
+//                            print("error: \(e)")
+//                        }
+//                        return
+//                    }
+//                    print("movieID: \(message.movieID)")
+//                })
+//                try webservice.read(caller: caller)
+//            } catch {
+//                print("upload faild: json error \(error)")
+//            }
+//        }
+//    }
+//}
+
+

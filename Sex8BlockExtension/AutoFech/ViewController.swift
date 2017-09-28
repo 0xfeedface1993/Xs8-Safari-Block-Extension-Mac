@@ -32,6 +32,7 @@ class ViewController: NSViewController {
         }
     }()
     let bot = FetchBot(start: 1, offset: 2)
+    var startTime : Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,35 +174,7 @@ extension ViewController : WKNavigationDelegate, WKScriptMessageHandler {
             webview.load(request)
         }
     }
-    
-    enum CommandType {
-        case page
-        case detail
-    }
-    
-    struct Command {
-        var type : CommandType
-        var script : String
-        var url : URL
-        var completion : ((Any?) -> ())?
-    }
 }
-
-struct ListItem : Equatable {
-    var title : String
-    var href : String
-    var previewImages : [String]
-    init(data: [String:Any]) {
-        title = data["title"] as? String ?? ""
-        href = data["href"] as? String ?? ""
-        previewImages = data["images"] as? [String] ?? []
-    }
-    
-    static func ==(lhs: ListItem, rhs: ListItem) -> Bool {
-        return lhs.title == rhs.title && lhs.href == rhs.href
-    }
-}
-
 
 // MARK: - FetchBot Delegate
 extension ViewController : FetchBotDelegate {
@@ -212,12 +185,48 @@ extension ViewController : FetchBotDelegate {
     
     func bot(didStartBot bot: FetchBot) {
         let message = "正在加载链接数据..."
+        startTime = Date()
         print(message)
     }
     
     func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
-        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
+        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败, spend time: \(Date().timeIntervalSince(startTime))"
         print(message)
-        print(contents)
+        
+        let webservice = Webservice.share
+        let encoder = JSONEncoder()
+        for (index, data) in contents.enumerated() {
+            let links = data.downloafLink
+            let pics = data.imageLink
+            let title = data.title
+            let page = data.page
+            let dic = MovieModal(title: title, page: page, pics: pics, downloads: links)
+            do {
+                let json = try encoder.encode(dic)
+                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
+                    if index < contents.count - 1 {
+                        DispatchQueue.main.async {
+//                            self.showProgress(text: "已提交第 \(index)/\(self.datas.count) 项数据...")
+                            print("已提交第 \(index)/\(contents.count) 项数据...")
+                        }
+                    }   else    {
+                        DispatchQueue.main.async {
+//                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
+                            print("已提交 \(contents.count) 项数据")
+                        }
+                    }
+                    guard let message = result else {
+                        if let e = err {
+                            print("error: \(e)")
+                        }
+                        return
+                    }
+                    print("movieID: \(message.movieID)")
+                })
+                try webservice.read(caller: caller)
+            } catch {
+                print("upload faild: json error \(error)")
+            }
+        }
     }
 }

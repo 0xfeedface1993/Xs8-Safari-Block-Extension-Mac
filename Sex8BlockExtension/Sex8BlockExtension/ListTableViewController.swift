@@ -17,48 +17,48 @@ let ShowImagesName = NSNotification.Name(rawValue: "showImages")
 let ShowDonwloadAddressName = NSNotification.Name(rawValue: "showAddress")
 let PageDataMessage = "pageData"
 
-enum FetchBoard : Int {
-    case netDisk = 103
-}
+//enum FetchBoard : Int {
+//    case netDisk = 103
+//}
+//
+//struct FetchURL {
+//    var site : String
+//    var board : FetchBoard
+//    var page : Int
+//    var url : URL {
+//        get {
+//            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
+//            return temp
+//        }
+//    }
+//}
 
-struct FetchURL {
-    var site : String
-    var board : FetchBoard
-    var page : Int
-    var url : URL {
-        get {
-            let temp = URL(string: "http://\(site)/forum-\(board.rawValue)-\(page).html")!;
-            return temp
-        }
-    }
-}
+//struct ListItem : Equatable {
+//    var title : String
+//    var href : String
+//    var previewImages : [String]
+//    init(data: [String:Any]) {
+//        title = data["title"] as? String ?? ""
+//        href = data["href"] as? String ?? ""
+//        previewImages = data["images"] as? [String] ?? []
+//    }
+//
+//    static func ==(lhs: ListItem, rhs: ListItem) -> Bool {
+//        return lhs.title == rhs.title && lhs.href == rhs.href
+//    }
+//}
 
-struct ListItem : Equatable {
-    var title : String
-    var href : String
-    var previewImages : [String]
-    init(data: [String:Any]) {
-        title = data["title"] as? String ?? ""
-        href = data["href"] as? String ?? ""
-        previewImages = data["images"] as? [String] ?? []
-    }
-    
-    static func ==(lhs: ListItem, rhs: ListItem) -> Bool {
-        return lhs.title == rhs.title && lhs.href == rhs.href
-    }
-}
-
-enum CommandType {
-    case page
-    case detail
-}
-
-struct Command {
-    var type : CommandType
-    var script : String
-    var url : URL
-    var completion : ((Any?) -> ())?
-}
+//enum CommandType {
+//    case page
+//    case detail
+//}
+//
+//struct Command {
+//    var type : CommandType
+//    var script : String
+//    var url : URL
+//    var completion : ((Any?) -> ())?
+//}
 
 class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableview: NSTableView!
@@ -91,6 +91,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return ""
         }
     }()
+    let bot = FetchBot(start: 1, offset: 2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -450,26 +451,30 @@ extension ListTableViewController : WKNavigationDelegate, WKScriptMessageHandler
     
     func loadList() {
         print("start fatching!")
-        list.removeAll()
-        let maxPage = 2
-        for i in 1...maxPage {
-            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i)
-            let command = Command(type: .page, script: "readNetDiskList();", url: fetchURL.url, completion: { (result) in
-                self.showProgress(text: "正在获取第\(i)页数据...")
-                if let data = result as? [[String:Any]] {
-                    for part in data {
-                        let item = ListItem(data: part)
-                        self.list.append(item)
-                    }
-                    //                    print(self.list)
-                }
-                if i == maxPage {
-                    self.loadPageData()
-                }
-            })
-            commands.append(command)
-        }
-        executeCommand()
+//        list.removeAll()
+//        let maxPage = 2
+//        for i in 1...maxPage {
+//            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i, maker: {
+//                "http://\($0.site)/forum-\($0.board.rawValue)-\($0.page).html"
+//            })
+//            let command = Command(type: .page, script: "readNetDiskList();", url: fetchURL.url, completion: { (result) in
+//                self.showProgress(text: "正在获取第\(i)页数据...")
+//                if let data = result as? [[String:Any]] {
+//                    for part in data {
+//                        let item = ListItem(data: part)
+//                        self.list.append(item)
+//                    }
+//                    //                    print(self.list)
+//                }
+//                if i == maxPage {
+//                    self.loadPageData()
+//                }
+//            })
+//            commands.append(command)
+//        }
+//        executeCommand()
+        bot.delegate = self
+        bot.start()
     }
     
     func loadPageData() {
@@ -514,3 +519,33 @@ extension ListTableViewController : WKNavigationDelegate, WKScriptMessageHandler
         NotificationCenter.default.post(name: ShowExtennalTextName, object: text)
     }
 }
+
+// MARK: - FetchBot Delegate
+extension ListTableViewController : FetchBotDelegate {
+    func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
+        let message = "正在接收 \(index) 项数据..."
+        print(message)
+        DataBase.share.saveFetchBotDownloadLink(data: content) { (state) in
+            switch state {
+            case .success:
+                print("saveOK: \(content.title)")
+                break
+            case .failed:
+                print("save faild: \(content.title), link: \(content.page)")
+                break
+            }
+        }
+    }
+    
+    func bot(didStartBot bot: FetchBot) {
+        let message = "正在加载链接数据..."
+        print(message)
+    }
+    
+    func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
+        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
+        print(message)
+        uploadServer(notification: nil)
+    }
+}
+

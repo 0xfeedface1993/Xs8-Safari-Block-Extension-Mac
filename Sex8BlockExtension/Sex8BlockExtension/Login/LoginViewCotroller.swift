@@ -114,16 +114,3 @@ class LoginViewCotroller: NSViewController {
         }
     }
 }
-
-extension Dictionary {
-    func postParams() -> String {
-        if let dic = self as? [String:String] {
-            var paras = ""
-            dic.forEach({ (item) in
-                paras += "\(item.key)=\(item.value)&"
-            })
-            return paras
-        }
-        return ""
-    }
-}
