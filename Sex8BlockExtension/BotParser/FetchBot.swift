@@ -85,7 +85,7 @@ struct InfoRuleOption {
     /// 下载链接
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: false, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 图片链接
-    static let imageLink = ParserTagRule(tag: "img", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href")], inTagRegexString: " \\w+=\"\\w+\" \\w+=\"\\w+\\(\\w+, \\w+\\.\\w+, \\d+, \\d+, \\d+\\)\" \\w+=\"zoom\" \\w+=\"\\w+://[\\w\\.]+[/\\w\\-\\.]+\" \\w+=\"\\w+\\(\\w+\\)\" \\w+=\"\\d+\" \\w+=\"\\d+\" \\w+=\"\\w?\" /", hasSuffix: false, innerRegex: nil)
+    static let imageLink = ParserTagRule(tag: "img", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "(( \\w+=\"[\\w+\\(,\\)\\.\\s\\-]+\")|( \\w+=\"[\\w+:/\\.\\)\\(:;\\s\\-]*?\")){6,} /", hasSuffix: false, innerRegex: nil)
     /// 主内容标签
     static let main = ParserTagRule(tag: "td", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"t_f\" \\w+=\"postmessage_\\d+\"", hasSuffix: true, innerRegex: nil)
 }
@@ -131,6 +131,7 @@ class FetchBot {
 //        DispatchQueue.global().async {
 //            self.serialFetch(start: self.startPage, offset: self.pageOffset)
 //        }
+//        fetchMainContent(title: "aaaaaa", link: "thread-8748151-1-15.html", page: 0, index: 0)
     }
     
     func stop() {

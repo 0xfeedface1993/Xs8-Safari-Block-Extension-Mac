@@ -199,6 +199,10 @@ class DataBase {
         netdisk.title = data.title
         netdisk.passwod = data.passwod
         netdisk.pageurl = data.page
+        netdisk.msk = data.msk
+        netdisk.time = data.time
+        netdisk.format = data.format
+        netdisk.size = data.size
         netdisk.pic = nil
         netdisk.link = nil
         

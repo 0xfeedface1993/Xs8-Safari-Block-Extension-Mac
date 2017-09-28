@@ -45,7 +45,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return ""
         }
     }()
-    let bot = FetchBot(start: 1, offset: 1)
+    let bot = FetchBot(start: 15, offset: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,10 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let coloums = [[TitleKey:"标题", IdenitfierKey:"title"],
                        [TitleKey:"解压密码", IdenitfierKey:"password"],
                        [TitleKey:"文件名", IdenitfierKey:"filename"],
-                       [TitleKey:"创建时间", IdenitfierKey:"careatetime"]]
+                       [TitleKey:"是否有码", IdenitfierKey:"msk"],
+                       [TitleKey:"时间", IdenitfierKey:"time"],
+                       [TitleKey:"格式", IdenitfierKey:"format"],
+                       [TitleKey:"大小", IdenitfierKey:"size"]]
         for item in coloums {
             let coloum = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: item[IdenitfierKey]!))
             coloum.title = item[TitleKey]!
@@ -95,18 +98,25 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return
         }
         let encoder = JSONEncoder()
-        for (index, data) in datas.enumerated() {
+        var count = 0
+        for (_, data) in datas.enumerated() {
             let links = (data.link?.allObjects as? [Link] ?? []).map({ $0.link! })
             let pics = (data.pic?.allObjects as? [Pic] ?? []).map({ $0.pic! })
             let title = data.title ?? UUID().uuidString
             let page = data.pageurl ?? ""
-            let dic = MovieModal(title: title, page: page, pics: pics, downloads: links)
+            let msk = data.msk ?? ""
+            let time = data.time ?? ""
+            let format = data.format ?? ""
+            let size = data.size ?? ""
+            let dic = MovieModal(title: title, page: page, pics: pics, msk: msk, time: time, format: format, size: size, downloads: links)
+            
             do {
                 let json = try encoder.encode(dic)
                 let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
-                    if index < self.datas.count - 1 {
+                    count += 1
+                    if count < self.datas.count {
                         DispatchQueue.main.async {
-                            self.showProgress(text: "已提交第 \(index)/\(self.datas.count) 项数据...")
+                            self.showProgress(text: "已提交第 \(count)/\(self.datas.count) 项数据...")
                         }
                     }   else    {
                         DispatchQueue.main.async {
@@ -140,10 +150,10 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 return datas[row].title
                 
             case "password":
-                return datas[row].passwod
+                return datas[row].passwod ?? "无密码"
                 
             case "filename":
-                return datas[row].fileName
+                return datas[row].fileName ?? "未知"
                 
             case "careatetime":
                 let calender = Calendar.current
@@ -153,7 +163,14 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                     let cool = "\(comp.year!)/\(comp.month!)/\(comp.day!) \(comp.hour!):\(comp.minute!)"
                     return cool
                 }
-                
+            case "msk":
+                return datas[row].msk ?? "未知"
+            case "time":
+                return datas[row].time ?? "未知"
+            case "format":
+                return datas[row].format ?? "未知"
+            case "size":
+                return datas[row].size ?? "未知"
             default:
                 break
             }
@@ -173,6 +190,18 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 break
             case "filename":
                datas[row].fileName = object as? String
+                break
+            case "msk":
+                datas[row].msk = object as? String
+                break
+            case "time":
+                datas[row].time = object as? String
+                break
+            case "format":
+                datas[row].format = object as? String
+                break
+            case "size":
+                datas[row].size = object as? String
                 break
             default:
                 break
@@ -395,7 +424,6 @@ extension ListTableViewController : FetchBotDelegate {
         let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
         print(message)
         
-        uploadServer(notification: nil)
         isFetching = false
         DispatchQueue.main.async {
             self.showProgress(text: message)

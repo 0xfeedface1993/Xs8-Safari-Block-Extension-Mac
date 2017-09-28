@@ -29,6 +29,10 @@ struct MovieModal : Codable {
     var title : String
     var page : String
     var pics : [String]
+    var msk : String
+    var time : String
+    var format : String
+    var size : String
     var downloads : [String]
 }
 

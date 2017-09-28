@@ -197,6 +197,7 @@
 		242B181C1F7C75A4007963FE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		242B18261F7C7AD5007963FE /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
 		242B18271F7C7AD5007963FE /* DOMParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOMParser.swift; sourceTree = "<group>"; };
+		242B182E1F7D3BFF007963FE /* NetdiskModel -MoreContent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel -MoreContent.xcdatamodel"; sourceTree = "<group>"; };
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
@@ -1660,6 +1661,7 @@
 		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				242B182E1F7D3BFF007963FE /* NetdiskModel -MoreContent.xcdatamodel */,
 				24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */,
 				2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */,
 				2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */,
@@ -1667,7 +1669,7 @@
 				249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */,
 				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
 			);
-			currentVersion = 24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */;
+			currentVersion = 242B182E1F7D3BFF007963FE /* NetdiskModel -MoreContent.xcdatamodel */;
 			path = NetdiskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
