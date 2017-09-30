@@ -15,6 +15,7 @@ let SelectItemName = NSNotification.Name(rawValue: "selectItem")
 let UnSelectItemName = NSNotification.Name(rawValue: "unSelectItem")
 let ShowImagesName = NSNotification.Name(rawValue: "showImages")
 let ShowDonwloadAddressName = NSNotification.Name(rawValue: "showAddress")
+let SearchName = NSNotification.Name(rawValue: "search")
 let PageDataMessage = "pageData"
 
 class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
@@ -74,6 +75,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.addObserver(self, selector: #selector(showImages), name: ShowImagesName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAddress), name: ShowDonwloadAddressName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(uploadServer(notification:)), name: UploadName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchNotification(notification:)), name: NSControl.textDidChangeNotification, object: nil)
         reloadTableView(notification: nil)
     }
     
@@ -82,6 +84,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.removeObserver(self, name: DeleteActionName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowImagesName, object: nil)
         NotificationCenter.default.removeObserver(self, name: UploadName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSControl.textDidChangeNotification, object: nil)
     }
     
     override func viewDidAppear() {
@@ -429,6 +432,39 @@ extension ListTableViewController : FetchBotDelegate {
             self.showProgress(text: message)
             NotificationCenter.default.post(name: StopFetchName, object: nil)
             self.reloadTableView(notification: nil)
+        }
+    }
+}
+
+extension ListTableViewController {
+    @objc func searchNotification(notification: NSNotification?) {
+        if let searchField = notification?.object as? NSSearchField {
+            filiter(keyword: searchField.stringValue)
+        }
+    }
+    
+    func filiter(keyword: String) {
+        let managedObjectContext = DataBase.share.managedObjectContext
+        let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")
+        let sort = NSSortDescriptor(key: "creattime", ascending: false)
+        employeesFetch.sortDescriptors = [sort]
+        
+        do {
+            datas = try managedObjectContext.fetch(employeesFetch)
+            if keyword != "" {
+                datas = datas.filter({ (disk) -> Bool in
+                    return (disk.title ?? "").contains(keyword)
+                })
+            }
+            tableview.reloadData()
+            if datas.count > 0 {
+                self.tableview.selectRowIndexes([0], byExtendingSelection: false)
+                NotificationCenter.default.post(name: SelectItemName, object: self.datas[0])
+            }   else    {
+                NotificationCenter.default.post(name: SelectItemName, object: nil)
+            }
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
         }
     }
 }

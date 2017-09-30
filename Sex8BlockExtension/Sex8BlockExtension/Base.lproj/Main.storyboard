@@ -211,11 +211,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Sex8BlockExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="761" height="654"/>
+                        <rect key="frame" x="0.0" y="0.0" width="761" height="666"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="s2B-bw-6BZ">
-                                <rect key="frame" x="20" y="230" width="303" height="404"/>
+                                <rect key="frame" x="20" y="230" width="303" height="386"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="303" id="0dN-p6-Jeo"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="386" id="PbR-ns-sFq"/>
@@ -225,7 +225,7 @@
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ibN-iT-dRO">
-                                <rect key="frame" x="341" y="100" width="400" height="534"/>
+                                <rect key="frame" x="341" y="100" width="400" height="546"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="vLT-mX-HQE"/>
                                 </constraints>
@@ -253,7 +253,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2A1-aP-Uxa">
                                 <rect key="frame" x="654" y="51" width="31" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="游客" id="LQJ-WG-2Ac">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -261,16 +261,16 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bqi-cA-Tq3">
                                 <rect key="frame" x="584" y="20" width="101" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="春风十里,爱无疆" id="EsO-ww-cae">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6e-R6-1UG">
-                                <rect key="frame" x="31.5" y="15" width="280" height="40"/>
+                                <rect key="frame" x="32" y="15" width="280" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="kkJ-ji-QBM">
-                                        <rect key="frame" x="-6" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="-6" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="清除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lCH-V2-1Sp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -280,7 +280,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="1Zh-hN-h03">
-                                        <rect key="frame" x="69" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="69" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="提取" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Reu-8F-DlM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -290,17 +290,17 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RCR-qE-et1">
-                                        <rect key="frame" x="144" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="144" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="上传" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oCa-Zw-gzU">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="uploadAction:" target="XfG-lQ-9wD" id="hyt-MH-kV5"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-YJ-DqA">
-                                        <rect key="frame" x="219" y="2.5" width="67" height="32"/>
+                                        <rect key="frame" x="219" y="3" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kjf-o0-3Zk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -327,7 +327,7 @@
                                 </customSpacing>
                             </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ZB-sn-3rw">
-                                <rect key="frame" x="330.5" y="15" width="263" height="30"/>
+                                <rect key="frame" x="331" y="15" width="263" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="259" id="5xx-3o-STc"/>
                                 </constraints>
@@ -337,17 +337,27 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEo-fW-Q1V">
+                                <rect key="frame" x="20" y="624" width="303" height="22"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="标题、密码、格式等" usesSingleLineMode="YES" bezelStyle="round" id="lyc-TE-f4i">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                            </searchField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ibN-iT-dRO" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0Yn-82-AmG"/>
                             <constraint firstAttribute="bottom" secondItem="4ZB-sn-3rw" secondAttribute="bottom" constant="15" id="2AG-9B-PGW"/>
                             <constraint firstItem="v6e-R6-1UG" firstAttribute="centerX" secondItem="x2K-hw-4mx" secondAttribute="centerX" id="D3D-FK-ikB"/>
                             <constraint firstItem="x2K-hw-4mx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DEL-nv-LV0"/>
+                            <constraint firstItem="SEo-fW-Q1V" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="HMU-NF-gNZ"/>
                             <constraint firstItem="x2K-hw-4mx" firstAttribute="top" secondItem="s2B-bw-6BZ" secondAttribute="bottom" constant="8" id="JdW-36-6i4"/>
                             <constraint firstItem="2A1-aP-Uxa" firstAttribute="top" secondItem="qqo-pt-M4g" secondAttribute="top" id="M2y-sg-eXv"/>
                             <constraint firstAttribute="bottom" secondItem="ibN-iT-dRO" secondAttribute="bottom" constant="100" id="N24-kx-xEl"/>
                             <constraint firstItem="qqo-pt-M4g" firstAttribute="leading" secondItem="2A1-aP-Uxa" secondAttribute="trailing" constant="10" id="NVf-zN-YKn"/>
                             <constraint firstItem="4ZB-sn-3rw" firstAttribute="top" secondItem="v6e-R6-1UG" secondAttribute="top" constant="10" id="Pnj-Pb-gQ2"/>
+                            <constraint firstItem="SEo-fW-Q1V" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="TT2-c7-tKG"/>
                             <constraint firstItem="bqi-cA-Tq3" firstAttribute="top" secondItem="2A1-aP-Uxa" secondAttribute="bottom" constant="14" id="d2o-0S-e0R"/>
                             <constraint firstItem="4ZB-sn-3rw" firstAttribute="leading" secondItem="v6e-R6-1UG" secondAttribute="trailing" constant="21" id="dcd-gK-9OY"/>
                             <constraint firstAttribute="bottom" secondItem="qqo-pt-M4g" secondAttribute="bottom" constant="20" id="f4W-WL-Vi6"/>
@@ -356,8 +366,9 @@
                             <constraint firstItem="bqi-cA-Tq3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="gr4-AP-rSV"/>
                             <constraint firstItem="x2K-hw-4mx" firstAttribute="width" secondItem="s2B-bw-6BZ" secondAttribute="width" id="mMS-tR-uvX"/>
                             <constraint firstItem="bqi-cA-Tq3" firstAttribute="bottom" secondItem="qqo-pt-M4g" secondAttribute="bottom" id="msj-aQ-DSc"/>
-                            <constraint firstItem="s2B-bw-6BZ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="tlc-FN-Ryb"/>
+                            <constraint firstItem="s2B-bw-6BZ" firstAttribute="top" secondItem="SEo-fW-Q1V" secondAttribute="bottom" constant="8" id="sqW-hD-brJ"/>
                             <constraint firstItem="s2B-bw-6BZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="tmP-ky-84a"/>
+                            <constraint firstItem="SEo-fW-Q1V" firstAttribute="trailing" secondItem="s2B-bw-6BZ" secondAttribute="trailing" id="tnc-dW-q2R"/>
                             <constraint firstAttribute="trailing" secondItem="ibN-iT-dRO" secondAttribute="trailing" constant="20" id="tqo-x4-ZBX"/>
                             <constraint firstItem="qqo-pt-M4g" firstAttribute="leading" secondItem="bqi-cA-Tq3" secondAttribute="trailing" constant="10" id="wXG-4R-gWC"/>
                             <constraint firstAttribute="trailing" secondItem="qqo-pt-M4g" secondAttribute="trailing" constant="20" id="x0V-9J-PPk"/>
@@ -371,6 +382,7 @@
                         <outlet property="extract" destination="1Zh-hN-h03" id="688-6g-Bey"/>
                         <outlet property="head" destination="qqo-pt-M4g" id="vjN-sP-v4a"/>
                         <outlet property="save" destination="kkJ-ji-QBM" id="774-Oe-VlN"/>
+                        <outlet property="searchArea" destination="SEo-fW-Q1V" id="lxg-X7-fgE"/>
                         <outlet property="upload" destination="RCR-qE-et1" id="U2a-Iy-ua5"/>
                         <outlet property="username" destination="2A1-aP-Uxa" id="DCT-v3-0Ja"/>
                         <outlet property="userprofile" destination="bqi-cA-Tq3" id="Pch-Nd-0jn"/>

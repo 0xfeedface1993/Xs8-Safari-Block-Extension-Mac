@@ -20,6 +20,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var extractButton: NSButton!
     @IBOutlet weak var extractBtn: NSButton!
     var fullData = [PageData]()
+    @IBOutlet weak var searchArea: NSSearchField!
     var commands = [Command]()
     private lazy var fetchJS : String = {
         let url = Bundle.main.url(forResource: "fetch", withExtension: "js")!

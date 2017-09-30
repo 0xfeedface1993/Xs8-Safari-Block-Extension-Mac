@@ -12,6 +12,8 @@ let StopFetchName = NSNotification.Name.init("stopFetching")
 let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")
 let UploadName = NSNotification.Name.init("UploadName")
 
+var searchText : String?
+
 class ViewController: NSViewController {
     @IBOutlet weak var save: NSButton!
     @IBOutlet weak var collectionView: NSView!
@@ -19,6 +21,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var username: NSTextField!
     @IBOutlet weak var userprofile: NSTextField!
     @IBOutlet weak var extenalText: NSTextField!
+    @IBOutlet weak var searchArea: NSSearchField!
     
     let login = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "LoginStoryboard"), bundle: Bundle.main).instantiateInitialController() as! NSWindowController
     
@@ -30,6 +33,7 @@ class ViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.unselect), name: UnSelectItemName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopFetch), name: StopFetchName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.showExtennalText(notification:)), name: ShowExtennalTextName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resetSearchValue(notification:)), name: NSControl.textDidChangeNotification, object: nil)
         head.tapBlock = {
             image in
             let app = NSApp.delegate as! AppDelegate
@@ -39,6 +43,7 @@ class ViewController: NSViewController {
                 self.login.showWindow(nil)
             }
         }
+        searchArea.delegate = self
     }
     
     deinit {
@@ -46,6 +51,7 @@ class ViewController: NSViewController {
         NotificationCenter.default.removeObserver(self, name: UnSelectItemName, object: nil)
         NotificationCenter.default.removeObserver(self, name: StopFetchName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowExtennalTextName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSControl.textDidChangeNotification, object: nil)
     }
     
     override func viewDidAppear() {
@@ -117,58 +123,19 @@ extension ViewController {
     
 }
 
-//// MARK: - FetchBot Delegate
-//extension ViewController : FetchBotDelegate {
-//    func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
-//        let message = "正在接收 \(index) 项数据..."
-//        print(message)
-//    }
-//    
-//    func bot(didStartBot bot: FetchBot) {
-//        let message = "正在加载链接数据..."
-//        print(message)
-//    }
-//    
-//    func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
-//        let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
-//        print(message)
-//        
-//        let webservice = Webservice.share
-//        let encoder = JSONEncoder()
-//        for (index, data) in contents.enumerated() {
-//            let links = data.downloafLink
-//            let pics = data.imageLink
-//            let title = data.title
-//            let page = data.page
-//            let dic = MovieModal(title: title, page: page, pics: pics, downloads: links)
-//            do {
-//                let json = try encoder.encode(dic)
-//                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
-//                    if index < contents.count - 1 {
-//                        DispatchQueue.main.async {
-//                            //                            self.showProgress(text: "已提交第 \(index)/\(self.datas.count) 项数据...")
-//                            print("已提交第 \(index)/\(contents.count) 项数据...")
-//                        }
-//                    }   else    {
-//                        DispatchQueue.main.async {
-//                            //                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
-//                            print("已提交 \(contents.count) 项数据")
-//                        }
-//                    }
-//                    guard let message = result else {
-//                        if let e = err {
-//                            print("error: \(e)")
-//                        }
-//                        return
-//                    }
-//                    print("movieID: \(message.movieID)")
-//                })
-//                try webservice.read(caller: caller)
-//            } catch {
-//                print("upload faild: json error \(error)")
-//            }
-//        }
-//    }
-//}
-
-
+// MARK: - TextFieldDelegate
+extension ViewController : NSSearchFieldDelegate {
+    func searchFieldDidStartSearching(_ sender: NSSearchField) {
+        print("start search!")
+        
+    }
+    
+    func searchFieldDidEndSearching(_ sender: NSSearchField) {
+         print("end search")
+    }
+    
+    @objc func resetSearchValue(notification: NSNotification?) {
+        print("change text value \(searchArea.stringValue)")
+        
+    }
+}
