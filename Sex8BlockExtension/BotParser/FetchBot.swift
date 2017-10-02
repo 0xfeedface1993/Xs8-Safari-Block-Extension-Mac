@@ -73,19 +73,21 @@ struct ContentInfo {
 /// 内容信息正则规则选项
 struct InfoRuleOption {
     /// 是否有码
-    static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【是否有码】)|(【有碼無碼】)|(【影片说明】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【是否有码】)|(【有碼無碼】)|(【影片说明】)|(【影片說明】)|(【是否有碼】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
     /// 影片时间
-    static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片时间】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：])+")
+    static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片时间】)|(【影片時間】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<(&nbsp;)])+")
     /// 影片大小
-    static let size = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片大小】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    static let size = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片大小】){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
     /// 影片格式
     static let format = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片格式】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
     /// 解压密码
-    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【解壓密碼】)|(【解压密码】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【解壓密碼】)|(【解压密码】)|(解壓密碼)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
     /// 下载链接
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: false, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
+    /// 下载地址2
+    static let downloadLinkLi = ParserTagRule(tag: "li", isTagPaser: true, attrubutes: [], inTagRegexString: "", hasSuffix: false, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 图片链接
-    static let imageLink = ParserTagRule(tag: "img", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "(( \\w+=\"[\\w+\\(,\\)\\.\\s\\-]+\")|( \\w+=\"[\\w+:/\\.\\)\\(:;\\s\\-]*?\")){6,} /", hasSuffix: false, innerRegex: nil)
+    static let imageLink = ParserTagRule(tag: "img", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "( \\w+=[\"']{1}[^<>]*[\"']{1})+ class=\"zoom\"( \\w+=[\"']{1}[^<>]*[\"']{1})+ \\/", hasSuffix: false, innerRegex: nil)
     /// 主内容标签
     static let main = ParserTagRule(tag: "td", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"t_f\" \\w+=\"postmessage_\\d+\"", hasSuffix: true, innerRegex: nil)
 }
@@ -126,163 +128,18 @@ class FetchBot {
         badTasks.removeAll()
         count = 0
         contentDatas.removeAll()
-        delegate?.bot(didStartBot: self)
+        DispatchQueue.main.async {
+            self.delegate?.bot(didStartBot: self)
+        }
         fetchGroup(start: startPage, offset: pageOffset)
 //        DispatchQueue.global().async {
 //            self.serialFetch(start: self.startPage, offset: self.pageOffset)
 //        }
-//        fetchMainContent(title: "aaaaaa", link: "thread-8748151-1-15.html", page: 0, index: 0)
+//        fetchMainContent(title: "aaaaaa", link: "thread-8603226-1-201.html", page: 0, index: 0)
     }
     
     func stop() {
         
-    }
-    
-    private func serialFetch(start: UInt, offset: UInt) {
-        let startTime = Date()
-        let maker : (FetchURL) -> String = { (s) -> String in
-            "http://\(s.site)/forum-\(s.board.rawValue)-\(s.page).html"
-        }
-        let topQueue = DispatchQueue(label: "com.ascp.top")
-        let group = DispatchGroup()
-        var sem = DispatchSemaphore(value: 0)
-        var list = [ListItem]()
-        
-        for i in start...(start + offset) {
-            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: Int(i), maker: maker)
-            let request = browserRequest(url: fetchURL.url)
-            topQueue.async(group: group, execute: DispatchWorkItem(block: {
-                let semx = DispatchSemaphore(value: 0)
-                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, err) in
-                    guard let result = data, let html = String(data: result, encoding: .utf8) else {
-                        if let e = err {
-                            print(e)
-                        }
-                        self.badTasks.append(fetchURL)
-                        return
-                    }
-                    
-                    if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
-                        print("---------- robot detected! ----------")
-                        self.badTasks.append(fetchURL)
-                        return
-                    }
-                    self.runTasks.append(fetchURL)
-                    let rule = PageRuleOption.link
-                    if let pages = parse(string:html, rule: rule) {
-                        print("+++ 解析到 \(pages.count) 个内容链接")
-                        for (_, page) in pages.enumerated() {
-                            let title = page.innerHTML
-                            guard let href = page.attributes["href"] else {
-                                continue
-                            }
-                            self.count += 1
-                            list.append(ListItem(data: ["title":title, "href":href, "imagess":[]]))
-                        }
-                    }
-                    semx.signal()
-                })
-                task.resume()
-                semx.wait()
-            }))
-        }
-        
-        group.notify(queue: topQueue) {
-            sem.signal()
-        }
-        
-        sem.wait()
-        print("links : \(list.count), spend time: \(Date().timeIntervalSince(startTime))")
-        
-        sem = DispatchSemaphore(value: 0)
-        count = list.count
-        let contentQueue = DispatchQueue(label: "com.ascp.content")
-        let contentGroup = DispatchGroup()
-        var items = [ContentInfo]()
-        for (index, link) in list.enumerated() {
-            let linkMaker : (FetchURL) -> String = { (s) -> String in
-                "http://\(s.site)/\(link.href)"
-            }
-            let linkURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: 0, maker: linkMaker)
-            let request = browserRequest(url: linkURL.url)
-            contentQueue.async(group: contentGroup, execute: DispatchWorkItem(block: {
-                let semx = DispatchSemaphore(value: 0)
-                let task = URLSession.shared.dataTask(with: request) { (data, response, err) in
-                    guard let result = data, let html = String(data: result, encoding: .utf8) else {
-                        if let e = err {
-                            print(e)
-                        }
-                        self.badTasks.append(linkURL)
-                        return
-                    }
-                    
-                    if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
-                        print("---------- robot detected! ----------")
-                        self.badTasks.append(linkURL)
-                        return
-                    }
-                    print("+++ 正在解析 \(index) 项 +++")
-                    let rule = InfoRuleOption.main
-                    if let mainContent = parse(string:html, rule: rule)?.first?.innerHTML {
-                        var info = ContentInfo()
-                        info.title =  link.title
-                        
-                        let dowloadLinkRule = InfoRuleOption.downloadLink
-                        for linkResult in parse(string:mainContent, rule: dowloadLinkRule) ?? [] {
-                            info.downloafLink.append(linkResult.innerHTML)
-                        }
-                        
-                        let imageLinkRule = InfoRuleOption.imageLink
-                        for imageResult in parse(string:mainContent, rule: imageLinkRule) ?? [] {
-                            for attribute in imageLinkRule.attrubutes {
-                                if let item = imageResult.attributes[attribute.key] {
-                                    info.imageLink.append(item)
-                                    break
-                                }
-                            }
-                        }
-                        
-                        let mskRule = InfoRuleOption.msk
-                        for mskResult in parse(string:mainContent, rule: mskRule) ?? [] {
-                            info.msk = mskResult.innerHTML
-                        }
-                        
-                        let timeRule = InfoRuleOption.time
-                        for timeResult in parse(string:mainContent, rule: timeRule) ?? [] {
-                            info.time = timeResult.innerHTML
-                        }
-                        
-                        let sizeRule = InfoRuleOption.size
-                        for sizeResult in parse(string:mainContent, rule: sizeRule) ?? [] {
-                            info.size = sizeResult.innerHTML
-                        }
-                        
-                        let formatRule = InfoRuleOption.format
-                        for formatResult in parse(string:mainContent, rule: formatRule) ?? [] {
-                            info.format = formatResult.innerHTML
-                        }
-                        
-                        let passwodRule = InfoRuleOption.password
-                        for passwodResult in parse(string:mainContent, rule: passwodRule) ?? [] {
-                            info.passwod = passwodResult.innerHTML
-                        }
-                        items.append(info)
-                        self.delegate?.bot(self, didLoardContent: info, atIndexPath: index)
-                    }
-                    self.runTasks.append(linkURL)
-                    semx.signal()
-                }
-                task.resume()
-                semx.wait()
-            }))
-        }
-        
-        contentGroup.notify(queue: contentQueue, execute: {
-            sem.signal()
-        })
-        
-        sem.wait()
-        print("items : \(items.count), spend time: \(Date().timeIntervalSince(startTime))")
     }
     
     private func fetchGroup(start: UInt, offset: UInt) {
@@ -386,8 +243,13 @@ class FetchBot {
                 info.title =  title
                 
                 let dowloadLinkRule = InfoRuleOption.downloadLink
-                for linkResult in parse(string:mainContent, rule: dowloadLinkRule) ?? [] {
-                    info.downloafLink.append(linkResult.innerHTML)
+                let downloadLinkLiRule = InfoRuleOption.downloadLinkLi
+                let linkRules = [dowloadLinkRule, downloadLinkLiRule]
+                for rule in linkRules {
+                    for linkResult in parse(string:mainContent, rule: rule) ?? [] {
+                        info.downloafLink.append(linkResult.innerHTML)
+//                        print("doenload link: \(linkResult.innerHTML)")
+                    }
                 }
                 
                 let imageLinkRule = InfoRuleOption.imageLink
@@ -395,6 +257,7 @@ class FetchBot {
                     for attribute in imageLinkRule.attrubutes {
                         if let item = imageResult.attributes[attribute.key] {
                             info.imageLink.append(item)
+//                            print("image link: \(item)")
                             break
                         }
                     }
