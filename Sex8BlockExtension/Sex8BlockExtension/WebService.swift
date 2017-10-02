@@ -22,6 +22,7 @@ enum WebServiceMethod : String {
 
 enum WebserviceBaseURL : String {
     case main = "http://127.0.0.1:8181/api"
+    case aliyun = "http://120.78.89.159/api"
 }
 
 struct WebserviceCaller<T> {
