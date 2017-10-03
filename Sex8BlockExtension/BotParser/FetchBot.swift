@@ -75,13 +75,13 @@ struct InfoRuleOption {
     /// 是否有码
     static let msk = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【是否有码】)|(【有碼無碼】)|(【影片说明】)|(【影片說明】)|(【是否有碼】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
     /// 影片时间
-    static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片时间】)|(【影片時間】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<(&nbsp;)])+")
+    static let time = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片时间】)|(【影片時間】)|(【视频时间】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<(&nbsp;)])+")
     /// 影片大小
-    static let size = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片大小】){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
+    static let size = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片大小】)|(【视频大小】)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
     /// 影片格式
-    static let format = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "(【影片格式】){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
+    static let format = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片格式】)|(【视频格式】)){1}[：:]{0,1}", hasSuffix: false, innerRegex: "([^<：:])+")
     /// 解压密码
-    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【解壓密碼】)|(【解压密码】)|(解壓密碼)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:(&nbsp;)])+")
+    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【解壓密碼】)|(【解压密码】)|(解壓密碼)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: false, innerRegex: "([^<：:])+")
     /// 下载链接
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: false, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 下载地址2
