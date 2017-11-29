@@ -120,7 +120,7 @@ class DataBase {
     // 检查是否已经存在数据
     static func checkPropertyExist<T: NSFetchRequestResult>(entity: String, property: String, value: String) -> T? {
         let fetch = NSFetchRequest<T>(entityName: entity)
-        fetch.predicate = NSPredicate(format: "\(property) == '\(value)'")
+        fetch.predicate = NSPredicate(format: "SELF.\(property) == '\(value)'")
         do {
             let datas = try DataBase.share.managedObjectContext.fetch(fetch)
             return datas.first
@@ -190,6 +190,11 @@ class DataBase {
     func saveFetchBotDownloadLink(data: ContentInfo, completion: ((SaveState) -> ())?) {
         if let _ : NetDisk = DataBase.checkPropertyExist(entity: NetDisk.className(), property: "pageurl", value: data.page) {
             print("------- netdisk exists ------ : \(data.page)")
+            completion?(.success)
+            return
+        }
+        if let _ : NetDisk = DataBase.checkPropertyExist(entity: NetDisk.className(), property: "title", value: data.title) {
+            print("------- netdisk exists ------ : \(data.title)")
             completion?(.success)
             return
         }
