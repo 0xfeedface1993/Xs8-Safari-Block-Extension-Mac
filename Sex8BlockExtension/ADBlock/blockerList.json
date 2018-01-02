@@ -556,5 +556,205 @@
  "if-domian":["678pan.cc"],
  "url-filter": ".*678pan.*"
  }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".head_box"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".body_top"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"a[style='width:640px;height:60px;text-align:left;text-decoration:none;margin-bottom:20px;padding:0 10px']"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".file_box>div[style='border:1px solid #ccc; padding:5px;margin:5px;']"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".file_item>li[style='overflow:visible; margin-top:10px;']"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#fl_dir_box>div.file_item"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(8)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(7)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(6)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(5)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(2)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(4)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#down_link>a:nth-child(2)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#down_link>a:nth-child(3)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"#down_link>a:nth-child(4)"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".r"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":"div[style='line-height:200%']"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".hr"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".foot_box"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
+ },
+ {
+ "action": {
+ "type": "css-display-none",
+ "selector":".cp_nav"
+ },
+ "trigger": {
+ "if-domian":["777pan.cc"],
+ "url-filter": ".*777pan.*"
+ }
  }
  ]
