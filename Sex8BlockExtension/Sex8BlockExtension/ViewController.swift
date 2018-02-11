@@ -85,7 +85,8 @@ class ViewController: NSViewController {
     @objc func stopFetch() {
         extract.tag = 112
         extract.title = "提取"
-        self.extenalText.stringValue = ""
+        self.extenalText.stringValue = "(已停止)" + self.extenalText.stringValue
+        
     }
     
     @IBAction func deleteAction(_ sender: Any) {

@@ -67,11 +67,13 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let image = tasks[tableView.selectedRow].image
-        if tableView.selectedRow >= 0, image != defaultImage, image != errorImage {
-            zoom?.showWindow(zoom)
-            tableView.deselectRow(tableView.selectedRow)
-            NotificationCenter.default.post(name: ImagePickerNotification, object: image)
+        if tableView.selectedRow >= 0 {
+            let image = tasks[tableView.selectedRow].image
+            if tableView.selectedRow >= 0, image != defaultImage, image != errorImage {
+                zoom?.showWindow(zoom)
+                tableView.deselectRow(tableView.selectedRow)
+                NotificationCenter.default.post(name: ImagePickerNotification, object: image)
+            }
         }
     }
     
@@ -92,6 +94,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
             if let index = self.tasks.index(where: { tkx in return tkx == tk  }) {
                 if !Thread.isMainThread {
                     DispatchQueue.main.async {
+                        self.tableView.noteHeightOfRows(withIndexesChanged: [index])
                         self.tableView.reloadData(forRowIndexes: [index], columnIndexes: [0])
                     }
                     return

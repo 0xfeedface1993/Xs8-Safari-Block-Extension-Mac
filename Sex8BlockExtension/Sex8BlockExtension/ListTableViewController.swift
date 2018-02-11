@@ -404,16 +404,6 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
 // MARK: - FetchBot Delegate
 extension ListTableViewController : FetchBotDelegate {
     func bot(_ bot: FetchBot, didLoardContent content: ContentInfo, atIndexPath index: Int) {
-        DataBase.share.saveFetchBotDownloadLink(data: content) { (state) in
-            switch state {
-            case .success:
-                print("saveOK: \(content.title)")
-                break
-            case .failed:
-                print("save faild: \(content.title), link: \(content.page)")
-                break
-            }
-        }
         let message = "正在接收 \(index) 项数据..."
         print(message)
         DispatchQueue.main.async {
@@ -430,8 +420,19 @@ extension ListTableViewController : FetchBotDelegate {
     func bot(_ bot: FetchBot, didFinishedContents contents: [ContentInfo], failedLink : [FetchURL]) {
         let message = "已成功接收 \(bot.count - failedLink.count) 项数据, \(failedLink.count) 项接收失败"
         print(message)
-        
         isFetching = false
+        
+        DataBase.share.save(downloadLinks: contents) { (state) in
+            switch state {
+            case .success:
+                print("保存 \(contents.count) 项成功")
+                break
+            case .failed:
+                print("批量保存失败")
+                break
+            }
+        }
+        
         DispatchQueue.main.async {
             self.showProgress(text: message)
             NotificationCenter.default.post(name: StopFetchName, object: nil)
