@@ -395,7 +395,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func loadList() {
         bot.delegate = self
-        bot.start()
+        DispatchQueue.global().async {
+            self.bot.start()
+        }
     }
 }
 
