@@ -46,7 +46,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return ""
         }
     }()
-    let bot = FetchBot(start: 1, offset: 30)
+    let bot = FetchBot(start: 1, offset: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -281,6 +281,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 print("stop fetching !")
             }
         }
+        
+        print("reloadTableView:notification")
         
         let managedObjectContext = DataBase.share.managedObjectContext
         let employeesFetch = NSFetchRequest<NetDisk>(entityName: "NetDisk")

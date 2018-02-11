@@ -32,6 +32,8 @@
 		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2488BBEF1F711EE800A113AF /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		248BCDA020302D79000999D6 /* ImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCD9F20302D79000999D6 /* ImageTask.swift */; };
+		248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCDA320303F24000999D6 /* FileManagerExtension.swift */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
@@ -217,6 +219,8 @@
 		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
 		2488BBE61F709D8F00A113AF /* JsonModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModal.swift; sourceTree = "<group>"; };
 		2488BBE91F711EE800A113AF /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		248BCD9F20302D79000999D6 /* ImageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTask.swift; sourceTree = "<group>"; };
+		248BCDA320303F24000999D6 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */,
+				248BCD9F20302D79000999D6 /* ImageTask.swift */,
 				245EBE461F11307E00350B20 /* ImageTableViewCell.swift */,
 				24467AA51F1793BC00574160 /* ZoomImageViewController.swift */,
 				24467AD31F192A7700574160 /* ZoomStoryboard.storyboard */,
@@ -498,6 +503,7 @@
 			children = (
 				278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */,
 				274AA3F11F7773820058E21A /* CoreDataExtension.swift */,
+				248BCDA320303F24000999D6 /* FileManagerExtension.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1036,6 +1042,7 @@
 				24FA6ACF1F5FFF7D005853EA /* WebService.swift in Sources */,
 				242B18281F7C7ADC007963FE /* DOMParser.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
+				248BCDA020302D79000999D6 /* ImageTask.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
@@ -1047,6 +1054,7 @@
 				242B181D1F7C75A4007963FE /* Extension.swift in Sources */,
 				242B18291F7C7ADC007963FE /* FetchBot.swift in Sources */,
 				24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */,
+				248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 			);
