@@ -153,156 +153,178 @@ class FetchBot {
         let maker : (FetchURL) -> String = { (s) -> String in
             "http://\(s.site)/forum-\(s.board.rawValue)-\(s.page).html"
         }
-        var group = DispatchGroup()
         
+        let startIndex = Int(start)
+        let radio = 5
+        let splitGroupCount = Int(offset) / radio + 1
+        
+        var group : DispatchGroup!
         var links = [LinkItem]()
         
-        for i in start...(start + offset) {
-            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: Int(i), maker: maker)
-            let request = browserRequest(url: fetchURL.url)
-            
-            group.enter()
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, err) in
-                guard let result = data, let html = String(data: result, encoding: .utf8) else {
-                    if let e = err {
-                        print(e)
-                    }
-                    self.badTasks.append(fetchURL)
-                    group.leave()
-                    print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
-                    return
+        for x in 0..<splitGroupCount {
+            group = DispatchGroup()
+            for y in 0..<radio {
+                let index = x * radio + y
+                if index >= Int(offset) {
+                    break
                 }
+                let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: startIndex + index, maker: maker)
+                let request = browserRequest(url: fetchURL.url)
                 
-                if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
-                    print("---------- robot detected! ----------")
-                    self.badTasks.append(fetchURL)
-                    group.leave()
-                    print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
-                    return
-                }
-                
-                self.runTasks.append(fetchURL)
-                print("---------- 开始解析 \(i) 页面 ----------")
-                let rule = PageRuleOption.link
-                if let pages = parse(string:html, rule: rule) {
-                    print("+++ 解析到 \(pages.count) 个内容链接")
-                    
-                    for (offset, page) in pages.enumerated() {
-                        let title = page.innerHTML
-                        guard let href = page.attributes["href"] else {
-                            continue
+                group.enter()
+                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, err) in
+                    guard let result = data, let html = String(data: result, encoding: .utf8) else {
+                        if let e = err {
+                            print(e)
                         }
-                        self.count += 1
-                        links.append(LinkItem(title: title, href: href, offset: offset, page: fetchURL.page))
-//                        self.fetchMainContent(title: title, link: href, page: fetchURL.page, index: offset, group: contentGroup)
+                        self.badTasks.append(fetchURL)
+                        group.leave()
+                        print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
+                        return
                     }
-                }
+                    
+                    if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
+                        print("---------- robot detected! ----------")
+                        self.badTasks.append(fetchURL)
+                        group.leave()
+                        print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
+                        return
+                    }
+                    
+                    self.runTasks.append(fetchURL)
+                    print("---------- 开始解析 \(index) 页面 ----------")
+                    let rule = PageRuleOption.link
+                    if let pages = parse(string:html, rule: rule) {
+                        print("+++ 解析到 \(pages.count) 个内容链接")
+                        
+                        for (offset, page) in pages.enumerated() {
+                            let title = page.innerHTML
+                            guard let href = page.attributes["href"] else {
+                                continue
+                            }
+                            self.count += 1
+                            links.append(LinkItem(title: title, href: href, offset: offset, page: fetchURL.page))
+                        }
+                    }
+                    
+                    group.leave()
+                    print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
+                })
                 
-                group.leave()
-                print("((((((((((((((((((((( leave main group )))))))))))))))))))))")
-            })
-            
-            task.resume()
+                task.resume()
+            }
+            print("((((((((((((((((((((( wait main group )))))))))))))))))))))")
+            group.wait()
+            print("((((((((((((((((((((( pass main group )))))))))))))))))))))")
         }
         
-        print("((((((((((((((((((((( wait main group )))))))))))))))))))))")
-        group.wait()
-        print("((((((((((((((((((((( pass main group )))))))))))))))))))))")
+        let linksCount = links.count
+        let linksRadio = 10
+        let linksPageCount = linksCount / linksRadio + 1
         
-        group = DispatchGroup()
-        for link in links {
-            let linkMaker : (FetchURL) -> String = { (s) -> String in
-                "http://\(s.site)/\(link.href)"
-            }
-            let linkURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: link.page, maker: linkMaker)
-            let request = browserRequest(url: linkURL.url)
-            group.enter()
-            let task = URLSession.shared.dataTask(with: request) { (data, response, err) in
-                guard let result = data, let html = String(data: result, encoding: .utf8) else {
-                    if let e = err {
-                        print(e)
-                    }
-                    self.badTasks.append(linkURL)
-                    group.leave()
-                    print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
-                    return
+        print("总共解析到 \(linksCount) 个内容链接")
+        
+        for x in 0..<linksPageCount {
+            group = DispatchGroup()
+            for y in 0..<linksRadio {
+                let index = x * linksRadio + y
+                if index >= linksCount {
+                    break
                 }
-                
-                if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
-                    print("---------- robot detected! ----------")
-                    self.badTasks.append(linkURL)
-                    group.leave()
-                    print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
-                    return
+                let link = links[index]
+                let linkMaker : (FetchURL) -> String = { (s) -> String in
+                    "http://\(s.site)/\(link.href)"
                 }
-                
-                let rule = InfoRuleOption.main
-                print("++++ \(link.page)页\(link.offset)项 parser: \(link.href)")
-                if let mainContent = parse(string:html, rule: rule)?.first?.innerHTML {
-                    var info = ContentInfo()
-                    info.title =  link.title
-                    
-                    let dowloadLinkRule = InfoRuleOption.downloadLink
-                    let downloadLinkLiRule = InfoRuleOption.downloadLinkLi
-                    let linkRules = [dowloadLinkRule, downloadLinkLiRule]
-                    for rule in linkRules {
-                        for linkResult in parse(string:mainContent, rule: rule) ?? [] {
-                            info.downloafLink.append(linkResult.innerHTML)
-                            // print("doenload link: \(linkResult.innerHTML)")
+                let linkURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: link.page, maker: linkMaker)
+                let request = browserRequest(url: linkURL.url)
+                group.enter()
+                let task = URLSession.shared.dataTask(with: request) { (data, response, err) in
+                    guard let result = data, let html = String(data: result, encoding: .utf8) else {
+                        if let e = err {
+                            print(e)
                         }
+                        self.badTasks.append(linkURL)
+                        group.leave()
+                        print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
+                        return
                     }
                     
-                    let imageLinkRule = InfoRuleOption.imageLink
-                    for imageResult in parse(string:mainContent, rule: imageLinkRule) ?? [] {
-                        for attribute in imageLinkRule.attrubutes {
-                            if let item = imageResult.attributes[attribute.key] {
-                                info.imageLink.append(item)
-                                // print("image link: \(item)")
-                                break
+                    if let _ = html.range(of: "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">") {
+                        print("---------- robot detected! ----------")
+                        self.badTasks.append(linkURL)
+                        group.leave()
+                        print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
+                        return
+                    }
+                    
+                    let rule = InfoRuleOption.main
+                    print("++++ \(link.page)页\(link.offset)项 parser: \(link.href)")
+                    if let mainContent = parse(string:html, rule: rule)?.first?.innerHTML {
+                        var info = ContentInfo()
+                        info.title =  link.title
+                        
+                        let dowloadLinkRule = InfoRuleOption.downloadLink
+                        let downloadLinkLiRule = InfoRuleOption.downloadLinkLi
+                        let linkRules = [dowloadLinkRule, downloadLinkLiRule]
+                        for rule in linkRules {
+                            for linkResult in parse(string:mainContent, rule: rule) ?? [] {
+                                info.downloafLink.append(linkResult.innerHTML)
+                                // print("doenload link: \(linkResult.innerHTML)")
                             }
                         }
+                        
+                        let imageLinkRule = InfoRuleOption.imageLink
+                        for imageResult in parse(string:mainContent, rule: imageLinkRule) ?? [] {
+                            for attribute in imageLinkRule.attrubutes {
+                                if let item = imageResult.attributes[attribute.key] {
+                                    info.imageLink.append(item)
+                                    // print("image link: \(item)")
+                                    break
+                                }
+                            }
+                        }
+                        
+                        let mskRule = InfoRuleOption.msk
+                        for mskResult in parse(string:mainContent, rule: mskRule) ?? [] {
+                            info.msk = mskResult.innerHTML
+                        }
+                        
+                        let timeRule = InfoRuleOption.time
+                        for timeResult in parse(string:mainContent, rule: timeRule) ?? [] {
+                            info.time = timeResult.innerHTML
+                        }
+                        
+                        let sizeRule = InfoRuleOption.size
+                        for sizeResult in parse(string:mainContent, rule: sizeRule) ?? [] {
+                            info.size = sizeResult.innerHTML
+                        }
+                        
+                        let formatRule = InfoRuleOption.format
+                        for formatResult in parse(string:mainContent, rule: formatRule) ?? [] {
+                            info.format = formatResult.innerHTML
+                        }
+                        
+                        let passwodRule = InfoRuleOption.password
+                        for passwodResult in parse(string:mainContent, rule: passwodRule) ?? [] {
+                            info.passwod = passwodResult.innerHTML
+                        }
+                        
+                        info.page = linkURL.url.absoluteString
+                        
+                        self.contentDatas.append(info)
+                        self.delegate?.bot(self, didLoardContent: info, atIndexPath: self.contentDatas.count)
                     }
-                    
-                    let mskRule = InfoRuleOption.msk
-                    for mskResult in parse(string:mainContent, rule: mskRule) ?? [] {
-                        info.msk = mskResult.innerHTML
-                    }
-                    
-                    let timeRule = InfoRuleOption.time
-                    for timeResult in parse(string:mainContent, rule: timeRule) ?? [] {
-                        info.time = timeResult.innerHTML
-                    }
-                    
-                    let sizeRule = InfoRuleOption.size
-                    for sizeResult in parse(string:mainContent, rule: sizeRule) ?? [] {
-                        info.size = sizeResult.innerHTML
-                    }
-                    
-                    let formatRule = InfoRuleOption.format
-                    for formatResult in parse(string:mainContent, rule: formatRule) ?? [] {
-                        info.format = formatResult.innerHTML
-                    }
-                    
-                    let passwodRule = InfoRuleOption.password
-                    for passwodResult in parse(string:mainContent, rule: passwodRule) ?? [] {
-                        info.passwod = passwodResult.innerHTML
-                    }
-                    
-                    info.page = linkURL.url.absoluteString
-                    
-                    self.contentDatas.append(info)
-                    self.delegate?.bot(self, didLoardContent: info, atIndexPath: self.contentDatas.count)
+                    self.runTasks.append(linkURL)
+                    group.leave()
+                    print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
                 }
-                self.runTasks.append(linkURL)
-                group.leave()
-                print("((((((((((((((((((((( leave content group )))))))))))))))))))))")
+                task.resume()
             }
-            task.resume()
+            print("((((((((((((((((((((( wait content group )))))))))))))))))))))")
+            group.wait()
+            print("((((((((((((((((((((( pass content group )))))))))))))))))))))")
         }
         
-        print("((((((((((((((((((((( wait content group )))))))))))))))))))))")
-        group.wait()
-        print("((((((((((((((((((((( pass content group )))))))))))))))))))))")
         self.delegate?.bot(self, didFinishedContents: self.contentDatas, failedLink: self.badTasks)
     }
 }
