@@ -46,7 +46,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             return ""
         }
     }()
-    let bot = FetchBot(start: 1, offset: 1)
+    let bot = FetchBot(start: 0, offset: 50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -431,12 +431,11 @@ extension ListTableViewController : FetchBotDelegate {
                 print("批量保存失败")
                 break
             }
-        }
-        
-        DispatchQueue.main.async {
-            self.showProgress(text: message)
-            NotificationCenter.default.post(name: StopFetchName, object: nil)
-            self.reloadTableView(notification: nil)
+            DispatchQueue.main.async {
+                self.showProgress(text: message)
+                NotificationCenter.default.post(name: StopFetchName, object: nil)
+                self.reloadTableView(notification: nil)
+            }
         }
     }
 }
