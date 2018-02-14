@@ -289,3 +289,26 @@ function showErrorNotification(info) {
                document.getElementById('xts-notifer-content').innerHTML = "未知";
                }, 2100);
 }
+
+// 获取文件大小、
+//[TitleKey:"是否有码", IdenitfierKey:"msk"],
+//[TitleKey:"格式", IdenitfierKey:"format"],
+
+
+function getFullHtml() {
+    var imgs = document.querySelectorAll('img[class="zoom"]');
+    var images = [];
+    if (imgs != null && imgs.length > 0) {
+        for (var i = 0;i<imgs.length;i++) {
+            var text = imgs[i].getAttribute("file");
+            images.push(text);
+        }
+    }
+    var result = {"body":document.getElementsByTagName('body')[0].innerHTML,
+        "title":document.getElementById("thread_subject").innerHTML,
+        "link":window.location.href,
+        "images":images
+    };
+    console.log(result);
+    return result;
+}

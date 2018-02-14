@@ -19,8 +19,75 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             print("\(userInfo ?? [:])")
             saveDownloadLink(data: userInfo!, page: page)
             break
+        case "getFullHtml":
+            print("\(userInfo ?? [:])")
+            if let body = userInfo?["body"] as? String, let title = userInfo?["title"] as? String, let link = userInfo?["link"] as? String {
+                let images = userInfo?["images"] as? [String] ?? []
+                parser(html: body, title: title, link: link, images:images, page: page)
+            }
+            break
         default:
             break
+        }
+    }
+    
+    func parser(html: String, title: String, link: String, images:[String], page: SFSafariPage) {
+        let rule = InfoRuleOption.main
+        if let mainContent = parse(string:html, rule: rule)?.first?.innerHTML {
+            var info = ContentInfo()
+            info.title =  title
+            
+            let dowloadLinkRule = InfoRuleOption.downloadLink
+            let downloadLinkLiRule = InfoRuleOption.downloadLinkLi
+            let linkRules = [dowloadLinkRule, downloadLinkLiRule]
+            for rule in linkRules {
+                for linkResult in parse(string:mainContent, rule: rule) ?? [] {
+                    info.downloafLink.append(linkResult.innerHTML)
+                    // print("doenload link: \(linkResult.innerHTML)")
+                }
+            }
+            
+            info.imageLink = images
+            
+            let mskRule = InfoRuleOption.msk
+            for mskResult in parse(string:mainContent, rule: mskRule) ?? [] {
+                info.msk = mskResult.innerHTML
+            }
+            
+            let timeRule = InfoRuleOption.time
+            for timeResult in parse(string:mainContent, rule: timeRule) ?? [] {
+                info.time = timeResult.innerHTML
+            }
+            
+            let sizeRule = InfoRuleOption.size
+            for sizeResult in parse(string:mainContent, rule: sizeRule) ?? [] {
+                info.size = sizeResult.innerHTML
+            }
+            
+            let formatRule = InfoRuleOption.format
+            for formatResult in parse(string:mainContent, rule: formatRule) ?? [] {
+                info.format = formatResult.innerHTML
+            }
+            
+            let passwodRule = InfoRuleOption.password
+            for passwodResult in parse(string:mainContent, rule: passwodRule) ?? [] {
+                info.passwod = passwodResult.innerHTML
+            }
+            
+            info.page = link
+            
+            DataBase.share.saveFetchBotDownloadLink(data: info, completion: { (state) in
+                switch state {
+                case .failed:
+                    page.dispatchMessageToScript(withName: "notOK", userInfo: nil)
+                    print("保存失败")
+                    break
+                case .success:
+                    page.dispatchMessageToScript(withName: "saveOK", userInfo: nil)
+                    print("保存成功")
+                    break
+                }
+            })
         }
     }
     
@@ -31,7 +98,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             tab in
             tab?.getActivePage(completionHandler: {
                 page in
-                page!.dispatchMessageToScript(withName: "copyDonloadLink", userInfo: ["b":"a"])
+                page!.dispatchMessageToScript(withName: "getFullHtml", userInfo: ["b":"a"])
                 print("post it!")
             })
         })

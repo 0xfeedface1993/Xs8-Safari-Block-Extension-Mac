@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function handleMessage(event) {
     console.log(event.name);
     console.log(event.message);
-    console.log(document.body);
     switch (event.name) {
         case "copyDonloadLink":
             var list = grepPageData();
@@ -20,6 +19,9 @@ function handleMessage(event) {
             break;
         case "notOK":
             showErrorNotification("保存失败");
+            break;
+        case "getFullHtml":
+            safari.extension.dispatchMessage("getFullHtml", getFullHtml());
             break;
         default:
             break;
