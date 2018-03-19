@@ -66,7 +66,7 @@ func parse(string: String, rule: ParserTagRule) -> [ParserResult]? {
         if result.count > 0 {
             for checkingRes in result {
                 var range = checkingRes.range
-                range.length -= rule.suffix.characters.count
+                range.length -= (rule.suffix as NSString).length
                 let str = (string as NSString).substring(with: range)
                 var result = ParserResult(innerHTML: "", attributes: [:])
                 

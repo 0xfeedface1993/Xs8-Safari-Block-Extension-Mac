@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -59,15 +59,6 @@
                             </menuItem>
                             <menuItem title="Account" id="6oW-Gg-dQY">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Account" systemMenu="window" id="gx5-nj-MqT">
-                                    <items>
-                                        <menuItem title="登录" keyEquivalent="l" id="h6l-8r-ms1">
-                                            <connections>
-                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="Tpx-ug-8UQ"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
                             </menuItem>
                             <menuItem title="File" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -189,7 +180,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" identifier="main" title="杏吧有你" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" identifier="main" title="杏吧小助手" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -267,7 +258,7 @@
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6e-R6-1UG">
-                                <rect key="frame" x="32" y="15" width="280" height="40"/>
+                                <rect key="frame" x="12" y="15" width="320" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="kkJ-ji-QBM">
                                         <rect key="frame" x="-6" y="3" width="67" height="32"/>
@@ -279,14 +270,14 @@
                                             <action selector="save:" target="XfG-lQ-9wD" id="Gee-yb-Nxa"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="1Zh-hN-h03">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-YJ-DqA">
                                         <rect key="frame" x="69" y="3" width="67" height="32"/>
-                                        <buttonCell key="cell" type="push" title="提取" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Reu-8F-DlM">
+                                        <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kjf-o0-3Zk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="extract:" target="XfG-lQ-9wD" id="ytN-9z-XTz"/>
+                                            <action selector="deleteAction:" target="XfG-lQ-9wD" id="z3o-8n-ICQ"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RCR-qE-et1">
@@ -299,14 +290,14 @@
                                             <action selector="uploadAction:" target="XfG-lQ-9wD" id="hyt-MH-kV5"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-YJ-DqA">
-                                        <rect key="frame" x="219" y="3" width="67" height="32"/>
-                                        <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kjf-o0-3Zk">
+                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="1Zh-hN-h03">
+                                        <rect key="frame" x="219" y="3" width="107" height="32"/>
+                                        <buttonCell key="cell" type="push" title="获取前十页" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Reu-8F-DlM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="deleteAction:" target="XfG-lQ-9wD" id="z3o-8n-ICQ"/>
+                                            <action selector="extract:" target="XfG-lQ-9wD" id="ytN-9z-XTz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -327,7 +318,7 @@
                                 </customSpacing>
                             </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ZB-sn-3rw">
-                                <rect key="frame" x="331" y="15" width="263" height="30"/>
+                                <rect key="frame" x="351" y="15" width="263" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="259" id="5xx-3o-STc"/>
                                 </constraints>

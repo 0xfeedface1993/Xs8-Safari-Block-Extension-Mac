@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import KSCrash
+import IOKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,7 +22,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
+        let hockeyKey = "5d8cfac924774e6e872eaee45ef8a24d"
+        let hockey = KSCrashInstallationHockey.sharedInstance()
+        hockey?.appIdentifier = hockeyKey
+        hockey?.userID = ""
+        hockey?.contactEmail = ""
+        hockey?.crashDescription = "Crash Form \(model() ?? "unkown")"
+        hockey?.install()
+        KSCrash.sharedInstance().deleteBehaviorAfterSendAll = KSCDeleteNever
+        hockey?.sendAllReports(completion: { (reporsts, completed, err) in
+            if completed {
+                print("send reports: \(reporsts?.count ?? 0)")
+            }   else    {
+                print("Fialed send crash reports! \(err?.localizedDescription ?? "opps")")
+            }
+        })
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -163,6 +179,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } catch {
             print ("There was an error")
         }
+    }
+    
+    /// 获取设备型号
+    ///
+    /// - Returns: 设备型号
+    func model() -> String? {
+        let platformExport = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+        if platformExport > 0 {
+            let productName = IORegistryEntryCreateCFProperty(platformExport, "product-name" as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as! Data
+            if let str = String(data: productName, encoding: .utf8) {
+                return str
+            }
+        }
+        return nil
     }
 }
 

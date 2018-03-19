@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
+		240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; };
+		240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		242B18161F7C0BDD007963FE /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
 		242B18191F7C0CD0007963FE /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		242B181D1F7C75A4007963FE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
@@ -81,6 +83,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		240B6116205F75DF00AAE03A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB8E55E717EB99E3000C56D3;
+			remoteInfo = KSCrash;
+		};
+		240B6118205F75DF00AAE03A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB8E55FE17EB99E3000C56D3;
+			remoteInfo = KSCrashTests;
+		};
+		240B611A205F75DF00AAE03A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB62408917EBC9F7006471F1;
+			remoteInfo = KSCrashLib;
+		};
+		240B611D205F788B00AAE03A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CB8E55E617EB99E3000C56D3;
+			remoteInfo = KSCrash;
+		};
+		240B6121205F78BE00AAE03A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CB8E55E617EB99E3000C56D3;
+			remoteInfo = KSCrash;
+		};
 		24467ACA1F19237200574160 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
@@ -174,6 +211,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */,
 				2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */,
 				24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */,
 			);
@@ -196,6 +234,7 @@
 
 /* Begin PBXFileReference section */
 		2407E8B71F166E2500F6A61B /* AttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewController.swift; sourceTree = "<group>"; };
+		240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "KSCrash-Mac.xcodeproj"; path = "KSCrash/Mac/KSCrash-Mac.xcodeproj"; sourceTree = "<group>"; };
 		242B181C1F7C75A4007963FE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		242B18261F7C7AD5007963FE /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
 		242B18271F7C7AD5007963FE /* DOMParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOMParser.swift; sourceTree = "<group>"; };
@@ -310,6 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +407,16 @@
 				270B6D2F1F127617007BA2BA /* watting.jpeg */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		240B6110205F75DF00AAE03A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				240B6117205F75DF00AAE03A /* KSCrash.framework */,
+				240B6119205F75DF00AAE03A /* KSCrashTests.xctest */,
+				240B611B205F75DF00AAE03A /* libKSCrashLib.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		242B18211F7C7A34007963FE /* BotParser */ = {
@@ -511,6 +561,7 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */,
 				24467AC51F19237100574160 /* SwiftToaster.xcodeproj */,
 				2488BBE91F711EE800A113AF /* CryptoSwift.xcodeproj */,
 				242B18211F7C7A34007963FE /* BotParser */,
@@ -697,10 +748,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				240B611E205F788B00AAE03A /* PBXTargetDependency */,
 				2488BBF41F711F1F00A113AF /* PBXTargetDependency */,
 				24467ACF1F19239D00574160 /* PBXTargetDependency */,
 				27AD7C661EEFD20D00258BDC /* PBXTargetDependency */,
 				24BA90E11EF597B6002BE480 /* PBXTargetDependency */,
+				240B6122205F78BE00AAE03A /* PBXTargetDependency */,
 			);
 			name = Sex8BlockExtension;
 			productName = Sex8BlockExtension;
@@ -772,7 +825,7 @@
 				TargetAttributes = {
 					24BA90CE1EF597B6002BE480 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 69TXR99ENR;
+						DevelopmentTeam = E6NP67H473;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -803,7 +856,7 @@
 					};
 					27AD7C261EEFD1EE00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 69TXR99ENR;
+						DevelopmentTeam = E6NP67H473;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -831,7 +884,7 @@
 					};
 					27AD7C581EEFD20D00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 69TXR99ENR;
+						DevelopmentTeam = E6NP67H473;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -854,6 +907,10 @@
 					ProjectRef = 2488BBE91F711EE800A113AF /* CryptoSwift.xcodeproj */;
 				},
 				{
+					ProductGroup = 240B6110205F75DF00AAE03A /* Products */;
+					ProjectRef = 240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */;
+				},
+				{
 					ProductGroup = 24467AC61F19237100574160 /* Products */;
 					ProjectRef = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
 				},
@@ -873,6 +930,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		240B6117205F75DF00AAE03A /* KSCrash.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KSCrash.framework;
+			remoteRef = 240B6116205F75DF00AAE03A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		240B6119205F75DF00AAE03A /* KSCrashTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KSCrashTests.xctest;
+			remoteRef = 240B6118205F75DF00AAE03A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		240B611B205F75DF00AAE03A /* libKSCrashLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKSCrashLib.a;
+			remoteRef = 240B611A205F75DF00AAE03A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		24467ACB1F19237200574160 /* SwiftToaster-iOS.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1087,6 +1165,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		240B611E205F788B00AAE03A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KSCrash;
+			targetProxy = 240B611D205F788B00AAE03A /* PBXContainerItemProxy */;
+		};
+		240B6122205F78BE00AAE03A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KSCrash;
+			targetProxy = 240B6121205F78BE00AAE03A /* PBXContainerItemProxy */;
+		};
 		24467ACF1F19239D00574160 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftToastermacOS;
@@ -1162,7 +1250,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Torrilste/Torrilste.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -1179,7 +1267,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Torrilste/Torrilste.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -1431,7 +1519,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sex8BlockExtension/Sex8BlockExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1454,7 +1542,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sex8BlockExtension/Sex8BlockExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1540,7 +1628,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ADBlock/ADBlock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
@@ -1557,7 +1645,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ADBlock/ADBlock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 69TXR99ENR;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;

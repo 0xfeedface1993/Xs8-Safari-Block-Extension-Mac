@@ -1,3 +1,6 @@
 [submodule "CryptoSwift"]
 	path = CryptoSwift
 	url = https://github.com/krzyzanowskim/CryptoSwift.git
+[submodule "Sex8BlockExtension/KSCrash"]
+	path = Sex8BlockExtension/KSCrash
+	url = https://github.com/kstenerud/KSCrash.git

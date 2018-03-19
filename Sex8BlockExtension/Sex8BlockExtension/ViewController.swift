@@ -34,16 +34,18 @@ class ViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopFetch), name: StopFetchName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.showExtennalText(notification:)), name: ShowExtennalTextName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetSearchValue(notification:)), name: NSControl.textDidChangeNotification, object: nil)
-        head.tapBlock = {
-            image in
-            let app = NSApp.delegate as! AppDelegate
-            if let _ = app.user {
-                
-            }   else    {
-                self.login.showWindow(nil)
-            }
-        }
+//        head.tapBlock = {
+//            image in
+//            let app = NSApp.delegate as! AppDelegate
+//            if let _ = app.user {
+//                
+//            }   else    {
+//                self.login.showWindow(nil)
+//            }
+//        }
         searchArea.delegate = self
+        upload.isHidden = true
+//        extract.isHidden = true
     }
     
     deinit {
