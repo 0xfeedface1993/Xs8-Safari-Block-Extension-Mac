@@ -86,7 +86,7 @@ class ViewController: NSViewController {
     
     @objc func stopFetch() {
         extract.tag = 112
-        extract.title = "提取"
+        extract.title = "获取前十页"
         self.extenalText.stringValue = "(已停止)" + self.extenalText.stringValue
         
     }
