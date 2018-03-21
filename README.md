@@ -53,3 +53,9 @@
 ![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/adblock.png)
 
 ![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/torrilte.png)
+
+## 下载地址
+
+> https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/releases
+
+![](http://oqedp1ccg.bkt.clouddn.com/28114B83422533823732B206E811A0E9.png)
