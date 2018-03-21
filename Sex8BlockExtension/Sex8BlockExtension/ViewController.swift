@@ -14,7 +14,7 @@ let UploadName = NSNotification.Name.init("UploadName")
 
 var searchText : String?
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, UpdateProtocol {
     @IBOutlet weak var save: NSButton!
     @IBOutlet weak var collectionView: NSView!
     @IBOutlet weak var head: TapImageView!

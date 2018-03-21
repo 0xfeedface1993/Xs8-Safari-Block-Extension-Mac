@@ -42,6 +42,7 @@
 		249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249F91321EFFEB950043B48D /* ImageCollectionItem.xib */; };
 		24A886561F5D6334007336BD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886551F5D6334007336BD /* UserInfo.swift */; };
 		24A886581F5FE873007336BD /* TapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886571F5FE873007336BD /* TapImageView.swift */; };
+		24B1F18720629A05008604AE /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B1F18620629A05008604AE /* Update.swift */; };
 		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
 		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
@@ -267,6 +268,7 @@
 		249F91321EFFEB950043B48D /* ImageCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionItem.xib; sourceTree = "<group>"; };
 		24A886551F5D6334007336BD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24A886571F5FE873007336BD /* TapImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImageView.swift; sourceTree = "<group>"; };
+		24B1F18620629A05008604AE /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
 		24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -490,6 +492,14 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		24B1F185206299E6008604AE /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				24B1F18620629A05008604AE /* Update.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
 		24BA90D11EF597B6002BE480 /* Torrilste */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +631,7 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				24B1F185206299E6008604AE /* Update */,
 				2488BBE41F709D6900A113AF /* JsonModal */,
 				24FA6ACC1F5FF0F9005853EA /* SubClass */,
 				24467ADC1F1B1A4A00574160 /* File */,
@@ -1145,6 +1156,7 @@
 				242B18281F7C7ADC007963FE /* DOMParser.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
 				248BCDA020302D79000999D6 /* ImageTask.swift in Sources */,
+				24B1F18720629A05008604AE /* Update.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,

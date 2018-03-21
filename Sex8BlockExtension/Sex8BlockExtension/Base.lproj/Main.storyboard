@@ -153,6 +153,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
+                                        <menuItem title="检查更新" id="Dox-XH-qVN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="findNewVersion:" target="Voe-Tx-rLC" id="RbD-Gg-MNe"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Sex8BlockExtension Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>

@@ -11,7 +11,7 @@ import KSCrash
 import IOKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     var user : User?
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
@@ -195,6 +195,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         return nil
+    }
+    
+    @IBAction func findNewVersion(_ sender: Any) {
+        checkUpdate()
     }
 }
 
