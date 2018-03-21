@@ -47,14 +47,6 @@
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		24E438842061589700D2E5BF /* adblock.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387A2061589600D2E5BF /* adblock.png */; };
-		24E438852061589700D2E5BF /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387B2061589600D2E5BF /* main.png */; };
-		24E438862061589700D2E5BF /* autofetch.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387C2061589600D2E5BF /* autofetch.png */; };
-		24E438872061589700D2E5BF /* selectedit.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387D2061589600D2E5BF /* selectedit.png */; };
-		24E438882061589700D2E5BF /* torrilte.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387E2061589600D2E5BF /* torrilte.png */; };
-		24E438892061589700D2E5BF /* manucopy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 24E4387F2061589600D2E5BF /* manucopy.gif */; };
-		24E4388B206158CB00D2E5BF /* autocopy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 24E4388A206158CB00D2E5BF /* autocopy.gif */; };
-		24E4388D20615AD100D2E5BF /* autozoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 24E4388C20615AD100D2E5BF /* autozoom.gif */; };
 		24FA6ACF1F5FFF7D005853EA /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
 		272ABF701F1277A8008FAE69 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D301F127617007BA2BA /* error.png */; };
 		272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D2F1F127617007BA2BA /* watting.jpeg */; };
@@ -1058,22 +1050,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */,
-				24E438872061589700D2E5BF /* selectedit.png in Resources */,
 				249F91341EFFEB950043B48D /* ImageCollectionItem.xib in Resources */,
 				27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */,
-				24E4388B206158CB00D2E5BF /* autocopy.gif in Resources */,
-				24E4388D20615AD100D2E5BF /* autozoom.gif in Resources */,
 				272ABF701F1277A8008FAE69 /* error.png in Resources */,
 				272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */,
 				24467AD91F1A287600574160 /* LoginStoryboard.storyboard in Resources */,
 				24467AD41F192A7700574160 /* ZoomStoryboard.storyboard in Resources */,
-				24E438882061589700D2E5BF /* torrilte.png in Resources */,
 				27AD7C321EEFD1EF00258BDC /* Main.storyboard in Resources */,
-				24E438842061589700D2E5BF /* adblock.png in Resources */,
-				24E438892061589700D2E5BF /* manucopy.gif in Resources */,
-				24E438852061589700D2E5BF /* main.png in Resources */,
 				274AA3F51F7785910058E21A /* fetch.js in Resources */,
-				24E438862061589700D2E5BF /* autofetch.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
