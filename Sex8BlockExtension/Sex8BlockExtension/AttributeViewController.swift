@@ -70,11 +70,13 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 let copysObjects = [links?[tableview.selectedRow].link ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
                 view.toast("复制下载地址成功")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                    tableview.deselectRow(tableview.selectedRow)
-                })
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+//                    tableview.deselectRow(tableview.selectedRow)
+//                })
+                NotificationCenter.default.post(name: DownloadAddressName, object: copysObjects.first)
+            }   else    {
+                NotificationCenter.default.post(name: DownloadAddressName, object: nil)
             }
-            break
         case pageAddress:
             if tableview.selectedRow >= 0 {
                 let pasteBoard = NSPasteboard.general
@@ -86,7 +88,6 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
                     tableview.deselectRow(tableview.selectedRow)
                 })
             }
-            break
         default:
             break
         }

@@ -7,10 +7,12 @@
 //
 
 import Cocoa
+import WebShell
 
 let StopFetchName = NSNotification.Name.init("stopFetching")
 let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")
 let UploadName = NSNotification.Name.init("UploadName")
+let DownloadAddressName = NSNotification.Name.init("com.ascp.dowload.address.click")
 
 var searchText : String?
 
@@ -22,6 +24,22 @@ class ViewController: NSViewController, UpdateProtocol {
     @IBOutlet weak var userprofile: NSTextField!
     @IBOutlet weak var extenalText: NSTextField!
     @IBOutlet weak var searchArea: NSSearchField!
+    @IBOutlet weak var downloadButton: NSButton!
+    
+    lazy var downloadViewController : ContentViewController = storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "com.ascp.contenView")) as! ContentViewController
+    
+    lazy var popver : NSPopover = {
+        let popver = NSPopover()
+        popver.appearance = NSAppearance(named: NSAppearance.Name.aqua)
+        let vc = self.downloadViewController
+        vc.view.wantsLayer = true
+        vc.view.layer?.cornerRadius = 10
+        popver.contentViewController = vc
+        popver.behavior = .transient
+        return popver
+    }()
+    
+    var downloadURL : URL?
     
     let login = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "LoginStoryboard"), bundle: Bundle.main).instantiateInitialController() as! NSWindowController
     
@@ -34,15 +52,17 @@ class ViewController: NSViewController, UpdateProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopFetch), name: StopFetchName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.showExtennalText(notification:)), name: ShowExtennalTextName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetSearchValue(notification:)), name: NSControl.textDidChangeNotification, object: nil)
-//        head.tapBlock = {
-//            image in
+        NotificationCenter.default.addObserver(self, selector: #selector(changeDownloadState(notification: )), name: DownloadAddressName, object: nil)
+        head.tapBlock = {
+            [weak self] image in
 //            let app = NSApp.delegate as! AppDelegate
 //            if let _ = app.user {
-//                
+//
 //            }   else    {
 //                self.login.showWindow(nil)
 //            }
-//        }
+            self?.popver.show(relativeTo: image.bounds, of: image, preferredEdge: .maxY)
+        }
         searchArea.delegate = self
         upload.isHidden = true
 //        extract.isHidden = true
@@ -53,6 +73,7 @@ class ViewController: NSViewController, UpdateProtocol {
         NotificationCenter.default.removeObserver(self, name: UnSelectItemName, object: nil)
         NotificationCenter.default.removeObserver(self, name: StopFetchName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowExtennalTextName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: DownloadAddressName, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSControl.textDidChangeNotification, object: nil)
     }
     
@@ -119,6 +140,42 @@ class ViewController: NSViewController, UpdateProtocol {
             self.extenalText.stringValue = text
         }
     }
+    
+    //MARK: - 下载
+    @IBAction func download(_ sender: Any) {
+        defer {
+            downloadButton.isEnabled = false
+        }
+        
+        guard let link = downloadURL else {
+            print("dowloadURL is nil!")
+            return
+        }
+        
+        let pipline = Pipeline.share
+        pipline.delegate = self
+        if let _ = pipline.add(url: link.absoluteString) {
+//            riffle.downloadStateController = downloadViewController.resultArrayContriller
+            view.toast("成功添加下载任务")
+        }
+    }
+    
+    @objc func changeDownloadState(notification: Notification) {
+        guard let linkString = notification.object as? String else {
+            print("none string object!")
+            downloadButton.isEnabled = false
+            return
+        }
+        
+        guard let linkURL = URL(string: linkString) else {
+            print("none URL string!")
+            downloadButton.isEnabled = false
+            return
+        }
+        
+        downloadURL = linkURL
+        downloadButton.isEnabled = true
+    }
 }
 
 // MARK: - Login Fun
@@ -139,6 +196,20 @@ extension ViewController : NSSearchFieldDelegate {
     
     @objc func resetSearchValue(notification: NSNotification?) {
         print("change text value \(searchArea.stringValue)")
+        
+    }
+}
+
+extension ViewController : PiplineDelegate {
+    func pipline(didAddRiffle riffle: WebRiffle) {
+        
+    }
+    
+    func pipline(didBeginRiffle riffle: WebRiffle) {
+        
+    }
+    
+    func pipline(didFinishedRiffle riffle: WebRiffle) {
         
     }
 }

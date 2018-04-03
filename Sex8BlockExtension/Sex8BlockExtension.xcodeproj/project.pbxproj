@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
+		2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409A207206D332E00CD44DB /* ContentCellView.swift */; };
+		2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409A20C206D332F00CD44DB /* ContentViewController.swift */; };
 		240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; };
 		240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		242B18161F7C0BDD007963FE /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
@@ -31,6 +33,8 @@
 		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
 		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
+		2469E45F206947E0000070BF /* WebShell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2469E45C206947CB000070BF /* WebShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2469E460206947F9000070BF /* WebShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2469E45C206947CB000070BF /* WebShell.framework */; };
 		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2488BBEF1F711EE800A113AF /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -212,6 +216,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2469E45F206947E0000070BF /* WebShell.framework in Embed Frameworks */,
 				240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */,
 				2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */,
 				24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */,
@@ -235,6 +240,8 @@
 
 /* Begin PBXFileReference section */
 		2407E8B71F166E2500F6A61B /* AttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewController.swift; sourceTree = "<group>"; };
+		2409A207206D332E00CD44DB /* ContentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCellView.swift; sourceTree = "<group>"; };
+		2409A20C206D332F00CD44DB /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "KSCrash-Mac.xcodeproj"; path = "KSCrash/Mac/KSCrash-Mac.xcodeproj"; sourceTree = "<group>"; };
 		242B181C1F7C75A4007963FE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		242B18261F7C7AD5007963FE /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
@@ -256,6 +263,7 @@
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
+		2469E45C206947CB000070BF /* WebShell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebShell.framework; path = Carthage/Build/Mac/WebShell.framework; sourceTree = "<group>"; };
 		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
 		2488BBE61F709D8F00A113AF /* JsonModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModal.swift; sourceTree = "<group>"; };
 		2488BBE91F711EE800A113AF /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
@@ -360,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */,
+				2469E460206947F9000070BF /* WebShell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +473,15 @@
 				24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */,
 			);
 			path = File;
+			sourceTree = "<group>";
+		};
+		2469E461206950AB000070BF /* DownloadView */ = {
+			isa = PBXGroup;
+			children = (
+				2409A207206D332E00CD44DB /* ContentCellView.swift */,
+				2409A20C206D332F00CD44DB /* ContentViewController.swift */,
+			);
+			path = DownloadView;
 			sourceTree = "<group>";
 		};
 		2488BBE41F709D6900A113AF /* JsonModal */ = {
@@ -594,6 +612,7 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				2469E45C206947CB000070BF /* WebShell.framework */,
 				24E438792061589600D2E5BF /* docimg */,
 				240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */,
 				24467AC51F19237100574160 /* SwiftToaster.xcodeproj */,
@@ -631,6 +650,7 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				2469E461206950AB000070BF /* DownloadView */,
 				24B1F185206299E6008604AE /* Update */,
 				2488BBE41F709D6900A113AF /* JsonModal */,
 				24FA6ACC1F5FF0F9005853EA /* SubClass */,
@@ -779,6 +799,7 @@
 				27AD7C251EEFD1EE00258BDC /* Resources */,
 				27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */,
 				24467AAE1F19228E00574160 /* Embed Frameworks */,
+				24B18E1F2065DAF80054525C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -855,7 +876,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = ascp;
 				TargetAttributes = {
 					24BA90CE1EF597B6002BE480 = {
@@ -1096,6 +1117,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24B18E1F2065DAF80054525C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/WebShell.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		24BA90CB1EF597B6002BE480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1168,8 +1206,10 @@
 				242B181D1F7C75A4007963FE /* Extension.swift in Sources */,
 				242B18291F7C7ADC007963FE /* FetchBot.swift in Sources */,
 				24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */,
+				2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */,
 				248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
+				2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1455,6 +1495,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1462,6 +1503,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1488,7 +1530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1512,6 +1554,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1519,6 +1562,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1539,7 +1583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1559,6 +1603,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1582,6 +1627,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
