@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import WebShell
 
 enum DownloadStatus : String {
     case downloading = "下载中"
@@ -23,11 +24,7 @@ enum DownloadStatus : String {
                                                               .abonden:.brown]
 }
 
-public enum WebHostSite : Int {
-    case feemoo
-    case pan666
-    case cchooo
-    case unknowsite
+extension WebHostSite {
     static let hostImagePack : [WebHostSite:NSImage] = [.feemoo:NSImage(named: NSImage.Name("mofe_feemoo"))!,
                                                         .pan666:NSImage(named: NSImage.Name("mofe_666pan"))!,
                                                         .cchooo:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
@@ -35,22 +32,19 @@ public enum WebHostSite : Int {
 }
 
 /// 下载状态数据模型，用于视图数据绑定
-class DownloadInfo : NSObject {
-    let uuid = UUID().uuidString
+class DownloadStateInfo : NSObject {
+    var uuid = UUID().uuidString
     var status : DownloadStatus {
         didSet {
-            state = status.rawValue
-            stateColor = DownloadStatus.statusColorPacks[status]!
-            isCanCancel = status == .downloading || status == .waitting
-            isCanRestart = status != .abonden && status != .waitting
-            isHiddenPrograss = status != .downloading
+            update(newStatus: status)
         }
     }
     var hostType : WebHostSite {
         didSet {
-            siteIcon = WebHostSite.hostImagePack[hostType]!
+            update(newSite: hostType)
         }
     }
+    var originTask: PCDownloadTask?
     @objc dynamic var name = ""
     @objc dynamic var progress = ""
     @objc dynamic var totalBytes = ""
@@ -66,6 +60,45 @@ class DownloadInfo : NSObject {
         hostType = .unknowsite
         super.init()
     }
+    
+    init(task: PCDownloadTask) {
+        status = .downloading
+        hostType = siteType(url: (task.request.riffle?.mainURL)!)
+        super.init()
+        name = task.fileName
+        progress = String(format: "%.2f", task.pack.progress * 100.0)
+        totalBytes = String(format: "%.2fM", Float(task.pack.totalBytes) / 1024.0 / 1024.0)
+        originTask = task
+        update(newSite: hostType)
+        update(newStatus: status)
+    }
+    
+    init(riffle: PCWebRiffle) {
+        status = .waitting
+        hostType = riffle.host
+        super.init()
+        name = riffle.mainURL?.absoluteString ?? "no url"
+        progress = "0"
+        totalBytes = "0M"
+        update(newSite: hostType)
+        update(newStatus: status)
+    }
+    
+    func update(newStatus: DownloadStatus) {
+        state = newStatus.rawValue
+        stateColor = DownloadStatus.statusColorPacks[status]!
+        isCanCancel = status == .downloading || status == .waitting
+        isCanRestart = status != .abonden && status != .waitting && status != .downloading
+        isHiddenPrograss = status != .downloading
+    }
+    
+    func update(newSite: WebHostSite) {
+        siteIcon = WebHostSite.hostImagePack[newSite]!
+    }
+    
+    override var description: String {
+        return "status: \(status)\n hostType: \(hostType)\n name: \(name)\n uuid: \(uuid)\n progress: \(progress)\n" + "site: \(site)\n state: \(state)\n stateColor: \(stateColor)\n isCanCancel: \(isCanCancel)\n isCanRestart: \(isCanRestart)\n" + "isHiddenPrograss: \(isHiddenPrograss)\n siteIcon: \(siteIcon)"
+    }
 }
 
 class ContentCellView: NSTableCellView {
@@ -76,7 +109,7 @@ class ContentCellView: NSTableCellView {
     @IBOutlet weak var status: NSTextField!
     @IBOutlet weak var restart: NSButton!
     @IBOutlet weak var cancel: NSButton!
-    weak var info : DownloadInfo?
+    weak var info : DownloadStateInfo?
     var restartAction : (()->())?
     var cancelAction : (()->())?
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -769,7 +769,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="com.ascp.contentcell" id="8Pi-KL-yfy" customClass="ContentCellView" customModule="PopverTest" customModuleProvider="target">
+                                                        <tableCellView identifier="com.ascp.contentcell" id="8Pi-KL-yfy" customClass="ContentCellView" customModule="Sex8BlockExtension" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="447" height="73"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -815,7 +815,7 @@
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBs-H1-18m">
                                                                     <rect key="frame" x="298" y="8" width="64" height="19"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="roundRect" title="重新下载" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jNr-y5-MVA">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" size="12" name=".PingFangSC-Regular"/>
@@ -835,7 +835,7 @@
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gc0-Y9-Lrv">
                                                                     <rect key="frame" x="391" y="8" width="39" height="19"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="roundRect" title="取消" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NQa-I9-dHV">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" size="12" name=".PingFangSC-Regular"/>
@@ -857,6 +857,18 @@
                                                                     </textFieldCell>
                                                                     <connections>
                                                                         <binding destination="8Pi-KL-yfy" name="value" keyPath="objectValue.state" id="fgI-1C-Sf3"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCg-pk-mJi">
+                                                                    <rect key="frame" x="154" y="9" width="138" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0M" id="Rfg-VJ-myJ">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="8Pi-KL-yfy" name="value" keyPath="objectValue.totalBytes" id="W8b-qC-sZ4"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>

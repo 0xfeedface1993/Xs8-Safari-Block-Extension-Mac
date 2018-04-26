@@ -152,7 +152,7 @@ class ViewController: NSViewController, UpdateProtocol {
             return
         }
         
-        let pipline = Pipeline.share
+        let pipline = PCPipeline.share
         pipline.delegate = self
         if let _ = pipline.add(url: link.absoluteString) {
 //            riffle.downloadStateController = downloadViewController.resultArrayContriller
@@ -200,16 +200,58 @@ extension ViewController : NSSearchFieldDelegate {
     }
 }
 
-extension ViewController : PiplineDelegate {
-    func pipline(didAddRiffle riffle: WebRiffle) {
-        
+extension ViewController : PCPiplineDelegate {
+    func downloadVC() -> ContentViewController? {
+        let windows = NSApplication.shared.windows
+        return windows.first(where: { w in
+            return w.contentViewController is ContentViewController
+        })?.contentViewController as? ContentViewController
     }
     
-    func pipline(didBeginRiffle riffle: WebRiffle) {
-        
+//    func pipline(didAddRiffle riffle: PCWebRiffle) {
+//        guard let vc = downloadVC() else { return }
+//        print("found \(vc)")
+//        vc.add(riffle: riffle)
+//    }
+//
+//    func pipline(didBeginRiffle riffle: PCWebRiffle) {
+//
+//    }
+//
+//    func pipline(didFinishedRiffle riffle: PCWebRiffle) {
+//
+//    }
+//
+//    func pipline(didUpdateTask task: PCDownloadTask) {
+//        guard let vc = downloadVC() else { return }
+//        vc.update(task: task)
+//    }
+//
+//    func pipline(didFinishedTask task: PCDownloadTask, withError error: Error?) {
+//        guard let vc = downloadVC() else { return }
+//        vc.finished(task: task)
+//    }
+    
+    func pipline(didAddRiffle riffle: PCWebRiffle) {
+        guard let vc = downloadVC() else { return }
+        print("found \(vc)")
+        vc.add(riffle: riffle)
     }
     
-    func pipline(didFinishedRiffle riffle: WebRiffle) {
-        
+    func pipline(didUpdateTask task: PCDownloadTask) {
+        guard let vc = downloadVC() else { return }
+        vc.update(task: task)
+    }
+    
+    func pipline(didFinishedTask task: PCDownloadTask) {
+        guard let vc = downloadVC() else { return }
+        vc.finished(task: task)
+    }
+    
+    func pipline(didFinishedRiffle riffle: PCWebRiffle) {
+        guard let vc = downloadVC() else { return }
+        if let task = PCDownloadManager.share.allTasks.first(where: { $0.request.riffle == riffle }) {
+            vc.finished(task: task)
+        }
     }
 }
