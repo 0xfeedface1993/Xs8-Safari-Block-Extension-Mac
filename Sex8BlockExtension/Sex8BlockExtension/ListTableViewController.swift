@@ -237,6 +237,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             if tableview.selectedRow >= 0 {
                 reloadImages(index: table.selectedRow)
                 let data = datas[table.selectedRow]
+                let app = NSApp.delegate as! AppDelegate
+                app.selectItem = data
                 NotificationCenter.default.post(name: SelectItemName, object: data)
             }   else    {
                 popver.close()

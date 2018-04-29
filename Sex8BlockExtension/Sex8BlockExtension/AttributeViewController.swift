@@ -70,11 +70,9 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 let copysObjects = [links?[tableview.selectedRow].link ?? ""]
                 pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
                 view.toast("复制下载地址成功")
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-//                    tableview.deselectRow(tableview.selectedRow)
-//                })
                 NotificationCenter.default.post(name: DownloadAddressName, object: copysObjects.first)
             }   else    {
+                tableview.deselectRow(tableview.selectedRow)
                 NotificationCenter.default.post(name: DownloadAddressName, object: nil)
             }
         case pageAddress:
@@ -97,6 +95,12 @@ class AttributeViewController: NSViewController, NSTableViewDelegate, NSTableVie
     @objc func select(notification: NSNotification) {
         net = notification.object as? NetDisk
         links = net?.link?.allObjects as? [Link] ?? []
+        if pageAddress.selectedRow >= 0 {
+            pageAddress.deselectRow(pageAddress.selectedRow)
+        }
+        if downloadAddress.selectedRow >= 0 {
+            downloadAddress.deselectRow(downloadAddress.selectedRow)
+        }
         pageAddress.reloadData()
         downloadAddress.reloadData()
     }

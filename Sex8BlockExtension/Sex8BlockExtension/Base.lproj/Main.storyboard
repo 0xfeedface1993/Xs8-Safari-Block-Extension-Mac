@@ -813,7 +813,7 @@
                                                                         <binding destination="8Pi-KL-yfy" name="value" keyPath="objectValue.progress" id="hB2-2z-ajU"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBs-H1-18m">
+                                                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBs-H1-18m">
                                                                     <rect key="frame" x="298" y="8" width="64" height="19"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="roundRect" title="重新下载" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jNr-y5-MVA">
@@ -833,7 +833,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gc0-Y9-Lrv">
+                                                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gc0-Y9-Lrv">
                                                                     <rect key="frame" x="391" y="8" width="39" height="19"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="roundRect" title="取消" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NQa-I9-dHV">
@@ -860,7 +860,7 @@
                                                                     </connections>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCg-pk-mJi">
-                                                                    <rect key="frame" x="154" y="9" width="138" height="17"/>
+                                                                    <rect key="frame" x="294" y="9" width="138" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0M" id="Rfg-VJ-myJ">
                                                                         <font key="font" metaFont="system"/>

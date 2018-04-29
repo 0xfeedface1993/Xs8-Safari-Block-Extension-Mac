@@ -12,6 +12,7 @@ import WebShell
 class ContentViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var resultArrayContriller: NSArrayController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -61,32 +62,54 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("com.ascp.contentcell"), owner: self) as? ContentCellView
         cell?.restartAction = {
-            if let info = (cell?.objectValue as? DownloadStateInfo)?.originTask {
+            if let riffle = (cell?.objectValue as? DownloadStateInfo)?.riffle {
                 let pip = PCPipeline.share
-//                pip.remove(task: info)
+                pip.remove(riffle: riffle)
                 DispatchQueue.main.async {
                     if let items = self.resultArrayContriller.content as? [DownloadStateInfo] {
                         var newItems = items
                         newItems.remove(at: row)
                         self.resultArrayContriller.content = newItems
                     }
+                    
+                    guard let url = riffle.mainURL else {
+                        print("Invalible mainURL!")
+                        return
+                    }
+                    
+                    riffle.seat?.restart(mainURL: url)
+                }
+                return
+            }
+            
+            if let info = (cell?.objectValue as? DownloadStateInfo)?.originTask, let riffle = info.request.riffle {
+                let pip = PCPipeline.share
+                pip.remove(riffle: riffle)
+                DispatchQueue.main.async {
+                    if let items = self.resultArrayContriller.content as? [DownloadStateInfo] {
+                        var newItems = items
+                        newItems.remove(at: row)
+                        self.resultArrayContriller.content = newItems
+                    }
+                    
                     guard let url = info.request.riffle?.mainURL else {
                         print("Invalible mainURL!")
                         return
                     }
-                    guard let _ = pip.add(url: url.absoluteString) else {
-                        print("Invalible Riffle!")
-                        return
-                    }
+                    
+                    riffle.seat?.restart(mainURL: url)
                 }
             }
         }
         cell?.cancelAction = {
+            if let info = (cell?.objectValue as? DownloadStateInfo)?.originTask, let riffle = info.request.riffle {
+                let pip = PCPipeline.share
+                pip.remove(riffle: riffle)
+            }   else if let riffle = (cell?.objectValue as? DownloadStateInfo)?.riffle {
+                let pip = PCPipeline.share
+                pip.remove(riffle: riffle)
+            }
             DispatchQueue.main.async {
-                if let info = (cell?.objectValue as? DownloadStateInfo)?.originTask {
-                    let pip = PCPipeline.share
-//                    pip.worker.remove(task: info)
-                }
                 (cell?.objectValue as? DownloadStateInfo)?.status = .cancel
             }
         }

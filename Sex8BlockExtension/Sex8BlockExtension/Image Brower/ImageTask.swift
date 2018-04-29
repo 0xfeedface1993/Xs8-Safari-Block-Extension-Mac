@@ -70,7 +70,7 @@ class ImageTask : Equatable {
                     return
                 }
                 
-                guard let datURL = url, let img = NSImage(contentsOf: datURL)?.tiffRepresentation else {
+                guard let datURL = url, let img = NSImage(contentsOf: datURL) else {
                     self.state = .failed
                     print("bad image data!")
                     self.finishedAction?(self)
@@ -78,8 +78,8 @@ class ImageTask : Equatable {
                 }
                 
                 self.state = .downloaded
-                self._image = NSImage(data: img)
-                FileManager.default.saveSex8(pic: picx, data: img)
+                self._image = img
+                FileManager.default.saveSex8(pic: picx, data: img.tiffRepresentation!)
                 self.finishedAction?(self)
             })
             self.task = task

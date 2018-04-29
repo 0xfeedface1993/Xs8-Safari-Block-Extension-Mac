@@ -45,6 +45,7 @@ class DownloadStateInfo : NSObject {
         }
     }
     var originTask: PCDownloadTask?
+    weak var riffle: PCWebRiffle?
     @objc dynamic var name = ""
     @objc dynamic var progress = ""
     @objc dynamic var totalBytes = ""
@@ -63,7 +64,11 @@ class DownloadStateInfo : NSObject {
     
     init(task: PCDownloadTask) {
         status = .downloading
-        hostType = siteType(url: (task.request.riffle?.mainURL)!)
+        if let url = task.request.riffle?.mainURL {
+            hostType = siteType(url: url)
+        }   else    {
+            hostType = .unknowsite
+        }
         super.init()
         name = task.fileName
         progress = String(format: "%.2f", task.pack.progress * 100.0)
@@ -80,6 +85,7 @@ class DownloadStateInfo : NSObject {
         name = riffle.mainURL?.absoluteString ?? "no url"
         progress = "0"
         totalBytes = "0M"
+        self.riffle = riffle
         update(newSite: hostType)
         update(newStatus: status)
     }
@@ -121,9 +127,10 @@ class ContentCellView: NSTableCellView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        restart.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(tap(sender:))))
-        cancel.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(tap(sender:))))
+        restart.isHidden = true
+        cancel.isHidden = true
+//        restart.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(tap(sender:))))
+//        cancel.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(tap(sender:))))
     }
     
     @objc func tap(sender: NSClickGestureRecognizer) {

@@ -154,7 +154,9 @@ class ViewController: NSViewController, UpdateProtocol {
         
         let pipline = PCPipeline.share
         pipline.delegate = self
-        if let _ = pipline.add(url: link.absoluteString) {
+        let app = NSApp.delegate as! AppDelegate
+        let password = app.selectItem?.passwod ?? ""
+        if let _ = pipline.add(url: link.absoluteString, password: password) {
 //            riffle.downloadStateController = downloadViewController.resultArrayContriller
             view.toast("成功添加下载任务")
         }
@@ -164,12 +166,14 @@ class ViewController: NSViewController, UpdateProtocol {
         guard let linkString = notification.object as? String else {
             print("none string object!")
             downloadButton.isEnabled = false
+            downloadURL = nil
             return
         }
         
         guard let linkURL = URL(string: linkString) else {
             print("none URL string!")
             downloadButton.isEnabled = false
+            downloadURL = nil
             return
         }
         

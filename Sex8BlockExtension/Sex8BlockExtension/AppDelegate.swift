@@ -13,6 +13,8 @@ import IOKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     var user : User?
+    var selectItem: NetDisk?
+    
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
         let fileManage = NSStoryboard(name: NSStoryboard.Name(rawValue: "FileManageStoryboard"), bundle: Bundle.main)
