@@ -71,8 +71,10 @@ class DownloadStateInfo : NSObject {
         }
         super.init()
         name = task.fileName
-        progress = String(format: "%.2f", task.pack.progress * 100.0)
-        totalBytes = String(format: "%.2fM", Float(task.pack.totalBytes) / 1024.0 / 1024.0)
+        let pros = task.pack.progress * 100.0
+        let guts = Float(task.pack.totalBytes) / 1024.0 / 1024.0
+        progress = String(format: "%.2f", pros)
+        totalBytes = String(format: "%.2fM", guts)
         originTask = task
         update(newSite: hostType)
         update(newStatus: status)
