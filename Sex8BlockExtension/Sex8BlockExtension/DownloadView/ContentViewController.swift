@@ -49,7 +49,18 @@ class ContentViewController: NSViewController {
             newItems[index] = info
             resultArrayContriller.content = newItems
         }   else    {
-            print("Not found finished item \(info)!")
+            print("Not found finished item \(info.name)!")
+        }
+    }
+    
+    func finished(riffle: PCWebRiffle) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.riffle == riffle }) {
+            print("found finished item!")
+            var newItems = items
+            newItems[index].status = .downloaded
+            resultArrayContriller.content = newItems
+        }   else    {
+            print("Not found finished item \(riffle.mainURL?.absoluteString ?? "** no url **")!")
         }
     }
 }

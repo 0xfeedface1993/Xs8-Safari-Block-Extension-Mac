@@ -256,6 +256,8 @@ extension ViewController : PCPiplineDelegate {
         guard let vc = downloadVC() else { return }
         if let task = PCDownloadManager.share.allTasks.first(where: { $0.request.riffle == riffle }) {
             vc.finished(task: task)
+        }   else    {
+            vc.finished(riffle: riffle)
         }
     }
 }
