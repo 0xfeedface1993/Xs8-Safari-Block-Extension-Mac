@@ -2,7 +2,7 @@
 
 ## 新功能：**一键下载**
 
-莕吧小助手是专门针对Mac开发的杏吧辅助工具。主要有帖子收藏、图片浏览保存、广告屏蔽，未来支持网盘一键下载。
+莕吧小助手是专门针对Mac开发的杏吧辅助工具。主要有帖子收藏、图片浏览保存、广告屏蔽，已支持网盘**一键下载**。
 
 常年混迹杏吧的本狼，很喜欢论坛，但是web的东西很不稳定，某些体验也不好，特别是我最喜欢的网盘下载区，因为其他区是种子或者在线观看都是不错的，就是这个区是需要转到第三方网盘下载资源，还带有下载密码，有时候页面开太多，哪个是哪个的密码都忘记了，试半天，有时候下载失败就找不到原来的页面，有时候资源前一秒还可以，下一秒就被封禁了。
 
@@ -26,6 +26,14 @@
 
 ### 帖子信息收藏
 
+#### 手动收藏
+
+当然你也可以手动收藏喜欢的帖子，Safari进入帖子页面以后点击地址栏左侧的`莕`按钮（**需要在Safari扩展中开启`Torrilste`扩展。）**，即可自动保存到App中，这时候重新打开App即可看到刚刚添加的帖子。
+
+![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/torrilte.png)
+
+![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/manucopy.gif)
+
 抓取数据以后可以看到左侧列表记录了帖子名字、**解压密码**、视频时间、格式等信息，还可以根据关键字进行帖子的搜索，**列表里面的信息是可以修改并保存的**，双击即可进行复制和编辑操作。
 
 ![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/selectedit.png)
@@ -39,14 +47,6 @@
 ![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/autozoom.gif)
 
 图片是自动缓存到你的`图片`文件夹下的`sex8`里面，根据帖子名字归类保存。如果占用空间过大，你可以将整个`sex8`文件夹删除。
-
-#### 手动收藏
-
-当然你也可以手动收藏喜欢的帖子，Safari进入帖子页面以后点击地址栏左侧的`莕`按钮（**需要在Safari扩展中开启`Torrilste`扩展。）**，即可自动保存到App中，这时候重新打开App即可看到刚刚添加的帖子。
-
-![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/torrilte.png)
-
-![](https://github.com/0xfeedface1993/Xs8-Safari-Block-Extension-Mac/raw/master/Sex8BlockExtension/docimg/manucopy.gif)
 
 ### 广告屏蔽
 
