@@ -57,6 +57,7 @@ struct ContentInfo {
     var passwod : String
     var downloafLink : [String]
     var imageLink : [String]
+    var boardType : String
     init() {
         page = ""
         title = ""

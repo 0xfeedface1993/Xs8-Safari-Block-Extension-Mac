@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2406C53820C0086500EC20EB /* CloudKit.framework */; };
 		2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407E8B71F166E2500F6A61B /* AttributeViewController.swift */; };
 		2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409A207206D332E00CD44DB /* ContentCellView.swift */; };
 		2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409A20C206D332F00CD44DB /* ContentViewController.swift */; };
 		240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; };
 		240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		241B464520BEF8C3007C939B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
 		242B18161F7C0BDD007963FE /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
 		242B18191F7C0CD0007963FE /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		242B181D1F7C75A4007963FE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
@@ -239,10 +241,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2406C53820C0086500EC20EB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2407E8B71F166E2500F6A61B /* AttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewController.swift; sourceTree = "<group>"; };
 		2409A207206D332E00CD44DB /* ContentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCellView.swift; sourceTree = "<group>"; };
 		2409A20C206D332F00CD44DB /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "KSCrash-Mac.xcodeproj"; path = "KSCrash/Mac/KSCrash-Mac.xcodeproj"; sourceTree = "<group>"; };
+		241B464420BEF8C3007C939B /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		242B181C1F7C75A4007963FE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		242B18261F7C7AD5007963FE /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
 		242B18271F7C7AD5007963FE /* DOMParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOMParser.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 		2437BECD1F01FA1D00ABEA66 /* NetdiskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		2438470C1F0019E500027E27 /* NetdiskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
+		243A8B5720989A5F00424612 /* download-demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "download-demo.gif"; sourceTree = "<group>"; };
 		243AFE311F790FAA00D090D7 /* BackgroundFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetch.swift; sourceTree = "<group>"; };
 		243AFE351F7949BD00D090D7 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		24467AA51F1793BC00574160 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */,
 				240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */,
 				2469E460206947F9000070BF /* WebShell.framework in Frameworks */,
 			);
@@ -436,6 +442,14 @@
 				240B611B205F75DF00AAE03A /* libKSCrashLib.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		241B464320BEF882007C939B /* iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				241B464420BEF8C3007C939B /* Storage.swift */,
+			);
+			path = iCloud;
 			sourceTree = "<group>";
 		};
 		242B18211F7C7A34007963FE /* BotParser */ = {
@@ -544,6 +558,7 @@
 		24E438792061589600D2E5BF /* docimg */ = {
 			isa = PBXGroup;
 			children = (
+				243A8B5720989A5F00424612 /* download-demo.gif */,
 				24E4388C20615AD100D2E5BF /* autozoom.gif */,
 				24E4387A2061589600D2E5BF /* adblock.png */,
 				24E4387B2061589600D2E5BF /* main.png */,
@@ -612,6 +627,7 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				241B464320BEF882007C939B /* iCloud */,
 				2469E45C206947CB000070BF /* WebShell.framework */,
 				24E438792061589600D2E5BF /* docimg */,
 				240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */,
@@ -693,6 +709,7 @@
 		27AD7C5A1EEFD20D00258BDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2406C53820C0086500EC20EB /* CloudKit.framework */,
 				27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -919,7 +936,13 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -1211,6 +1234,7 @@
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
 				2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
+				241B464520BEF8C3007C939B /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
