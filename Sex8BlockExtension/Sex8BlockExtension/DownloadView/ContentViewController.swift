@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import WebShell
+import WebShell_macOS
 
 class ContentViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!

@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import WebShell
+import WebShell_macOS
 
 enum DownloadStatus : String {
     case downloading = "下载中"

@@ -35,11 +35,16 @@
 		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
 		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
-		2469E45F206947E0000070BF /* WebShell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2469E45C206947CB000070BF /* WebShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2469E460206947F9000070BF /* WebShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2469E45C206947CB000070BF /* WebShell.framework */; };
 		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2488BBEF1F711EE800A113AF /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18271F7C7AD5007963FE /* DOMParser.swift */; };
+		248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
+		248A33DA20C8D6A900413242 /* categrory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 248A33D720C8D6A900413242 /* categrory.plist */; };
+		248A33DB20C8D6D200413242 /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
+		248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
+		248A33DD20C8D6DC00413242 /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
+		248A33DE20C9035900413242 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2406C53820C0086500EC20EB /* CloudKit.framework */; };
 		248BCDA020302D79000999D6 /* ImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCD9F20302D79000999D6 /* ImageTask.swift */; };
 		248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCDA320303F24000999D6 /* FileManagerExtension.swift */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
@@ -54,6 +59,16 @@
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
+		24F47A0820C82EDB0005CEB8 /* WebShell_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */; };
+		24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */; };
+		24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A1120C83AA90005CEB8 /* ViewController.swift */; };
+		24F47A1420C83AAA0005CEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F47A1320C83AAA0005CEB8 /* Assets.xcassets */; };
+		24F47A1720C83AAA0005CEB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F47A1520C83AAA0005CEB8 /* Main.storyboard */; };
+		24F47A2320C83AAB0005CEB8 /* CloudFetchBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A2220C83AAB0005CEB8 /* CloudFetchBotTests.swift */; };
+		24F47A2E20C83AAB0005CEB8 /* CloudFetchBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A2D20C83AAB0005CEB8 /* CloudFetchBotUITests.swift */; };
+		24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
+		24F47A3A20C83BFC0005CEB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
 		24FA6ACF1F5FFF7D005853EA /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA6ACE1F5FFF7D005853EA /* WebService.swift */; };
 		272ABF701F1277A8008FAE69 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D301F127617007BA2BA /* error.png */; };
 		272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D2F1F127617007BA2BA /* watting.jpeg */; };
@@ -75,8 +90,6 @@
 		274AA3F41F7773820058E21A /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274AA3F11F7773820058E21A /* CoreDataExtension.swift */; };
 		274AA3F51F7785910058E21A /* fetch.js in Resources */ = {isa = PBXBuildFile; fileRef = 274AA3ED1F776C940058E21A /* fetch.js */; };
 		278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
-		278B8B261EFE831900E20296 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
-		278B8B281EFEC19400E20296 /* NetdiskModel.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2A1EEFD1EE00258BDC /* AppDelegate.swift */; };
 		27AD7C2D1EEFD1EE00258BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C2C1EEFD1EE00258BDC /* ViewController.swift */; };
 		27AD7C2F1EEFD1EE00258BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C2E1EEFD1EE00258BDC /* Assets.xcassets */; };
@@ -174,6 +187,20 @@
 			remoteGlobalIDString = 24BA90CE1EF597B6002BE480;
 			remoteInfo = Torrilste;
 		};
+		24F47A1F20C83AAA0005CEB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F47A0C20C83AA90005CEB8;
+			remoteInfo = CloudFetchBot;
+		};
+		24F47A2A20C83AAB0005CEB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F47A0C20C83AA90005CEB8;
+			remoteInfo = CloudFetchBot;
+		};
 		274AA3CD1F7694670058E21A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
@@ -218,7 +245,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2469E45F206947E0000070BF /* WebShell.framework in Embed Frameworks */,
 				240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */,
 				2488BBF51F711F2600A113AF /* CryptoSwift.framework in Embed Frameworks */,
 				24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */,
@@ -268,10 +294,11 @@
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
-		2469E45C206947CB000070BF /* WebShell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebShell.framework; path = Carthage/Build/Mac/WebShell.framework; sourceTree = "<group>"; };
 		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
 		2488BBE61F709D8F00A113AF /* JsonModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModal.swift; sourceTree = "<group>"; };
 		2488BBE91F711EE800A113AF /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		248A33D520C8D6A900413242 /* Categrory-Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Categrory-Modal.swift"; sourceTree = "<group>"; };
+		248A33D720C8D6A900413242 /* categrory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = categrory.plist; sourceTree = "<group>"; };
 		248BCD9F20302D79000999D6 /* ImageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTask.swift; sourceTree = "<group>"; };
 		248BCDA320303F24000999D6 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +324,20 @@
 		24E4387F2061589600D2E5BF /* manucopy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = manucopy.gif; sourceTree = "<group>"; };
 		24E4388A206158CB00D2E5BF /* autocopy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = autocopy.gif; sourceTree = "<group>"; };
 		24E4388C20615AD100D2E5BF /* autozoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = autozoom.gif; sourceTree = "<group>"; };
+		24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebShell_macOS.framework; path = Carthage/Build/Mac/WebShell_macOS.framework; sourceTree = "<group>"; };
+		24F47A0D20C83AA90005CEB8 /* CloudFetchBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudFetchBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		24F47A1120C83AA90005CEB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		24F47A1320C83AAA0005CEB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24F47A1620C83AAA0005CEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24F47A1820C83AAA0005CEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F47A1920C83AAA0005CEB8 /* CloudFetchBot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudFetchBot.entitlements; sourceTree = "<group>"; };
+		24F47A1E20C83AAA0005CEB8 /* CloudFetchBotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudFetchBotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F47A2220C83AAB0005CEB8 /* CloudFetchBotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFetchBotTests.swift; sourceTree = "<group>"; };
+		24F47A2420C83AAB0005CEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F47A2920C83AAB0005CEB8 /* CloudFetchBotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudFetchBotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F47A2D20C83AAB0005CEB8 /* CloudFetchBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFetchBotUITests.swift; sourceTree = "<group>"; };
+		24F47A2F20C83AAB0005CEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24FA6ACE1F5FFF7D005853EA /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		270B6D2F1F127617007BA2BA /* watting.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watting.jpeg; sourceTree = "<group>"; };
 		270B6D301F127617007BA2BA /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
@@ -347,6 +388,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		24F47A0A20C83AA90005CEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				248A33DE20C9035900413242 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A1B20C83AAA0005CEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A2620C83AAB0005CEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		274AA3B51F7694660058E21A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +437,7 @@
 			files = (
 				2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */,
 				240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */,
-				2469E460206947F9000070BF /* WebShell.framework in Frameworks */,
+				24F47A0820C82EDB0005CEB8 /* WebShell_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +579,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		248A33D420C8D6A900413242 /* Categrory */ = {
+			isa = PBXGroup;
+			children = (
+				248A33D520C8D6A900413242 /* Categrory-Modal.swift */,
+				248A33D720C8D6A900413242 /* categrory.plist */,
+			);
+			path = Categrory;
+			sourceTree = "<group>";
+		};
 		24A886531F5D6322007336BD /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +641,37 @@
 				24E4387F2061589600D2E5BF /* manucopy.gif */,
 			);
 			path = docimg;
+			sourceTree = "<group>";
+		};
+		24F47A0E20C83AA90005CEB8 /* CloudFetchBot */ = {
+			isa = PBXGroup;
+			children = (
+				24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */,
+				24F47A1120C83AA90005CEB8 /* ViewController.swift */,
+				24F47A1320C83AAA0005CEB8 /* Assets.xcassets */,
+				24F47A1520C83AAA0005CEB8 /* Main.storyboard */,
+				24F47A1820C83AAA0005CEB8 /* Info.plist */,
+				24F47A1920C83AAA0005CEB8 /* CloudFetchBot.entitlements */,
+			);
+			path = CloudFetchBot;
+			sourceTree = "<group>";
+		};
+		24F47A2120C83AAA0005CEB8 /* CloudFetchBotTests */ = {
+			isa = PBXGroup;
+			children = (
+				24F47A2220C83AAB0005CEB8 /* CloudFetchBotTests.swift */,
+				24F47A2420C83AAB0005CEB8 /* Info.plist */,
+			);
+			path = CloudFetchBotTests;
+			sourceTree = "<group>";
+		};
+		24F47A2C20C83AAB0005CEB8 /* CloudFetchBotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				24F47A2D20C83AAB0005CEB8 /* CloudFetchBotUITests.swift */,
+				24F47A2F20C83AAB0005CEB8 /* Info.plist */,
+			);
+			path = CloudFetchBotUITests;
 			sourceTree = "<group>";
 		};
 		24FA6ACC1F5FF0F9005853EA /* SubClass */ = {
@@ -627,8 +730,9 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
+				248A33D420C8D6A900413242 /* Categrory */,
+				24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */,
 				241B464320BEF882007C939B /* iCloud */,
-				2469E45C206947CB000070BF /* WebShell.framework */,
 				24E438792061589600D2E5BF /* docimg */,
 				240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */,
 				24467AC51F19237100574160 /* SwiftToaster.xcodeproj */,
@@ -643,6 +747,9 @@
 				274AA3B91F7694660058E21A /* AutoFech */,
 				274AA3CF1F7694670058E21A /* AutoFechTests */,
 				274AA3DA1F7694670058E21A /* AutoFechUITests */,
+				24F47A0E20C83AA90005CEB8 /* CloudFetchBot */,
+				24F47A2120C83AAA0005CEB8 /* CloudFetchBotTests */,
+				24F47A2C20C83AAB0005CEB8 /* CloudFetchBotUITests */,
 				27AD7C5A1EEFD20D00258BDC /* Frameworks */,
 				27AD7C281EEFD1EE00258BDC /* Products */,
 			);
@@ -659,6 +766,9 @@
 				274AA3B81F7694660058E21A /* AutoFech.app */,
 				274AA3CC1F7694660058E21A /* AutoFechTests.xctest */,
 				274AA3D71F7694670058E21A /* AutoFechUITests.xctest */,
+				24F47A0D20C83AA90005CEB8 /* CloudFetchBot.app */,
+				24F47A1E20C83AAA0005CEB8 /* CloudFetchBotTests.xctest */,
+				24F47A2920C83AAB0005CEB8 /* CloudFetchBotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -753,6 +863,59 @@
 			productName = Torrilste;
 			productReference = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		24F47A0C20C83AA90005CEB8 /* CloudFetchBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F47A3020C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBot" */;
+			buildPhases = (
+				24F47A0920C83AA90005CEB8 /* Sources */,
+				24F47A0A20C83AA90005CEB8 /* Frameworks */,
+				24F47A0B20C83AA90005CEB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudFetchBot;
+			productName = CloudFetchBot;
+			productReference = 24F47A0D20C83AA90005CEB8 /* CloudFetchBot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		24F47A1D20C83AAA0005CEB8 /* CloudFetchBotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F47A3320C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBotTests" */;
+			buildPhases = (
+				24F47A1A20C83AAA0005CEB8 /* Sources */,
+				24F47A1B20C83AAA0005CEB8 /* Frameworks */,
+				24F47A1C20C83AAA0005CEB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24F47A2020C83AAA0005CEB8 /* PBXTargetDependency */,
+			);
+			name = CloudFetchBotTests;
+			productName = CloudFetchBotTests;
+			productReference = 24F47A1E20C83AAA0005CEB8 /* CloudFetchBotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		24F47A2820C83AAB0005CEB8 /* CloudFetchBotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F47A3620C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBotUITests" */;
+			buildPhases = (
+				24F47A2520C83AAB0005CEB8 /* Sources */,
+				24F47A2620C83AAB0005CEB8 /* Frameworks */,
+				24F47A2720C83AAB0005CEB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24F47A2B20C83AAB0005CEB8 /* PBXTargetDependency */,
+			);
+			name = CloudFetchBotUITests;
+			productName = CloudFetchBotUITests;
+			productReference = 24F47A2920C83AAB0005CEB8 /* CloudFetchBotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		274AA3B71F7694660058E21A /* AutoFech */ = {
 			isa = PBXNativeTarget;
@@ -892,7 +1055,7 @@
 		27AD7C1F1EEFD1EE00258BDC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = ascp;
 				TargetAttributes = {
@@ -909,6 +1072,34 @@
 								enabled = 1;
 							};
 						};
+					};
+					24F47A0C20C83AA90005CEB8 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = E6NP67H473;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					24F47A1D20C83AAA0005CEB8 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 24F47A0C20C83AA90005CEB8;
+					};
+					24F47A2820C83AAB0005CEB8 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = A272626J38;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 24F47A0C20C83AA90005CEB8;
 					};
 					274AA3B71F7694660058E21A = {
 						CreatedOnToolsVersion = 9.0;
@@ -1004,6 +1195,9 @@
 				274AA3B71F7694660058E21A /* AutoFech */,
 				274AA3CB1F7694660058E21A /* AutoFechTests */,
 				274AA3D61F7694670058E21A /* AutoFechUITests */,
+				24F47A0C20C83AA90005CEB8 /* CloudFetchBot */,
+				24F47A1D20C83AAA0005CEB8 /* CloudFetchBotTests */,
+				24F47A2820C83AAB0005CEB8 /* CloudFetchBotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1067,10 +1261,33 @@
 			files = (
 				247773201F46C94B005125D7 /* inject.css in Resources */,
 				274AA3F01F776E080058E21A /* script.js in Resources */,
-				278B8B281EFEC19400E20296 /* NetdiskModel.xcdatamodeld in Resources */,
 				24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */,
 				272ABF721F1277BF008FAE69 /* ToolbarItemIcon.pdf in Resources */,
 				274AA3EF1F776DE10058E21A /* fetch.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A0B20C83AA90005CEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F47A1420C83AAA0005CEB8 /* Assets.xcassets in Resources */,
+				24F47A1720C83AAA0005CEB8 /* Main.storyboard in Resources */,
+				248A33DA20C8D6A900413242 /* categrory.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A1C20C83AAA0005CEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A2720C83AAB0005CEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,13 +1364,13 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/WebShell.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/WebShell_macOS.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1163,11 +1380,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */,
-				278B8B261EFE831900E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				274AA3F31F7773820058E21A /* CoreDataExtension.swift in Sources */,
 				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
+				248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */,
 				242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */,
+				24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */,
 				242B182C1F7C7AF4007963FE /* DOMParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A0920C83AA90005CEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */,
+				24F47A3A20C83BFC0005CEB8 /* Storage.swift in Sources */,
+				24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */,
+				24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */,
+				248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */,
+				248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A1A20C83AAA0005CEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F47A2320C83AAB0005CEB8 /* CloudFetchBotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F47A2520C83AAB0005CEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F47A2E20C83AAB0005CEB8 /* CloudFetchBotUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,6 +1432,7 @@
 				274AA3BD1F7694660058E21A /* ViewController.swift in Sources */,
 				274AA3BB1F7694660058E21A /* AppDelegate.swift in Sources */,
 				274AA3F41F7773820058E21A /* CoreDataExtension.swift in Sources */,
+				248A33DD20C8D6DC00413242 /* Categrory-Modal.swift in Sources */,
 				242B182A1F7C7ADD007963FE /* DOMParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1219,6 +1467,7 @@
 				248BCDA020302D79000999D6 /* ImageTask.swift in Sources */,
 				24B1F18720629A05008604AE /* Update.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
+				248A33DB20C8D6D200413242 /* Categrory-Modal.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				274AA3F21F7773820058E21A /* CoreDataExtension.swift in Sources */,
@@ -1290,6 +1539,16 @@
 			target = 24BA90CE1EF597B6002BE480 /* Torrilste */;
 			targetProxy = 24BA90E01EF597B6002BE480 /* PBXContainerItemProxy */;
 		};
+		24F47A2020C83AAA0005CEB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F47A0C20C83AA90005CEB8 /* CloudFetchBot */;
+			targetProxy = 24F47A1F20C83AAA0005CEB8 /* PBXContainerItemProxy */;
+		};
+		24F47A2B20C83AAB0005CEB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F47A0C20C83AA90005CEB8 /* CloudFetchBot */;
+			targetProxy = 24F47A2A20C83AAB0005CEB8 /* PBXContainerItemProxy */;
+		};
 		274AA3CE1F7694670058E21A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 274AA3B71F7694660058E21A /* AutoFech */;
@@ -1324,6 +1583,14 @@
 				24BA90D91EF597B6002BE480 /* Base */,
 			);
 			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
+		24F47A1520C83AAA0005CEB8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24F47A1620C83AAA0005CEB8 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		274AA3C31F7694660058E21A /* Main.storyboard */ = {
@@ -1376,6 +1643,137 @@
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		24F47A3120C83AAB0005CEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = CloudFetchBot/CloudFetchBot.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = E6NP67H473;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		24F47A3220C83AAB0005CEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = CloudFetchBot/CloudFetchBot.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = E6NP67H473;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		24F47A3420C83AAB0005CEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudFetchBot.app/Contents/MacOS/CloudFetchBot";
+			};
+			name = Debug;
+		};
+		24F47A3520C83AAB0005CEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudFetchBot.app/Contents/MacOS/CloudFetchBot";
+			};
+			name = Release;
+		};
+		24F47A3720C83AAB0005CEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = CloudFetchBot;
+			};
+			name = Debug;
+		};
+		24F47A3820C83AAB0005CEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A272626J38;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = CloudFetchBot;
 			};
 			name = Release;
 		};
@@ -1771,6 +2169,33 @@
 			buildConfigurations = (
 				24BA90E41EF597B6002BE480 /* Debug */,
 				24BA90E51EF597B6002BE480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F47A3020C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F47A3120C83AAB0005CEB8 /* Debug */,
+				24F47A3220C83AAB0005CEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F47A3320C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F47A3420C83AAB0005CEB8 /* Debug */,
+				24F47A3520C83AAB0005CEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F47A3620C83AAB0005CEB8 /* Build configuration list for PBXNativeTarget "CloudFetchBotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F47A3720C83AAB0005CEB8 /* Debug */,
+				24F47A3820C83AAB0005CEB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

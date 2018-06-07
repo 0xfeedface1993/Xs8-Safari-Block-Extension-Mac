@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>Model</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>国模套图</string>
+		<key>site</key>
+		<string>253</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>Love</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>性爱区</string>
+		<key>site</key>
+		<string>158</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>SelfShot</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>自拍区</string>
+		<key>site</key>
+		<string>157</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>StreetShot</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>街拍区</string>
+		<key>site</key>
+		<string>159</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>Movie</string>
+		<key>segue</key>
+		<string>com.ascp.movie.list</string>
+		<key>name</key>
+		<string>电影天堂</string>
+		<key>site</key>
+		<string>23</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>NetDisk</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>网盘下载</string>
+		<key>site</key>
+		<string>103</string>
+	</dict>
+</array>
+</plist>

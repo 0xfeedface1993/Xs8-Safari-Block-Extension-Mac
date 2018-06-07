@@ -21,7 +21,7 @@ struct CloudData {
 typealias SaveCompletion = (CKRecord?, Error?) -> Void
 typealias ValidateCompletion = (CKAccountStatus, Error?) -> Void
 typealias QueryCompletion = (CKQueryCursor?, Error?) -> Void
-typealias FetchRecordCompletion = (NetDisk) -> Void
+typealias FetchRecordCompletion = (CloudData) -> Void
 
 protocol CloudSaver {
     
@@ -32,7 +32,7 @@ extension CloudSaver {
     ///
     /// - Parameter cursor: 若为nil。则说明是开始，否则是获取下一个batch
     func copyPrivateToPublic(cursor: CKQueryCursor?) {
-        let container = CKContainer.default()
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateDatabase = container.privateCloudDatabase
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -64,12 +64,12 @@ extension CloudSaver {
     /// - Parameters:
     ///   - netDisk: 网盘数据模型
     ///   - completion: 执行回调
-    func save(netDisk: NetDiskModal, completion: @escaping SaveCompletion) {
-        let container = CKContainer.default()
-        let privateDatabase = container.privateCloudDatabase
+    func save(netDisk: CloudData, completion: @escaping SaveCompletion) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let publicDatabase = container.publicCloudDatabase
         let record = CKRecord(recordType: RecordType.ndMovie.rawValue)
         record.load(netDisk: netDisk)
-        privateDatabase.save(record, completionHandler: completion)
+        publicDatabase.save(record, completionHandler: completion)
     }
     
     /// 查询所有网盘数据
@@ -79,7 +79,7 @@ extension CloudSaver {
     ///   - completion: 获取请求完成回调
     ///   - site: 指定的版块
     func queryAllMovies(fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion, site: String) {
-        let container = CKContainer.default()
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let publicDatabase = container.publicCloudDatabase
         let predicate = NSPredicate(format: "boradType = %@", site)
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predicate)
@@ -101,7 +101,7 @@ extension CloudSaver {
     ///   - fetchBlock: 获取一条记录的回调
     ///   - completion: 获取请求完成回调
     func queryNextPageMovies(cursor: CKQueryCursor, fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion) {
-        let container = CKContainer.default()
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let publicDatabase = container.publicCloudDatabase
         let operation = CKQueryOperation(cursor: cursor)
         operation.recordFetchedBlock = { rd in
@@ -119,7 +119,7 @@ extension CloudSaver {
     ///   - boardType: 指定版块
     ///   - cursor: 上一个batch
     func add(boardType: String, cursor: CKQueryCursor?) {
-        let container = CKContainer.default()
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         let operation = cursor == nil ? CKQueryOperation(query: query):CKQueryOperation(cursor: cursor!)
         let publicDatabase = container.publicCloudDatabase
@@ -173,14 +173,14 @@ extension CKRecord {
     /// 载入网盘信息到当前记录
     ///
     /// - Parameter netDisk: 网盘数据模型
-    func load(netDisk: NetDiskModal) {
-        self["title"]  = netDisk.title as NSString
-        self["href"]  = netDisk.href as NSString
-        self["password"]  = netDisk.password as NSString
-        self["fileSize"]  = netDisk.fileSize as NSString
-        self["downloads"]  = netDisk.downloads.map({ $0 as NSString }) as CKRecordValue
-        self["images"]  = netDisk.images.map({ $0 as NSString }) as CKRecordValue
-        self["boradType"] = netDisk.boradType as NSString
+    func load(netDisk: CloudData) {
+        self["title"]  = netDisk.contentInfo.title as NSString
+        self["href"]  = netDisk.contentInfo.page as NSString
+        self["password"]  = netDisk.contentInfo.passwod as NSString
+        self["fileSize"]  = netDisk.contentInfo.size as NSString
+        self["downloads"]  = netDisk.contentInfo.downloafLink.map({ $0 as NSString }) as CKRecordValue
+        self["images"]  = netDisk.contentInfo.imageLink.map({ $0 as NSString }) as CKRecordValue
+        self["boradType"] = netDisk.site as NSString
     }
     
     /// 复制记录实例到自身
@@ -199,15 +199,14 @@ extension CKRecord {
     /// 记录失恋转换成网盘数据模型
     ///
     /// - Returns: 网盘数据模型
-    func convertModal() -> NetDiskModal {
-        var modal = NetDiskModal()
-        modal.title = self["title"] as! String
-        modal.href = self["href"] as! String
-        modal.fileSize = self["fileSize"] as! String
-        modal.password = self["password"] as! String
-        modal.downloads = self["downloads"] as! [String]
-        modal.images = self["images"] as! [String]
-        modal.boradType = self["boradType"] as! String
-        return modal
+    func convertModal() -> CloudData {
+        var content = ContentInfo()
+        content.title = self["title"] as! String
+        content.page = self["href"] as! String
+        content.size = self["fileSize"] as! String
+        content.passwod = self["password"] as! String
+        content.downloafLink = self["downloads"] as! [String]
+        content.imageLink = self["images"] as! [String]
+        return CloudData(contentInfo: content, site: self["boradType"] as! String)
     }
 }
