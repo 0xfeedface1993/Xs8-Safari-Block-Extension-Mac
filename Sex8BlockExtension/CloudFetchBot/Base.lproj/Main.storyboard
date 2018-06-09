@@ -737,27 +737,33 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="300" verticalCompressionResistancePriority="751" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c9Y-lA-AHv">
-                                <rect key="frame" x="20" y="20" width="261" height="22"/>
+                                <rect key="frame" x="20" y="20" width="274" height="22"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Abu-Ht-F3T">
                                         <rect key="frame" x="-6" y="-6" width="107" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除私有库" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b6y-MT-5SI">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="deletePrivate:" target="XfG-lQ-9wD" id="2tw-R4-w05"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V99-F6-KmG">
-                                        <rect key="frame" x="97" y="-6" width="107" height="32"/>
-                                        <buttonCell key="cell" type="push" title="删除私有库" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OAF-5Q-y4Q">
+                                        <rect key="frame" x="97" y="-6" width="120" height="32"/>
+                                        <buttonCell key="cell" type="push" title="删除重复数据" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OAF-5Q-y4Q">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="deleteDuplicateRecord:" target="XfG-lQ-9wD" id="svA-jO-cNc"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wbf-CP-A4Y">
-                                        <rect key="frame" x="200" y="-6" width="67" height="32"/>
+                                        <rect key="frame" x="213" y="-6" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="开始" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bqW-T8-EJn">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="start:" target="XfG-lQ-9wD" id="4XT-GX-qbB"/>

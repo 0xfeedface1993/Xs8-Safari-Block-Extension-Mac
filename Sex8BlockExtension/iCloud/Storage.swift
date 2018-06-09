@@ -18,6 +18,12 @@ struct CloudData {
     var site: String
 }
 
+struct RecordModal {
+    var recordID: CKRecordID
+    var href: String
+    var isMet = false
+}
+
 typealias SaveCompletion = (CKRecord?, Error?) -> Void
 typealias ValidateCompletion = (CKAccountStatus, Error?) -> Void
 typealias QueryCompletion = (CKQueryCursor?, Error?) -> Void
@@ -151,19 +157,131 @@ extension CloudSaver {
     func empty(database: CKDatabase) {
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         let operation = CKQueryOperation(query: query)
+        var records = [CKRecordID]()
         operation.recordFetchedBlock = { rd in
-            database.delete(withRecordID: rd.recordID, completionHandler: { (id, err) in
+            print("Found : \(rd.recordID)")
+            records.append(rd.recordID)
+        }
+        operation.queryCompletionBlock = { (cursor, err) in
+            if let e = err {
+                print(e)
+                return
+            }
+        }
+        operation.completionBlock = {
+            if records.count > 0 {
+                self.delete(records: records, database: database)
+                self.empty(database: database)
+            }
+        }
+        database.add(operation)
+    }
+    
+    /// 批量删除记录
+    ///
+    /// - Parameters:
+    ///   - records: 需要删除的记录ID
+    ///   - database: 私有还是公有数据库
+    func delete(records: [CKRecordID], database: CKDatabase, completion: (()->Void)? = nil) {
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: records)
+        operation.modifyRecordsCompletionBlock = {(_, results, err) in
+            if let e = err {
+                print(e)
+                return
+            }
+            
+            if let results = results {
+                results.forEach({ print("Delete ok: \($0.recordName)") })
+            }
+            
+            completion?()
+        }
+        database.add(operation)
+    }
+    
+    func check(title: String, completion: @escaping ([CKRecordID])->Void) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let publicCloudDatabase = container.publicCloudDatabase
+        let predict = NSPredicate(format: "%K = %@", "href", title)
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
+        let operation = CKQueryOperation(query: query)
+        var recs = [CKRecordID]()
+        operation.recordFetchedBlock = { rd in
+            recs.append(rd.recordID)
+        }
+        operation.completionBlock = {
+            completion(recs)
+        }
+        publicCloudDatabase.add(operation)
+    }
+    
+    func deleteDuplicateRecord() {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let publicDatabase = container.publicCloudDatabase
+        var allRecords = [CKRecord]()
+        
+        func search(operation: CKQueryOperation?, cursor: CKQueryCursor?, completion: @escaping ()->Void) {
+            var op : CKQueryOperation!
+            if operation != nil {
+                op = operation!
+            }   else if cursor != nil {
+                op = CKQueryOperation(cursor: cursor!)
+            }   else    {
+                completion()
+                return
+            }
+            var cur : CKQueryCursor?
+            var recs = [CKRecord]()
+            op.recordFetchedBlock = { rd in
+                recs.append(rd)
+            }
+            op.queryCompletionBlock = { c, err in
                 if let e = err {
                     print(e)
                     return
                 }
-                print("Delete OK \(id!)")
-            })
+                cur = c
+            }
+            op.completionBlock = {
+                if recs.count <= 0 {
+                    return
+                }
+                allRecords += recs
+                print("------- Fetch \(allRecords.count) records")
+                let records = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) })).map({ $0.recordID })
+                self.delete(records: records, database: publicDatabase)
+                search(operation: nil, cursor: cur, completion: completion)
+            }
+            publicDatabase.add(op)
         }
-        operation.queryCompletionBlock = { (cursor, err) in
-            print("Fetch finished!")
+        
+        func findAndMove(records: [RecordModal]) -> [RecordModal] {
+            guard let first = records.first else {
+                return []
+            }
+            
+            let href = first.href
+            let removeGroup = records.filter({ href == $0.href })
+            
+            if removeGroup.count <= 1 {
+                let reduceRecords = records.dropFirst()
+                if reduceRecords.count <= 1 {
+                    return []
+                }
+                return findAndMove(records: [RecordModal](reduceRecords))
+            }   else    {
+                let deleteRecords = [RecordModal](removeGroup.dropFirst())
+                let reduceRecords = [RecordModal](records.drop(while: { href == $0.href }))
+                return findAndMove(records: reduceRecords) + deleteRecords
+            }
         }
-        database.add(operation)
+
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
+        let operation = CKQueryOperation(query: query)
+        search(operation: operation, cursor: nil, completion: {
+            print("Finished")
+        })
     }
 }
 

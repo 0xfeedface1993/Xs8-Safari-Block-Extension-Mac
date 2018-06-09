@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CloudKit
 
 class ViewController: NSViewController {
     lazy var menus : [ListCategrory] = {
@@ -27,7 +28,7 @@ class ViewController: NSViewController {
     var tor: IndexingIterator<[ListCategrory]>?
     var site = Site.netdisk
     var startIndex: UInt = 1
-    let pageOffset: UInt = 3
+    let pageOffset: UInt = 1
     var startTime: Date!
     @IBOutlet weak var action: NSButton!
     @IBOutlet weak var label: NSTextField!
@@ -38,6 +39,18 @@ class ViewController: NSViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func deletePrivate(_ sender: Any) {
+        DispatchQueue.global().async {
+            self.empty(database: CKContainer(identifier: "iCloud.com.ascp.S8Blocker").privateCloudDatabase)
+        }
+    }
+    
+    @IBAction func deleteDuplicateRecord(_ sender: Any) {
+        DispatchQueue.global().async {
+           self.deleteDuplicateRecord()
+        }
+    }
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -70,15 +83,24 @@ extension ViewController : FetchBotDelegate, CloudSaver {
         guard let s = site.categrory?.site  else {
             return
         }
-        save(netDisk: CloudData(contentInfo: content, site: s)) { (rec, err) in
-            if let e = err {
-                print(e)
-                return
-            }
-            if let rec = rec {
-                print(" ++++  ++++  ++++ \(rec.recordID) ++++  ++++  ++++ ")
+        
+        check(title: content.page) { (res) in
+            print(res)
+            if res.count <= 0 {
+                self.save(netDisk: CloudData(contentInfo: content, site: s)) { (rec, err) in
+                    if let e = err {
+                        print(e)
+                        return
+                    }
+                    if let rec = rec {
+                        print(" ++++  ++++  ++++ \(rec.recordID) ++++  ++++  ++++ ")
+                    }
+                }
+            }   else    {
+                print(" **************** alreay save \(res.count) page ***************")
             }
         }
+        
     }
     
     func bot(didStartBot bot: FetchBot) {
@@ -97,7 +119,9 @@ extension ViewController : FetchBotDelegate, CloudSaver {
         let bot = FetchBot.shareBot
         site.categrory = tor?.next()
         guard let _ = site.categrory else {
-            action.isEnabled = true
+            DispatchQueue.main.async {
+                self.action.isEnabled = true
+            }
             return
         }
         DispatchQueue.global().async {
