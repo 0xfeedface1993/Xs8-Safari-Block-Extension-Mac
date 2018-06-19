@@ -10,6 +10,7 @@ import Cocoa
 import CloudKit
 
 class ViewController: NSViewController {
+    var timer : Timer?
     lazy var menus : [ListCategrory] = {
         guard let fileURL = Bundle.main.url(forResource: "categrory", withExtension: "plist") else {
             return [ListCategrory]()
@@ -28,7 +29,7 @@ class ViewController: NSViewController {
     var tor: IndexingIterator<[ListCategrory]>?
     var site = Site.netdisk
     var startIndex: UInt = 1
-    let pageOffset: UInt = 1
+    let pageOffset: UInt = 5
     var startTime: Date!
     @IBOutlet weak var action: NSButton!
     @IBOutlet weak var label: NSTextField!
@@ -58,16 +59,19 @@ class ViewController: NSViewController {
     }
 
     @IBAction func start(_ sender: Any) {
-        action.isEnabled = false
-        tor = menus.makeIterator()
-        let bot = FetchBot.shareBot
-        bot.delegate = self
-        bot.startPage = startIndex
-        bot.pageOffset = pageOffset
-        site.categrory = tor?.next()
-        DispatchQueue.global().async {
-            bot.start(withSite: self.site)
-        }
+        timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { [unowned self] (t) in
+            self.action.isEnabled = false
+            self.tor = self.menus.makeIterator()
+            let bot = FetchBot.shareBot
+            bot.delegate = self
+            bot.startPage = self.startIndex
+            bot.pageOffset = self.pageOffset
+            self.site.categrory = self.tor?.next()
+            DispatchQueue.global().async {
+                bot.start(withSite: self.site)
+            }
+        })
+        timer?.fire()
     }
     
 }
