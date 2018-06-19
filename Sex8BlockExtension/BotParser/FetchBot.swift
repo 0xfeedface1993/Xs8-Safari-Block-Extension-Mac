@@ -349,7 +349,7 @@ struct InfoRuleOption {
     /// 影片格式
     static let format = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【影片格式】)|(【视频格式】)){1}[：:]{0,1}", hasSuffix: nil, innerRegex: "([^<：:])+")
     /// 解压密码
-    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【解壓密碼】)|(【解压密码】)|(解壓密碼)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: nil, innerRegex: "([^<：:])+")
+    static let password = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [], inTagRegexString: "((【解壓密碼】)|(【解压密码】)|(解壓密碼)|(解压密码)){1}[：:]{0,1}((&nbsp;)|(\\s))*", hasSuffix: nil, innerRegex: "([^<：:])+")
     /// 下载链接
     /// 下载地址[\\s\\S]+<a( \\w+=\"[^\"]+\")+>[^<]+</a>
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: nil, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
