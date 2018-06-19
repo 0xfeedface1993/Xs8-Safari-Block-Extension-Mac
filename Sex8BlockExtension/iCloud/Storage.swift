@@ -19,14 +19,14 @@ struct CloudData {
 }
 
 struct RecordModal {
-    var recordID: CKRecordID
+    var recordID: CKRecord.ID
     var href: String
     var isMet = false
 }
 
 typealias SaveCompletion = (CKRecord?, Error?) -> Void
 typealias ValidateCompletion = (CKAccountStatus, Error?) -> Void
-typealias QueryCompletion = (CKQueryCursor?, Error?) -> Void
+typealias QueryCompletion = (CKQueryOperation.Cursor?, Error?) -> Void
 typealias FetchRecordCompletion = (CloudData) -> Void
 
 protocol CloudSaver {
@@ -37,7 +37,7 @@ extension CloudSaver {
     /// 复制私有区域数据到公共区域
     ///
     /// - Parameter cursor: 若为nil。则说明是开始，否则是获取下一个batch
-    func copyPrivateToPublic(cursor: CKQueryCursor?) {
+    func copyPrivateToPublic(cursor: CKQueryOperation.Cursor?) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateDatabase = container.privateCloudDatabase
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
@@ -106,7 +106,7 @@ extension CloudSaver {
     ///   - cursor: 上一页的位置指示
     ///   - fetchBlock: 获取一条记录的回调
     ///   - completion: 获取请求完成回调
-    func queryNextPageMovies(cursor: CKQueryCursor, fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion) {
+    func queryNextPageMovies(cursor: CKQueryOperation.Cursor, fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let publicDatabase = container.publicCloudDatabase
         let operation = CKQueryOperation(cursor: cursor)
@@ -124,7 +124,7 @@ extension CloudSaver {
     /// - Parameters:
     ///   - boardType: 指定版块
     ///   - cursor: 上一个batch
-    func add(boardType: String, cursor: CKQueryCursor?) {
+    func add(boardType: String, cursor: CKQueryOperation.Cursor?) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         let operation = cursor == nil ? CKQueryOperation(query: query):CKQueryOperation(cursor: cursor!)
@@ -157,7 +157,7 @@ extension CloudSaver {
     func empty(database: CKDatabase) {
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         let operation = CKQueryOperation(query: query)
-        var records = [CKRecordID]()
+        var records = [CKRecord.ID]()
         operation.recordFetchedBlock = { rd in
             print("Found : \(rd.recordID)")
             records.append(rd.recordID)
@@ -182,7 +182,7 @@ extension CloudSaver {
     /// - Parameters:
     ///   - records: 需要删除的记录ID
     ///   - database: 私有还是公有数据库
-    func delete(records: [CKRecordID], database: CKDatabase, completion: (()->Void)? = nil) {
+    func delete(records: [CKRecord.ID], database: CKDatabase, completion: (()->Void)? = nil) {
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: records)
         operation.modifyRecordsCompletionBlock = {(_, results, err) in
             if let e = err {
@@ -199,13 +199,13 @@ extension CloudSaver {
         database.add(operation)
     }
     
-    func check(title: String, completion: @escaping ([CKRecordID])->Void) {
+    func check(title: String, completion: @escaping ([CKRecord.ID])->Void) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let publicCloudDatabase = container.publicCloudDatabase
         let predict = NSPredicate(format: "%K = %@", "href", title)
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
         let operation = CKQueryOperation(query: query)
-        var recs = [CKRecordID]()
+        var recs = [CKRecord.ID]()
         operation.recordFetchedBlock = { rd in
             recs.append(rd.recordID)
         }
@@ -215,12 +215,13 @@ extension CloudSaver {
         publicCloudDatabase.add(operation)
     }
     
+    /// 删除重复记录，标题相同
     func deleteDuplicateRecord() {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let publicDatabase = container.publicCloudDatabase
         var allRecords = [CKRecord]()
         
-        func search(operation: CKQueryOperation?, cursor: CKQueryCursor?, completion: @escaping ()->Void) {
+        func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
             var op : CKQueryOperation!
             if operation != nil {
                 op = operation!
@@ -230,7 +231,7 @@ extension CloudSaver {
                 completion()
                 return
             }
-            var cur : CKQueryCursor?
+            var cur : CKQueryOperation.Cursor?
             var recs = [CKRecord]()
             op.recordFetchedBlock = { rd in
                 recs.append(rd)
@@ -248,7 +249,9 @@ extension CloudSaver {
                 }
                 allRecords += recs
                 print("------- Fetch \(allRecords.count) records")
-                let records = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) })).map({ $0.recordID })
+                var raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
+                let records = raws.map({ $0.recordID })
+                print(raws.map({ $0.href }))
                 self.delete(records: records, database: publicDatabase)
                 search(operation: nil, cursor: cur, completion: completion)
             }
