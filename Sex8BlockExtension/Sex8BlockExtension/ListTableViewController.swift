@@ -24,6 +24,21 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     let TitleKey = "title"
     var datas = [NetDisk]()
     var isFetching = false
+    lazy var menus : [ListCategrory] = {
+        guard let fileURL = Bundle.main.url(forResource: "categrory", withExtension: "plist") else {
+            return [ListCategrory]()
+        }
+        
+        do {
+            let file = try Data(contentsOf: fileURL)
+            let decoder = PropertyListDecoder()
+            let plist = try decoder.decode([ListCategrory].self, from: file).filter({ $0.segue == "com.ascp.netdisk.list" })
+            return plist
+        }   catch {
+            print(error)
+            return [ListCategrory]()
+        }
+    }()
     
     lazy var popver : NSPopover = {
         let pop = NSPopover()
@@ -398,7 +413,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
     func loadList() {
         bot.delegate = self
         DispatchQueue.global().async {
-            self.bot.start()
+            var site = Site.netdisk
+            site.categrory = self.menus.last!
+            self.bot.start(withSite: site)
         }
     }
 }
