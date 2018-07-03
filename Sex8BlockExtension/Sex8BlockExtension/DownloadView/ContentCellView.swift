@@ -28,6 +28,7 @@ extension WebHostSite {
     static let hostImagePack : [WebHostSite:NSImage] = [.feemoo:NSImage(named: NSImage.Name("mofe_feemoo"))!,
                                                         .pan666:NSImage(named: NSImage.Name("mofe_666pan"))!,
                                                         .cchooo:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
+                                                        .yousuwp:NSImage(named: NSImage.Name("mofe_yousu"))!,
                                                         .unknowsite:NSImage(named: NSImage.Name("mofe_feemoo"))!]
 }
 
