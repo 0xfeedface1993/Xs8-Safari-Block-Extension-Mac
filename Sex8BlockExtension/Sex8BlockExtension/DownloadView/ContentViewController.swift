@@ -31,7 +31,7 @@ class ContentViewController: NSViewController {
     
     func update(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid || $0.name == task.request.riffle?.mainURL?.absoluteString || $0.originTask?.request.url == info.originTask!.request.url}) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid }) {
             var newItems = items
             newItems[index] = info
             resultArrayContriller.content = newItems
@@ -42,7 +42,7 @@ class ContentViewController: NSViewController {
     
     func finished(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid || $0.name == task.request.riffle?.mainURL?.absoluteString || $0.originTask?.request.url == info.originTask!.request.url}) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid }) {
             print("found finished item!")
             var newItems = items
             info.status = .downloaded

@@ -34,7 +34,7 @@ extension WebHostSite {
 
 /// 下载状态数据模型，用于视图数据绑定
 class DownloadStateInfo : NSObject {
-    var uuid = UUID().uuidString
+    var uuid = UUID()
     var status : DownloadStatus {
         didSet {
             update(newStatus: status)
@@ -77,6 +77,7 @@ class DownloadStateInfo : NSObject {
         progress = String(format: "%.2f", pros)
         totalBytes = String(format: "%.2fM", guts)
         originTask = task
+        uuid = task.request.uuid
         update(newSite: hostType)
         update(newStatus: status)
     }
@@ -89,6 +90,7 @@ class DownloadStateInfo : NSObject {
         progress = "0"
         totalBytes = "0M"
         self.riffle = riffle
+        uuid = riffle.uuid
         update(newSite: hostType)
         update(newStatus: status)
     }
