@@ -72,10 +72,22 @@ extension CloudSaver {
     ///   - completion: 执行回调
     func save(netDisk: CloudData, completion: @escaping SaveCompletion) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let publicDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         let record = CKRecord(recordType: RecordType.ndMovie.rawValue)
         record.load(netDisk: netDisk)
-        publicDatabase.save(record, completionHandler: completion)
+        privateCloudDatabase.save(record, completionHandler: completion)
+    }
+    
+    func save(datas: [CloudData], completion: @escaping SaveCompletion) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        let records = datas.map({ r -> CKRecord in
+            let record = CKRecord(recordType: RecordType.ndMovie.rawValue)
+            record.load(netDisk: r)
+            return record
+        })
+        let opreration = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        privateCloudDatabase.add(opreration)
     }
     
     /// 查询所有网盘数据
@@ -86,7 +98,7 @@ extension CloudSaver {
     ///   - site: 指定的版块
     func queryAllMovies(fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion, site: String) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let publicDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         let predicate = NSPredicate(format: "boradType = %@", site)
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -97,7 +109,7 @@ extension CloudSaver {
         operation.queryCompletionBlock = { (cursor, err) in
             completion(cursor, err)
         }
-        publicDatabase.add(operation)
+        privateCloudDatabase.add(operation)
     }
     
     /// 获取下一页网盘数据
@@ -108,7 +120,7 @@ extension CloudSaver {
     ///   - completion: 获取请求完成回调
     func queryNextPageMovies(cursor: CKQueryOperation.Cursor, fetchBlock: @escaping FetchRecordCompletion, completion: @escaping QueryCompletion) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let publicDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         let operation = CKQueryOperation(cursor: cursor)
         operation.recordFetchedBlock = { rd in
             fetchBlock(rd.convertModal())
@@ -116,7 +128,7 @@ extension CloudSaver {
         operation.queryCompletionBlock = { (csr, err) in
             completion(csr, err)
         }
-        publicDatabase.add(operation)
+        privateCloudDatabase.add(operation)
     }
     
     /// 将公有库中所有记录修改为指定版块
@@ -128,10 +140,10 @@ extension CloudSaver {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         let operation = cursor == nil ? CKQueryOperation(query: query):CKQueryOperation(cursor: cursor!)
-        let publicDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         operation.recordFetchedBlock = { (record) in
             record["boradType"] = boardType as NSString as CKRecordValue
-            publicDatabase.save(record, completionHandler: { (recc, errr) in
+            privateCloudDatabase.save(record, completionHandler: { (recc, errr) in
                 if let e = errr {
                     print(e)
                     return
@@ -148,7 +160,7 @@ extension CloudSaver {
                 self.add(boardType: boardType, cursor: csr)
             }
         }
-        publicDatabase.add(operation)
+        privateCloudDatabase.add(operation)
     }
     
     /// 清空数据库内网盘记录
@@ -201,7 +213,7 @@ extension CloudSaver {
     
     func check(title: String, completion: @escaping ([CKRecord.ID])->Void) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let publicCloudDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         let predict = NSPredicate(format: "%K = %@", "href", title)
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
         let operation = CKQueryOperation(query: query)
@@ -212,13 +224,13 @@ extension CloudSaver {
         operation.completionBlock = {
             completion(recs)
         }
-        publicCloudDatabase.add(operation)
+        privateCloudDatabase.add(operation)
     }
     
     /// 删除重复记录，标题相同
     func deleteDuplicateRecord() {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let publicDatabase = container.publicCloudDatabase
+        let privateCloudDatabase = container.privateCloudDatabase
         var allRecords = [CKRecord]()
         
         func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
@@ -252,10 +264,10 @@ extension CloudSaver {
                 var raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
                 let records = raws.map({ $0.recordID })
                 print(raws.map({ $0.href }))
-                self.delete(records: records, database: publicDatabase)
+                self.delete(records: records, database: privateCloudDatabase)
                 search(operation: nil, cursor: cur, completion: completion)
             }
-            publicDatabase.add(op)
+            privateCloudDatabase.add(op)
         }
         
         func findAndMove(records: [RecordModal]) -> [RecordModal] {
