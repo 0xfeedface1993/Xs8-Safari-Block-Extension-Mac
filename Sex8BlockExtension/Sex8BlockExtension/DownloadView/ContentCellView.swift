@@ -108,7 +108,7 @@ class DownloadStateInfo : NSObject {
     }
     
     override var description: String {
-        return "status: \(status)\n hostType: \(hostType)\n name: \(name)\n uuid: \(uuid)\n progress: \(progress)\n" + "site: \(site)\n state: \(state)\n stateColor: \(stateColor)\n isCanCancel: \(isCanCancel)\n isCanRestart: \(isCanRestart)\n" + "isHiddenPrograss: \(isHiddenPrograss)\n siteIcon: \(siteIcon)"
+        return "status: \(status)\n hostType: \(hostType)\n name: \(name)\n uuid: \(uuid)\n progress: \(progress)\n" + "site: \(site)\n state: \(state)\n stateColor: \(stateColor)\n isCanCancel: \(isCanCancel)\n isCanRestart: \(isCanRestart)\n" + "isHiddenPrograss: \(isHiddenPrograss)\n siteIcon: \(String(describing: siteIcon))"
     }
 }
 
