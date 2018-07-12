@@ -39,7 +39,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         let dowloadLinkRule = InfoRuleOption.downloadLink
         let downloadLinkLiRule = InfoRuleOption.downloadLinkLi
-        let linkRules = [dowloadLinkRule, downloadLinkLiRule]
+        let linkRules = [dowloadLinkRule, downloadLinkLiRule, InfoRuleOption.v4DownloadLink]
         for rule in linkRules {
             for linkResult in parse(string:mainContent, rule: rule) ?? [] {
                 info.downloafLink.append(linkResult.innerHTML)

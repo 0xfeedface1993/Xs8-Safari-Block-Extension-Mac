@@ -261,7 +261,7 @@ extension CloudSaver {
                 }
                 allRecords += recs
                 print("------- Fetch \(allRecords.count) records")
-                var raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
+                let raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
                 let records = raws.map({ $0.recordID })
                 print(raws.map({ $0.href }))
                 self.delete(records: records, database: privateCloudDatabase)

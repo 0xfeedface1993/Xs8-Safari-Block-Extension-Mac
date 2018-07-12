@@ -29,6 +29,7 @@ extension WebHostSite {
                                                         .pan666:NSImage(named: NSImage.Name("mofe_666pan"))!,
                                                         .cchooo:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
                                                         .yousuwp:NSImage(named: NSImage.Name("mofe_yousu"))!,
+                                                        .v2file:NSImage(named: NSImage.Name("mofe_v4"))!,
                                                         .unknowsite:NSImage(named: NSImage.Name("mofe_feemoo"))!]
 }
 

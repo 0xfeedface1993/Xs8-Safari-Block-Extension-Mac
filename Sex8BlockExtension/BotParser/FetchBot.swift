@@ -281,7 +281,7 @@ struct Site {
                         print("*********** title: \(result.innerHTML)")
                     }
                     
-                    for rule in [InfoRuleOption.downloadLink, InfoRuleOption.downloadLinkLi] {
+                    for rule in [InfoRuleOption.downloadLink, InfoRuleOption.downloadLinkLi, InfoRuleOption.v4DownloadLink] {
                         for linkResult in parse(string:mainContent, rule: rule) ?? [] {
                             info.downloafLink.append(linkResult.innerHTML)
                             print("*********** download link: \(linkResult.innerHTML)")
@@ -354,8 +354,9 @@ struct InfoRuleOption {
     /// 下载地址[\\s\\S]+<a( \\w+=\"[^\"]+\")+>[^<]+</a>
     static let downloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " \\w+=\"\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+\" \\w+=\"\\w+\"", hasSuffix: nil, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 下载地址2
-    /// 下载地址[\\s\\S]+<div \\w+=\"blockcode\">[\\s\\S]+<li>[^<]+</li>
     static let downloadLinkLi = ParserTagRule(tag: "li", isTagPaser: true, attrubutes: [], inTagRegexString: "", hasSuffix: nil, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
+    /// 下载地址3
+    static let v4DownloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [], inTagRegexString: " href=\"[^\"]+v2file[^\"]+\" target=\"[^\"]+\"", hasSuffix: nil, innerRegex: "[^<]+")
     /// 图片链接
     static let imageLink = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "<img([^>]+class=\"zoom\"[^>]+)|(((\\ssrc=\"\\w+:[^\"]+\")|(\\salt=\"\\w+\\.\\w+\")|(\\stitle=\"\\w+\\.\\w+\")){3})", hasSuffix: nil, innerRegex: nil)
     /// 主内容标签
