@@ -52,6 +52,12 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func deleteEmptyRecord(_ sender: Any) {
+        DispatchQueue.global().async {
+            self.deleteEmptyRecord()
+        }
+    }
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.

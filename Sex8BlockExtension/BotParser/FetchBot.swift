@@ -623,7 +623,7 @@ class FetchBot {
                         }
                         
                         print("++++ \(page.url.page)页\(index)项 parser: \(href)")
-                        if let xinfo = site.parserMaker?(html) {
+                        if let xinfo = site.parserMaker?(html), !xinfo.title.isEmpty {
                             var info = xinfo
                             info.page = linkURL.url.absoluteString
                             self.contentDatas.append(info)

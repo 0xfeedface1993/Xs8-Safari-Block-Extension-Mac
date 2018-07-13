@@ -227,6 +227,54 @@ extension CloudSaver {
         privateCloudDatabase.add(operation)
     }
     
+    /// 删除空记录
+    func deleteEmptyRecord() {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        var allRecords = [CKRecord]()
+        
+        func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
+            var op : CKQueryOperation!
+            if operation != nil {
+                op = operation!
+            }   else if cursor != nil {
+                op = CKQueryOperation(cursor: cursor!)
+            }   else    {
+                completion()
+                return
+            }
+            var cur : CKQueryOperation.Cursor?
+            var recs = [CKRecord]()
+            op.recordFetchedBlock = { rd in
+                recs.append(rd)
+            }
+            op.queryCompletionBlock = { c, err in
+                if let e = err {
+                    print(e)
+                    return
+                }
+                cur = c
+            }
+            op.completionBlock = {
+                if recs.count <= 0 {
+                    return
+                }
+                allRecords += recs
+                print("------- Fetch \(allRecords.count) records")
+                search(operation: nil, cursor: cur, completion: completion)
+            }
+            privateCloudDatabase.add(op)
+        }
+        
+        let predict = NSPredicate(format: "title = %@", "")
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
+        let operation = CKQueryOperation(query: query)
+        search(operation: operation, cursor: nil, completion: {
+            self.delete(records: allRecords.map({ $0.recordID }), database: privateCloudDatabase)
+            print("Finished")
+        })
+    }
+    
     /// 删除重复记录，标题相同
     func deleteDuplicateRecord() {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
