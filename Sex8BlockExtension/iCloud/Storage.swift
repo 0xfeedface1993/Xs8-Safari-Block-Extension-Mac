@@ -279,7 +279,8 @@ extension CloudSaver {
     func deleteDuplicateRecord() {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
-        var allRecords = [CKRecord]()
+        var count = 0
+        var goldenRecords = Set<CKRecord.ID>()
         
         func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
             var op : CKQueryOperation!
@@ -293,6 +294,7 @@ extension CloudSaver {
             }
             var cur : CKQueryOperation.Cursor?
             var recs = [CKRecord]()
+//            op.resultsLimit = 91
             op.recordFetchedBlock = { rd in
                 recs.append(rd)
             }
@@ -302,17 +304,20 @@ extension CloudSaver {
                     return
                 }
                 cur = c
+                if c == nil {
+                    self.delete(records: goldenRecords.shuffled(), database: privateCloudDatabase)
+                }
             }
             op.completionBlock = {
                 if recs.count <= 0 {
                     return
                 }
-                allRecords += recs
-                print("------- Fetch \(allRecords.count) records")
+                count += recs.count
+                print("------- Fetch \(count) records")
                 let raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
                 let records = raws.map({ $0.recordID })
                 print(raws.map({ $0.href }))
-                self.delete(records: records, database: privateCloudDatabase)
+                records.forEach({ goldenRecords.insert($0) })
                 search(operation: nil, cursor: cur, completion: completion)
             }
             privateCloudDatabase.add(op)
@@ -342,6 +347,7 @@ extension CloudSaver {
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
         let operation = CKQueryOperation(query: query)
+//        operation.resultsLimit = 91
         search(operation: operation, cursor: nil, completion: {
             print("Finished")
         })
