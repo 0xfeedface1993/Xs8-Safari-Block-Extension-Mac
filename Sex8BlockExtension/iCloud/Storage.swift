@@ -8,6 +8,7 @@
 
 import Cocoa
 import CloudKit
+import CommonCrypto
 
 enum RecordType : String {
     case ndMovie = "NDMoive"
@@ -195,7 +196,23 @@ extension CloudSaver {
     ///   - records: 需要删除的记录ID
     ///   - database: 私有还是公有数据库
     func delete(records: [CKRecord.ID], database: CKDatabase, completion: (()->Void)? = nil) {
-        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: records)
+        var count = 0
+        let datas = records.enumerated()
+        while count < records.count {
+            let bottom = count
+            count += 400
+            let batchs = datas.filter({ $0.offset < count && $0.offset >= bottom }).map({ $0.element })
+            if batchs.count <= 0 {
+                break
+            }
+            modifiy(saveRecords: [], deleteRecordsID: batchs, database: database) {
+                print("Batchs \(bottom)")
+            }
+        }
+    }
+    
+    func modifiy(saveRecords: [CKRecord], deleteRecordsID: [CKRecord.ID], database: CKDatabase, completion: (()->Void)? = nil) {
+        let operation = CKModifyRecordsOperation(recordsToSave: saveRecords, recordIDsToDelete: deleteRecordsID)
         operation.modifyRecordsCompletionBlock = {(_, results, err) in
             if let e = err {
                 print(e)
@@ -211,24 +228,8 @@ extension CloudSaver {
         database.add(operation)
     }
     
-    func check(title: String, completion: @escaping ([CKRecord.ID])->Void) {
-        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
-        let privateCloudDatabase = container.privateCloudDatabase
-        let predict = NSPredicate(format: "%K = %@", "href", title)
-        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
-        let operation = CKQueryOperation(query: query)
-        var recs = [CKRecord.ID]()
-        operation.recordFetchedBlock = { rd in
-            recs.append(rd.recordID)
-        }
-        operation.completionBlock = {
-            completion(recs)
-        }
-        privateCloudDatabase.add(operation)
-    }
-    
-    /// 删除空记录
-    func deleteEmptyRecord() {
+    // 计算标题MD5值
+    func remakerMD5(recall: (() -> Void)? = nil) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
         var allRecords = [CKRecord]()
@@ -256,9 +257,91 @@ extension CloudSaver {
                 cur = c
             }
             op.completionBlock = {
-                if recs.count <= 0 {
+                allRecords += recs
+                print("------- Fetch \(allRecords.count) records")
+                search(operation: nil, cursor: cur, completion: completion)
+            }
+            privateCloudDatabase.add(op)
+        }
+        
+        let predict = NSPredicate(value: true)
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
+        let operation = CKQueryOperation(query: query)
+        search(operation: operation, cursor: nil, completion: {
+            allRecords.forEach({
+                $0["titleMD5"] = ($0["title"] as! String).md5()
+            })
+            self.batchSave(records: allRecords, database: privateCloudDatabase)
+            recall?()
+            print("Finished")
+        })
+    }
+    
+    func batchSave(records: [CKRecord], database: CKDatabase) {
+        let group = DispatchGroup()
+        var count = 0
+        let datas = records.enumerated()
+        while count < records.count {
+            let bottom = count
+            count += 400
+            let batchs = datas.filter({ $0.offset < count && $0.offset >= bottom }).map({ $0.element })
+            if batchs.count <= 0 {
+                break
+            }
+            group.enter()
+            modifiy(saveRecords: batchs, deleteRecordsID: [], database: database) {
+                print("Batchs \(bottom)")
+                group.leave()
+            }
+        }
+        group.wait()
+    }
+    
+    func check(href: String, completion: @escaping ([CKRecord.ID])->Void) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        let predict = NSPredicate(format: "%K = %@", "titleMD5", href)
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
+        let operation = CKQueryOperation(query: query)
+        var recs = [CKRecord.ID]()
+        operation.recordFetchedBlock = { rd in
+            recs.append(rd.recordID)
+        }
+        operation.completionBlock = {
+            completion(recs)
+        }
+        privateCloudDatabase.add(operation)
+    }
+    
+    /// 删除空记录
+    func deleteEmptyRecord(recall: (() -> Void)? = nil) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        var allRecords = [CKRecord]()
+        
+        func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
+            var op : CKQueryOperation!
+            if operation != nil {
+                op = operation!
+            }   else if cursor != nil {
+                op = CKQueryOperation(cursor: cursor!)
+            }   else    {
+                completion()
+                return
+            }
+            var cur : CKQueryOperation.Cursor?
+            var recs = [CKRecord]()
+            op.recordFetchedBlock = { rd in
+                recs.append(rd)
+            }
+            op.queryCompletionBlock = { c, err in
+                if let e = err {
+                    print(e)
                     return
                 }
+                cur = c
+            }
+            op.completionBlock = {
                 allRecords += recs
                 print("------- Fetch \(allRecords.count) records")
                 search(operation: nil, cursor: cur, completion: completion)
@@ -270,8 +353,10 @@ extension CloudSaver {
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
         let operation = CKQueryOperation(query: query)
         search(operation: operation, cursor: nil, completion: {
-            self.delete(records: allRecords.map({ $0.recordID }), database: privateCloudDatabase)
-            print("Finished")
+            self.delete(records: allRecords.map({ $0.recordID }), database: privateCloudDatabase) {
+                recall?()
+                print("Finished")
+            }
         })
     }
     
@@ -280,7 +365,8 @@ extension CloudSaver {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
         var count = 0
-        var goldenRecords = Set<CKRecord.ID>()
+        let groupNameKey = "title"
+        var dictRecords = [String:Set<CKRecord.ID>]()
         
         func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
             var op : CKQueryOperation!
@@ -304,9 +390,6 @@ extension CloudSaver {
                     return
                 }
                 cur = c
-                if c == nil {
-                    self.delete(records: goldenRecords.shuffled(), database: privateCloudDatabase)
-                }
             }
             op.completionBlock = {
                 if recs.count <= 0 {
@@ -314,42 +397,31 @@ extension CloudSaver {
                 }
                 count += recs.count
                 print("------- Fetch \(count) records")
-                let raws = findAndMove(records: recs.map({ RecordModal(recordID: $0.recordID, href: $0["title"] as! String, isMet: false) }))
-                let records = raws.map({ $0.recordID })
-                print(raws.map({ $0.href }))
-                records.forEach({ goldenRecords.insert($0) })
+                var deleteItems = [String]()
+                recs.forEach({
+                    let key = $0[groupNameKey] as! String
+                    if let _ = dictRecords[key] {
+                        dictRecords[key]?.insert($0.recordID)
+                        deleteItems.append(key)
+                    }   else {
+                        dictRecords[key] = Set<CKRecord.ID>()
+                    }
+                })
+                print(deleteItems)
                 search(operation: nil, cursor: cur, completion: completion)
             }
             privateCloudDatabase.add(op)
         }
-        
-        func findAndMove(records: [RecordModal]) -> [RecordModal] {
-            guard let first = records.first else {
-                return []
-            }
-            
-            let href = first.href
-            let removeGroup = records.filter({ href == $0.href })
-            
-            if removeGroup.count <= 1 {
-                let reduceRecords = records.dropFirst()
-                if reduceRecords.count <= 1 {
-                    return []
-                }
-                return findAndMove(records: [RecordModal](reduceRecords))
-            }   else    {
-                let deleteRecords = [RecordModal](removeGroup.dropFirst())
-                let reduceRecords = [RecordModal](records.drop(while: { href == $0.href }))
-                return findAndMove(records: reduceRecords) + deleteRecords
-            }
-        }
 
         let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
-        query.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
+        query.sortDescriptors = [NSSortDescriptor(key: groupNameKey, ascending: false)]
         let operation = CKQueryOperation(query: query)
 //        operation.resultsLimit = 91
         search(operation: operation, cursor: nil, completion: {
-            print("Finished")
+            let deleteItems = dictRecords.flatMap({ $0.value })
+            self.delete(records: deleteItems, database: privateCloudDatabase) {
+                print("Finished")
+            }
         })
     }
 }
@@ -368,6 +440,7 @@ extension CKRecord {
         self["downloads"]  = netDisk.contentInfo.downloafLink.map({ $0 as NSString }) as CKRecordValue
         self["images"]  = netDisk.contentInfo.imageLink.map({ $0 as NSString }) as CKRecordValue
         self["boradType"] = netDisk.site as NSString
+        self["titleMD5"] = netDisk.contentInfo.titleMD5 as NSString
     }
     
     /// 复制记录实例到自身
@@ -381,6 +454,7 @@ extension CKRecord {
         self["downloads"] = record["downloads"]
         self["images"] = record["images"]
         self["boradType"] = record["boradType"]
+        self["titleMD5"] = record["titleMD5"]
     }
     
     /// 记录失恋转换成网盘数据模型
@@ -397,3 +471,18 @@ extension CKRecord {
         return CloudData(contentInfo: content, site: self["boradType"] as! String)
     }
 }
+
+// MD5
+extension String {
+    func md5() -> String {
+        let data = self.cString(using: .utf8)!
+        let length = Int(CC_MD5_DIGEST_LENGTH)
+        let results = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: length)
+        CC_MD5(data, CC_LONG(self.lengthOfBytes(using: .utf8)), results)
+        var hash = ""
+        for i in 0..<length {
+            hash += String(format: "%02x", results[i])
+        }
+        return hash
+    }
+} 

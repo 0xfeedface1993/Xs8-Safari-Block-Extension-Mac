@@ -48,6 +48,9 @@ struct ContentInfo : Equatable {
     var size : String
     var format : String
     var passwod : String
+    var titleMD5 : String {
+        return title.md5()
+    }
     var downloafLink : [String]
     var imageLink : [String]
     

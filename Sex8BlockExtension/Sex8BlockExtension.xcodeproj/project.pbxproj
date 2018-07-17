@@ -47,6 +47,11 @@
 		248A33DE20C9035900413242 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2406C53820C0086500EC20EB /* CloudKit.framework */; };
 		248BCDA020302D79000999D6 /* ImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCD9F20302D79000999D6 /* ImageTask.swift */; };
 		248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCDA320303F24000999D6 /* FileManagerExtension.swift */; };
+		249EF1BA20F8989400919D7A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
+		249EF1C220F8997300919D7A /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
+		249EF1C320F8999000919D7A /* DOMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18271F7C7AD5007963FE /* DOMParser.swift */; };
+		249EF1C420F89A2900919D7A /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
+		249EF1C520F89A2900919D7A /* categrory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 248A33D720C8D6A900413242 /* categrory.plist */; };
 		249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F90EF1EFF78BD0043B48D /* ListTableViewController.swift */; };
 		249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F912D1EFFE9810043B48D /* PicsCollectionViewController.swift */; };
 		249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F91311EFFEB950043B48D /* ImageCollectionItem.swift */; };
@@ -1115,7 +1120,7 @@
 					};
 					24F47A1D20C83AAA0005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
-						DevelopmentTeam = A272626J38;
+						DevelopmentTeam = E6NP67H473;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 24F47A0C20C83AA90005CEB8;
 					};
@@ -1326,6 +1331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249EF1C520F89A2900919D7A /* categrory.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,7 +1457,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249EF1C420F89A2900919D7A /* Categrory-Modal.swift in Sources */,
 				24F47A2320C83AAB0005CEB8 /* CloudFetchBotTests.swift in Sources */,
+				249EF1C220F8997300919D7A /* FetchBot.swift in Sources */,
+				249EF1BA20F8989400919D7A /* Storage.swift in Sources */,
+				249EF1C320F8999000919D7A /* DOMParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1745,7 +1755,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = A272626J38;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1768,7 +1778,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = A272626J38;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

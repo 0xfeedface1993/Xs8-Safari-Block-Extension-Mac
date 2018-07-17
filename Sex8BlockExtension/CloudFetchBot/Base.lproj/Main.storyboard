@@ -737,10 +737,20 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="300" verticalCompressionResistancePriority="751" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c9Y-lA-AHv">
-                                <rect key="frame" x="20" y="20" width="377" height="22"/>
+                                <rect key="frame" x="20" y="20" width="483" height="22"/>
                                 <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UvP-Qm-PNx">
+                                        <rect key="frame" x="-6" y="-6" width="110" height="32"/>
+                                        <buttonCell key="cell" type="push" title="生成MD5值" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tpq-oM-aKY">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="MD5maker:" target="XfG-lQ-9wD" id="8LQ-3T-mVh"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bt9-8N-PfV">
-                                        <rect key="frame" x="-6" y="-6" width="107" height="32"/>
+                                        <rect key="frame" x="100" y="-6" width="107" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除空数据" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5zP-o5-Mja">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -750,7 +760,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Abu-Ht-F3T">
-                                        <rect key="frame" x="97" y="-6" width="107" height="32"/>
+                                        <rect key="frame" x="203" y="-6" width="107" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除私有库" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b6y-MT-5SI">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -760,7 +770,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V99-F6-KmG">
-                                        <rect key="frame" x="200" y="-6" width="120" height="32"/>
+                                        <rect key="frame" x="306" y="-6" width="120" height="32"/>
                                         <buttonCell key="cell" type="push" title="删除重复数据" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OAF-5Q-y4Q">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -770,7 +780,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wbf-CP-A4Y">
-                                        <rect key="frame" x="316" y="-6" width="67" height="32"/>
+                                        <rect key="frame" x="422" y="-6" width="67" height="32"/>
                                         <buttonCell key="cell" type="push" title="开始" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bqW-T8-EJn">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -788,8 +798,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>

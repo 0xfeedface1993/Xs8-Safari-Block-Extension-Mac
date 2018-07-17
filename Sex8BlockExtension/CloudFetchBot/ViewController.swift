@@ -29,7 +29,7 @@ class ViewController: NSViewController {
     var tor: IndexingIterator<[ListCategrory]>?
     var site = Site.netdisk
     var startIndex: UInt = 1
-    let pageOffset: UInt = 3
+    let pageOffset: UInt = 1
     var startTime: Date!
     @IBOutlet weak var action: NSButton!
     @IBOutlet weak var label: NSTextField!
@@ -55,6 +55,11 @@ class ViewController: NSViewController {
     @IBAction func deleteEmptyRecord(_ sender: Any) {
         DispatchQueue.global().async {
             self.deleteEmptyRecord()
+        }
+    }
+    @IBAction func MD5maker(_ sender: Any) {
+        DispatchQueue.global().async {
+            self.remakerMD5(recall: { print("happy MD5!") })
         }
     }
     
@@ -96,7 +101,7 @@ extension ViewController : FetchBotDelegate, CloudSaver {
             return
         }
         
-        check(title: content.page) { [unowned self] (res) in
+        check(href: content.titleMD5, completion: {[unowned self] (res) in
             print(res)
             if res.count <= 0 {
                 self.save(netDisk: CloudData(contentInfo: content, site: s)) { (rec, err) in
@@ -111,7 +116,7 @@ extension ViewController : FetchBotDelegate, CloudSaver {
             }   else    {
                 print(" **************** alreay save \(res.count) page ***************")
             }
-        }
+        })
         
     }
     
