@@ -42,7 +42,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let linkRules = [dowloadLinkRule, downloadLinkLiRule, InfoRuleOption.v4DownloadLink]
         for rule in linkRules {
             for linkResult in parse(string:mainContent, rule: rule) ?? [] {
-                info.downloafLink.append(linkResult.innerHTML)
+                if InfoRuleOption.v4DownloadLink.regex == rule.regex {
+                    if let src = linkResult.attributes["href"] ?? linkResult.attributes["src"] {
+                        info.downloafLink.append(src)
+                    }
+                }   else    {
+                    info.downloafLink.append(linkResult.innerHTML)
+                }
                 // print("doenload link: \(linkResult.innerHTML)")
             }
         }

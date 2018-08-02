@@ -34,6 +34,7 @@
 		24467ADB1F1A28A700574160 /* LoginViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADA1F1A28A700574160 /* LoginViewCotroller.swift */; };
 		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
 		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
+		2455BECE21075DC700EA13A8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
 		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
@@ -334,6 +335,7 @@
 		249F91321EFFEB950043B48D /* ImageCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionItem.xib; sourceTree = "<group>"; };
 		24A886551F5D6334007336BD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24A886571F5FE873007336BD /* TapImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImageView.swift; sourceTree = "<group>"; };
+		24A9D01520FEE95E003450E5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		24B1F18620629A05008604AE /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
@@ -848,6 +850,7 @@
 		27AD7C5A1EEFD20D00258BDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24A9D01520FEE95E003450E5 /* libc++.tbd */,
 				2406C53820C0086500EC20EB /* CloudKit.framework */,
 				27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */,
 			);
@@ -1435,6 +1438,7 @@
 				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
 				248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */,
 				242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */,
+				2455BECE21075DC700EA13A8 /* Storage.swift in Sources */,
 				24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */,
 				242B182C1F7C7AF4007963FE /* DOMParser.swift in Sources */,
 			);

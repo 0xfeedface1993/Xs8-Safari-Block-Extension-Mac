@@ -1,760 +1,910 @@
 [
- {
- "action": {
- "type": "css-display-none",
- "selector":"a.qd-block"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.a_sxfl"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".a_xsfl"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#location_list"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.uk-header"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.a_sxmu"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.partner-list"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.carousel_container"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.easy-guide"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.bm div.a_sxc"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div>span>a"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.bm_c.cl.pbn"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"section.global_video_bottom_dbtc"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.div-list"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#nv"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#toptb"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {"action": {
- "type": "css-display-none",
- "selector":"#asx_text"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.lt-container2.lt-a-contain"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.bottom"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.a_pt"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#v_e6_action"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#toubiao"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#p_btn"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"tr.ad"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "img.s8bbs.com/04b22ce33ea24089740dd4c36b3cd7a5.jpg"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".plc.plm"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".pob.cl>p"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".zxy"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "xbluntan.net/plugin-e6-rebate.html"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".lt-body3"
- },
- "trigger": {
- "if-domian":["xbluntan.net", "sex8.cc"],
- "url-filter": ".*"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "static2.keep4u.ru/2017/06/24/230561.jpg"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "http://www.feemoo.com/vip.php"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "http://ads.feemoo.com/*"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "http://www.678pan.com/vip.php"
- }
- },
- {
- "action": {
- "type": "block"
- },
- "trigger": {
- "url-filter": "http://99kk7.com/*"
- }
- }
- ,
- {
- "action": {
- "type": "css-display-none",
- "selector":".barrage"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".col-md-4.col-sm-12.col-xs-12"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".clearfix.down_three"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".down_tl"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".col-md-6.col-sm-6.col-xs-12"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".index_list_ul"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".down_four.clearfix"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".left"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".nav.navbar-nav.clearfix"
- },
- "trigger": {
- "if-domian":["feemoo.com"],
- "url-filter": ".*feemoo.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".table.table-bordered.table-striped"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".navbar.navbar-inverse"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".span9"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#breadcrumbs"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#footer"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".pull-right"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".btn.btn-danger.btn-block"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".f14"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".txtgray"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- }
- ,
- {
- "action": {
- "type": "css-display-none",
- "selector":".color_btn.btn_green.txtwhite"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- }
- ,
- {
- "action": {
- "type": "css-display-none",
- "selector":"div>div>table"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".bottom-hint"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"a[href='http://www.678pan.com/vip.php']"
- },
- "trigger": {
- "if-domian":["678pan.cc"],
- "url-filter": ".*678pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".head_box"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".body_top"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"a[style='width:640px;height:60px;text-align:left;text-decoration:none;margin-bottom:20px;padding:0 10px']"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".file_box>div[style='border:1px solid #ccc; padding:5px;margin:5px;']"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".file_item>li[style='overflow:visible; margin-top:10px;']"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#fl_dir_box>div.file_item"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(8)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(7)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(6)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(5)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(2)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div.fb_l.f14.txtgray>div.file_item>li:nth-child(4)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#down_link>a:nth-child(2)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#down_link>a:nth-child(3)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"#down_link>a:nth-child(4)"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".r"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":"div[style='line-height:200%']"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".hr"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".foot_box"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- },
- {
- "action": {
- "type": "css-display-none",
- "selector":".cp_nav"
- },
- "trigger": {
- "if-domian":["777pan.cc"],
- "url-filter": ".*777pan.*"
- }
- }
- ]
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".trioCarousel"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "a.qd-block"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.a_sxfl"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".a_xsfl"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#location_list"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.uk-header"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.a_sxmu"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.partner-list"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.carousel_container"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.easy-guide"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.bm div.a_sxc"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div>span>a"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.bm_c.cl.pbn"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "section.global_video_bottom_dbtc"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.div-list"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#nv"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#toptb"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#asx_text"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.lt-container2.lt-a-contain"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.bottom"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.a_pt"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#v_e6_action"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#toubiao"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#p_btn"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "tr.ad"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "img.s8bbs.com/04b22ce33ea24089740dd4c36b3cd7a5.jpg"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".plc.plm"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".pob.cl>p"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".zxy"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "xbluntan.net/plugin-e6-rebate.html"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".lt-body3"
+        },
+        "trigger": {
+            "if-domain": [
+                "*xbluntan.net","*sex8.cc"
+            ],
+            "url-filter": ".*"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "static2.keep4u.ru/2017/06/24/230561.jpg"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "http://www.feemoo.com/vip.php"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "http://ads.feemoo.com/*"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "http://www.678pan.com/vip.php"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "http://99kk7.com/*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".barrage"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".col-md-4.col-sm-12.col-xs-12"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".clearfix.down_three"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".down_tl"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".col-md-6.col-sm-6.col-xs-12"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".index_list_ul"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".down_four.clearfix"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".left"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".nav.navbar-nav.clearfix"
+        },
+        "trigger": {
+            "if-domain": [
+                "feemoo.com"
+            ],
+            "url-filter": ".*feemoo.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".table.table-bordered.table-striped"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".navbar.navbar-inverse"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".span9"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#breadcrumbs"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#footer"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".pull-right"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".btn.btn-danger.btn-block"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".f14"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".txtgray"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".color_btn.btn_green.txtwhite"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div>div>table"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".bottom-hint"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "a[href='http://www.678pan.com/vip.php']"
+        },
+        "trigger": {
+            "if-domain": [
+                "678pan.cc"
+            ],
+            "url-filter": ".*678pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".head_box"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".body_top"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "a[style='width:640px;height:60px;text-align:left;text-decoration:none;margin-bottom:20px;padding:0 10px']"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".file_box>div[style='border:1px solid #ccc; padding:5px;margin:5px;']"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".file_item>li[style='overflow:visible; margin-top:10px;']"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#fl_dir_box>div.file_item"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(8)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(7)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(6)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(5)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(2)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.fb_l.f14.txtgray>div.file_item>li:nth-child(4)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#down_link>a:nth-child(2)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#down_link>a:nth-child(3)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#down_link>a:nth-child(4)"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".r"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div[style='line-height:200%']"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".hr"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".foot_box"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".cp_nav"
+        },
+        "trigger": {
+            "if-domain": [
+                "*pan.*"
+            ],
+            "url-filter": ".*777pan.*"
+        }
+    }
+]

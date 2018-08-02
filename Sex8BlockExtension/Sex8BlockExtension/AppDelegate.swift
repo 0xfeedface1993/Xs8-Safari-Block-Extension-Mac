@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
         hockey?.contactEmail = ""
         hockey?.crashDescription = "Crash Form \(model() ?? "unkown")"
         hockey?.install()
-        KSCrash.sharedInstance().deleteBehaviorAfterSendAll = KSCDeleteNever
+        KSCrash.sharedInstance().deleteBehaviorAfterSendAll = KSCDeleteOnSucess
         hockey?.sendAllReports(completion: { (reporsts, completed, err) in
             if completed {
                 print("send reports: \(reporsts?.count ?? 0)")
