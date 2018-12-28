@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import UserNotifications
 import WebShell_macOS
 
 class ContentViewController: NSViewController {
@@ -129,5 +130,24 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 73
+    }
+    
+    func notice() {
+        if #available(OSX 10.14, *) {
+            let notification = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = "有一项下载任务完成"
+            content.body = "点击打开App继续下一个任务"
+            content.sound = UNNotificationSound.default()
+            
+            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
+            notification.add(request) { (err) in
+                if let e = err {
+                    print(e)
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
