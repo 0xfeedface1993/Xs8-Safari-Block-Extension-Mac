@@ -30,7 +30,7 @@ extension WebHostSite {
                                                         .cchooo:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
                                                         .yousuwp:NSImage(named: NSImage.Name("mofe_yousu"))!,
                                                         .v2file:NSImage(named: NSImage.Name("mofe_v4"))!,
-                                                        .xunniu:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
+                                                        .xunniu:NSImage(named: NSImage.Name("mofe_xunniu"))!,
                                                         .unknowsite:NSImage(named: NSImage.Name("mofe_feemoo"))!]
 }
 
