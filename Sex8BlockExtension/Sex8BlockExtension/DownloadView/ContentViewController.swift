@@ -134,18 +134,19 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
     
     func notice() {
         if #available(OSX 10.14, *) {
-            let notification = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "有一项下载任务完成"
-            content.body = "点击打开App继续下一个任务"
-            content.sound = UNNotificationSound.default
+//            let notification = UNUserNotificationCenter.current()
+//            let content = UNMutableNotificationContent()
+//            content.title = "有一项下载任务完成"
+//            content.body = "点击打开App继续下一个任务"
+//            content.sound = UNNotificationSound.default
+//
+//            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
+//            notification.add(request) { (err) in
+//                if let e = err {
+//                    print(e)
+//                }
+//            }
             
-            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
-            notification.add(request) { (err) in
-                if let e = err {
-                    print(e)
-                }
-            }
         } else {
             // Fallback on earlier versions
         }

@@ -155,8 +155,8 @@ class ViewController: NSViewController, UpdateProtocol {
         let pipline = PCPipeline.share
         pipline.delegate = self
         let app = NSApp.delegate as! AppDelegate
-        let password = app.selectItem?.passwod ?? ""
-        if let _ = pipline.add(url: link.absoluteString, password: password) {
+        let password = "\(app.selectItem?.passwod ?? "")"
+        if let _ = pipline.add(url: link.absoluteString, password: password, friendName: "\(app.selectItem?.title ?? "")") {
 //            riffle.downloadStateController = downloadViewController.resultArrayContriller
             view.toast("成功添加下载任务")
         }

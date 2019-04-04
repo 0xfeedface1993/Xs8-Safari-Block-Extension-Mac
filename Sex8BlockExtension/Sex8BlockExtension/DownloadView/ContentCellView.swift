@@ -73,7 +73,7 @@ class DownloadStateInfo : NSObject {
             hostType = .unknowsite
         }
         super.init()
-        name = task.fileName
+        name = task.request.friendName
         let pros = task.pack.progress * 100.0
         let guts = Float(task.pack.totalBytes) / 1024.0 / 1024.0
         progress = String(format: "%.2f", pros)
@@ -88,7 +88,7 @@ class DownloadStateInfo : NSObject {
         status = .waitting
         hostType = riffle.host
         super.init()
-        name = riffle.mainURL?.absoluteString ?? "no url"
+        name = riffle.friendName.count <= 0 ? (riffle.mainURL?.absoluteString ?? "no url"):riffle.friendName
         progress = "0"
         totalBytes = "0M"
         self.riffle = riffle
