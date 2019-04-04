@@ -32,7 +32,7 @@ class ContentViewController: NSViewController {
     
     func update(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid }) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) {
             var newItems = items
             newItems[index] = info
             resultArrayContriller.content = newItems
@@ -43,7 +43,7 @@ class ContentViewController: NSViewController {
     
     func finished(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.uuid == info.uuid }) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) {
             print("found finished item!")
             var newItems = items
             info.status = .downloaded
@@ -55,7 +55,7 @@ class ContentViewController: NSViewController {
     }
     
     func finished(riffle: PCWebRiffle) {
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.index(where: { $0.riffle == riffle }) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.riffle == riffle }) {
             print("found finished item!")
             var newItems = items
             newItems[index].status = .downloaded
@@ -138,7 +138,7 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
             let content = UNMutableNotificationContent()
             content.title = "有一项下载任务完成"
             content.body = "点击打开App继续下一个任务"
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             
             let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
             notification.add(request) { (err) in

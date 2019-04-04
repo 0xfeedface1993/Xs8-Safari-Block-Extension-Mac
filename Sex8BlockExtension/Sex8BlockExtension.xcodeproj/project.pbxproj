@@ -1215,6 +1215,7 @@
 					2418577D21BC371700E3959D = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = E6NP67H473;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -1228,7 +1229,7 @@
 					24BA90CE1EF597B6002BE480 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E6NP67H473;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -1242,6 +1243,7 @@
 					24BC3E6121BD51FF009048AF = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = E6NP67H473;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					24F47A0C20C83AA90005CEB8 = {
@@ -1292,7 +1294,7 @@
 					27AD7C261EEFD1EE00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E6NP67H473;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -1312,21 +1314,21 @@
 					27AD7C371EEFD1EF00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = A272626J38;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 27AD7C261EEFD1EE00258BDC;
 					};
 					27AD7C421EEFD1EF00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = A272626J38;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 27AD7C261EEFD1EE00258BDC;
 					};
 					27AD7C581EEFD20D00258BDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E6NP67H473;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1336,6 +1338,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1881,10 +1884,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.XHAMADMash;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADMash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1903,10 +1906,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.XHAMADMash;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADMash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1919,11 +1922,10 @@
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1936,11 +1938,10 @@
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.Torrilste;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1960,10 +1961,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.XHAMADBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADBlocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1982,10 +1983,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock.XHAMADBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADBlocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2372,11 +2373,10 @@
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2396,11 +2396,10 @@
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2415,8 +2414,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
 			};
 			name = Debug;
@@ -2432,8 +2430,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sex8BlockExtension.app/Contents/MacOS/Sex8BlockExtension";
 			};
 			name = Release;
@@ -2448,8 +2445,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Sex8BlockExtension;
 			};
 			name = Debug;
@@ -2464,8 +2460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Sex8BlockExtension;
 			};
 			name = Release;
@@ -2478,12 +2473,11 @@
 				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.blcok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2495,12 +2489,11 @@
 				DEVELOPMENT_TEAM = E6NP67H473;
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kmvc.adblock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.blcok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

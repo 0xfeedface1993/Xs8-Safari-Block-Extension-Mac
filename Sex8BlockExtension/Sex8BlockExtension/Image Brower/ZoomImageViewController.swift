@@ -16,7 +16,7 @@ class ZoomImageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        let image = NSImage(named: NSImage.Name(rawValue: "error"))
+        let image = NSImage(named: "error")
         imageView.image = image
         NotificationCenter.default.addObserver(forName: ImagePickerNotification, object: nil, queue: OperationQueue.main, using: {
             notification in

@@ -12,7 +12,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
     @IBOutlet weak var collectionView: NSCollectionView!
     let ImageViewIdentifier = NSUserInterfaceItemIdentifier("image")
     var datas = [Pic]()
-    let defaultImage = NSImage(named: NSImage.Name(rawValue: "watting.jpeg"))
+    let defaultImage = NSImage(named: "watting.jpeg")
     var downloadedImagesIndex = [Int]()
     var downloadingImagesIndex = [Int]()
     var downloadImages = [Int:NSImage]()
@@ -119,7 +119,7 @@ class PicsCollectionViewController: NSViewController, NSCollectionViewDelegate, 
                                 DispatchQueue.main.async {
                                     self.downloadedImagesIndex.append(index)
                                     self.downloadImages[index] = img
-                                    if let indx = self.downloadingImagesIndex.index(of: index) {
+                                    if let indx = self.downloadingImagesIndex.firstIndex(of: index) {
                                         self.downloadingImagesIndex.remove(at: indx)
                                     }
                                     let app = NSApplication.shared.delegate as! AppDelegate

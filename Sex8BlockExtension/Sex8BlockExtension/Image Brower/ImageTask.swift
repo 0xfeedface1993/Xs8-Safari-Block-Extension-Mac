@@ -8,8 +8,8 @@
 
 import AppKit
 
-let defaultImage = NSImage(named: NSImage.Name(rawValue: "watting.jpeg"))!
-let errorImage = NSImage(named: NSImage.Name(rawValue: "error"))!
+let defaultImage = NSImage(named: "watting.jpeg")!
+let errorImage = NSImage(named: "error")!
 
 /// 图片下载状态
 ///

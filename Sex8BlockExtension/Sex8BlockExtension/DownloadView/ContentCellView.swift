@@ -25,13 +25,13 @@ enum DownloadStatus : String {
 }
 
 extension WebHostSite {
-    static let hostImagePack : [WebHostSite:NSImage] = [.feemoo:NSImage(named: NSImage.Name("mofe_feemoo"))!,
-                                                        .pan666:NSImage(named: NSImage.Name("mofe_666pan"))!,
-                                                        .cchooo:NSImage(named: NSImage.Name("mofe_ccchooo"))!,
-                                                        .yousuwp:NSImage(named: NSImage.Name("mofe_yousu"))!,
-                                                        .v2file:NSImage(named: NSImage.Name("mofe_v4"))!,
-                                                        .xunniu:NSImage(named: NSImage.Name("mofe_xunniu"))!,
-                                                        .unknowsite:NSImage(named: NSImage.Name("mofe_feemoo"))!]
+    static let hostImagePack : [WebHostSite:NSImage] = [.feemoo:NSImage(named: "mofe_feemoo")!,
+                                                        .pan666:NSImage(named: "mofe_666pan")!,
+                                                        .cchooo:NSImage(named: "mofe_ccchooo")!,
+                                                        .yousuwp:NSImage(named: "mofe_yousu")!,
+                                                        .v2file:NSImage(named: "mofe_v4")!,
+                                                        .xunniu:NSImage(named: "mofe_xunniu")!,
+                                                        .unknowsite:NSImage(named: "mofe_feemoo")!]
 }
 
 /// 下载状态数据模型，用于视图数据绑定

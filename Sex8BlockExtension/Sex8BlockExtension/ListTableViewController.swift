@@ -44,8 +44,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let pop = NSPopover()
         pop.animates = true
         pop.appearance = NSAppearance(named: NSAppearance.Name.aqua)
-        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main)
-        let xpics = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PicsCollectionViewController")) as! PicsCollectionViewController
+        let storyboard = NSStoryboard(name: "Main", bundle: Bundle.main)
+        let xpics = storyboard.instantiateController(withIdentifier: "PicsCollectionViewController") as! PicsCollectionViewController
         pop.contentViewController = xpics
         pop.contentSize = CGSize(width: 800, height: 600)
         return pop

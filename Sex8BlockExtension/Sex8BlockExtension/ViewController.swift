@@ -26,7 +26,7 @@ class ViewController: NSViewController, UpdateProtocol {
     @IBOutlet weak var searchArea: NSSearchField!
     @IBOutlet weak var downloadButton: NSButton!
     
-    lazy var downloadViewController : ContentViewController = storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "com.ascp.contenView")) as! ContentViewController
+    lazy var downloadViewController : ContentViewController = storyboard!.instantiateController(withIdentifier: "com.ascp.contenView") as! ContentViewController
     
     lazy var popver : NSPopover = {
         let popver = NSPopover()
@@ -41,7 +41,7 @@ class ViewController: NSViewController, UpdateProtocol {
     
     var downloadURL : URL?
     
-    let login = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "LoginStoryboard"), bundle: Bundle.main).instantiateInitialController() as! NSWindowController
+    let login = NSStoryboard(name: "LoginStoryboard", bundle: Bundle.main).instantiateInitialController() as! NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()

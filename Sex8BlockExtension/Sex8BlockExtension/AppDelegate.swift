@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
-        let fileManage = NSStoryboard(name: NSStoryboard.Name(rawValue: "FileManageStoryboard"), bundle: Bundle.main)
+        let fileManage = NSStoryboard(name: "FileManageStoryboard", bundle: Bundle.main)
         let window = fileManage.instantiateInitialController() as! NSWindowController
         NSApp.runModal(for: window.window!)
     }

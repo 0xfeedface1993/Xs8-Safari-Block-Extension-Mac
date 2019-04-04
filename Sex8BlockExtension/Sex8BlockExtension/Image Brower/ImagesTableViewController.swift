@@ -13,7 +13,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
     var tasks = [ImageTask]()
     
     let ImageCellIdentifier = "ImageCell"
-    let zoom = NSStoryboard(name: NSStoryboard.Name(rawValue: "ZoomStoryboard"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ZoomKeeper")) as? NSWindowController
+    let zoom = NSStoryboard(name: "ZoomStoryboard", bundle: nil).instantiateController(withIdentifier: "ZoomKeeper") as? NSWindowController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ class ImagesTableViewController: NSViewController, NSTableViewDelegate, NSTableV
         clearCacheImages()
         tasks = ((notification.object as? NetDisk)?.pic?.allObjects as? [Pic] ?? []).map({ ImageTask(picture: $0, finished: {
             tk in
-            if let index = self.tasks.index(where: { tkx in return tkx == tk  }) {
+            if let index = self.tasks.firstIndex(where: { tkx in return tkx == tk  }) {
                 if !Thread.isMainThread {
                     DispatchQueue.main.async {
                         self.tableView.noteHeightOfRows(withIndexesChanged: [index])
