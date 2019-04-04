@@ -49,3 +49,15 @@ struct Command {
     var url : URL
     var completion : ((Any?) -> ())?
 }
+
+struct APIResponse<T: Codable>: Codable {
+    var code: Int
+    var msg: String
+    var data: T?
+}
+
+struct RegisterDeviceRequest: Codable {
+    var userid : String
+    var deviceid : String
+    let _jsonobjid = "request-device-add"
+}

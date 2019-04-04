@@ -1,8 +1,8 @@
 //
-//  WebService.swift
-//  Sex8BlockExtension
+//  Webservice.swift
+//  S8Blocker
 //
-//  Created by virus1994 on 2017/9/6.
+//  Created by virus1993 on 2017/10/12.
 //  Copyright © 2017年 ascp. All rights reserved.
 //
 
@@ -23,15 +23,30 @@ enum WebServiceMethod : String {
 enum WebserviceBaseURL : String {
     case main = "http://127.0.0.1:8181/api"
     case aliyun = "http://120.78.89.159/api"
+    case debug = "http://172.20.10.2"
+    func url(method: WebserviceMethodPath) -> URL {
+        return URL(string: self.rawValue + method.rawValue)!
+    }
 }
 
-struct WebserviceCaller<T> {
+enum WebserviceMethodPath : String {
+    case registerDevice = "/api/v1/addDevice"
+    case findDevice = "/api/v1/findDevice"
+}
+
+class WebserviceCaller<T: Codable, X: Codable> {
     var baseURL : WebserviceBaseURL
     var way : WebServiceMethod
-    var method : String
-    var paras : [String : String]?
+    var method : WebserviceMethodPath
+    var paras : X?
     var rawData : Data?
     var execute : ((T?, Error?, ErrorResponse?)->())?
+    
+    init(url: WebserviceBaseURL, way: WebServiceMethod, method: WebserviceMethodPath) {
+        self.baseURL = url
+        self.way = way
+        self.method = method
+    }
 }
 
 class Webservice {
@@ -42,7 +57,7 @@ class Webservice {
         return URLSession(configuration: configuration)
     }()
     
-    func read<P : Codable>(caller : WebserviceCaller<P>) throws {
+    func read<P : Codable, X: Codable>(caller : WebserviceCaller<P, X>) throws {
         let responseHandler : (Data?, URLResponse?, Error?) -> Swift.Void = { (data, response, err) in
             if let e = err {
                 caller.execute?(nil, e, nil)
@@ -95,10 +110,7 @@ class Webservice {
         
         switch caller.way {
         case .get:
-            var urlString = caller.baseURL.rawValue.appending("?method=\(caller.method)")
-            caller.paras?.forEach({ (key, value) in
-                urlString.append("&\(key)=\(value)")
-            })
+            let urlString = caller.baseURL.rawValue.appending("?method=\(caller.method.rawValue)")
             if let url = URL(string: urlString) {
                 var request = URLRequest(url: url)
                 request.httpMethod = caller.way.rawValue
@@ -109,17 +121,19 @@ class Webservice {
             }
             throw WebserviceError.badURL(message: "错误的url：" + urlString)
         case .post:
-            let urlString = caller.baseURL.rawValue.appending("?method=\(caller.method)")
+            let urlString = caller.baseURL.url(method: caller.method).absoluteString
             do {
                 var data : Data?
                 if let paras = caller.paras {
-                    data = paras.postParams().data(using: .utf8)
+                    let encoder = JSONEncoder()
+                    data = try? encoder.encode(paras)
                 }   else if let raw = caller.rawData {
                     data = raw
                 }
                 
                 if let url = URL(string: urlString) {
                     var request = URLRequest(url: url)
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                     request.httpBody = data
                     request.httpMethod = caller.way.rawValue
                     let task = session.dataTask(with: request, completionHandler: responseHandler)

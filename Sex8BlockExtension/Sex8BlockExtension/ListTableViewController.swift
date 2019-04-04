@@ -128,31 +128,31 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             let size = data.size ?? ""
             let dic = MovieModal(title: title, page: page, pics: pics, msk: msk, time: time, format: format, size: size, downloads: links)
             
-            do {
-                let json = try encoder.encode(dic)
-                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
-                    count += 1
-                    if count < self.datas.count {
-                        DispatchQueue.main.async {
-                            self.showProgress(text: "已提交第 \(count)/\(self.datas.count) 项数据...")
-                        }
-                    }   else    {
-                        DispatchQueue.main.async {
-                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
-                        }
-                    }
-                    guard let message = result else {
-                        if let e = err {
-                            print("error: \(e)")
-                        }
-                        return
-                    }
-                    print("movieID: \(message.movieID)")
-                })
-                try webservice.read(caller: caller)
-            } catch {
-                print("upload faild: json error \(error)")
-            }
+//            do {
+//                let json = try encoder.encode(dic)
+//                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
+//                    count += 1
+//                    if count < self.datas.count {
+//                        DispatchQueue.main.async {
+//                            self.showProgress(text: "已提交第 \(count)/\(self.datas.count) 项数据...")
+//                        }
+//                    }   else    {
+//                        DispatchQueue.main.async {
+//                            self.showProgress(text: "已提交 \(self.datas.count) 项数据")
+//                        }
+//                    }
+//                    guard let message = result else {
+//                        if let e = err {
+//                            print("error: \(e)")
+//                        }
+//                        return
+//                    }
+//                    print("movieID: \(message.movieID)")
+//                })
+//                try webservice.read(caller: caller)
+//            } catch {
+//                print("upload faild: json error \(error)")
+//            }
         }
     }
     
