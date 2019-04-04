@@ -63,20 +63,22 @@ open class SwiftToaster: NSObject {
                                          backgroundColor: self.backgroundColor,
                                          cornerRadius: self.cornerRadius)
         aView.addSubview(self.toastView)
-        self.toastView.addConstraint(NSLayoutConstraint(item: self.toastView,
-                                                        attribute: .width,
-                                                        relatedBy: .lessThanOrEqual,
-                                                        toItem: nil,
-                                                        attribute: .width,
-                                                        multiplier: 1,
-                                                        constant: 300))
-        aView.addConstraint(NSLayoutConstraint(item: self.toastView,
-                                                        attribute: .centerX,
-                                                        relatedBy: .equal,
-                                                        toItem: aView,
-                                                        attribute: .centerX,
-                                                        multiplier: 1,
-                                                        constant: 0))
+        if let toast = self.toastView {
+            self.toastView.addConstraint(NSLayoutConstraint(item: toast,
+                                                            attribute: .width,
+                                                            relatedBy: .lessThanOrEqual,
+                                                            toItem: nil,
+                                                            attribute: .width,
+                                                            multiplier: 1,
+                                                            constant: 300))
+            aView.addConstraint(NSLayoutConstraint(item: toast,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: aView,
+                                                   attribute: .centerX,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        }
         self.toastView.useVFLs(["V:[self]-20-|"])
         self.toastView.alphaValue = 0
         self.toastView.animator().alphaValue = self.alpha
