@@ -310,4 +310,65 @@ class DataBase {
             print("Failure to save context: \(error)")
         }
     }
+    
+    func saveRemoteDownloadLink(data: RemoteNetDisk, completion: ((SaveState) -> ())?) {
+        if let _ : NetDisk = DataBase.checkPropertyExist(entity: NetDisk.className(), property: "pageurl", value: data.pageurl) {
+            print("------- netdisk exists ------ : \(data.pageurl)")
+            completion?(.success)
+            return
+        }
+        if let _ : NetDisk = DataBase.checkPropertyExist(entity: NetDisk.className(), property: "title", value: data.title) {
+            print("------- netdisk exists ------ : \(data.title)")
+            completion?(.success)
+            return
+        }
+        let netdisk = NSEntityDescription.insertNewObject(forEntityName: "NetDisk", into:  DataBase.share.managedObjectContext) as! NetDisk
+        netdisk.creattime = Date()
+        netdisk.fileName = ""
+        netdisk.title = data.title
+        netdisk.passwod = data.passwod
+        netdisk.pageurl = data.pageurl
+        netdisk.msk = data.msk
+        netdisk.time = data.time
+        netdisk.format = data.format
+        netdisk.size = data.size
+        netdisk.pic = nil
+        netdisk.link = nil
+        
+        for sLink in data.links {
+            if let exitLink : Link = DataBase.checkPropertyExist(entity: Link.className(), property: "link", value: sLink) {
+                netdisk.addToLink(exitLink)
+                continue
+            }
+            let link = NSEntityDescription.insertNewObject(forEntityName: "Link", into: DataBase.share.managedObjectContext) as! Link
+            link.creattime = Date()
+            link.link = sLink
+            link.addToLinknet(netdisk)
+        }
+        
+        for sLink in data.pics {
+            if let exitLink : Pic = DataBase.checkPropertyExist(entity: Pic.className(), property: "pic", value: sLink) {
+                netdisk.addToPic(exitLink)
+                continue
+            }
+            let link = NSEntityDescription.insertNewObject(forEntityName: "Pic", into: DataBase.share.managedObjectContext) as! Pic
+            link.creattime = Date()
+            link.pic = sLink
+            link.addToPicnet(netdisk)
+        }
+        
+        do {
+            let context = DataBase.share.managedObjectContext
+            if !context.commitEditing() {
+                NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
+            }
+            if context.hasChanges {
+                try context.save()
+            }
+            completion?(.success)
+        } catch {
+            completion?(.failed)
+            print("Failure to save context: \(error)")
+        }
+    }
 }

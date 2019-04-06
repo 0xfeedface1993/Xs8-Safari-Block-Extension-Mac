@@ -18,7 +18,7 @@ let ShowDonwloadAddressName = NSNotification.Name(rawValue: "showAddress")
 let SearchName = NSNotification.Name(rawValue: "search")
 let PageDataMessage = "pageData"
 
-class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, Reciver {
     @IBOutlet weak var tableview: NSTableView!
     let IdenitfierKey = "identifier"
     let TitleKey = "title"
@@ -91,6 +91,9 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.addObserver(self, selector: #selector(showAddress), name: ShowDonwloadAddressName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(uploadServer(notification:)), name: UploadName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchNotification(notification:)), name: NSControl.textDidChangeNotification, object: nil)
+        
+        addRemoteNetdisk(oberserver: self, selector: #selector(reciver(notification:)))
+        
         reloadTableView(notification: nil)
     }
     
@@ -100,6 +103,41 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         NotificationCenter.default.removeObserver(self, name: ShowImagesName, object: nil)
         NotificationCenter.default.removeObserver(self, name: UploadName, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSControl.textDidChangeNotification, object: nil)
+        removeRemoteNetdisk(oberserver: self)
+    }
+    
+    @objc func reciver(notification: Notification) {
+        print(">>>>>>>>>> \(notification)")
+        guard let jsonString = notification.object as? String, let data = jsonString.data(using: .utf8, allowLossyConversion: false) else {
+            print("****** Not Json String ******")
+            return
+        }
+        
+        do {
+            let json = try JSONDecoder().decode(RemoteNetDisk.self, from: data)
+            DataBase.share.saveRemoteDownloadLink(data: json) { (state) in
+                switch state {
+                case .success:
+                    print("保存 1 项成功")
+                    NotificationCenter.default.post(name: DownloadAddressName, object: json.downloadLink)
+                    DispatchQueue.main.async {
+                        self.reloadTableView(notification: nil)
+                        let pasteBoard = NSPasteboard.general
+                        pasteBoard.clearContents()
+                        let copysObjects = [json.downloadLink]
+                        pasteBoard.writeObjects(copysObjects as [NSPasteboardWriting])
+                        (NSApp.delegate as! AppDelegate).selectItem = self.datas.first
+                        NotificationCenter.default.post(name: RemoteDownloadAddressName, object: json.downloadLink)
+                    }
+                    break
+                case .failed:
+                    print("保存远程请求失败")
+                    break
+                }
+            }
+        } catch {
+            print(error)
+        }
     }
     
     override func viewDidAppear() {

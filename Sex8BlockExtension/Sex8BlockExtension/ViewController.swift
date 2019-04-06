@@ -13,6 +13,7 @@ let StopFetchName = NSNotification.Name.init("stopFetching")
 let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")
 let UploadName = NSNotification.Name.init("UploadName")
 let DownloadAddressName = NSNotification.Name.init("com.ascp.dowload.address.click")
+let RemoteDownloadAddressName = NSNotification.Name.init("com.ascp.remote.dowload.address.click")
 
 var searchText : String?
 
@@ -53,6 +54,8 @@ class ViewController: NSViewController, UpdateProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.showExtennalText(notification:)), name: ShowExtennalTextName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetSearchValue(notification:)), name: NSControl.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeDownloadState(notification: )), name: DownloadAddressName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(download(_:)), name: RemoteDownloadAddressName, object: nil)
+        
         head.tapBlock = {
             [weak self] image in
 //            let app = NSApp.delegate as! AppDelegate
@@ -74,6 +77,7 @@ class ViewController: NSViewController, UpdateProtocol {
         NotificationCenter.default.removeObserver(self, name: StopFetchName, object: nil)
         NotificationCenter.default.removeObserver(self, name: ShowExtennalTextName, object: nil)
         NotificationCenter.default.removeObserver(self, name: DownloadAddressName, object: nil)
+        NotificationCenter.default.removeObserver(self, name: RemoteDownloadAddressName, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSControl.textDidChangeNotification, object: nil)
     }
     

@@ -66,6 +66,10 @@
 		24A886561F5D6334007336BD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886551F5D6334007336BD /* UserInfo.swift */; };
 		24A886581F5FE873007336BD /* TapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A886571F5FE873007336BD /* TapImageView.swift */; };
 		24AA52762255FE1E00C423F5 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA52722255FE1E00C423F5 /* Webservice.swift */; };
+		24AA527B2259104700C423F5 /* Revicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA527A2259104700C423F5 /* Revicer.swift */; };
+		24AA527C225927DB00C423F5 /* Revicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA527A2259104700C423F5 /* Revicer.swift */; };
+		24AA527D225927E500C423F5 /* Revicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA527A2259104700C423F5 /* Revicer.swift */; };
+		24AA527E225927EE00C423F5 /* Revicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA527A2259104700C423F5 /* Revicer.swift */; };
 		24B1F18720629A05008604AE /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B1F18620629A05008604AE /* Update.swift */; };
 		24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
 		24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D41EF597B6002BE480 /* SafariExtensionHandler.swift */; };
@@ -371,6 +375,7 @@
 		24A886571F5FE873007336BD /* TapImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImageView.swift; sourceTree = "<group>"; };
 		24A9D01520FEE95E003450E5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		24AA52722255FE1E00C423F5 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		24AA527A2259104700C423F5 /* Revicer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revicer.swift; sourceTree = "<group>"; };
 		24B1F18620629A05008604AE /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		24BA90CF1EF597B6002BE480 /* Torrilste.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Torrilste.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA90D31EF597B6002BE480 /* Torrilste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torrilste.entitlements; sourceTree = "<group>"; };
@@ -704,6 +709,14 @@
 			path = Webservice;
 			sourceTree = "<group>";
 		};
+		24AA52792259102D00C423F5 /* Reciver */ = {
+			isa = PBXGroup;
+			children = (
+				24AA527A2259104700C423F5 /* Revicer.swift */,
+			);
+			path = Reciver;
+			sourceTree = "<group>";
+		};
 		24B1F185206299E6008604AE /* Update */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +912,7 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				24AA52792259102D00C423F5 /* Reciver */,
 				24AA52702255FE1E00C423F5 /* Webservice */,
 				2469E461206950AB000070BF /* DownloadView */,
 				24B1F185206299E6008604AE /* Update */,
@@ -1615,6 +1629,7 @@
 				274AA3F31F7773820058E21A /* CoreDataExtension.swift in Sources */,
 				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
 				248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */,
+				24AA527E225927EE00C423F5 /* Revicer.swift in Sources */,
 				242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */,
 				2455BECE21075DC700EA13A8 /* Storage.swift in Sources */,
 				24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */,
@@ -1639,6 +1654,7 @@
 				24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */,
 				24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */,
 				248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */,
+				24AA527D225927E500C423F5 /* Revicer.swift in Sources */,
 				248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1671,6 +1687,7 @@
 				242B182B1F7C7ADD007963FE /* FetchBot.swift in Sources */,
 				242B18191F7C0CD0007963FE /* JsonModal.swift in Sources */,
 				242B181E1F7C75A4007963FE /* Extension.swift in Sources */,
+				24AA527C225927DB00C423F5 /* Revicer.swift in Sources */,
 				274AA3EA1F775ECF0058E21A /* NetdiskModel.xcdatamodeld in Sources */,
 				243AFE321F790FAA00D090D7 /* BackgroundFetch.swift in Sources */,
 				274AA3BD1F7694660058E21A /* ViewController.swift in Sources */,
@@ -1713,6 +1730,7 @@
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				248A33DB20C8D6D200413242 /* Categrory-Modal.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
+				24AA527B2259104700C423F5 /* Revicer.swift in Sources */,
 				278B8AE71EFE774400E20296 /* NetdiskModel.xcdatamodeld in Sources */,
 				274AA3F21F7773820058E21A /* CoreDataExtension.swift in Sources */,
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
