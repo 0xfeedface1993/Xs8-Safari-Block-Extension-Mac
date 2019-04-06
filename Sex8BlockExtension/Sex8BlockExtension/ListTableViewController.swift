@@ -115,19 +115,19 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             webservice.cancelAllTask()
             return
         }
-        let encoder = JSONEncoder()
-        var count = 0
-        for (_, data) in datas.enumerated() {
-            let links = (data.link?.allObjects as? [Link] ?? []).map({ $0.link! })
-            let pics = (data.pic?.allObjects as? [Pic] ?? []).map({ $0.pic! })
-            let title = data.title ?? UUID().uuidString
-            let page = data.pageurl ?? ""
-            let msk = data.msk ?? ""
-            let time = data.time ?? ""
-            let format = data.format ?? ""
-            let size = data.size ?? ""
-            let dic = MovieModal(title: title, page: page, pics: pics, msk: msk, time: time, format: format, size: size, downloads: links)
-            
+//        let encoder = JSONEncoder()
+//        var count = 0
+//        for (_, data) in datas.enumerated() {
+//            let links = (data.link?.allObjects as? [Link] ?? []).map({ $0.link! })
+//            let pics = (data.pic?.allObjects as? [Pic] ?? []).map({ $0.pic! })
+//            let title = data.title ?? UUID().uuidString
+//            let page = data.pageurl ?? ""
+//            let msk = data.msk ?? ""
+//            let time = data.time ?? ""
+//            let format = data.format ?? ""
+//            let size = data.size ?? ""
+//            let dic = MovieModal(title: title, page: page, pics: pics, msk: msk, time: time, format: format, size: size, downloads: links)
+//            
 //            do {
 //                let json = try encoder.encode(dic)
 //                let caller = WebserviceCaller<MovieAddRespnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "addMovie", paras: nil, rawData: json, execute: { (result, err, response) in
@@ -153,7 +153,7 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
 //            } catch {
 //                print("upload faild: json error \(error)")
 //            }
-        }
+//        }
     }
     
     //MARK: - NSTableViewDelegate

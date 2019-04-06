@@ -366,7 +366,7 @@ struct InfoRuleOption {
     /// 下载地址2
     static let downloadLinkLi = ParserTagRule(tag: "li", isTagPaser: true, attrubutes: [], inTagRegexString: "", hasSuffix: nil, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 下载地址3
-    static let v4DownloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: " href=\"[^\"]+((v2file)|(wa54))[^\"]+\" target=\"[^\"]+\"", hasSuffix: nil, innerRegex: "[^<]+")
+    static let v4DownloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: " href=\"[^\"]+((v2file)|(wa54)|(wp2ef))[^\"]+\" target=\"[^\"]+\"", hasSuffix: nil, innerRegex: "[^<]+")
     /// 图片链接
     static let imageLink = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "<img([^>]+class=\"zoom\"[^>]+)|(((\\ssrc=\"\\w+:[^\"]+\")|(\\salt=\"\\w+\\.\\w+\")|(\\stitle=\"\\w+\\.\\w+\")){3})", hasSuffix: nil, innerRegex: nil)
     /// 主内容标签
