@@ -13,7 +13,7 @@ typealias AsyncFinish = () -> Void
 
 enum Host: String {
     case dytt = "www.ygdy8.net"
-    case sex8 = "xbluntan.net"
+    case sex8 = "www.mote8didi.info"
 }
 
 
@@ -169,7 +169,7 @@ struct Site {
                            contentEncode: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))),
                            hostName: .dytt)
     
-    static let netdisk = Site(parentUrl: URL(string: "http://xbluntan.net")!,
+    static let netdisk = Site(parentUrl: URL(string: "http://www.mote8didi.info")!,
                               listRule: PageRuleOption.link,
                               contentRule: PageRuleOption.content,
                               listEncode: .utf8,

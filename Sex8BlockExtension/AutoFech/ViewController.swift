@@ -120,7 +120,7 @@ extension ViewController : WKNavigationDelegate, WKScriptMessageHandler {
         list.removeAll()
         let maxPage = 1
         for i in 1...maxPage {
-            let fetchURL = FetchURL(site: "xbluntan.net", board: .netDisk, page: i, maker: {
+            let fetchURL = FetchURL(site: "www.mote8didi.info", board: .netDisk, page: i, maker: {
                 item in
                 return ""
             })
