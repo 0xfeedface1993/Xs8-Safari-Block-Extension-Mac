@@ -32,6 +32,7 @@ enum WebserviceBaseURL : String {
 enum WebserviceMethodPath : String {
     case registerDevice = "/api/v1/addDevice"
     case findDevice = "/api/v1/findDevice"
+    case push = "/api/v1/pushAll"
 }
 
 class WebserviceCaller<T: Codable, X: Codable> {

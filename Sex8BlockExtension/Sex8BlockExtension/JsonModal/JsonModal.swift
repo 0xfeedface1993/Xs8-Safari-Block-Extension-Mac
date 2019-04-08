@@ -61,3 +61,10 @@ struct RegisterDeviceRequest: Codable {
     var deviceid : String
     let _jsonobjid = "request-device-add"
 }
+
+struct DeviceNoticeAllRequest: Codable {
+    let _jsonobjid = "request-device-notice-all"
+    var title : String
+    var content : String
+    var image : String
+}

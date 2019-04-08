@@ -49,6 +49,7 @@ class ContentViewController: NSViewController {
             info.status = .downloaded
             newItems[index] = info
             resultArrayContriller.content = newItems
+            notice(info: info)
         }   else    {
             print("Not found finished item \(info.name)!")
         }
@@ -60,6 +61,7 @@ class ContentViewController: NSViewController {
             var newItems = items
             newItems[index].status = .downloaded
             resultArrayContriller.content = newItems
+            notice(info: newItems[index])
         }   else    {
             print("Not found finished item \(riffle.mainURL?.absoluteString ?? "** no url **")!")
         }
@@ -132,23 +134,43 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
         return 73
     }
     
-    func notice() {
+    func notice(info: DownloadStateInfo) {
+        let now = Date()
+        let start = info.originTask?.createTime ?? now
+        let time = start.timeIntervalSince(now)
+        
+        var date = "未知"
+        if time > 0 {
+            date = "\(time / 60.0)分钟"
+        }
+        
         if #available(OSX 10.14, *) {
-//            let notification = UNUserNotificationCenter.current()
-//            let content = UNMutableNotificationContent()
-//            content.title = "有一项下载任务完成"
-//            content.body = "点击打开App继续下一个任务"
-//            content.sound = UNNotificationSound.default
-//
-//            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
-//            notification.add(request) { (err) in
-//                if let e = err {
-//                    print(e)
-//                }
-//            }
-            
+            let notification = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = "下载完成"
+            content.body = "\(info.name)已下载，耗时\(time)"
+            content.sound = UNNotificationSound.default
+
+            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
+            notification.add(request) { (err) in
+                if let e = err {
+                    print(e)
+                }
+            }
         } else {
             // Fallback on earlier versions
+        }
+        
+        do {
+            let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(time)", image: "")
+            let caller = WebserviceCaller<APIResponse<[String:String]>, DeviceNoticeAllRequest>(url: .debug, way: WebServiceMethod.post, method: .push)
+            caller.paras = request
+            caller.execute = { (result, err, response) in
+                print(result ?? "**** Empty result ****")
+            }
+            try Webservice.share.read(caller: caller)
+        } catch {
+            print("upload faild: json error \(error)")
         }
     }
 }
