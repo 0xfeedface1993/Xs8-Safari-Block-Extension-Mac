@@ -81,6 +81,9 @@
 		24BC3E6821BD51FF009048AF /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC3E6721BD51FF009048AF /* ContentBlockerRequestHandler.swift */; };
 		24BC3E6D21BD51FF009048AF /* XHAMADBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BC3E6221BD51FF009048AF /* XHAMADBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
+		24F29F5222719ADF0037A281 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
+		24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
+		24F29F5B22719AEF0037A281 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA52722255FE1E00C423F5 /* Webservice.swift */; };
 		24F47A0820C82EDB0005CEB8 /* WebShell_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */; };
 		24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */; };
 		24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A1120C83AA90005CEB8 /* ViewController.swift */; };
@@ -1654,8 +1657,11 @@
 				24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */,
 				24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */,
 				248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */,
+				24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */,
 				24AA527D225927E500C423F5 /* Revicer.swift in Sources */,
 				248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */,
+				24F29F5B22719AEF0037A281 /* Webservice.swift in Sources */,
+				24F29F5222719ADF0037A281 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

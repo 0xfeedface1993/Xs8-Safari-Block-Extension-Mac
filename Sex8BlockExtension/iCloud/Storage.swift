@@ -313,6 +313,53 @@ extension CloudSaver {
         privateCloudDatabase.add(operation)
     }
     
+    func check(titleMD5s: [String], recall: @escaping ([CKRecord])->Void) {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        var allRecords = [CKRecord]()
+        
+        func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
+            var op : CKQueryOperation!
+            if operation != nil {
+                op = operation!
+            }   else if cursor != nil {
+                op = CKQueryOperation(cursor: cursor!)
+            }   else    {
+                completion()
+                return
+            }
+            var cur : CKQueryOperation.Cursor?
+            var recs = [CKRecord]()
+            op.recordFetchedBlock = { rd in
+                recs.append(rd)
+            }
+            op.queryCompletionBlock = { c, err in
+                if let e = err {
+                    print(e)
+                    return
+                }
+                cur = c
+            }
+            op.completionBlock = {
+                allRecords += recs
+                print("------- Fetch \(allRecords.count) records")
+                search(operation: nil, cursor: cur, completion: completion)
+            }
+            privateCloudDatabase.add(op)
+        }
+        
+        let predictString = "titleMD5 IN { \(titleMD5s.map({ "'\($0)'" }).joined(separator: ", ")) }"
+        print(">>>>>> presict: \(predictString)")
+        let predict = NSPredicate(format: predictString)
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: predict)
+        let operation = CKQueryOperation(query: query)
+        
+        search(operation: operation, cursor: nil, completion: {
+            recall(allRecords)
+            print(">>>>>> Finished")
+        })
+    }
+    
     /// 删除空记录
     func deleteEmptyRecord(recall: (() -> Void)? = nil) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
