@@ -1273,6 +1273,7 @@
 					24F47A0C20C83AA90005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
 						DevelopmentTeam = E6NP67H473;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1289,12 +1290,14 @@
 					24F47A1D20C83AAA0005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
 						DevelopmentTeam = E6NP67H473;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 24F47A0C20C83AA90005CEB8;
 					};
 					24F47A2820C83AAB0005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
 						DevelopmentTeam = A272626J38;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 24F47A0C20C83AA90005CEB8;
 					};
@@ -2038,7 +2041,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2059,7 +2062,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2081,7 +2084,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudFetchBot.app/Contents/MacOS/CloudFetchBot";
 			};
 			name = Debug;
@@ -2103,7 +2106,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudFetchBot.app/Contents/MacOS/CloudFetchBot";
 			};
 			name = Release;
@@ -2125,7 +2128,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = CloudFetchBot;
 			};
 			name = Debug;
@@ -2146,7 +2149,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = CloudFetchBot;
 			};
 			name = Release;
