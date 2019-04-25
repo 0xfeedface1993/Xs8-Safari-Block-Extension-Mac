@@ -79,7 +79,7 @@ extension CloudSaver {
         privateCloudDatabase.save(record, completionHandler: completion)
     }
     
-    func save(datas: [CloudData], completion: @escaping SaveCompletion) {
+    func save(datas: [CloudData], completion: (([CKRecord]?, [CKRecord.ID]?, Error?) -> Void)?) {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
         let records = datas.map({ r -> CKRecord in
@@ -88,6 +88,7 @@ extension CloudSaver {
             return record
         })
         let opreration = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        opreration.modifyRecordsCompletionBlock = completion
         privateCloudDatabase.add(opreration)
     }
     
