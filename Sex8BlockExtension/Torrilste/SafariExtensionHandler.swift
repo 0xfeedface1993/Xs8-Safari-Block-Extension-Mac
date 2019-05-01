@@ -43,9 +43,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         for rule in linkRules {
             for linkResult in parse(string:mainContent, rule: rule) ?? [] {
                 if InfoRuleOption.v4DownloadLink.regex == rule.regex {
-                    if let src = linkResult.attributes["href"] ?? linkResult.attributes["src"] {
-                        info.downloafLink.append(src)
-                    }
+                    info.downloafLink.append(linkResult.innerHTML.replacingOccurrences(of: "\"", with: ""))
                 }   else    {
                     info.downloafLink.append(linkResult.innerHTML)
                 }

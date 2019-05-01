@@ -287,9 +287,7 @@ struct Site {
                     for rule in [InfoRuleOption.downloadLink, InfoRuleOption.downloadLinkLi, InfoRuleOption.v4DownloadLink] {
                         for linkResult in parse(string:mainContent, rule: rule) ?? [] {
                             if InfoRuleOption.v4DownloadLink.regex == rule.regex {
-                                if let src = linkResult.attributes["href"] ?? linkResult.attributes["src"] {
-                                    info.downloafLink.append(src)
-                                }
+                                info.downloafLink.append(linkResult.innerHTML.replacingOccurrences(of: "\"", with: ""))
                             }   else    {
                                 info.downloafLink.append(linkResult.innerHTML)
                             }
@@ -366,7 +364,7 @@ struct InfoRuleOption {
     /// 下载地址2
     static let downloadLinkLi = ParserTagRule(tag: "li", isTagPaser: true, attrubutes: [], inTagRegexString: "", hasSuffix: nil, innerRegex: "\\w+:\\/\\/[\\w+\\.]+[\\/\\-\\w\\.]+")
     /// 下载地址3
-    static let v4DownloadLink = ParserTagRule(tag: "a", isTagPaser: true, attrubutes: [ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: " href=\"[^\"]+((v2file)|(wa54)|(wp2ef))[^\"]+\" target=\"[^\"]+\"", hasSuffix: nil, innerRegex: "[^<]+")
+    static let v4DownloadLink = ParserTagRule(tag: "a", isTagPaser: false, attrubutes: [], inTagRegexString: "((下载链接)|(下載鏈接)|(下载地址)|(下載地址))[^\"]+", hasSuffix: nil, innerRegex: "\"[^\"]+\"")
     /// 图片链接
     static let imageLink = ParserTagRule(tag: "", isTagPaser: false, attrubutes: [ParserAttrubuteRule(key: "file"), ParserAttrubuteRule(key: "href"), ParserAttrubuteRule(key: "src")], inTagRegexString: "<img([^>]+class=\"zoom\"[^>]+)|(((\\ssrc=\"\\w+:[^\"]+\")|(\\salt=\"\\w+\\.\\w+\")|(\\stitle=\"\\w+\\.\\w+\")){3})", hasSuffix: nil, innerRegex: nil)
     /// 主内容标签

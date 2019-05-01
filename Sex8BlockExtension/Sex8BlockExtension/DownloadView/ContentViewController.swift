@@ -43,7 +43,7 @@ class ContentViewController: NSViewController {
     
     func finished(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) ?? items.firstIndex(where: { $0.riffle != nil && $0.riffle == task.request.riffle }) {
             print("found finished item!")
             var newItems = items
             info.status = .downloaded
