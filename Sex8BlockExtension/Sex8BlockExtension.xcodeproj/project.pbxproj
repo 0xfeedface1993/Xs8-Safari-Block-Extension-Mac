@@ -13,13 +13,6 @@
 		2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409A20C206D332F00CD44DB /* ContentViewController.swift */; };
 		240B611F205F78BE00AAE03A /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; };
 		240B6120205F78BE00AAE03A /* KSCrash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 240B6117205F75DF00AAE03A /* KSCrash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2418577F21BC371700E3959D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
-		2418578221BC371700E3959D /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418578121BC371700E3959D /* SafariExtensionHandler.swift */; };
-		2418578421BC371700E3959D /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418578321BC371700E3959D /* SafariExtensionViewController.swift */; };
-		2418578721BC371700E3959D /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2418578521BC371700E3959D /* SafariExtensionViewController.xib */; };
-		2418578A21BC371700E3959D /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 2418578921BC371700E3959D /* script.js */; };
-		2418578C21BC371700E3959D /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2418578B21BC371700E3959D /* ToolbarItemIcon.pdf */; };
-		2418579021BC371700E3959D /* XHAMADMash.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2418577E21BC371700E3959D /* XHAMADMash.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		241B464520BEF8C3007C939B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
 		242B18191F7C0CD0007963FE /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		242B181D1F7C75A4007963FE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
@@ -76,10 +69,6 @@
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		24BC3E6321BD51FF009048AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AD7C5B1EEFD20D00258BDC /* Cocoa.framework */; };
-		24BC3E6621BD51FF009048AF /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 24BC3E6521BD51FF009048AF /* blockerList.json */; };
-		24BC3E6821BD51FF009048AF /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC3E6721BD51FF009048AF /* ContentBlockerRequestHandler.swift */; };
-		24BC3E6D21BD51FF009048AF /* XHAMADBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BC3E6221BD51FF009048AF /* XHAMADBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		24F29F5222719ADF0037A281 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
 		24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
@@ -161,13 +150,6 @@
 			remoteGlobalIDString = CB8E55E617EB99E3000C56D3;
 			remoteInfo = KSCrash;
 		};
-		2418578E21BC371700E3959D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2418577D21BC371700E3959D;
-			remoteInfo = XHAMADMash;
-		};
 		24467ACA1F19237200574160 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24467AC51F19237100574160 /* SwiftToaster.xcodeproj */;
@@ -237,13 +219,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 24BA90CE1EF597B6002BE480;
 			remoteInfo = Torrilste;
-		};
-		24BC3E6B21BD51FF009048AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27AD7C1F1EEFD1EE00258BDC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 24BC3E6121BD51FF009048AF;
-			remoteInfo = XHAMADBlocker;
 		};
 		24F47A1F20C83AAA0005CEB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -316,8 +291,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				24BC3E6D21BD51FF009048AF /* XHAMADBlocker.appex in Embed App Extensions */,
-				2418579021BC371700E3959D /* XHAMADMash.appex in Embed App Extensions */,
 				27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */,
 				24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */,
 			);
@@ -332,14 +305,6 @@
 		2409A207206D332E00CD44DB /* ContentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCellView.swift; sourceTree = "<group>"; };
 		2409A20C206D332F00CD44DB /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		240B610F205F75DF00AAE03A /* KSCrash-Mac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "KSCrash-Mac.xcodeproj"; path = "KSCrash/Mac/KSCrash-Mac.xcodeproj"; sourceTree = "<group>"; };
-		2418577E21BC371700E3959D /* XHAMADMash.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XHAMADMash.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		2418578121BC371700E3959D /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
-		2418578321BC371700E3959D /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
-		2418578621BC371700E3959D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
-		2418578821BC371700E3959D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2418578921BC371700E3959D /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		2418578B21BC371700E3959D /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
-		2418578D21BC371700E3959D /* XHAMADMash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XHAMADMash.entitlements; sourceTree = "<group>"; };
 		241B464420BEF8C3007C939B /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		242B181C1F7C75A4007963FE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		242B18261F7C7AD5007963FE /* FetchBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchBot.swift; sourceTree = "<group>"; };
@@ -387,11 +352,6 @@
 		24BA90D91EF597B6002BE480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		24BC3E6221BD51FF009048AF /* XHAMADBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XHAMADBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		24BC3E6521BD51FF009048AF /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
-		24BC3E6721BD51FF009048AF /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
-		24BC3E6921BD51FF009048AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24BC3E6A21BD51FF009048AF /* XHAMADBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XHAMADBlocker.entitlements; sourceTree = "<group>"; };
 		24E4387A2061589600D2E5BF /* adblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adblock.png; sourceTree = "<group>"; };
 		24E4387B2061589600D2E5BF /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		24E4387C2061589600D2E5BF /* autofetch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autofetch.png; sourceTree = "<group>"; };
@@ -455,27 +415,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2418577B21BC371700E3959D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2418577F21BC371700E3959D /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		24BA90CC1EF597B6002BE480 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				24BA90D01EF597B6002BE480 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24BC3E5F21BD51FF009048AF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24BC3E6321BD51FF009048AF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,20 +540,6 @@
 				240B611B205F75DF00AAE03A /* libKSCrashLib.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2418578021BC371700E3959D /* XHAMADMash */ = {
-			isa = PBXGroup;
-			children = (
-				2418578121BC371700E3959D /* SafariExtensionHandler.swift */,
-				2418578321BC371700E3959D /* SafariExtensionViewController.swift */,
-				2418578521BC371700E3959D /* SafariExtensionViewController.xib */,
-				2418578821BC371700E3959D /* Info.plist */,
-				2418578921BC371700E3959D /* script.js */,
-				2418578B21BC371700E3959D /* ToolbarItemIcon.pdf */,
-				2418578D21BC371700E3959D /* XHAMADMash.entitlements */,
-			);
-			path = XHAMADMash;
 			sourceTree = "<group>";
 		};
 		241B464320BEF882007C939B /* iCloud */ = {
@@ -751,17 +681,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		24BC3E6421BD51FF009048AF /* XHAMADBlocker */ = {
-			isa = PBXGroup;
-			children = (
-				24BC3E6521BD51FF009048AF /* blockerList.json */,
-				24BC3E6721BD51FF009048AF /* ContentBlockerRequestHandler.swift */,
-				24BC3E6921BD51FF009048AF /* Info.plist */,
-				24BC3E6A21BD51FF009048AF /* XHAMADBlocker.entitlements */,
-			);
-			path = XHAMADBlocker;
-			sourceTree = "<group>";
-		};
 		24E438792061589600D2E5BF /* docimg */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,8 +804,6 @@
 				24F47A0E20C83AA90005CEB8 /* CloudFetchBot */,
 				24F47A2120C83AAA0005CEB8 /* CloudFetchBotTests */,
 				24F47A2C20C83AAB0005CEB8 /* CloudFetchBotUITests */,
-				2418578021BC371700E3959D /* XHAMADMash */,
-				24BC3E6421BD51FF009048AF /* XHAMADBlocker */,
 				27AD7C5A1EEFD20D00258BDC /* Frameworks */,
 				27AD7C281EEFD1EE00258BDC /* Products */,
 			);
@@ -906,8 +823,6 @@
 				24F47A0D20C83AA90005CEB8 /* CloudFetchBot.app */,
 				24F47A1E20C83AAA0005CEB8 /* CloudFetchBotTests.xctest */,
 				24F47A2920C83AAB0005CEB8 /* CloudFetchBotUITests.xctest */,
-				2418577E21BC371700E3959D /* XHAMADMash.appex */,
-				24BC3E6221BD51FF009048AF /* XHAMADBlocker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -988,23 +903,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2418577D21BC371700E3959D /* XHAMADMash */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2418579121BC371700E3959D /* Build configuration list for PBXNativeTarget "XHAMADMash" */;
-			buildPhases = (
-				2418577A21BC371700E3959D /* Sources */,
-				2418577B21BC371700E3959D /* Frameworks */,
-				2418577C21BC371700E3959D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = XHAMADMash;
-			productName = XHAMADMash;
-			productReference = 2418577E21BC371700E3959D /* XHAMADMash.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		24BA90CE1EF597B6002BE480 /* Torrilste */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24BA90E31EF597B6002BE480 /* Build configuration list for PBXNativeTarget "Torrilste" */;
@@ -1020,23 +918,6 @@
 			name = Torrilste;
 			productName = Torrilste;
 			productReference = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		24BC3E6121BD51FF009048AF /* XHAMADBlocker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 24BC3E7721BD51FF009048AF /* Build configuration list for PBXNativeTarget "XHAMADBlocker" */;
-			buildPhases = (
-				24BC3E5E21BD51FF009048AF /* Sources */,
-				24BC3E5F21BD51FF009048AF /* Frameworks */,
-				24BC3E6021BD51FF009048AF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = XHAMADBlocker;
-			productName = XHAMADBlocker;
-			productReference = 24BC3E6221BD51FF009048AF /* XHAMADBlocker.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		24F47A0C20C83AA90005CEB8 /* CloudFetchBot */ = {
@@ -1165,8 +1046,6 @@
 				27AD7C661EEFD20D00258BDC /* PBXTargetDependency */,
 				24BA90E11EF597B6002BE480 /* PBXTargetDependency */,
 				240B6122205F78BE00AAE03A /* PBXTargetDependency */,
-				2418578F21BC371700E3959D /* PBXTargetDependency */,
-				24BC3E6C21BD51FF009048AF /* PBXTargetDependency */,
 			);
 			name = Sex8BlockExtension;
 			productName = Sex8BlockExtension;
@@ -1236,20 +1115,6 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = ascp;
 				TargetAttributes = {
-					2418577D21BC371700E3959D = {
-						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = E6NP67H473;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
-							};
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
 					24BA90CE1EF597B6002BE480 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E6NP67H473;
@@ -1263,12 +1128,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					24BC3E6121BD51FF009048AF = {
-						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = E6NP67H473;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					24F47A0C20C83AA90005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
@@ -1399,8 +1258,6 @@
 				24F47A0C20C83AA90005CEB8 /* CloudFetchBot */,
 				24F47A1D20C83AAA0005CEB8 /* CloudFetchBotTests */,
 				24F47A2820C83AAB0005CEB8 /* CloudFetchBotUITests */,
-				2418577D21BC371700E3959D /* XHAMADMash */,
-				24BC3E6121BD51FF009048AF /* XHAMADBlocker */,
 			);
 		};
 /* End PBXProject section */
@@ -1479,16 +1336,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2418577C21BC371700E3959D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2418578C21BC371700E3959D /* ToolbarItemIcon.pdf in Resources */,
-				2418578721BC371700E3959D /* SafariExtensionViewController.xib in Resources */,
-				2418578A21BC371700E3959D /* script.js in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		24BA90CD1EF597B6002BE480 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1498,14 +1345,6 @@
 				24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */,
 				272ABF721F1277BF008FAE69 /* ToolbarItemIcon.pdf in Resources */,
 				274AA3EF1F776DE10058E21A /* fetch.js in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24BC3E6021BD51FF009048AF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24BC3E6621BD51FF009048AF /* blockerList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1618,15 +1457,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2418577A21BC371700E3959D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2418578421BC371700E3959D /* SafariExtensionViewController.swift in Sources */,
-				2418578221BC371700E3959D /* SafariExtensionHandler.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		24BA90CB1EF597B6002BE480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1640,14 +1470,6 @@
 				2455BECE21075DC700EA13A8 /* Storage.swift in Sources */,
 				24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */,
 				242B182C1F7C7AF4007963FE /* DOMParser.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24BC3E5E21BD51FF009048AF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24BC3E6821BD51FF009048AF /* ContentBlockerRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,11 +1617,6 @@
 			name = KSCrash;
 			targetProxy = 240B6121205F78BE00AAE03A /* PBXContainerItemProxy */;
 		};
-		2418578F21BC371700E3959D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2418577D21BC371700E3959D /* XHAMADMash */;
-			targetProxy = 2418578E21BC371700E3959D /* PBXContainerItemProxy */;
-		};
 		24467ACF1F19239D00574160 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftToastermacOS;
@@ -1814,11 +1631,6 @@
 			isa = PBXTargetDependency;
 			target = 24BA90CE1EF597B6002BE480 /* Torrilste */;
 			targetProxy = 24BA90E01EF597B6002BE480 /* PBXContainerItemProxy */;
-		};
-		24BC3E6C21BD51FF009048AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 24BC3E6121BD51FF009048AF /* XHAMADBlocker */;
-			targetProxy = 24BC3E6B21BD51FF009048AF /* PBXContainerItemProxy */;
 		};
 		24F47A2020C83AAA0005CEB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1858,14 +1670,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2418578521BC371700E3959D /* SafariExtensionViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2418578621BC371700E3959D /* Base */,
-			);
-			name = SafariExtensionViewController.xib;
-			sourceTree = "<group>";
-		};
 		24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1901,51 +1705,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2418579221BC371700E3959D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = XHAMADMash/XHAMADMash.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6NP67H473;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = XHAMADMash/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADMash;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		2418579321BC371700E3959D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = XHAMADMash/XHAMADMash.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6NP67H473;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = XHAMADMash/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADMash;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		24BA90E41EF597B6002BE480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1972,51 +1731,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		24BC3E6E21BD51FF009048AF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = XHAMADBlocker/XHAMADBlocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6NP67H473;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = XHAMADBlocker/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADBlocker;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		24BC3E6F21BD51FF009048AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = XHAMADBlocker/XHAMADBlocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6NP67H473;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = XHAMADBlocker/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.XHAMADBlocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2535,29 +2249,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2418579121BC371700E3959D /* Build configuration list for PBXNativeTarget "XHAMADMash" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2418579221BC371700E3959D /* Debug */,
-				2418579321BC371700E3959D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		24BA90E31EF597B6002BE480 /* Build configuration list for PBXNativeTarget "Torrilste" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24BA90E41EF597B6002BE480 /* Debug */,
 				24BA90E51EF597B6002BE480 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		24BC3E7721BD51FF009048AF /* Build configuration list for PBXNativeTarget "XHAMADBlocker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				24BC3E6E21BD51FF009048AF /* Debug */,
-				24BC3E6F21BD51FF009048AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
