@@ -48,6 +48,7 @@ class DownloadStateInfo : NSObject {
         }
     }
     var originTask: PCDownloadTask?
+    var mainURL : URL?
     weak var riffle: PCWebRiffle?
     @objc dynamic var name = ""
     @objc dynamic var progress = ""
@@ -79,6 +80,7 @@ class DownloadStateInfo : NSObject {
         progress = String(format: "%.2f", pros)
         totalBytes = String(format: "%.2fM", guts)
         originTask = task
+        mainURL = task.request.mainURL
         uuid = task.request.uuid
         update(newSite: hostType)
         update(newStatus: status)
@@ -89,6 +91,7 @@ class DownloadStateInfo : NSObject {
         hostType = riffle.host
         super.init()
         name = riffle.friendName.count <= 0 ? (riffle.mainURL?.absoluteString ?? "no url"):riffle.friendName
+        mainURL = riffle.mainURL
         progress = "0"
         totalBytes = "0M"
         self.riffle = riffle

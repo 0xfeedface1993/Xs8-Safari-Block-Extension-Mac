@@ -32,7 +32,7 @@ class ContentViewController: NSViewController {
     
     func update(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) {
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) ?? items.firstIndex(where: { $0.mainURL != nil && $0.mainURL == task.request.mainURL }) {
             var newItems = items
             newItems[index] = info
             resultArrayContriller.content = newItems
@@ -43,8 +43,8 @@ class ContentViewController: NSViewController {
     
     func finished(task: PCDownloadTask) {
         let info = DownloadStateInfo(task: task)
-        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) ?? items.firstIndex(where: { $0.riffle != nil && $0.riffle == task.request.riffle }) {
-            print("found finished item!")
+        if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.uuid == info.uuid }) ?? items.firstIndex(where: { $0.mainURL != nil && $0.mainURL == task.request.mainURL }) {
+            print(">>>>>>>>> found finished item!")
             var newItems = items
             info.status = .downloaded
             newItems[index] = info
@@ -137,7 +137,7 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
     func notice(info: DownloadStateInfo) {
         let now = Date()
         let start = info.originTask?.createTime ?? now
-        let time = start.timeIntervalSince(now)
+        let time = now.timeIntervalSince(start)
         
         var date = "未知"
         if time > 0 {
