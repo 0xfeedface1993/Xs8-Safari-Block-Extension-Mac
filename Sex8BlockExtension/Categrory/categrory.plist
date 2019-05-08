@@ -72,5 +72,15 @@
 		<key>site</key>
 		<string>427</string>
 	</dict>
+	<dict>
+		<key>image</key>
+		<string>NetDisk</string>
+		<key>segue</key>
+		<string>com.ascp.netdisk.list</string>
+		<key>name</key>
+		<string>欧美种子</string>
+		<key>site</key>
+		<string>135</string>
+	</dict>
 </array>
 </plist>

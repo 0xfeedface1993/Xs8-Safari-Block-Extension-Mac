@@ -343,7 +343,7 @@ extension CloudSaver {
             }
             op.completionBlock = {
                 allRecords += recs
-                print("------- Fetch \(allRecords.count) records")
+                print("------- Found exist \(allRecords.count) records")
                 search(operation: nil, cursor: cur, completion: completion)
             }
             privateCloudDatabase.add(op)
