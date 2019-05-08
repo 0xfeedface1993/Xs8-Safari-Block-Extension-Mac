@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import CryptoSwift
 
 struct LoginResult {
     var code : String
@@ -43,8 +42,8 @@ class LoginViewCotroller: NSViewController {
         
         progress.startAnimation(nil)
         
-        let encryptPassword = password.stringValue.sha256().uppercased()
-        print(password.stringValue + " &&& " + encryptPassword)
+//        let encryptPassword = password.stringValue.sha256().uppercased()
+//        print(password.stringValue + " &&& " + encryptPassword)
         
 //        let webservice = Webservice.share
 //        let caller = WebserviceCaller<LoginResopnse>(baseURL: WebserviceBaseURL.main, way: WebServiceMethod.post, method: "login", paras: ["account":userid.stringValue, "password":encryptPassword], rawData: nil) { (data, err, severErr) in

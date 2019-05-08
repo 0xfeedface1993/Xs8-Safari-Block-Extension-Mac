@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import KSCrash
 import IOKit
 
 @NSApplicationMain
@@ -24,21 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        let hockeyKey = "5d8cfac924774e6e872eaee45ef8a24d"
-        let hockey = KSCrashInstallationHockey.sharedInstance()
-        hockey?.appIdentifier = hockeyKey
-        hockey?.userID = ""
-        hockey?.contactEmail = ""
-        hockey?.crashDescription = "Crash Form \(model() ?? "unkown")"
-        hockey?.install()
-        KSCrash.sharedInstance().deleteBehaviorAfterSendAll = KSCDeleteOnSucess
-        hockey?.sendAllReports(completion: { (reporsts, completed, err) in
-            if completed {
-                print("send reports: \(reporsts?.count ?? 0)")
-            }   else    {
-                print("Fialed send crash reports! \(err?.localizedDescription ?? "opps")")
-            }
-        })
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
