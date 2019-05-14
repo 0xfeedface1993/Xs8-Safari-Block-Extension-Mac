@@ -49,7 +49,9 @@ class ContentViewController: NSViewController {
             info.status = .downloaded
             newItems[index] = info
             resultArrayContriller.content = newItems
-            notice(info: info)
+            if task.request.isFileDownloadTask {            
+                notice(info: info)
+            }
         }   else    {
             print("Not found finished item \(info.name)!")
         }
@@ -148,7 +150,7 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
             let notification = UNUserNotificationCenter.current()
             let content = UNMutableNotificationContent()
             content.title = "下载完成"
-            content.body = "\(info.name)已下载，耗时\(date)"
+            content.body = "\(info.name)已下载，耗时\(String(format: "%.2fs", date))"
             content.sound = UNNotificationSound.default
 
             let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
@@ -162,7 +164,7 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
         }
         
         do {
-            let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(date)", image: "")
+            let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(String(format: "%.2fs", date))", image: "")
             let caller = WebserviceCaller<APIResponse<[String:String]>, DeviceNoticeAllRequest>(url: .debug, way: WebServiceMethod.post, method: .push)
             caller.paras = request
             caller.execute = { (result, err, response) in
