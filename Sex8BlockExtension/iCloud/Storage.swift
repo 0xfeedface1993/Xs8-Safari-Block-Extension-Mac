@@ -315,6 +315,10 @@ extension CloudSaver {
     }
     
     func check(titleMD5s: [String], recall: @escaping ([CKRecord])->Void) {
+        if titleMD5s.count <= 0 {
+            print("------- titles is empty ------")
+            return
+        }
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
         var allRecords = [CKRecord]()

@@ -49,7 +49,7 @@ class ContentViewController: NSViewController {
             info.status = .downloaded
             newItems[index] = info
             resultArrayContriller.content = newItems
-            if task.request.isFileDownloadTask {            
+            if task.request.isFileDownloadTask {
                 notice(info: info)
             }
         }   else    {

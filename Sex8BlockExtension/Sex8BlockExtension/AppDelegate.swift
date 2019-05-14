@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
         let fileManage = NSStoryboard(name: "FileManageStoryboard", bundle: Bundle.main)
         let window = fileManage.instantiateInitialController() as! NSWindowController
         NSApp.runModal(for: window.window!)
+        
+        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

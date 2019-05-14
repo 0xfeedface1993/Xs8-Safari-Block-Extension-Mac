@@ -1,1 +1,2 @@
-github "0xfeedface1993/WebShell" ~> 2.0.1
+github "1024jp/GzipSwift"
+github "0xfeedface1993/WebShell" ~> 2.2.5

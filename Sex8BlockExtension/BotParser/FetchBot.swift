@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Gzip
 
 typealias ParserMaker = (String) -> ContentInfo
 typealias AsyncFinish = () -> Void
 
 enum Host: String {
     case dytt = "www.ygdy8.net"
-    case sex8 = "www.mote8didi.info"
+    case sex8 = "mote8didi.info"
 }
 
 
@@ -169,7 +170,7 @@ struct Site {
                            contentEncode: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))),
                            hostName: .dytt)
     
-    static let netdisk = Site(parentUrl: URL(string: "http://www.mote8didi.info")!,
+    static let netdisk = Site(parentUrl: URL(string: "https://mote8didi.info")!,
                               listRule: PageRuleOption.link,
                               contentRule: PageRuleOption.content,
                               listEncode: .utf8,
@@ -539,7 +540,7 @@ class FetchBot {
                         return
                     }
                     
-                    guard let result = data, let html = String(data: result, encoding: site.listEncode) else {
+                    guard let html = data?.asiicCombineUTF8StringDecode() else {
                         if let e = err {
                             print(e)
                         }
@@ -599,7 +600,7 @@ class FetchBot {
                     
                     self.count += 1
                     let linkMaker : (FetchURL) -> String = { (s) -> String in
-                        URL(string: "http://\(s.site)")!.appendingPathComponent(href).absoluteString
+                        URL(string: "https://\(s.site)")!.appendingPathComponent(href).absoluteString
                     }
                     let linkURL = FetchURL(site: site.host.rawValue, page: page.url.page, maker: linkMaker)
                     let request = browserRequest(url: linkURL.url, refer: site.host.rawValue)
@@ -616,7 +617,8 @@ class FetchBot {
                             return
                         }
                         
-                        guard let result = data, let html = String(data: result, encoding: site.contentEncode) else {
+                        
+                        guard let html = data?.asiicCombineUTF8StringDecode() else {
                             if let e = err {
                                 print(e)
                             }
@@ -673,7 +675,48 @@ func browserRequest(url : URL, refer: String) -> URLRequest {
     request.addValue("1", forHTTPHeaderField: "Upgrade-Insecure-Requests")
     request.addValue("max-age=0", forHTTPHeaderField: "Cache-Control")
     request.addValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
-    request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36", forHTTPHeaderField: "User-Agent")
+    request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
     request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", forHTTPHeaderField: "Accept")
     return request
+}
+
+extension Data {
+    func asiicCombineUTF8StringDecode() -> String {
+        var html = ""
+        var index = 0
+        self.withUnsafeBytes { (pointer) in
+            repeat {
+                let value = pointer.load(fromByteOffset: index, as: UInt8.self)
+                if value < 192 {
+                    index += 1
+                    html += String(format: "%c", value)
+                }   else    {
+                    if value >= 252 {
+                        let offset = 6
+                        html += String.init(bytes: pointer[index..<(index + offset)], encoding: .utf8) ?? ""
+                        index += offset
+                    }   else if value >= 248 && value < 252 {
+                        let offset = 5
+                        html += String.init(bytes: pointer[index..<(index + offset)], encoding: .utf8) ?? ""
+                        index += offset
+                    }   else if value >= 240 && value < 248 {
+                        let offset = 4
+                        html += String.init(bytes: pointer[index..<(index + offset)], encoding: .utf8) ?? ""
+                        index += offset
+                    }   else if value >= 224 && value < 240 {
+                        let offset = 3
+                        html += String.init(bytes: pointer[index..<(index + offset)], encoding: .utf8) ?? ""
+                        index += offset
+                    }   else if value >= 192 && value < 224 {
+                        let offset = 2
+                        html += String.init(bytes: pointer[index..<(index + offset)], encoding: .utf8) ?? ""
+                        index += offset
+                    }   else {
+                        index += 1
+                    }
+                }
+            } while (index < self.count)
+        }
+        return html
+    }
 }
