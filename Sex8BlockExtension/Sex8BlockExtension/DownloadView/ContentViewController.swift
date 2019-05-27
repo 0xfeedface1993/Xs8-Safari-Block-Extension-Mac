@@ -144,35 +144,36 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
         var date = "未知"
         if time > 0 {
             date = "\(time / 60.0)分钟"
-        }
-        
-        if #available(OSX 10.14, *) {
-            let notification = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "下载完成"
-            content.body = "\(info.name)已下载，耗时\(String(format: "%.2fs", date))"
-            content.sound = UNNotificationSound.default
-
-            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
-            notification.add(request) { (err) in
-                if let e = err {
-                    print(e)
+            do {
+                let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(String(format: "%.2fs", date))", image: "")
+                let caller = WebserviceCaller<APIResponse<[String:String]>, DeviceNoticeAllRequest>(url: .debug, way: WebServiceMethod.post, method: .push)
+                caller.paras = request
+                caller.execute = { (result, err, response) in
+                    print(result ?? "**** Empty result ****")
                 }
+                try Webservice.share.read(caller: caller)
+            } catch {
+                print("upload faild: json error \(error)")
             }
-        } else {
-            // Fallback on earlier versions
         }
         
-        do {
-            let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(String(format: "%.2fs", date))", image: "")
-            let caller = WebserviceCaller<APIResponse<[String:String]>, DeviceNoticeAllRequest>(url: .debug, way: WebServiceMethod.post, method: .push)
-            caller.paras = request
-            caller.execute = { (result, err, response) in
-                print(result ?? "**** Empty result ****")
-            }
-            try Webservice.share.read(caller: caller)
-        } catch {
-            print("upload faild: json error \(error)")
-        }
+//        if #available(OSX 10.14, *) {
+//            let notification = UNUserNotificationCenter.current()
+//            let content = UNMutableNotificationContent()
+//            content.title = "下载完成"
+//            content.body = "\(info.name)已下载，耗时\(String(format: "%.2fs", date))"
+//            content.sound = UNNotificationSound.default
+//
+//            let request = UNNotificationRequest(identifier: "com.ascp.downlaod.finished", content: content, trigger: nil)
+//            notification.add(request) { (err) in
+//                if let e = err {
+//                    print(e)
+//                }
+//            }
+//        } else {
+//            // Fallback on earlier versions
+//        }
+        
+       
     }
 }

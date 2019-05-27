@@ -31,6 +31,7 @@ extension WebHostSite {
                                                         .yousuwp:NSImage(named: "mofe_yousu")!,
                                                         .v2file:NSImage(named: "mofe_v4")!,
                                                         .xunniu:NSImage(named: "mofe_xunniu")!,
+                                                        .xi:NSImage(named: "mofe_xi")!,
                                                         .unknowsite:NSImage(named: "mofe_feemoo")!]
 }
 
