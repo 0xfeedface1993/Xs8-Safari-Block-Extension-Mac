@@ -143,9 +143,10 @@ extension ContentViewController : NSTableViewDelegate, NSTableViewDataSource {
         
         var date = "未知"
         if time > 0 {
-            date = "\(time / 60.0)分钟"
+            date = "\(String(format: "%.2f", time / 60.0))分钟"
             do {
-                let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(String(format: "%.2fs", date))", image: "")
+                let request = DeviceNoticeAllRequest(title: "下载完成", content: "\(info.name)已下载，耗时\(date)", image: "")
+                print(request.content)
                 let caller = WebserviceCaller<APIResponse<[String:String]>, DeviceNoticeAllRequest>(url: .debug, way: WebServiceMethod.post, method: .push)
                 caller.paras = request
                 caller.execute = { (result, err, response) in
