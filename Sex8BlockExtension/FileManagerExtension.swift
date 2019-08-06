@@ -55,8 +55,10 @@ extension FileManager {
                     print("save image:" + file + " faild!")
                 }
             }
-            let app = NSApp.delegate as! AppDelegate
-            app.saveAction(nil)
+            DispatchQueue.main.async {            
+                let app = NSApp.delegate as! AppDelegate
+                app.saveAction(nil)
+            }
         } catch {
             fatalError("Failed to fetch employees: \(error.localizedDescription)")
         }

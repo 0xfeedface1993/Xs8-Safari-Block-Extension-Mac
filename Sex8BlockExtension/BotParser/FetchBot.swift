@@ -684,6 +684,9 @@ extension Data {
     func asiicCombineUTF8StringDecode() -> String {
         var html = ""
         var index = 0
+        if self.count <= 0 {
+            return html
+        }
         self.withUnsafeBytes { (pointer) in
             repeat {
                 let value = pointer.load(fromByteOffset: index, as: UInt8.self)
