@@ -117,6 +117,12 @@
 		27AD7C5F1EEFD20D00258BDC /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C5E1EEFD20D00258BDC /* blockerList.json */; };
 		27AD7C631EEFD20D00258BDC /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */; };
 		27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27AD7C591EEFD20D00258BDC /* ADBlock.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CB8E695022F94EC7004FCDAD /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E694F22F94EC7004FCDAD /* TopView.swift */; };
+		CB8E695422F9527B004FCDAD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E695322F9527B004FCDAD /* Coordinator.swift */; };
+		CB8E695622F953B1004FCDAD /* ActionVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E695522F953B1004FCDAD /* ActionVIew.swift */; };
+		CBD1FB3822F94958000CF4B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1FB3722F94958000CF4B2 /* HomeView.swift */; };
+		CBD1FB3B22F949F8000CF4B2 /* LogVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1FB3A22F949F8000CF4B2 /* LogVIew.swift */; };
+		CBD1FB3D22F94A25000CF4B2 /* LogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1FB3C22F94A25000CF4B2 /* LogItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,6 +355,12 @@
 		27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADBlock.entitlements; sourceTree = "<group>"; };
 		27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		27AD7C641EEFD20D00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB8E694F22F94EC7004FCDAD /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		CB8E695322F9527B004FCDAD /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CB8E695522F953B1004FCDAD /* ActionVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionVIew.swift; sourceTree = "<group>"; };
+		CBD1FB3722F94958000CF4B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CBD1FB3A22F949F8000CF4B2 /* LogVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVIew.swift; sourceTree = "<group>"; };
+		CBD1FB3C22F94A25000CF4B2 /* LogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,6 +632,7 @@
 		24F47A0E20C83AA90005CEB8 /* CloudFetchBot */ = {
 			isa = PBXGroup;
 			children = (
+				CBD1FB3522F94931000CF4B2 /* SwiftUI */,
 				24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */,
 				24F47A1120C83AA90005CEB8 /* ViewController.swift */,
 				24F47A1320C83AAA0005CEB8 /* Assets.xcassets */,
@@ -817,6 +830,51 @@
 				27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB8E694D22F94EB6004FCDAD /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				CB8E694F22F94EC7004FCDAD /* TopView.swift */,
+			);
+			path = Bar;
+			sourceTree = "<group>";
+		};
+		CB8E695122F95203004FCDAD /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CB8E695522F953B1004FCDAD /* ActionVIew.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		CB8E695222F95267004FCDAD /* Coordinate */ = {
+			isa = PBXGroup;
+			children = (
+				CB8E695322F9527B004FCDAD /* Coordinator.swift */,
+			);
+			path = Coordinate;
+			sourceTree = "<group>";
+		};
+		CBD1FB3522F94931000CF4B2 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CB8E695222F95267004FCDAD /* Coordinate */,
+				CB8E695122F95203004FCDAD /* Actions */,
+				CB8E694D22F94EB6004FCDAD /* Bar */,
+				CBD1FB3922F949B2000CF4B2 /* Log */,
+				CBD1FB3722F94958000CF4B2 /* HomeView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CBD1FB3922F949B2000CF4B2 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				CBD1FB3A22F949F8000CF4B2 /* LogVIew.swift */,
+				CBD1FB3C22F94A25000CF4B2 /* LogItem.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1072,7 +1130,7 @@
 					};
 					24F47A2820C83AAB0005CEB8 = {
 						CreatedOnToolsVersion = 10.0;
-						DevelopmentTeam = A272626J38;
+						DevelopmentTeam = E6NP67H473;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 24F47A0C20C83AA90005CEB8;
@@ -1331,12 +1389,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8E695022F94EC7004FCDAD /* TopView.swift in Sources */,
 				24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */,
+				CB8E695422F9527B004FCDAD /* Coordinator.swift in Sources */,
+				CBD1FB3B22F949F8000CF4B2 /* LogVIew.swift in Sources */,
+				CB8E695622F953B1004FCDAD /* ActionVIew.swift in Sources */,
 				24F47A3A20C83BFC0005CEB8 /* Storage.swift in Sources */,
 				24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */,
 				24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */,
 				248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */,
+				CBD1FB3822F94958000CF4B2 /* HomeView.swift in Sources */,
 				24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */,
+				CBD1FB3D22F94A25000CF4B2 /* LogItem.swift in Sources */,
 				24AA527D225927E500C423F5 /* Revicer.swift in Sources */,
 				248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */,
 				24F29F5B22719AEF0037A281 /* Webservice.swift in Sources */,
@@ -1603,6 +1667,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1629,6 +1694,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1654,6 +1720,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1681,6 +1748,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1698,7 +1766,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = A272626J38;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1720,7 +1788,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = A272626J38;
+				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
