@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Gzip
+//import Gzip
 
 typealias ParserMaker = (String) -> ContentInfo
 typealias AsyncFinish = () -> Void
