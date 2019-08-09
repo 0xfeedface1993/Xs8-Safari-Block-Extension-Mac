@@ -178,11 +178,11 @@
 			};
 			buildConfigurationList = 5C07AB1A1EAC249C0010BBD7 /* Build configuration list for PBXProject "SwiftToaster" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 5C07AB161EAC249C0010BBD7;
 			productRefGroup = 5C07AB211EAC249C0010BBD7 /* Products */;

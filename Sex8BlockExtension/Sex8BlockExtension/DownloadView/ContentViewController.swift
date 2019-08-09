@@ -60,7 +60,7 @@ class ContentViewController: NSViewController {
     func finished(riffle: PCWebRiffle) {
         if let items = resultArrayContriller.content as? [DownloadStateInfo], let index = items.firstIndex(where: { $0.riffle == riffle }) {
             print("found finished item!")
-            var newItems = items
+            let newItems = items
             newItems[index].status = .downloaded
             resultArrayContriller.content = newItems
             notice(info: newItems[index])
