@@ -16,19 +16,19 @@ enum ActionState: String {
 }
 
 struct TopView: View {
-    @Binding var actionState: ActionState
+    var actionState: ActionState
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle().foregroundColor(.gray).cornerRadius(4)
             Text(actionState.rawValue).font(.headline)
-        }.padding()
+        }
     }
 }
 
 #if DEBUG
 struct TopView_Previews: PreviewProvider {
     static var previews: some View {
-        TopView(actionState: .constant(.hange))
+        TopView(actionState: .hange)
     }
 }
 #endif

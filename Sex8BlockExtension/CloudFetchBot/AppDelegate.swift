@@ -13,7 +13,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        let host = NSHostingController(rootView: HomeView())
+        let host = NSHostingController(rootView: HomeView().environmentObject(logData))
         NSApp.keyWindow?.contentViewController = host
     }
 

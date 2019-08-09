@@ -10,14 +10,27 @@ import SwiftUI
 
 struct HomeView: View {
     @State var state: ActionState = .hange
-    @EnvironmentObject var data: [LogItem] = logs
+    @State var isOn: Bool = false {
+        willSet {
+            if newValue == isOn {
+                return
+            }
+            
+            if newValue {
+                coodinator.start()
+            }   else    {
+                coodinator.stop()
+            }
+        }
+    }
+    @EnvironmentObject var data: LogData
     
     var body: some View {
         VStack {
             TopView(actionState: state)
-            LogVIew(items: data)
-            ActionVIew(actionState: state)
-        }
+            LogVIew(items: data.logs)
+            ActionVIew(actionState: $state, isOn: $isOn)
+        }.padding()
     }
 }
 

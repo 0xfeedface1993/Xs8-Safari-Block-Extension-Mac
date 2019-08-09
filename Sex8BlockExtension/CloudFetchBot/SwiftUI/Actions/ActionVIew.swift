@@ -10,20 +10,32 @@ import SwiftUI
 
 struct ActionVIew: View {
     @Binding var actionState: ActionState
+    @Binding var isOn: Bool
     var body: some View {
         HStack {
-            Button(action: {
-                if self.actionState != .running {
-                    coodinator.start()
-                    self.actionState = .running
-                }   else   {
-                    coodinator.stop()
-                    self.actionState = .stop
+//            Button(action: {
+//                if self.actionState != .running {
+//                    coodinator.start()
+//                    self.actionState = .running
+//                }   else   {
+//                    coodinator.stop()
+//                    self.actionState = .stop
+//                }
+//            }) {
+//                Text(actionState != .running ? "开始采集":"停止采集").foregroundColor(actionState != .running ? .green:.blue)
+//            }
+            Toggle(isOn: $isOn) {
+                Text(!isOn ? "开始采集":"停止采集").foregroundColor(!isOn ? .green:.blue).onTapGesture {
+                    if self.actionState != .running {
+                                       coodinator.start()
+                                       self.actionState = .running
+                                   }   else   {
+                                       coodinator.stop()
+                                       self.actionState = .stop
+                                   }
                 }
-            }) {
-                Text(actionState != .running ? "开始采集":"停止采集")
             }
-        }.padding()
+        }
     }
 }
 

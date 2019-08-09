@@ -139,6 +139,7 @@ extension Coordinate : FetchBotDelegate, CloudSaver {
             fetchRawData = [CloudData]()
             
             print(">>>>>> Fetch count \(datas.count)")
+            LogItem.log(message: ">>>>>> Fetch count \(datas.count)")
             self.batchCheck(items: datas)
             
             return
@@ -156,3 +157,11 @@ extension Coordinate : FetchBotDelegate, CloudSaver {
 }
 
 let coodinator = Coordinate()
+
+extension Date {
+    func formartYYYYMMDDHHMMSSSSS() -> String {
+        let dateFormart = DateFormatter()
+        dateFormart.dateFormat = "yyyy-MM-dd hh:MM:ss:SSS"
+        return dateFormart.string(from: self)
+    }
+}

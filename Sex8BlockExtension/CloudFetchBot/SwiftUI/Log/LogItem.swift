@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+final class LogData: ObservableObject {
+    @Published var logs = [LogItem]()
+}
+
 struct LogItem: Identifiable {
     enum LogType {
         case log
@@ -20,18 +24,34 @@ struct LogItem: Identifiable {
     var message: String
     
     static func log(message: String) {
-        if logs.count >= INT_MAX {
-            logs.removeAll()
+        let item = LogItem(id: logData.logs.count, date: Date(), type: .log, message: message)
+        if Thread.isMainThread {
+            justLog(item: item)
+        }   else    {
+            DispatchQueue.main.async {
+                justLog(item: item)
+            }
         }
-        logs.append(LogItem(id: logs.count, date: Date(), type: .log, message: message))
     }
     
     static func log(error: String) {
-        if logs.count >= INT_MAX {
-            logs.removeAll()
+        let item = LogItem(id: logData.logs.count, date: Date(), type: .error, message: error)
+        if Thread.isMainThread {
+            justLog(item: item)
+        }   else    {
+            DispatchQueue.main.async {
+                justLog(item: item)
+            }
         }
-        logs.append(LogItem(id: logs.count, date: Date(), type: .error, message: error))
+    }
+    
+    private static func justLog(item: LogItem) {
+        if logData.logs.count >= INT_MAX {
+            logData.logs.removeAll()
+        }
+        logData.logs.append(item)
     }
 }
 
-var logs = [LogItem]()
+
+let logData = LogData()
