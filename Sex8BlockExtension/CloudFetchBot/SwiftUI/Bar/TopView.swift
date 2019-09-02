@@ -21,7 +21,7 @@ struct TopView: View {
         ZStack(alignment: .center) {
             Rectangle().foregroundColor(.gray).cornerRadius(4)
             Text(actionState.rawValue).font(.headline)
-        }
+        }.frame(height: 44)
     }
 }
 

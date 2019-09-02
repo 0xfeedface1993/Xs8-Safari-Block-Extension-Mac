@@ -9,40 +9,40 @@
 import SwiftUI
 
 struct ActionVIew: View {
-    @Binding var actionState: ActionState
-    @Binding var isOn: Bool
+    @EnvironmentObject var data: LogData
+    @GestureState var dragState: Bool = false
     var body: some View {
-        HStack {
-//            Button(action: {
-//                if self.actionState != .running {
-//                    coodinator.start()
-//                    self.actionState = .running
-//                }   else   {
-//                    coodinator.stop()
-//                    self.actionState = .stop
-//                }
-//            }) {
-//                Text(actionState != .running ? "开始采集":"停止采集").foregroundColor(actionState != .running ? .green:.blue)
-//            }
-            Toggle(isOn: $isOn) {
-                Text(!isOn ? "开始采集":"停止采集").foregroundColor(!isOn ? .green:.blue).onTapGesture {
-                    if self.actionState != .running {
-                                       coodinator.start()
-                                       self.actionState = .running
-                                   }   else   {
-                                       coodinator.stop()
-                                       self.actionState = .stop
-                                   }
-                }
+        let dragTap = DragGesture().onEnded({ value in
+            print("\(value)")
+        })
+        let longTap = LongPressGesture(minimumDuration: 0.5, maximumDistance: 1).sequenced(before: dragTap).updating($dragState) { (value, state, transaction) in
+            switch value {
+            case .first(true):
+                state = true
+            case .second(true, _):
+                state = true
+            default:
+                state = false
+            }
+        }.onChanged { value in
+            switch value {
+            case .first(true):
+                self.data.isOn = !self.data.isOn
+            default:
+                break
             }
         }
+        return ZStack {
+            Circle().foregroundColor(dragState || self.data.isOn ? .white:.gray).shadow(color: .black, radius: 6)
+            Text(!self.data.isOn ? "开始采集":"停止采集").foregroundColor(.black)
+        }.gesture(longTap)
     }
 }
 
 #if DEBUG
 struct ActionVIew_Previews: PreviewProvider {
     static var previews: some View {
-        ActionVIew(actionState: .constant(.hange))
+        ActionVIew().environmentObject(logData)
     }
 }
 #endif

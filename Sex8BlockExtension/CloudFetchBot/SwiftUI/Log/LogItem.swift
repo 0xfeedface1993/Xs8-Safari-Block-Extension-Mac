@@ -10,6 +10,24 @@ import SwiftUI
 
 final class LogData: ObservableObject {
     @Published var logs = [LogItem]()
+    @Published var state: ActionState = .hange
+    @Published var isOn: Bool = false {
+        willSet {
+            guard newValue != isOn else {
+                return
+            }
+            
+            if newValue {
+                state = .running
+                coodinator.start()
+            }   else    {
+                state = .hange
+                DispatchQueue.global().async {
+                    coodinator.stop()
+                }
+            }
+        }
+    }
 }
 
 struct LogItem: Identifiable {
@@ -49,7 +67,7 @@ struct LogItem: Identifiable {
         if logData.logs.count >= INT_MAX {
             logData.logs.removeAll()
         }
-        logData.logs.append(item)
+        logData.logs.insert(item, at: 0)
     }
 }
 

@@ -68,9 +68,8 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>*.xbluntan.net</string>
-				<string>*.mote8didi.info</string>
 				<string>*.sex8.cc</string>
+				<string>*.kongjie18.info</string>
 			</array>
 			<key>Level</key>
 			<string>Some</string>
