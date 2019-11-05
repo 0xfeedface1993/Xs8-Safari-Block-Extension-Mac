@@ -115,6 +115,7 @@
 		27AD7C631EEFD20D00258BDC /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */; };
 		27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27AD7C591EEFD20D00258BDC /* ADBlock.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB5D00D8230A835B00C66A8E /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D00D7230A835B00C66A8E /* AnimationView.swift */; };
+		CB656A23234B78BD006CACEF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB656A22234B78BD006CACEF /* MainView.swift */; };
 		CB8E695022F94EC7004FCDAD /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E694F22F94EC7004FCDAD /* TopView.swift */; };
 		CB8E695422F9527B004FCDAD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E695322F9527B004FCDAD /* Coordinator.swift */; };
 		CB8E695622F953B1004FCDAD /* ActionVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E695522F953B1004FCDAD /* ActionVIew.swift */; };
@@ -354,6 +355,7 @@
 		27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		27AD7C641EEFD20D00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB5D00D7230A835B00C66A8E /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		CB656A22234B78BD006CACEF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CB8E694F22F94EC7004FCDAD /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		CB8E695322F9527B004FCDAD /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CB8E695522F953B1004FCDAD /* ActionVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionVIew.swift; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 		27AD7C291EEFD1EE00258BDC /* Sex8BlockExtension */ = {
 			isa = PBXGroup;
 			children = (
+				CB656A20234B78AB006CACEF /* SwiftUI */,
 				24AA52792259102D00C423F5 /* Reciver */,
 				24AA52702255FE1E00C423F5 /* Webservice */,
 				2469E461206950AB000070BF /* DownloadView */,
@@ -834,6 +837,14 @@
 				CB5D00D7230A835B00C66A8E /* AnimationView.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		CB656A20234B78AB006CACEF /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CB656A22234B78BD006CACEF /* MainView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		CB8E694D22F94EB6004FCDAD /* Bar */ = {
@@ -1497,6 +1508,7 @@
 				2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */,
 				248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
+				CB656A23234B78BD006CACEF /* MainView.swift in Sources */,
 				2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 				241B464520BEF8C3007C939B /* Storage.swift in Sources */,
