@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		242B182B1F7C7ADD007963FE /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
 		242B182C1F7C7AF4007963FE /* DOMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18271F7C7AD5007963FE /* DOMParser.swift */; };
 		242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
+		242C0756237323A20037D3C2 /* WebShell in Frameworks */ = {isa = PBXBuildFile; productRef = 242C0755237323A20037D3C2 /* WebShell */; };
 		2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439C6051F08036C00F039B1 /* ImagesTableViewController.swift */; };
 		243AFE321F790FAA00D090D7 /* BackgroundFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243AFE311F790FAA00D090D7 /* BackgroundFetch.swift */; };
 		243AFE361F794D7C00D090D7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 243AFE351F7949BD00D090D7 /* test.html */; };
@@ -72,7 +73,6 @@
 		24F29F5222719ADF0037A281 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
 		24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
 		24F29F5B22719AEF0037A281 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA52722255FE1E00C423F5 /* Webservice.swift */; };
-		24F47A0820C82EDB0005CEB8 /* WebShell_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */; };
 		24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */; };
 		24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A1120C83AA90005CEB8 /* ViewController.swift */; };
 		24F47A1420C83AAA0005CEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F47A1320C83AAA0005CEB8 /* Assets.xcassets */; };
@@ -302,7 +302,6 @@
 		24E4387F2061589600D2E5BF /* manucopy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = manucopy.gif; sourceTree = "<group>"; };
 		24E4388A206158CB00D2E5BF /* autocopy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = autocopy.gif; sourceTree = "<group>"; };
 		24E4388C20615AD100D2E5BF /* autozoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = autozoom.gif; sourceTree = "<group>"; };
-		24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebShell_macOS.framework; path = Carthage/Build/Mac/WebShell_macOS.framework; sourceTree = "<group>"; };
 		24F47A0D20C83AA90005CEB8 /* CloudFetchBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudFetchBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24F47A1120C83AA90005CEB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -423,7 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */,
-				24F47A0820C82EDB0005CEB8 /* WebShell_macOS.framework in Frameworks */,
+				242C0756237323A20037D3C2 /* WebShell in Frameworks */,
 				24FC774D228A9D12000F7F29 /* Gzip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,7 +716,6 @@
 			children = (
 				24C26F74228A98E000F080A1 /* Gzip.framework */,
 				248A33D420C8D6A900413242 /* Categrory */,
-				24F47A0720C82EDB0005CEB8 /* WebShell_macOS.framework */,
 				241B464320BEF882007C939B /* iCloud */,
 				24E438792061589600D2E5BF /* docimg */,
 				24467AC51F19237100574160 /* SwiftToaster.xcodeproj */,
@@ -1039,6 +1037,9 @@
 				24BA90E11EF597B6002BE480 /* PBXTargetDependency */,
 			);
 			name = Sex8BlockExtension;
+			packageProductDependencies = (
+				242C0755237323A20037D3C2 /* WebShell */,
+			);
 			productName = Sex8BlockExtension;
 			productReference = 27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */;
 			productType = "com.apple.product-type.application";
@@ -1219,6 +1220,9 @@
 				Base,
 			);
 			mainGroup = 27AD7C1E1EEFD1EE00258BDC;
+			packageReferences = (
+				242C0754237323A20037D3C2 /* XCRemoteSwiftPackageReference "WebShell" */,
+			);
 			productRefGroup = 27AD7C281EEFD1EE00258BDC /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -1372,7 +1376,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/WebShell_macOS.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Gzip.framework",
 			);
 			outputPaths = (
@@ -1637,7 +1640,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Torrilste/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1658,7 +1665,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Torrilste/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1686,7 +1697,10 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
@@ -1714,7 +1728,10 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1740,7 +1757,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
@@ -1768,7 +1789,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1790,7 +1815,11 @@
 				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1812,7 +1841,11 @@
 				DEVELOPMENT_TEAM = E6NP67H473;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CloudFetchBotUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.CloudFetchBotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1833,7 +1866,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFech/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1854,7 +1890,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFech/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1875,7 +1914,11 @@
 				DEVELOPMENT_TEAM = A272626J38;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFechTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFechTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1897,7 +1940,11 @@
 				DEVELOPMENT_TEAM = A272626J38;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFechTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFechTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1918,7 +1965,11 @@
 				DEVELOPMENT_TEAM = A272626J38;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFechUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFechUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1939,7 +1990,11 @@
 				DEVELOPMENT_TEAM = A272626J38;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = AutoFechUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.AutoFechUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2055,7 +2110,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -2076,7 +2132,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2100,7 +2159,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2116,7 +2178,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A272626J38;
 				INFOPLIST_FILE = Sex8BlockExtensionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2132,7 +2198,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A272626J38;
 				INFOPLIST_FILE = Sex8BlockExtensionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2147,7 +2217,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A272626J38;
 				INFOPLIST_FILE = Sex8BlockExtensionUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2162,7 +2236,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A272626J38;
 				INFOPLIST_FILE = Sex8BlockExtensionUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.Sex8BlockExtensionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2183,7 +2261,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = ADBlock/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.blcok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2205,7 +2287,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = ADBlock/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.blcok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2326,6 +2412,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		242C0754237323A20037D3C2 /* XCRemoteSwiftPackageReference "WebShell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xfeedface1993/WebShell";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		242C0755237323A20037D3C2 /* WebShell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 242C0754237323A20037D3C2 /* XCRemoteSwiftPackageReference "WebShell" */;
+			productName = WebShell;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		274AA3BE1F7694660058E21A /* AutoFech.xcdatamodeld */ = {

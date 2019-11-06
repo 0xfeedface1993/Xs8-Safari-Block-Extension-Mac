@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import WebShell_macOS
+import WebShell
 
 let StopFetchName = NSNotification.Name.init("stopFetching")
 let ShowExtennalTextName = NSNotification.Name.init("showExtennalText")

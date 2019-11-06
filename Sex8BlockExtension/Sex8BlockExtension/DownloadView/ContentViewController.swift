@@ -8,7 +8,7 @@
 
 import Cocoa
 import UserNotifications
-import WebShell_macOS
+import WebShell
 
 class ContentViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
