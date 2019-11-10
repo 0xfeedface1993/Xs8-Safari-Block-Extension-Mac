@@ -2419,7 +2419,7 @@
 			repositoryURL = "https://github.com/0xfeedface1993/WebShell";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 2.3.2;
+				minimumVersion = 2.3.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
