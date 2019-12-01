@@ -23,7 +23,7 @@ enum WebServiceMethod : String {
 enum WebserviceBaseURL : String {
     case main = "http://14d8856q96.imwork.net"
     case aliyun = "http://120.78.89.159/api"
-    case debug = "http://127.0.0.1:8181"
+    case debug = "http://127.0.0.1"
     func url(method: WebserviceMethodPath) -> URL {
         return URL(string: self.rawValue + method.rawValue)!
     }

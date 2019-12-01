@@ -40,6 +40,7 @@ class Coordinate {
             bot.startPage = self.startIndex
             bot.pageOffset = self.pageOffset
             self.site.categrory = self.tor?.next()
+            print(">>> Timer fire!!!")
             DispatchQueue.global().async {
                  [unowned self] in
                 bot.start(withSite: self.site)
@@ -51,6 +52,7 @@ class Coordinate {
     func stop() {
         timer?.invalidate()
         let bot = FetchBot.shareBot
+        self.tor = nil
         bot.stop {
             LogItem.log(message: "Stop Timer!")
         }

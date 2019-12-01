@@ -170,7 +170,7 @@ struct Site {
                            contentEncode: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))),
                            hostName: .dytt)
     
-    static let netdisk = Site(parentUrl: URL(string: "https://www.quball.space")!,
+    static let netdisk = Site(parentUrl: URL(string: "https://www.duoduosiwa.site")!,
                               listRule: PageRuleOption.link,
                               contentRule: PageRuleOption.content,
                               listEncode: .utf8,
