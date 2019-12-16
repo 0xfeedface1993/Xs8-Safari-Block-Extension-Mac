@@ -9,6 +9,7 @@
 import Cocoa
 import CloudKit
 import CommonCrypto
+import CoreData
 
 enum RecordType : String {
     case ndMovie = "NDMoive"
@@ -476,7 +477,87 @@ extension CloudSaver {
             }
         })
     }
+    
+    /// 下载所有云端记录
+    func downloadAllRecords() {
+        let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
+        let privateCloudDatabase = container.privateCloudDatabase
+        func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
+            var op : CKQueryOperation!
+            if operation != nil {
+                op = operation!
+            }   else if cursor != nil {
+                op = CKQueryOperation(cursor: cursor!)
+            }   else    {
+                completion()
+                return
+            }
+            var cur : CKQueryOperation.Cursor?
+            var recs = [CKRecord]()
+            op.recordFetchedBlock = { rd in
+                recs.append(rd)
+            }
+            op.queryCompletionBlock = { c, err in
+                if let e = err {
+                    print(e)
+                    return
+                }
+                cur = c
+            }
+            op.completionBlock = {
+                if recs.count <= 0 {
+                    return
+                }
+                print("------- Fetch \(recs.count) records")
+                
+                if stopFlag {
+                    completion()
+                    return
+                }
+                
+                self.save(items: recs)
+                search(operation: nil, cursor: cur, completion: completion)
+            }
+            privateCloudDatabase.add(op)
+        }
+        
+        let query = CKQuery(recordType: RecordType.ndMovie.rawValue, predicate: NSPredicate(value: true))
+        let operation = CKQueryOperation(query: query)
+        stopFlag = false
+        search(operation: operation, cursor: nil, completion: {
+            print("Finished!")
+        })
+    }
+    
+    /// 批量保存云端记录到CoreData
+    /// - Parameter items: 批量云端记录
+    func save(items: [CKRecord]) {
+        items.forEach({ DataBase.share.persistentContainer.viewContext.insert($0.convertOP()) })
+        do {
+            try DataBase.share.persistentContainer.viewContext.save()
+        }   catch   {
+            print(error)
+            fatalError()
+        }
+    }
+    
+    /// 删除所有本地云端数据存储测试数据
+    func removeAllOPRecords() {
+        let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+        fetchRequest.predicate = NSPredicate(value: true)
+        do {
+            let results = try DataBase.share.persistentContainer.viewContext.fetch(fetchRequest)
+            results.forEach({
+                DataBase.share.persistentContainer.viewContext.delete($0)
+            })
+            try DataBase.share.persistentContainer.viewContext.save()
+        } catch {
+            print(error)
+        }
+    }
 }
+
+var stopFlag = false
 
 
 // MARK: - 模型和记录实例之间转换
@@ -521,6 +602,17 @@ extension CKRecord {
         content.downloafLink = self["downloads"] as! [String]
         content.imageLink = self["images"] as! [String]
         return CloudData(contentInfo: content, site: self["boradType"] as! String)
+    }
+    
+    func convertOP() -> OPMovie {
+        let movie = OPMovie(context: DataBase.share.persistentContainer.viewContext)
+        movie.title = self["title"]
+        movie.href = self["href"]
+        movie.fileSize = self["fileSize"]
+        movie.password = self["password"]
+        movie.downloads = self["downloads"] as? [String] as NSArray?
+        movie.images = self["images"] as? [String] as NSArray?
+        return movie
     }
 }
 
