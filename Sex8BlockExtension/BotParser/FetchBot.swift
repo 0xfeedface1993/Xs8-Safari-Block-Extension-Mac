@@ -14,7 +14,7 @@ typealias AsyncFinish = () -> Void
 
 enum Host: String {
     case dytt = "www.ygdy8.net"
-    case sex8 = "mote8didi.info"
+    case sex8 = "www.duoduosiwa.site"
 }
 
 
@@ -471,7 +471,7 @@ class FetchBot {
         badTasks.removeAll()
         count = 0
         contentDatas.removeAll()
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.delegate?.bot(didStartBot: self)
         }
         fetchGroup(start: startPage, offset: pageOffset, site: site)
@@ -687,7 +687,7 @@ extension Data {
         if self.count <= 0 {
             return html
         }
-        self.withUnsafeBytes { (pointer) in
+        self.withUnsafeBytes { pointer in
             repeat {
                 let value = pointer.load(fromByteOffset: index, as: UInt8.self)
                 if value < 192 {
