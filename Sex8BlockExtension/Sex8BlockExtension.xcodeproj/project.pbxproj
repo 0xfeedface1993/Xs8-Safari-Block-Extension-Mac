@@ -45,7 +45,6 @@
 		248A33DE20C9035900413242 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2406C53820C0086500EC20EB /* CloudKit.framework */; };
 		248BCDA020302D79000999D6 /* ImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCD9F20302D79000999D6 /* ImageTask.swift */; };
 		248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BCDA320303F24000999D6 /* FileManagerExtension.swift */; };
-		249EF1BA20F8989400919D7A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
 		249EF1C220F8997300919D7A /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
 		249EF1C320F8999000919D7A /* DOMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18271F7C7AD5007963FE /* DOMParser.swift */; };
 		249EF1C420F89A2900919D7A /* Categrory-Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A33D520C8D6A900413242 /* Categrory-Modal.swift */; };
@@ -67,6 +66,12 @@
 		24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA90D61EF597B6002BE480 /* SafariExtensionViewController.swift */; };
 		24BA90DA1EF597B6002BE480 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BA90D81EF597B6002BE480 /* SafariExtensionViewController.xib */; };
 		24BA90E21EF597B6002BE480 /* Torrilste.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24BA90CF1EF597B6002BE480 /* Torrilste.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24C24DE923A771A400743CC7 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */; };
+		24C24DEB23A7727D00743CC7 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */; };
+		24C24DEC23A7728600743CC7 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */; };
+		24C24DED23A7728700743CC7 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */; };
+		24C24DEF23A7793200743CC7 /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274AA3F11F7773820058E21A /* CoreDataExtension.swift */; };
+		24C24DF023A7795900743CC7 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		24C26F76228A98E000F080A1 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; };
 		24C26F78228A98EB00F080A1 /* Gzip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
@@ -293,6 +298,7 @@
 		24BA90D91EF597B6002BE480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
 		24C26F74228A98E000F080A1 /* Gzip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gzip.framework; path = Carthage/Build/Mac/Gzip.framework; sourceTree = "<group>"; };
 		24E4387A2061589600D2E5BF /* adblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adblock.png; sourceTree = "<group>"; };
 		24E4387B2061589600D2E5BF /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
@@ -487,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				241B464420BEF8C3007C939B /* Storage.swift */,
+				24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */,
 			);
 			path = iCloud;
 			sourceTree = "<group>";
@@ -1397,6 +1404,7 @@
 				248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */,
 				24AA527E225927EE00C423F5 /* Revicer.swift in Sources */,
 				242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */,
+				24C24DEC23A7728600743CC7 /* StringArrayTransformer.swift in Sources */,
 				2455BECE21075DC700EA13A8 /* Storage.swift in Sources */,
 				24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */,
 				242B182C1F7C7AF4007963FE /* DOMParser.swift in Sources */,
@@ -1407,6 +1415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C24DF023A7795900743CC7 /* NetdiskModel.xcdatamodeld in Sources */,
 				CB8E695022F94EC7004FCDAD /* TopView.swift in Sources */,
 				24F47A1220C83AA90005CEB8 /* ViewController.swift in Sources */,
 				CB8E695422F9527B004FCDAD /* Coordinator.swift in Sources */,
@@ -1421,8 +1430,10 @@
 				24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */,
 				CBD1FB3D22F94A25000CF4B2 /* LogItem.swift in Sources */,
 				24AA527D225927E500C423F5 /* Revicer.swift in Sources */,
+				24C24DEB23A7727D00743CC7 /* StringArrayTransformer.swift in Sources */,
 				248A33CF20C8D49C00413242 /* DOMParser.swift in Sources */,
 				24F29F5B22719AEF0037A281 /* Webservice.swift in Sources */,
+				24C24DEF23A7793200743CC7 /* CoreDataExtension.swift in Sources */,
 				24F29F5222719ADF0037A281 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1434,7 +1445,6 @@
 				249EF1C420F89A2900919D7A /* Categrory-Modal.swift in Sources */,
 				24F47A2320C83AAB0005CEB8 /* CloudFetchBotTests.swift in Sources */,
 				249EF1C220F8997300919D7A /* FetchBot.swift in Sources */,
-				249EF1BA20F8989400919D7A /* Storage.swift in Sources */,
 				249EF1C320F8999000919D7A /* DOMParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1457,6 +1467,7 @@
 				242B181E1F7C75A4007963FE /* Extension.swift in Sources */,
 				24AA527C225927DB00C423F5 /* Revicer.swift in Sources */,
 				274AA3EA1F775ECF0058E21A /* NetdiskModel.xcdatamodeld in Sources */,
+				24C24DED23A7728700743CC7 /* StringArrayTransformer.swift in Sources */,
 				243AFE321F790FAA00D090D7 /* BackgroundFetch.swift in Sources */,
 				274AA3BD1F7694660058E21A /* ViewController.swift in Sources */,
 				274AA3BB1F7694660058E21A /* AppDelegate.swift in Sources */,
@@ -1512,6 +1523,7 @@
 				248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
 				CB656A23234B78BD006CACEF /* MainView.swift in Sources */,
+				24C24DE923A771A400743CC7 /* StringArrayTransformer.swift in Sources */,
 				2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */,
 				249F90F01EFF78BD0043B48D /* ListTableViewController.swift in Sources */,
 				241B464520BEF8C3007C939B /* Storage.swift in Sources */,

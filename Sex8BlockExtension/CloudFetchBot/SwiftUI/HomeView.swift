@@ -8,12 +8,25 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView: View, CloudSaver {
     @EnvironmentObject var data: LogData
+    @State var downloading = false
     
     var body: some View {
         HStack {
-            ActionVIew().environmentObject(self.data).frame(width: 80 * (self.data.isOn ? 1.2:1), height: 80 * (self.data.isOn ? 1.2:1)).offset(y: -12).animation(.spring())
+            VStack {
+                ActionVIew().environmentObject(self.data).frame(width: 80 * (self.data.isOn ? 1.2:1), height: 80 * (self.data.isOn ? 1.2:1)).offset(y: -12).animation(.spring())
+                Button(action: {
+                    self.downloading.toggle()
+                    if self.downloading {
+                        self.downloadAllRecords()
+                    }   else    {
+                        stopFlag = true
+                    }
+                }) {
+                    Text(downloading ? "停止下载":"下载云端数据库")
+                }.frame(width: 100)
+            }.padding()
             
             VStack {
                 if self.data.isOn {
