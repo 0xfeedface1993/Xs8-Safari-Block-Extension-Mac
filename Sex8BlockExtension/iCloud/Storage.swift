@@ -482,6 +482,7 @@ extension CloudSaver {
     func downloadAllRecords() {
         let container = CKContainer(identifier: "iCloud.com.ascp.S8Blocker")
         let privateCloudDatabase = container.privateCloudDatabase
+        var allCount = 0
         func search(operation: CKQueryOperation?, cursor: CKQueryOperation.Cursor?, completion: @escaping ()->Void) {
             var op : CKQueryOperation!
             if operation != nil {
@@ -508,7 +509,9 @@ extension CloudSaver {
                 if recs.count <= 0 {
                     return
                 }
-                print("------- Fetch \(recs.count) records")
+                
+                allCount += recs.count
+                print("------- Fetch \(recs.count) records, total: \(allCount)")
                 
                 if stopFlag {
                     completion()
@@ -551,6 +554,19 @@ extension CloudSaver {
                 DataBase.share.persistentContainer.viewContext.delete($0)
             })
             try DataBase.share.persistentContainer.viewContext.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func testFetchOp() {
+        let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+        fetchRequest.predicate = NSPredicate(value: true)
+        do {
+            let results = try DataBase.share.persistentContainer.viewContext.fetch(fetchRequest)
+            results.forEach({
+                print($0.images as? [String] ?? ">>>> oppps!")
+            })
         } catch {
             print(error)
         }
