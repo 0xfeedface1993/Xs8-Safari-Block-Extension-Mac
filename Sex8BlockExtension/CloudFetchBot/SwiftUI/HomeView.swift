@@ -20,7 +20,7 @@ struct HomeView: View, CloudSaver {
                     self.downloading.toggle()
                     if self.downloading {
                         self.downloadAllRecords()
-//                        self.testFetchOp()
+//                        self.removeAllOPRecords()
                     }   else    {
                         stopFlag = true
                     }

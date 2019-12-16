@@ -519,7 +519,13 @@ extension CloudSaver {
                 }
                 
                 self.save(items: recs)
-                search(operation: nil, cursor: cur, completion: completion)
+                if allCount % 10 == 0 {
+                    DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 5) {
+                        search(operation: nil, cursor: cur, completion: completion)
+                    }
+                }   else    {
+                    search(operation: nil, cursor: cur, completion: completion)
+                }
             }
             privateCloudDatabase.add(op)
         }
