@@ -519,7 +519,7 @@ extension CloudSaver {
                 }
                 
                 self.save(items: recs)
-                if allCount % 10 == 0 {
+                if allCount % 1000 == 0 {
                     DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 5) {
                         search(operation: nil, cursor: cur, completion: completion)
                     }
