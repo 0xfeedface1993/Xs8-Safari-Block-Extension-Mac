@@ -19,13 +19,27 @@ struct HomeView: View, CloudSaver {
                 Button(action: {
                     self.downloading.toggle()
                     if self.downloading {
+//                        self.testFetchOp()
                         self.downloadAllRecords()
 //                        self.removeAllOPRecords()
+//                        self.copyAllOPRecords()
+//                        CloudDataBase.share.removeAllOPRecords()
                     }   else    {
                         stopFlag = true
                     }
                 }) {
                     Text(downloading ? "停止下载":"下载云端数据库")
+                }.frame(width: 100)
+                Button(action: {
+                    self.copyAllOPRecords()
+                }) {
+                    Text("复制到云端")
+                }.frame(width: 100)
+                Button(action: {
+                    CloudDataBase.share.removeAllCPRecords()
+                    self.removeAllOPRecords()
+                }) {
+                    Text("删除本地缓存数据库")
                 }.frame(width: 100)
             }.padding()
             

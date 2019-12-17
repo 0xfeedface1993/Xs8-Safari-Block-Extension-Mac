@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NDImage" representedClassName="NDImage" syncable="YES" codeGenerationType="class">
+        <attribute name="pic" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NDMoive" inverseName="images" inverseEntity="NDMoive"/>
+    </entity>
+    <entity name="NDLink" representedClassName="NDLink" syncable="YES" codeGenerationType="class">
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NDMoive" inverseName="downloads" inverseEntity="NDMoive"/>
+    </entity>
+    <entity name="NDMoive" representedClassName="NDMoive" syncable="YES" codeGenerationType="class">
+        <attribute name="boradType" optional="YES" attributeType="String"/>
+        <attribute name="favorite" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="fileSize" optional="YES" attributeType="String"/>
+        <attribute name="href" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="downloads" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NDLink" inverseName="relationship" inverseEntity="NDLink"/>
+        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NDImage" inverseName="relationship" inverseEntity="NDImage"/>
+    </entity>
+    <configuration name="Cloud" usedWithCloudKit="YES">
+        <memberEntity name="NDMoive"/>
+        <memberEntity name="NDLink"/>
+        <memberEntity name="NDImage"/>
+    </configuration>
+    <configuration name="Local">
+        <memberEntity name="NDMoive"/>
+        <memberEntity name="NDImage"/>
+        <memberEntity name="NDLink"/>
+    </configuration>
+    <elements>
+        <element name="NDMoive" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="NDImage" positionX="-54" positionY="54" width="128" height="73"/>
+        <element name="NDLink" positionX="-36" positionY="63" width="128" height="73"/>
+    </elements>
+</model>

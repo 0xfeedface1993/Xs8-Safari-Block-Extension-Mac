@@ -33,6 +33,12 @@
 		24467ADE1F1B1A6100574160 /* FileManageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24467ADD1F1B1A6100574160 /* FileManageStoryboard.storyboard */; };
 		24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */; };
 		2455BECE21075DC700EA13A8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
+		245A0A0E23A88797009F0C29 /* CloudData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */; };
+		245A0A0F23A88797009F0C29 /* CloudData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */; };
+		245A0A1023A88797009F0C29 /* CloudData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */; };
+		245A0A1223A887D9009F0C29 /* CloudDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A1123A887D9009F0C29 /* CloudDataBase.swift */; };
+		245A0A1323A887D9009F0C29 /* CloudDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A1123A887D9009F0C29 /* CloudDataBase.swift */; };
+		245A0A1423A887D9009F0C29 /* CloudDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A0A1123A887D9009F0C29 /* CloudDataBase.swift */; };
 		245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245EBE461F11307E00350B20 /* ImageTableViewCell.swift */; };
 		247773201F46C94B005125D7 /* inject.css in Resources */ = {isa = PBXBuildFile; fileRef = 2477731E1F46C8EE005125D7 /* inject.css */; };
 		2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
@@ -272,6 +278,11 @@
 		24467ADF1F1B1BCD00574160 /* FilePathSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathSelectorViewController.swift; sourceTree = "<group>"; };
 		24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		245A0A0B23A88797009F0C29 /* CloudData-array.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CloudData-array.xcdatamodel"; sourceTree = "<group>"; };
+		245A0A0C23A88797009F0C29 /* CloudData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CloudData.xcdatamodel; sourceTree = "<group>"; };
+		245A0A1123A887D9009F0C29 /* CloudDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudDataBase.swift; sourceTree = "<group>"; };
+		245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CloudData-compact.xcdatamodel"; sourceTree = "<group>"; };
+		245A0A1623A8C6CA009F0C29 /* NetdiskModel -fixmore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel -fixmore.xcdatamodel"; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
@@ -493,7 +504,9 @@
 			isa = PBXGroup;
 			children = (
 				241B464420BEF8C3007C939B /* Storage.swift */,
+				245A0A1123A887D9009F0C29 /* CloudDataBase.swift */,
 				24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */,
+				245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */,
 			);
 			path = iCloud;
 			sourceTree = "<group>";
@@ -1400,7 +1413,9 @@
 			files = (
 				24BA90D71EF597B6002BE480 /* SafariExtensionViewController.swift in Sources */,
 				274AA3F31F7773820058E21A /* CoreDataExtension.swift in Sources */,
+				245A0A1323A887D9009F0C29 /* CloudDataBase.swift in Sources */,
 				24BA90D51EF597B6002BE480 /* SafariExtensionHandler.swift in Sources */,
+				245A0A0F23A88797009F0C29 /* CloudData.xcdatamodeld in Sources */,
 				248A33DC20C8D6D400413242 /* Categrory-Modal.swift in Sources */,
 				24AA527E225927EE00C423F5 /* Revicer.swift in Sources */,
 				242B182D1F7C7AF4007963FE /* FetchBot.swift in Sources */,
@@ -1421,12 +1436,14 @@
 				CB8E695422F9527B004FCDAD /* Coordinator.swift in Sources */,
 				CBD1FB3B22F949F8000CF4B2 /* LogVIew.swift in Sources */,
 				CB8E695622F953B1004FCDAD /* ActionVIew.swift in Sources */,
+				245A0A1423A887D9009F0C29 /* CloudDataBase.swift in Sources */,
 				24F47A3A20C83BFC0005CEB8 /* Storage.swift in Sources */,
 				24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */,
 				CB5D00D8230A835B00C66A8E /* AnimationView.swift in Sources */,
 				24F47A1020C83AA90005CEB8 /* AppDelegate.swift in Sources */,
 				248A33D820C8D6A900413242 /* Categrory-Modal.swift in Sources */,
 				CBD1FB3822F94958000CF4B2 /* HomeView.swift in Sources */,
+				245A0A1023A88797009F0C29 /* CloudData.xcdatamodeld in Sources */,
 				24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */,
 				CBD1FB3D22F94A25000CF4B2 /* LogItem.swift in Sources */,
 				24AA527D225927E500C423F5 /* Revicer.swift in Sources */,
@@ -1501,6 +1518,7 @@
 				2488BBE71F709D8F00A113AF /* JsonModal.swift in Sources */,
 				24467AA61F1793BC00574160 /* ZoomImageViewController.swift in Sources */,
 				245EBE471F11307E00350B20 /* ImageTableViewCell.swift in Sources */,
+				245A0A0E23A88797009F0C29 /* CloudData.xcdatamodeld in Sources */,
 				242B18281F7C7ADC007963FE /* DOMParser.swift in Sources */,
 				249F912F1EFFE9810043B48D /* PicsCollectionViewController.swift in Sources */,
 				24AA52762255FE1E00C423F5 /* Webservice.swift in Sources */,
@@ -1522,6 +1540,7 @@
 				2409A20E206D332F00CD44DB /* ContentViewController.swift in Sources */,
 				248BCDA420303F24000999D6 /* FileManagerExtension.swift in Sources */,
 				2439C6061F08036C00F039B1 /* ImagesTableViewController.swift in Sources */,
+				245A0A1223A887D9009F0C29 /* CloudDataBase.swift in Sources */,
 				CB656A23234B78BD006CACEF /* MainView.swift in Sources */,
 				24C24DE923A771A400743CC7 /* StringArrayTransformer.swift in Sources */,
 				2409A20D206D332F00CD44DB /* ContentCellView.swift in Sources */,
@@ -2445,6 +2464,18 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */,
+				245A0A0B23A88797009F0C29 /* CloudData-array.xcdatamodel */,
+				245A0A0C23A88797009F0C29 /* CloudData.xcdatamodel */,
+			);
+			currentVersion = 245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */;
+			path = CloudData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		274AA3BE1F7694660058E21A /* AutoFech.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
@@ -2458,6 +2489,7 @@
 		278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				245A0A1623A8C6CA009F0C29 /* NetdiskModel -fixmore.xcdatamodel */,
 				242B182E1F7D3BFF007963FE /* NetdiskModel -MoreContent.xcdatamodel */,
 				24467AE11F1B239200574160 /* NetdiskModel 6.xcdatamodel */,
 				2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */,
@@ -2466,7 +2498,7 @@
 				249F90F11EFF94830043B48D /* NetdiskModel 2.xcdatamodel */,
 				278B8AE61EFE774400E20296 /* NetdiskModel.xcdatamodel */,
 			);
-			currentVersion = 242B182E1F7D3BFF007963FE /* NetdiskModel -MoreContent.xcdatamodel */;
+			currentVersion = 245A0A1623A8C6CA009F0C29 /* NetdiskModel -fixmore.xcdatamodel */;
 			path = NetdiskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@objc(StringArrayTransformer)
 class StringArrayTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return NSData.self

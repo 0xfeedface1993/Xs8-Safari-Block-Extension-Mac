@@ -571,8 +571,27 @@ extension CloudSaver {
         do {
             let results = try DataBase.share.persistentContainer.viewContext.fetch(fetchRequest)
             results.forEach({
-                print($0.images as? [String] ?? ">>>> oppps!")
+                let tranformer = StringArrayTransformer()
+                print(tranformer.transformedValue($0.images) as? [String] ?? ">>> 00p")
             })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func copyAllOPRecords() {
+        let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+        fetchRequest.predicate = NSPredicate(value: true)
+        do {
+            let results = try DataBase.share.persistentContainer.viewContext.fetch(fetchRequest)
+            CloudDataBase.share.move(items: results) { result in
+                switch result {
+                case .success(_):
+                    print(">>> Move Finished!")
+                case .failure(let error):
+                    print(error)
+                }
+            }
         } catch {
             print(error)
         }
@@ -632,8 +651,9 @@ extension CKRecord {
         movie.href = self["href"]
         movie.fileSize = self["fileSize"]
         movie.password = self["password"]
-        movie.downloads = self["downloads"] as? [String] as NSArray?
-        movie.images = self["images"] as? [String] as NSArray?
+        let tranformer = StringArrayTransformer()
+        movie.downloads = tranformer.reverseTransformedValue(self["downloads"] as? [String] ?? []) as? NSData
+        movie.images = tranformer.reverseTransformedValue(self["images"] as? [String] ?? []) as? NSData
         return movie
     }
 }
