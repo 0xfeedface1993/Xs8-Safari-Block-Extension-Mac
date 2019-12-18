@@ -36,8 +36,10 @@ struct HomeView: View, CloudSaver {
                     Text("复制到云端")
                 }.frame(width: 100)
                 Button(action: {
-                    CloudDataBase.share.removeAllCPRecords()
-                    self.removeAllOPRecords()
+                    DispatchQueue.global().async {
+                        CloudDataBase.share.removeAllCPRecords()
+                    }
+//                    self.removeAllOPRecords()
                 }) {
                     Text("删除本地缓存数据库")
                 }.frame(width: 100)

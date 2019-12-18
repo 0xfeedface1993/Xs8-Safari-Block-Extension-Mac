@@ -24,12 +24,14 @@ class CloudDataBase {
         do {
             for i in [fetchRequest, fetchRequest2, fetchRequest3] {
                 let results = try CloudDataBase.share.persistentContainer.viewContext.fetch(i as! NSFetchRequest<NSFetchRequestResult>)
-                results.forEach({
-                    CloudDataBase.share.persistentContainer.viewContext.delete($0 as! NSManagedObject)
-                })
+                while results.count > 0 {
+                    CloudDataBase.share.persistentContainer.viewContext.delete(results.first as! NSManagedObject)
+                }
             }
             
-            try CloudDataBase.share.persistentContainer.viewContext.save()
+            DispatchQueue.main.async {
+                CloudDataBase.share.saveContext()
+            }
         } catch {
             print(error)
         }
@@ -55,7 +57,7 @@ class CloudDataBase {
     func move(items: [OPMovie], completion: ((Result<Bool, Error>) -> ())?) {
         var count = 0
         let viewContext = CloudDataBase.share.persistentContainer.viewContext
-        let transformer = StringArrayTransformer()
+//        let transformer = StringArrayTransformer()
         items.forEach({
             let mov = NDMoive(context: viewContext)
             mov.title = $0.title
@@ -65,17 +67,17 @@ class CloudDataBase {
             mov.password = $0.password
             mov.favorite = 0
 
-            for i in transformer.transformedValue($0.images) as? [String] ?? [] {
-                let img = NDImage(context: viewContext)
-                img.pic = i
-                viewContext.insert(img)
-            }
-            
-            for i in transformer.transformedValue($0.downloads) as? [String] ?? [] {
-                let link = NDLink(context: viewContext)
-                link.url = i
-                viewContext.insert(link)
-            }
+//            for i in transformer.transformedValue($0.images) as? [String] ?? [] {
+//                let img = NDImage(context: viewContext)
+//                img.pic = i
+//                viewContext.insert(img)
+//            }
+//
+//            for i in transformer.transformedValue($0.downloads) as? [String] ?? [] {
+//                let link = NDLink(context: viewContext)
+//                link.url = i
+//                viewContext.insert(link)
+//            }
 
             viewContext.insert(mov)
             count += 1
@@ -87,6 +89,111 @@ class CloudDataBase {
             CloudDataBase.share.saveContext()
         }
         completion?(.success(true))
+    }
+    
+    func moveImagesAndLinks(items: [OPMovie], completion: ((Result<Bool, Error>) -> ())?) {
+        var count = 0
+        let viewContext = CloudDataBase.share.persistentContainer.viewContext
+        let transformer = StringArrayTransformer()
+        items.forEach({
+            guard let href = $0.href else { return }
+            let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+            request.predicate = NSPredicate(format: "href == %@", href)
+            
+            do {
+                let mov = try viewContext.fetch(request).first
+                
+                for i in transformer.transformedValue($0.images) as? [String] ?? [] {
+                    let imageRequest = NSFetchRequest<NDImage>(entityName: "NDImage")
+                    imageRequest.predicate = NSPredicate(format: "pic == %@", i)
+                    guard let img = try viewContext.fetch(imageRequest).first else {
+                        let img = NDImage(context: viewContext)
+                        img.pic = i
+                        mov?.addToImages(img)
+                        return
+                    }
+                    mov?.addToImages(img)
+                }
+                
+                for i in transformer.transformedValue($0.downloads) as? [String] ?? [] {
+                    let linkRequest = NSFetchRequest<NDLink>(entityName: "NDLink")
+                    linkRequest.predicate = NSPredicate(format: "url == %@", i)
+                    guard let link = try viewContext.fetch(linkRequest).first else {
+                        let link = NDLink(context: viewContext)
+                        link.url = i
+                        mov?.addToDownloads(link)
+                        return
+                    }
+                    mov?.addToDownloads(link)
+                }
+                
+                count += 1
+                if count % 1000 == 0 {
+                    print(">>> Move count: \(count)")
+                }
+            } catch {
+                print(error)
+            }
+        })
+        
+        DispatchQueue.main.async {
+            CloudDataBase.share.saveContext()
+        }
+        completion?(.success(true))
+    }
+    
+    /// 添加或修改数据，存在则修改，不存在则插入新数据
+    /// - Parameter data: 抓取的数据列表
+    func add(data: [ContentInfo]) {
+        let viewContext = CloudDataBase.share.persistentContainer.viewContext
+        data.forEach({
+            let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+            request.predicate = NSPredicate(format: "href == %@ OR title", $0.page, $0.title)
+            
+            do {
+                try viewContext.setQueryGenerationFrom(.current)
+                let results = try viewContext.fetch(request)
+                let mov = results.first ?? NDMoive(context: viewContext)
+                print("------------------ movie \(mov), \($0.page)")
+                for i in $0.imageLink {
+                    let imageRequest = NSFetchRequest<NDImage>(entityName: "NDImage")
+                    imageRequest.predicate = NSPredicate(format: "pic == %@", i)
+                    guard let img = try viewContext.fetch(imageRequest).first else {
+                        let img = NDImage(context: viewContext)
+                        img.pic = i
+                        mov.addToImages(img)
+                        print(">>> Insert image item \(img.pic ?? "oops!") for \(mov).")
+                        return
+                    }
+                    mov.addToImages(img)
+                    print(">>> Found \(mov) image item \(img.pic ?? "oops!").")
+                }
+                
+                for i in $0.downloafLink {
+                    let linkRequest = NSFetchRequest<NDLink>(entityName: "NDLink")
+                    linkRequest.predicate = NSPredicate(format: "url == %@", i)
+                    guard let link = try viewContext.fetch(linkRequest).first else {
+                        let link = NDLink(context: viewContext)
+                        link.url = i
+                        mov.addToDownloads(link)
+                        print(">>> Insert link item \(link.url ?? "oops!") for \(mov).")
+                        return
+                    }
+                    mov.addToDownloads(link)
+                    print(">>> Found \(mov) link item \(link.url ?? "oops!").")
+                }
+                
+                if results.count <= 0 {
+                    viewContext.insert(mov)
+                    print(">>> Insert new records. \(mov)")
+                }
+            } catch {
+                print(error)
+            }
+        })
+        DispatchQueue.main.async {
+            CloudDataBase.share.saveContext()
+        }
     }
     
     // MARK: - Core Data stack

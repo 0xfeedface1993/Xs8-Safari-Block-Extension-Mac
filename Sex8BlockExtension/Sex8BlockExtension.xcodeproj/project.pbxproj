@@ -283,6 +283,7 @@
 		245A0A1123A887D9009F0C29 /* CloudDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudDataBase.swift; sourceTree = "<group>"; };
 		245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CloudData-compact.xcdatamodel"; sourceTree = "<group>"; };
 		245A0A1623A8C6CA009F0C29 /* NetdiskModel -fixmore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel -fixmore.xcdatamodel"; sourceTree = "<group>"; };
+		245A0A2123A9D914009F0C29 /* CloudData-tomore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CloudData-tomore.xcdatamodel"; sourceTree = "<group>"; };
 		245EBE461F11307E00350B20 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		2468EED31F02216A00482149 /* NetdiskModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NetdiskModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		2477731E1F46C8EE005125D7 /* inject.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = inject.css; sourceTree = "<group>"; };
@@ -2467,11 +2468,12 @@
 		245A0A0A23A88797009F0C29 /* CloudData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				245A0A2123A9D914009F0C29 /* CloudData-tomore.xcdatamodel */,
 				245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */,
 				245A0A0B23A88797009F0C29 /* CloudData-array.xcdatamodel */,
 				245A0A0C23A88797009F0C29 /* CloudData.xcdatamodel */,
 			);
-			currentVersion = 245A0A1523A8C03A009F0C29 /* CloudData-compact.xcdatamodel */;
+			currentVersion = 245A0A2123A9D914009F0C29 /* CloudData-tomore.xcdatamodel */;
 			path = CloudData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
