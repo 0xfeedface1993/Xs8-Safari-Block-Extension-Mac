@@ -78,8 +78,6 @@
 		24C24DED23A7728700743CC7 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */; };
 		24C24DEF23A7793200743CC7 /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274AA3F11F7773820058E21A /* CoreDataExtension.swift */; };
 		24C24DF023A7795900743CC7 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
-		24C26F76228A98E000F080A1 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; };
-		24C26F78228A98EB00F080A1 /* Gzip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24C94C2C20C6BE2000EFAC82 /* NetdiskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 278B8AE51EFE774400E20296 /* NetdiskModel.xcdatamodeld */; };
 		24F29F5222719ADF0037A281 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B181C1F7C75A4007963FE /* Extension.swift */; };
 		24F29F5A22719AE50037A281 /* JsonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488BBE61F709D8F00A113AF /* JsonModal.swift */; };
@@ -92,9 +90,6 @@
 		24F47A2E20C83AAB0005CEB8 /* CloudFetchBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F47A2D20C83AAB0005CEB8 /* CloudFetchBotUITests.swift */; };
 		24F47A3920C83B0E0005CEB8 /* FetchBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B18261F7C7AD5007963FE /* FetchBot.swift */; };
 		24F47A3A20C83BFC0005CEB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B464420BEF8C3007C939B /* Storage.swift */; };
-		24FC774D228A9D12000F7F29 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; };
-		24FC774E228A9D12000F7F29 /* Gzip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24FC7752228A9DF1000F7F29 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C26F74228A98E000F080A1 /* Gzip.framework */; };
 		272ABF701F1277A8008FAE69 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D301F127617007BA2BA /* error.png */; };
 		272ABF711F1277AB008FAE69 /* watting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 270B6D2F1F127617007BA2BA /* watting.jpeg */; };
 		272ABF721F1277BF008FAE69 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 245031C01F12732C00BB9700 /* ToolbarItemIcon.pdf */; };
@@ -222,7 +217,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24FC774E228A9D12000F7F29 /* Gzip.framework in Embed Frameworks */,
 				24467AD01F1923AC00574160 /* SwiftToastermacOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -234,7 +228,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24C26F78228A98EB00F080A1 /* Gzip.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +304,6 @@
 		24BA90DB1EF597B6002BE480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BA90DC1EF597B6002BE480 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		24C24DE823A771A400743CC7 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
-		24C26F74228A98E000F080A1 /* Gzip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gzip.framework; path = Carthage/Build/Mac/Gzip.framework; sourceTree = "<group>"; };
 		24E4387A2061589600D2E5BF /* adblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adblock.png; sourceTree = "<group>"; };
 		24E4387B2061589600D2E5BF /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		24E4387C2061589600D2E5BF /* autofetch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autofetch.png; sourceTree = "<group>"; };
@@ -394,7 +386,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C26F76228A98E000F080A1 /* Gzip.framework in Frameworks */,
 				248A33DE20C9035900413242 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +394,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24FC7752228A9DF1000F7F29 /* Gzip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +431,6 @@
 			files = (
 				2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */,
 				242C0756237323A20037D3C2 /* WebShell in Frameworks */,
-				24FC774D228A9D12000F7F29 /* Gzip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,7 +724,6 @@
 		27AD7C1E1EEFD1EE00258BDC = {
 			isa = PBXGroup;
 			children = (
-				24C26F74228A98E000F080A1 /* Gzip.framework */,
 				248A33D420C8D6A900413242 /* Categrory */,
 				241B464320BEF882007C939B /* iCloud */,
 				24E438792061589600D2E5BF /* docimg */,
@@ -1048,7 +1036,6 @@
 				27AD7C251EEFD1EE00258BDC /* Resources */,
 				27AD7C6B1EEFD20D00258BDC /* Embed App Extensions */,
 				24467AAE1F19228E00574160 /* Embed Frameworks */,
-				24B18E1F2065DAF80054525C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1390,23 +1377,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		24B18E1F2065DAF80054525C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Gzip.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		24BA90CB1EF597B6002BE480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1667,17 +1637,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = E6NP67H473;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1692,17 +1658,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = E6NP67H473;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Torrilste/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ascp.adblock.Torrilste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2085,7 +2047,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -2139,7 +2101,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2161,7 +2123,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2188,7 +2149,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = Sex8BlockExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2288,10 +2248,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6NP67H473;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2314,10 +2271,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6NP67H473;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ADBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

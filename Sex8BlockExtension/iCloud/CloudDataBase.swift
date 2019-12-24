@@ -23,12 +23,16 @@ class CloudDataBase {
         fetchRequest.predicate = NSPredicate(value: true)
         do {
             for i in [fetchRequest, fetchRequest2, fetchRequest3] {
-                let results = try CloudDataBase.share.persistentContainer.viewContext.fetch(i as! NSFetchRequest<NSFetchRequestResult>)
-                while results.count > 0 {
-                    CloudDataBase.share.persistentContainer.viewContext.delete(results.first as! NSManagedObject)
+                let results = try CloudDataBase.share.persistentContainer.viewContext.fetch(i as! NSFetchRequest<NSFetchRequestResult>).map({ ($0 as! NSManagedObject).objectID })
+                print("found \(results.count)")
+                for i in results {
+                    let obj = CloudDataBase.share.persistentContainer.viewContext.object(with: i)
+                    print(">>> delete \(obj)")
+                    CloudDataBase.share.persistentContainer.viewContext.delete(obj)
                 }
             }
             
+            print("completion!!!!")
             DispatchQueue.main.async {
                 CloudDataBase.share.saveContext()
             }
