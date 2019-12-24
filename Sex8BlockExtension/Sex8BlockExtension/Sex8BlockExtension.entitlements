@@ -18,7 +18,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>com.kmvc.group.safari</string>
+		<string>$(TeamIdentifierPrefix)ascp.netdisk</string>
 	</array>
 	<key>com.apple.security.assets.pictures.read-write</key>
 	<true/>

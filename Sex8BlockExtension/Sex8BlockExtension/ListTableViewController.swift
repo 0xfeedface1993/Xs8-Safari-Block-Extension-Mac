@@ -344,8 +344,6 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let sort = NSSortDescriptor(key: "creattime", ascending: false)
         employeesFetch.sortDescriptors = [sort]
         
-        opFetch()
-        
         do {
             let oldCount = datas.count
             datas = try managedObjectContext.fetch(employeesFetch)
