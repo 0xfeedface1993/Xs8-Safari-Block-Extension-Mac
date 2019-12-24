@@ -583,13 +583,32 @@ extension CloudSaver {
         let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
         fetchRequest.predicate = NSPredicate(value: true)
         do {
+            try DataBase.share.persistentContainer.viewContext.setQueryGenerationFrom(.current)
             let results = try DataBase.share.persistentContainer.viewContext.fetch(fetchRequest)
-            CloudDataBase.share.move(items: results) { result in
-                switch result {
+//            CloudDataBase.share.move(items: results, test: false) { result in
+//                switch result {
+//                case .success(_):
+//                    print(">>> Move Finished!")
+////                    CloudDataBase.share.moveImagesAndLinks(items: results, test: true) { resultx in
+////                        switch resultx {
+////                        case .success(_):
+////                            print(">>> Move Image Finished!")
+////                        case .failure(let errory):
+////                            print(errory)
+////                        }
+////                    }
+//
+////                    CloudDataBase.share.findSameImageLink(items: results)
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+            CloudDataBase.share.moveImagesAndLinks(items: results, test: false) { resultx in
+                switch resultx {
                 case .success(_):
-                    print(">>> Move Finished!")
-                case .failure(let error):
-                    print(error)
+                    print(">>> Move Image Finished!")
+                case .failure(let errory):
+                    print(errory)
                 }
             }
         } catch {

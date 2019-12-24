@@ -31,7 +31,10 @@ struct HomeView: View, CloudSaver {
                     Text(downloading ? "停止下载":"下载云端数据库")
                 }.frame(width: 100)
                 Button(action: {
-                    self.copyAllOPRecords()
+                    DispatchQueue.global().async {                    
+                        self.copyAllOPRecords()
+//                        CloudDataBase.share.removeSameCDRecords()
+                    }
                 }) {
                     Text("复制到云端")
                 }.frame(width: 100)
