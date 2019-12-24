@@ -19,7 +19,7 @@ struct TopView: View {
     var actionState: ActionState
     var body: some View {
         ZStack(alignment: .center) {
-            Rectangle().foregroundColor(.gray).cornerRadius(4)
+            Rectangle().foregroundColor(Color("Rouge")).cornerRadius(4)
             Text(actionState.rawValue).font(.headline)
         }.frame(height: 44)
     }

@@ -344,6 +344,8 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let sort = NSSortDescriptor(key: "creattime", ascending: false)
         employeesFetch.sortDescriptors = [sort]
         
+        opFetch()
+        
         do {
             let oldCount = datas.count
             datas = try managedObjectContext.fetch(employeesFetch)
@@ -455,6 +457,19 @@ class ListTableViewController: NSViewController, NSTableViewDelegate, NSTableVie
             site.categrory = self.menus.last!
             self.bot.start(withSite: site)
         }
+    }
+}
+
+func opFetch() {
+    let opRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+    opRequest.predicate = NSPredicate(value: true)
+    
+    let managedObjectContext = DataBase.share.managedObjectContext
+    do {
+        let count = try managedObjectContext.count(for: opRequest)
+        print(">>> opmovie count: \(count)")
+    } catch {
+        print(error)
     }
 }
 

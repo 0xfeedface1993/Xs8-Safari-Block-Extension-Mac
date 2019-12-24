@@ -21,16 +21,21 @@ class CloudDataBase {
         fetchRequest.predicate = NSPredicate(value: true)
         let fetchRequest3 = NSFetchRequest<NDImage>(entityName: "NDImage")
         fetchRequest.predicate = NSPredicate(value: true)
+        let viewContext = CloudDataBase.share.backgroundViewContext
         do {
             for i in [fetchRequest, fetchRequest2, fetchRequest3] {
-                let results = try CloudDataBase.share.persistentContainer.viewContext.fetch(i as! NSFetchRequest<NSFetchRequestResult>)
+                try viewContext.setQueryGenerationFrom(.current)
+                let results = try viewContext.fetch(i as! NSFetchRequest<NSFetchRequestResult>)
                 while results.count > 0 {
-                    CloudDataBase.share.persistentContainer.viewContext.delete(results.first as! NSManagedObject)
+                    viewContext.delete(results.first as! NSManagedObject)
                 }
             }
             
-            DispatchQueue.main.async {
-                CloudDataBase.share.saveContext()
+            viewContext.perform {
+                CloudDataBase.share.saveBacgroundContext()
+                self.mainViewContext.perform {
+                    CloudDataBase.share.saveMainContext()
+                }
             }
         } catch {
             print(error)
@@ -50,14 +55,97 @@ class CloudDataBase {
         }
     }
     
+    /// 查找并移除相同记录，根据名称判断是否相同
+    func removeSameRecords() {
+        let viewContext = DataBase.share.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+        fetchRequest.predicate = NSPredicate(value: true)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            var records = [String:[OPMovie]]()
+            for i in results {
+                guard let title = i.title else {
+                    continue
+                }
+                guard let items = records[title] else {
+                    records[title] = [i]
+                    continue
+                }
+                if items.contains(i) {
+                    continue
+                }
+                
+                records[title]?.append(i)
+            }
+            
+            for i in records {
+                if i.value.count <= 1 {
+                    continue
+                }
+                print(">>> item: \(i.key), count: \(i.value.count)")
+                for j in 1..<i.value.count {
+                    print(">>> delete : \(i.value[j].title ?? "oops!")")
+                    viewContext.delete(i.value[j])
+                }
+            }
+            try DataBase.share.persistentContainer.viewContext.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func removeSameCDRecords() {
+        let viewContext = backgroundViewContext
+        let fetchRequest = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+        fetchRequest.predicate = NSPredicate(value: true)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            var records = [String:[NDMoive]]()
+            for i in results {
+                guard let title = i.title else {
+                    continue
+                }
+                guard let items = records[title] else {
+                    records[title] = [i]
+                    continue
+                }
+                if items.contains(i) {
+                    continue
+                }
+                
+                records[title]?.append(i)
+            }
+            
+            for i in records {
+                if i.value.count <= 1 {
+                    continue
+                }
+                print(">>> item: \(i.key), count: \(i.value.count)")
+                for j in 1..<i.value.count {
+                    print(">>> delete : \(i.value[j].title ?? "oops!")")
+                    viewContext.delete(i.value[j])
+                }
+            }
+            viewContext.perform {
+                CloudDataBase.share.saveBacgroundContext()
+                self.mainViewContext.perform {
+                    CloudDataBase.share.saveMainContext()
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     /// 将本地数据库存储的记录复制到云端
     /// - Parameters:
     ///   - items: 本地数据库存储的所有数据
     ///   - completion: 执行回调
-    func move(items: [OPMovie], completion: ((Result<Bool, Error>) -> ())?) {
+    func move(items: [OPMovie], test: Bool = false, completion: ((Result<Bool, Error>) -> ())?) {
         var count = 0
-        let viewContext = CloudDataBase.share.persistentContainer.viewContext
-//        let transformer = StringArrayTransformer()
+        let viewContext = backgroundViewContext
         items.forEach({
             let mov = NDMoive(context: viewContext)
             mov.title = $0.title
@@ -67,88 +155,225 @@ class CloudDataBase {
             mov.password = $0.password
             mov.favorite = 0
 
-//            for i in transformer.transformedValue($0.images) as? [String] ?? [] {
-//                let img = NDImage(context: viewContext)
-//                img.pic = i
-//                viewContext.insert(img)
-//            }
-//
-//            for i in transformer.transformedValue($0.downloads) as? [String] ?? [] {
-//                let link = NDLink(context: viewContext)
-//                link.url = i
-//                viewContext.insert(link)
-//            }
-
-            viewContext.insert(mov)
+            if !test {
+                let fetchRequest = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+                fetchRequest.predicate = NSPredicate(format: "title == %@", $0.title ?? "")
+                
+                do {
+                    let count = try viewContext.count(for: fetchRequest)
+                    guard count <= 0 else {
+                        print(">>> Found \($0.title ?? "oops") movie: \(count)")
+                        return
+                    }
+                    
+                    viewContext.insert(mov)
+                } catch {
+                    print(error)
+                }
+            }
             count += 1
             if count % 1000 == 0 {
                 print(">>> Move count: \(count)")
             }
         })
-        DispatchQueue.main.async {
-            CloudDataBase.share.saveContext()
+        
+        if !test {
+            viewContext.perform {
+                CloudDataBase.share.saveBacgroundContext()
+                self.mainViewContext.perform {
+                    CloudDataBase.share.saveMainContext()
+                }
+            }
         }
+        
         completion?(.success(true))
     }
     
-    func moveImagesAndLinks(items: [OPMovie], completion: ((Result<Bool, Error>) -> ())?) {
+    /// 测试获取相同图片和地址链接
+    /// - Parameter items: 抓取原始数据
+    func findSameImageLink(items: [OPMovie]) {
+        let viewContext = DataBase.share.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<OPMovie>(entityName: "OPMovie")
+        fetchRequest.predicate = NSPredicate(value: true)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            func getRecords(keyPath: AnyKeyPath) -> [String:Int] {
+                var records = [String:Int]()
+                let transformer = StringArrayTransformer()
+                for i in results {
+                    guard let v = i[keyPath: keyPath] as? NSData, let values = transformer.transformedValue(v) as? [String]  else {
+                        continue
+                    }
+                    
+                    for j in values {
+                        guard let _ = records[j] else {
+                            records[j] = 1
+                            continue
+                        }
+                        
+                        records[j]? += 1
+                    }
+                }
+                return records
+            }
+            let images = getRecords(keyPath: \OPMovie.images)
+            let links = getRecords(keyPath: \OPMovie.downloads)
+            print(">>> images same items count: \(images.filter({ $0.value > 1 }).count)")
+            print(">>> links same items count: \(links.filter({ $0.value > 1 }).count)")
+            for i in images {
+                if i.value <= 1 {
+                    continue
+                }
+                print(">>> item: \(i.key), count: \(i.value)")
+            }
+            
+            for i in links {
+                if i.value <= 1 {
+                    continue
+                }
+                print(">>> item: \(i.key), count: \(i.value)")
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    func moveImagesAndLinks(items: [OPMovie], test: Bool = false, completion: ((Result<Bool, Error>) -> ())?) {
         var count = 0
-        let viewContext = CloudDataBase.share.persistentContainer.viewContext
+        let viewContext = backgroundViewContext
         let transformer = StringArrayTransformer()
+        
+        func saveBaby() {
+            viewContext.performAndWait {
+                self.saveBacgroundContext()
+                self.mainViewContext.perform {
+                    self.saveMainContext()
+                }
+                self.persistentContainer.viewContext.perform {
+                    self.saveContext()
+                }
+            }
+        }
+        
         items.forEach({
             guard let href = $0.href else { return }
             let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
             request.predicate = NSPredicate(format: "href == %@", href)
             
             do {
-                let mov = try viewContext.fetch(request).first
-                
-                for i in transformer.transformedValue($0.images) as? [String] ?? [] {
-                    let imageRequest = NSFetchRequest<NDImage>(entityName: "NDImage")
-                    imageRequest.predicate = NSPredicate(format: "pic == %@", i)
-                    guard let img = try viewContext.fetch(imageRequest).first else {
-                        let img = NDImage(context: viewContext)
-                        img.pic = i
-                        mov?.addToImages(img)
-                        return
+                guard let mov = try viewContext.fetch(request).first else { return }
+                let images = (transformer.transformedValue($0.images) as? [String] ?? []).removeSameString()
+                for i in images {
+                    self.findImageObject(context: viewContext, pic: i) { result in
+                        switch result {
+                        case .success(let img):
+                            if !test {
+                                mov.addToImages(img)
+                            }
+                        case .failure(_):
+                            print(">>> Error Accuce! <<<")
+                        }
                     }
-                    mov?.addToImages(img)
                 }
                 
-                for i in transformer.transformedValue($0.downloads) as? [String] ?? [] {
-                    let linkRequest = NSFetchRequest<NDLink>(entityName: "NDLink")
-                    linkRequest.predicate = NSPredicate(format: "url == %@", i)
-                    guard let link = try viewContext.fetch(linkRequest).first else {
-                        let link = NDLink(context: viewContext)
-                        link.url = i
-                        mov?.addToDownloads(link)
-                        return
+                let links = (transformer.transformedValue($0.downloads) as? [String] ?? []).removeSameString()
+                for i in links {
+                    self.findLinkObject(context: viewContext, url: i) { result in
+                        switch result {
+                        case .success(let link):
+                            if !test {
+                                mov.addToDownloads(link)
+                            }
+                        case .failure(_):
+                            print(">>> Error Accuce! <<<")
+                        }
                     }
-                    mov?.addToDownloads(link)
                 }
                 
                 count += 1
                 if count % 1000 == 0 {
                     print(">>> Move count: \(count)")
                 }
+                
+                if !test {
+                    saveBaby()
+                }
             } catch {
                 print(error)
             }
         })
-        
-        DispatchQueue.main.async {
-            CloudDataBase.share.saveContext()
-        }
         completion?(.success(true))
+    }
+    
+    /// 获取图像记录，若存在则从数据库查询返回, 否则创建新记录
+    /// - Parameters:
+    ///   - context: CoreData上下文
+    ///   - pic: 图片链接
+    ///   - completion: 结果回调，一般不会失败
+    func findImageObject(context: NSManagedObjectContext, pic: String, completion: (Result<NDImage, Error>) -> ()) {
+        let imageRequest = NSFetchRequest<NDImage>(entityName: "NDImage")
+        imageRequest.predicate = NSPredicate(format: "pic == %@", pic)
+        imageRequest.fetchLimit = 1
+        do {
+            guard let img = try context.fetch(imageRequest).first else {
+                let img = NDImage(context: context)
+                img.pic = pic
+                print(">>> Insert image item \(img.pic ?? "oops!")")
+                return completion(.success(img))
+            }
+            print(">>> Found image item \(img.pic ?? "oops!").")
+            return completion(.success(img))
+        } catch {
+            print(error)
+            return completion(.failure(error))
+        }
+    }
+    
+    /// 获取下载地址记录，若存在则从数据库查询返回, 否则创建新记录
+    /// - Parameters:
+    ///   - context: CoreData上下文
+    ///   - url: 下载地址链接
+    ///   - completion: 结果回调，一般不会失败
+    func findLinkObject(context: NSManagedObjectContext, url: String, completion: (Result<NDLink, Error>) -> ()) {
+        let imageRequest = NSFetchRequest<NDLink>(entityName: "NDLink")
+        imageRequest.predicate = NSPredicate(format: "url == %@", url)
+        imageRequest.fetchLimit = 1
+        do {
+            guard let img = try context.fetch(imageRequest).first else {
+                let img = NDLink(context: context)
+                img.url = url
+                print(">>> Insert link item \(img.url ?? "oops!")")
+                return completion(.success(img))
+            }
+            print(">>> Found link item \(img.url ?? "oops!").")
+            return completion(.success(img))
+        } catch {
+            print(error)
+            return completion(.failure(error))
+        }
     }
     
     /// 添加或修改数据，存在则修改，不存在则插入新数据
     /// - Parameter data: 抓取的数据列表
-    func add(data: [ContentInfo]) {
-        let viewContext = CloudDataBase.share.persistentContainer.viewContext
+    func add(data: [ContentInfo], test: Bool = false) {
+        let viewContext = backgroundViewContext
+        func saveBaby() {
+            viewContext.performAndWait {
+                self.saveBacgroundContext()
+                self.mainViewContext.perform {
+                    self.saveMainContext()
+                }
+                self.persistentContainer.viewContext.perform {
+                    self.saveContext()
+                }
+            }
+        }
+        
         data.forEach({
             let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
-            request.predicate = NSPredicate(format: "href == %@ OR title", $0.page, $0.title)
+            request.predicate = NSPredicate(format: "href == %@ OR title == %@", $0.page, $0.title)
             
             do {
                 try viewContext.setQueryGenerationFrom(.current)
@@ -156,47 +381,64 @@ class CloudDataBase {
                 let mov = results.first ?? NDMoive(context: viewContext)
                 print("------------------ movie \(mov), \($0.page)")
                 for i in $0.imageLink {
-                    let imageRequest = NSFetchRequest<NDImage>(entityName: "NDImage")
-                    imageRequest.predicate = NSPredicate(format: "pic == %@", i)
-                    guard let img = try viewContext.fetch(imageRequest).first else {
-                        let img = NDImage(context: viewContext)
-                        img.pic = i
-                        mov.addToImages(img)
-                        print(">>> Insert image item \(img.pic ?? "oops!") for \(mov).")
-                        return
+                    self.findImageObject(context: viewContext, pic: i) { result in
+                        switch result {
+                        case .success(let img):
+                            if !test {
+                                mov.addToImages(img)
+                            }
+                        case .failure(_):
+                            print(">>> Error Accuce! <<<")
+                        }
                     }
-                    mov.addToImages(img)
-                    print(">>> Found \(mov) image item \(img.pic ?? "oops!").")
                 }
                 
                 for i in $0.downloafLink {
-                    let linkRequest = NSFetchRequest<NDLink>(entityName: "NDLink")
-                    linkRequest.predicate = NSPredicate(format: "url == %@", i)
-                    guard let link = try viewContext.fetch(linkRequest).first else {
-                        let link = NDLink(context: viewContext)
-                        link.url = i
-                        mov.addToDownloads(link)
-                        print(">>> Insert link item \(link.url ?? "oops!") for \(mov).")
-                        return
+                    self.findLinkObject(context: viewContext, url: i) { result in
+                        switch result {
+                        case .success(let link):
+                            if !test {
+                                mov.addToDownloads(link)
+                            }
+                        case .failure(_):
+                            print(">>> Error Accuce! <<<")
+                        }
                     }
-                    mov.addToDownloads(link)
-                    print(">>> Found \(mov) link item \(link.url ?? "oops!").")
                 }
                 
                 if results.count <= 0 {
-                    viewContext.insert(mov)
+                    if !test {
+                        viewContext.insert(mov)
+                    }
                     print(">>> Insert new records. \(mov)")
                 }
             } catch {
                 print(error)
             }
         })
-        DispatchQueue.main.async {
-            CloudDataBase.share.saveContext()
+        if test {
+            return
         }
+        
+        saveBaby()
+        print(">>> Batch Add Done!")
     }
     
     // MARK: - Core Data stack
+    /// 主线程上下文，用于UI更新
+    lazy var mainViewContext : NSManagedObjectContext = {
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.persistentStoreCoordinator = CloudDataBase.share.persistentContainer.persistentStoreCoordinator
+        return context
+    }()
+    
+    /// 默认上下文，用于操作数据，尽量不阻塞主线程
+    lazy var backgroundViewContext : NSManagedObjectContext = {
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.parent = CloudDataBase.share.persistentContainer.viewContext
+        return context
+    }()
+    
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         /*
          The persistent container for the application. This implementation
@@ -261,5 +503,37 @@ class CloudDataBase {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func saveMainContext() {
+        let context = mainViewContext
+        do {
+            try context.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    func saveBacgroundContext() {
+        let context = backgroundViewContext
+        do {
+            try context.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+}
+
+
+extension Array where Element == String {
+    func removeSameString() -> [String] {
+        let sets = Set(self).map({ $0 })
+        return sets
     }
 }

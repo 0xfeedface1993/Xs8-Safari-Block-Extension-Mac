@@ -33,7 +33,7 @@ struct ActionVIew: View {
             }
         }
         return ZStack {
-            Circle().foregroundColor(dragState || self.data.isOn ? .white:.gray).shadow(color: .black, radius: 6)
+            Circle().foregroundColor(dragState || self.data.isOn ? Color("ActiveO2"):Color("DeactiveO2")).shadow(color: Color("ShadowX"), radius: 6)
             Text(!self.data.isOn ? "开始采集":"停止采集").foregroundColor(.black)
         }.gesture(longTap)
     }
