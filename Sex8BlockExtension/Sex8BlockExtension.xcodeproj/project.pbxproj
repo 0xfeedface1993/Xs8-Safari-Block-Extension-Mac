@@ -363,6 +363,7 @@
 		27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADBlock.entitlements; sourceTree = "<group>"; };
 		27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		27AD7C641EEFD20D00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63CFE90A23B2F093008990F4 /* CloudFetchBotDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudFetchBotDebug.entitlements; sourceTree = "<group>"; };
 		CB5D00D7230A835B00C66A8E /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		CB656A22234B78BD006CACEF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CB8E694F22F94EC7004FCDAD /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
@@ -639,6 +640,7 @@
 		24F47A0E20C83AA90005CEB8 /* CloudFetchBot */ = {
 			isa = PBXGroup;
 			children = (
+				63CFE90A23B2F093008990F4 /* CloudFetchBotDebug.entitlements */,
 				CBD1FB3522F94931000CF4B2 /* SwiftUI */,
 				24F47A0F20C83AA90005CEB8 /* AppDelegate.swift */,
 				24F47A1120C83AA90005CEB8 /* ViewController.swift */,
@@ -1679,7 +1681,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = CloudFetchBot/CloudFetchBot.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CloudFetchBot/CloudFetchBotDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

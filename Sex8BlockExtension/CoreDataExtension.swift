@@ -58,7 +58,7 @@ class DataBase {
          error conditions that could cause the creation of the store to fail.
          */
         let persistentContainer = NSPersistentContainer(name: "NetdiskModel")
-        let storeURL = URL.storeURL(for: "E6NP67H473.ascp.netdisk", databaseName: "op")
+        let storeURL = URL.storeURL(for: "E6NP67H473.ascp.netdisk", databaseName: "NetdiskModel")
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
         persistentContainer.persistentStoreDescriptions = [storeDescription]
         persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in

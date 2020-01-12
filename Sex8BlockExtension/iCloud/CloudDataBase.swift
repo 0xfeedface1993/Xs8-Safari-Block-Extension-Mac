@@ -12,15 +12,30 @@ import CloudKit
 
 class CloudDataBase {
     static let share = CloudDataBase()
+    private var movieResultFetchController : NSFetchedResultsController<NDMoive>!
+    private var imageResultFetchController : NSFetchedResultsController<NDImage>!
+    private var linksResultFetchController : NSFetchedResultsController<NDLink>!
+    
+    init() {
+        let sort = NSSortDescriptor(key: "", ascending: true)
+        let fetchRequest = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+        fetchRequest.predicate = NSPredicate(value: true)
+        let fetchRequest2 = NSFetchRequest<NDLink>(entityName: "NDLink")
+        fetchRequest2.predicate = NSPredicate(value: true)
+        let fetchRequest3 = NSFetchRequest<NDImage>(entityName: "NDImage")
+        fetchRequest3.predicate = NSPredicate(value: true)
+        
+//        movieResultFetchController = NSFetchedResultsController(fetchRequest: <#T##NSFetchRequest<_>#>, managedObjectContext: <#T##NSManagedObjectContext#>, sectionNameKeyPath: <#T##String?#>, cacheName: <#T##String?#>)
+    }
     
     /// 删除所有本地云端数据存储测试数据
     func removeAllCPRecords() {
         let fetchRequest = NSFetchRequest<NDMoive>(entityName: "NDMoive")
         fetchRequest.predicate = NSPredicate(value: true)
         let fetchRequest2 = NSFetchRequest<NDLink>(entityName: "NDLink")
-        fetchRequest.predicate = NSPredicate(value: true)
+        fetchRequest2.predicate = NSPredicate(value: true)
         let fetchRequest3 = NSFetchRequest<NDImage>(entityName: "NDImage")
-        fetchRequest.predicate = NSPredicate(value: true)
+        fetchRequest3.predicate = NSPredicate(value: true)
         let viewContext = CloudDataBase.share.backgroundViewContext
         do {
             for i in [fetchRequest, fetchRequest2, fetchRequest3] {
@@ -246,25 +261,33 @@ class CloudDataBase {
         let transformer = StringArrayTransformer()
         
         func saveBaby() {
-            viewContext.performAndWait {
-                self.saveBacgroundContext()
-                self.mainViewContext.perform {
-                    self.saveMainContext()
-                }
-                self.persistentContainer.viewContext.perform {
-                    self.saveContext()
+            if viewContext.hasChanges {
+                viewContext.performAndWait {
+                    self.saveBacgroundContext()
+                    self.mainViewContext.perform {
+                        self.saveMainContext()
+                    }
+                    self.persistentContainer.viewContext.perform {
+                        self.saveContext()
+                    }
                 }
             }
         }
         
-        items.forEach({
-            guard let href = $0.href else { return }
+        var start = Date()
+        var flag = true
+        for item in items {
+            if flag {
+                flag = false
+                start = Date()
+            }
+            guard let href = item.href else { return }
             let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
             request.predicate = NSPredicate(format: "href == %@", href)
             
             do {
                 guard let mov = try viewContext.fetch(request).first else { return }
-                let images = (transformer.transformedValue($0.images) as? [String] ?? []).removeSameString()
+                let images = (transformer.transformedValue(item.images) as? [String] ?? []).removeSameString()
                 for i in images {
                     self.findImageObject(context: viewContext, pic: i) { result in
                         switch result {
@@ -278,7 +301,7 @@ class CloudDataBase {
                     }
                 }
                 
-                let links = (transformer.transformedValue($0.downloads) as? [String] ?? []).removeSameString()
+                let links = (transformer.transformedValue(item.downloads) as? [String] ?? []).removeSameString()
                 for i in links {
                     self.findLinkObject(context: viewContext, url: i) { result in
                         switch result {
@@ -292,9 +315,13 @@ class CloudDataBase {
                     }
                 }
                 
+                
                 count += 1
                 if count % 1000 == 0 {
                     print(">>> Move count: \(count)")
+                    let end = Date()
+                    print(">>> process take \(end.timeIntervalSince(start)) s")
+                    flag = true
                 }
                 
                 if !test {
@@ -303,7 +330,63 @@ class CloudDataBase {
             } catch {
                 print(error)
             }
-        })
+        }
+//        items.forEach({
+//            if flag {
+//                flag = false
+//                start = Date()
+//            }
+//            guard let href = $0.href else { return }
+//            let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+//            request.predicate = NSPredicate(format: "href == %@", href)
+//
+//            do {
+//                guard let mov = try viewContext.fetch(request).first else { return }
+//                let images = (transformer.transformedValue($0.images) as? [String] ?? []).removeSameString()
+//                for i in images {
+//                    self.findImageObject(context: viewContext, pic: i) { result in
+//                        switch result {
+//                        case .success(let img):
+//                            if !test {
+//                                mov.addToImages(img)
+//                            }
+//                        case .failure(_):
+//                            print(">>> Error Accuce! <<<")
+//                        }
+//                    }
+//                }
+//
+//                let links = (transformer.transformedValue($0.downloads) as? [String] ?? []).removeSameString()
+//                for i in links {
+//                    self.findLinkObject(context: viewContext, url: i) { result in
+//                        switch result {
+//                        case .success(let link):
+//                            if !test {
+//                                mov.addToDownloads(link)
+//                            }
+//                        case .failure(_):
+//                            print(">>> Error Accuce! <<<")
+//                        }
+//                    }
+//                }
+//
+//
+//                count += 1
+//                if count % 1000 == 0 {
+//                    print(">>> Move count: \(count)")
+//                    let end = Date()
+//                    print(">>> process take \(end.timeIntervalSince(start)) s")
+//                    flag = true
+//                }
+//
+//                if !test {
+//                    saveBaby()
+//                }
+//            } catch {
+//                print(error)
+//            }
+//        })
+        
         completion?(.success(true))
     }
     
@@ -320,10 +403,10 @@ class CloudDataBase {
             guard let img = try context.fetch(imageRequest).first else {
                 let img = NDImage(context: context)
                 img.pic = pic
-                print(">>> Insert image item \(img.pic ?? "oops!")")
+//                print(">>> Insert image item \(img.pic ?? "oops!")")
                 return completion(.success(img))
             }
-            print(">>> Found image item \(img.pic ?? "oops!").")
+//            print(">>> Found image item \(img.pic ?? "oops!").")
             return completion(.success(img))
         } catch {
             print(error)
@@ -344,10 +427,10 @@ class CloudDataBase {
             guard let img = try context.fetch(imageRequest).first else {
                 let img = NDLink(context: context)
                 img.url = url
-                print(">>> Insert link item \(img.url ?? "oops!")")
+//                print(">>> Insert link item \(img.url ?? "oops!")")
                 return completion(.success(img))
             }
-            print(">>> Found link item \(img.url ?? "oops!").")
+//            print(">>> Found link item \(img.url ?? "oops!").")
             return completion(.success(img))
         } catch {
             print(error)
