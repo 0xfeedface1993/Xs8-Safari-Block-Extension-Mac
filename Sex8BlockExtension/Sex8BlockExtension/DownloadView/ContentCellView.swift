@@ -33,6 +33,7 @@ extension WebHostSite {
                                                         .xunniu:NSImage(named: "mofe_xunniu")!,
                                                         .xi:NSImage(named: "mofe_xi")!,
                                                         .bus:NSImage(named: "mofe_bus")!,
+                                                        .color:NSImage(named: "mofe_color")!,
                                                         .unknowsite:NSImage(named: "mofe_feemoo")!]
 }
 
