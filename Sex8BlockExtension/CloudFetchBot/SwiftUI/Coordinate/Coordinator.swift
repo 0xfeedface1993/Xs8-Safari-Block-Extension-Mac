@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class Coordinate {
     var timer : Timer?
@@ -111,6 +112,32 @@ class Coordinate {
         
         print(">>>>>> count: \(items.count), right: \(remianItems.count)")
     }
+    
+    /// 保存数据到数据库，重复数据不添加（标题或链接一样）
+    /// - Parameter items: 数据列表缓存对象
+    func add(_ items: [CloudData]) {
+        var newItems = items
+        for i in items {
+            let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+            request.predicate = NSPredicate(format: "title == %@ OR href == %@", i.contentInfo.title, i.contentInfo.page)
+            do {
+                let count = try CloudDataBase.share.mainViewContext.count(for: request)
+                if count <= 0 {
+                    newItems.append(i)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        guard newItems.count > 0 else {
+            LogItem.log(message: ">>> No New Record <<<")
+            return
+        }
+        
+        LogItem.log(message: ">>> Need Insert \(newItems.count) records.")
+        CloudDataBase.share.add(data: newItems, test: false)
+    }
 }
 
 // MARK: - FetchBot Delegate
@@ -142,13 +169,16 @@ extension Coordinate : FetchBotDelegate, CloudSaver {
             
             print(">>>>>> Fetch count \(datas.count)")
             LogItem.log(message: ">>>>>> Fetch count \(datas.count)")
-            self.batchCheck(items: datas)
+//            self.batchCheck(items: datas)
+//            self.add(datas)
             
             return
         }
         
         if let s = legacyCategrory {
-            fetchRawData += contents.map({ CloudData(contentInfo: $0, site: s) })
+            let values = contents.map({ CloudData(contentInfo: $0, site: s) })
+            fetchRawData += values
+            CloudDataBase.share.add(data: values, test: false)
         }
         
         DispatchQueue.global().async {

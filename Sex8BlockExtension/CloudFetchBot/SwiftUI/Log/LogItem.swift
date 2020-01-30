@@ -64,8 +64,8 @@ struct LogItem: Identifiable {
     }
     
     private static func justLog(item: LogItem) {
-        if logData.logs.count >= INT_MAX {
-            logData.logs.removeAll()
+        if logData.logs.count >= 100 {
+            let _ = logData.logs.removeLast()
         }
         logData.logs.insert(item, at: 0)
     }

@@ -25,6 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: HomeView().environmentObject(logData))
         window.makeKeyAndOrderFront(nil)
+        
+        print(">>> " + CloudDataBase.share.backgroundViewContext.description)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

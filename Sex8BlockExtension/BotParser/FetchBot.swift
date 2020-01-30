@@ -14,7 +14,7 @@ typealias AsyncFinish = () -> Void
 
 enum Host: String {
     case dytt = "www.ygdy8.net"
-    case sex8 = "www.duoduosiwa.site"
+    case sex8 = "sex8.cc"
 }
 
 
@@ -170,7 +170,7 @@ struct Site {
                            contentEncode: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))),
                            hostName: .dytt)
     
-    static let netdisk = Site(parentUrl: URL(string: "https://www.duoduosiwa.site")!,
+    static let netdisk = Site(parentUrl: URL(string: "http://sex8.cc")!,
                               listRule: PageRuleOption.link,
                               contentRule: PageRuleOption.content,
                               listEncode: .utf8,
@@ -573,6 +573,7 @@ class FetchBot {
             listGroup.wait()
         }
         
+        var currentCount = 0
         for page in pages {
             if let _ = self.sem {
                 print("************ Recive Stop Signal ************")
@@ -637,7 +638,7 @@ class FetchBot {
                             var info = xinfo
                             info.page = linkURL.url.absoluteString
                             self.contentDatas.append(info)
-                            self.delegate?.bot(self, didLoardContent: info, atIndexPath: self.contentDatas.count)
+                            self.delegate?.bot(self, didLoardContent: info, atIndexPath: index)
                         }
                         self.runTasks.append(linkURL)
                     }

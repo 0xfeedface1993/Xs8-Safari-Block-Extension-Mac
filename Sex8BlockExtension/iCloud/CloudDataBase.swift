@@ -440,71 +440,80 @@ class CloudDataBase {
     
     /// 添加或修改数据，存在则修改，不存在则插入新数据
     /// - Parameter data: 抓取的数据列表
-    func add(data: [ContentInfo], test: Bool = false) {
-        let viewContext = backgroundViewContext
-        func saveBaby() {
-            viewContext.performAndWait {
-                self.saveBacgroundContext()
-                self.mainViewContext.perform {
-                    self.saveMainContext()
-                }
-                self.persistentContainer.viewContext.perform {
-                    self.saveContext()
+    func add(data: [CloudData], test: Bool = false) {
+        CloudDataBase.share.persistentContainer.performBackgroundTask({ viewContext in
+            viewContext.mergePolicy = NSMergePolicy.overwrite
+            func saveBaby() {
+                if viewContext.hasChanges {
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        // Replace this implementation with code to handle the error appropriately.
+                        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                        let nserror = error as NSError
+                        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                    }
                 }
             }
-        }
-        
-        data.forEach({
-            let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
-            request.predicate = NSPredicate(format: "href == %@ OR title == %@", $0.page, $0.title)
             
-            do {
-                try viewContext.setQueryGenerationFrom(.current)
-                let results = try viewContext.fetch(request)
-                let mov = results.first ?? NDMoive(context: viewContext)
-                print("------------------ movie \(mov), \($0.page)")
-                for i in $0.imageLink {
-                    self.findImageObject(context: viewContext, pic: i) { result in
-                        switch result {
-                        case .success(let img):
-                            if !test {
-                                mov.addToImages(img)
+            data.forEach({
+                let request = NSFetchRequest<NDMoive>(entityName: "NDMoive")
+                request.predicate = NSPredicate(format: "href == %@ OR title == %@", $0.contentInfo.page, $0.contentInfo.title)
+                
+                do {
+                    try viewContext.setQueryGenerationFrom(.current)
+                    let results = try viewContext.fetch(request)
+                    let mov = results.first ?? NDMoive(context: viewContext)
+                    mov.boradType = $0.site
+                    mov.fileSize = mov.fileSize ?? $0.contentInfo.size
+                    mov.href = mov.href ?? $0.contentInfo.page
+                    mov.password = mov.password ?? $0.contentInfo.passwod
+                    mov.title = mov.title ?? $0.contentInfo.title
+                    
+                    print("------------------ movie \(mov), \($0.contentInfo.page)")
+                    for i in $0.contentInfo.imageLink {
+                        self.findImageObject(context: viewContext, pic: i) { result in
+                            switch result {
+                            case .success(let img):
+                                if !test {
+                                    mov.addToImages(img)
+                                }
+                            case .failure(_):
+                                print(">>> Error Accuce! <<<")
                             }
-                        case .failure(_):
-                            print(">>> Error Accuce! <<<")
                         }
                     }
-                }
-                
-                for i in $0.downloafLink {
-                    self.findLinkObject(context: viewContext, url: i) { result in
-                        switch result {
-                        case .success(let link):
-                            if !test {
-                                mov.addToDownloads(link)
+                    
+                    for i in $0.contentInfo.downloafLink {
+                        self.findLinkObject(context: viewContext, url: i) { result in
+                            switch result {
+                            case .success(let link):
+                                if !test {
+                                    mov.addToDownloads(link)
+                                }
+                            case .failure(_):
+                                print(">>> Error Accuce! <<<")
                             }
-                        case .failure(_):
-                            print(">>> Error Accuce! <<<")
                         }
                     }
-                }
-                
-                if results.count <= 0 {
-                    if !test {
-                        viewContext.insert(mov)
+                    
+                    if results.count <= 0 {
+                        if !test, results.count <= 0 {
+                            viewContext.insert(mov)
+                        }
+                        print(">>> Insert new records. \(mov)")
                     }
-                    print(">>> Insert new records. \(mov)")
+                } catch {
+                    print(error)
                 }
-            } catch {
-                print(error)
+            })
+            if test {
+                return
             }
+            
+            saveBaby()
+            print(">>> Batch Add Done!")
         })
-        if test {
-            return
-        }
-        
-        saveBaby()
-        print(">>> Batch Add Done!")
     }
     
     // MARK: - Core Data stack
