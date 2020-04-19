@@ -8,11 +8,13 @@
 
 import Cocoa
 import IOKit
+import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     var user : User?
     var selectItem: NetDisk?
+    var window: NSWindow!
     
     @IBOutlet weak var openItem: NSMenuItem!
     @IBAction func chooseDirection(_ sender: NSMenuItem) {
@@ -23,6 +25,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, UpdateProtocol {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+//        let contentView = MainView()
+//        
+//        // Create the window and set the content view.
+//        window = NSWindow(
+//            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+//            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+//            backing: .buffered, defer: false)
+//        window.center()
+//        window.setFrameAutosaveName("杏吧有你")
+//        window.contentView = NSHostingView(rootView: contentView.environment(\.managedObjectContext, CloudDataBase.share.persistentContainer.viewContext))
+//        window.makeKeyAndOrderFront(nil)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

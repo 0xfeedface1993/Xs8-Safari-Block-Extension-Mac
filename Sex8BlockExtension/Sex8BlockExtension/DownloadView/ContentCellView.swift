@@ -34,7 +34,8 @@ extension WebHostSite {
                                                         .xi:NSImage(named: "mofe_xi")!,
                                                         .bus:NSImage(named: "mofe_bus")!,
                                                         .color:NSImage(named: "mofe_color")!,
-                                                        .unknowsite:NSImage(named: "mofe_feemoo")!]
+                                                        .unknowsite:NSImage(named: "mofe_feemoo")!,
+                                                        .kuyun:NSImage(named: "mofe_kuyun")!]
 }
 
 /// 下载状态数据模型，用于视图数据绑定

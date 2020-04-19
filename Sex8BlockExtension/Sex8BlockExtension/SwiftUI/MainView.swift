@@ -10,8 +10,10 @@ import SwiftUI
 
 struct MainView: View {
     @available(OSX 10.15.0, *)
+    @Environment(\.managedObjectContext) var context
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        MainList()
     }
 }
 
