@@ -120,6 +120,9 @@
 		27AD7C5F1EEFD20D00258BDC /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 27AD7C5E1EEFD20D00258BDC /* blockerList.json */; };
 		27AD7C631EEFD20D00258BDC /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */; };
 		27AD7C671EEFD20D00258BDC /* ADBlock.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27AD7C591EEFD20D00258BDC /* ADBlock.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		63388525240B7FA600FA4F57 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63388524240B7FA600FA4F57 /* InfoRow.swift */; };
+		63654A44240810050063AF95 /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63654A43240810050063AF95 /* MainList.swift */; };
+		63771035240BEEB300AB7A52 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 63771034240BEEB300AB7A52 /* KingfisherSwiftUI */; };
 		CB5D00D8230A835B00C66A8E /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D00D7230A835B00C66A8E /* AnimationView.swift */; };
 		CB656A23234B78BD006CACEF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB656A22234B78BD006CACEF /* MainView.swift */; };
 		CB8E695022F94EC7004FCDAD /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E694F22F94EC7004FCDAD /* TopView.swift */; };
@@ -363,6 +366,8 @@
 		27AD7C611EEFD20D00258BDC /* ADBlock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADBlock.entitlements; sourceTree = "<group>"; };
 		27AD7C621EEFD20D00258BDC /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		27AD7C641EEFD20D00258BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63388524240B7FA600FA4F57 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
+		63654A43240810050063AF95 /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		63CFE90A23B2F093008990F4 /* CloudFetchBotDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudFetchBotDebug.entitlements; sourceTree = "<group>"; };
 		CB5D00D7230A835B00C66A8E /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		CB656A22234B78BD006CACEF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63771035240BEEB300AB7A52 /* KingfisherSwiftUI in Frameworks */,
 				2406C53920C0086500EC20EB /* CloudKit.framework in Frameworks */,
 				242C0756237323A20037D3C2 /* WebShell in Frameworks */,
 			);
@@ -852,6 +858,8 @@
 			isa = PBXGroup;
 			children = (
 				CB656A22234B78BD006CACEF /* MainView.swift */,
+				63654A43240810050063AF95 /* MainList.swift */,
+				63388524240B7FA600FA4F57 /* InfoRow.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1049,6 +1057,7 @@
 			name = Sex8BlockExtension;
 			packageProductDependencies = (
 				242C0755237323A20037D3C2 /* WebShell */,
+				63771034240BEEB300AB7A52 /* KingfisherSwiftUI */,
 			);
 			productName = Sex8BlockExtension;
 			productReference = 27AD7C271EEFD1EE00258BDC /* Sex8BlockExtension.app */;
@@ -1232,6 +1241,7 @@
 			mainGroup = 27AD7C1E1EEFD1EE00258BDC;
 			packageReferences = (
 				242C0754237323A20037D3C2 /* XCRemoteSwiftPackageReference "WebShell" */,
+				63771033240BEEB300AB7A52 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 27AD7C281EEFD1EE00258BDC /* Products */;
 			projectDirPath = "";
@@ -1497,6 +1507,7 @@
 				24AA52762255FE1E00C423F5 /* Webservice.swift in Sources */,
 				248BCDA020302D79000999D6 /* ImageTask.swift in Sources */,
 				24B1F18720629A05008604AE /* Update.swift in Sources */,
+				63654A44240810050063AF95 /* MainList.swift in Sources */,
 				2407E8B81F166E2500F6A61B /* AttributeViewController.swift in Sources */,
 				248A33DB20C8D6D200413242 /* Categrory-Modal.swift in Sources */,
 				249F91331EFFEB950043B48D /* ImageCollectionItem.swift in Sources */,
@@ -1506,6 +1517,7 @@
 				27AD7C2B1EEFD1EE00258BDC /* AppDelegate.swift in Sources */,
 				24A886561F5D6334007336BD /* UserInfo.swift in Sources */,
 				24467AE01F1B1BCD00574160 /* FilePathSelectorViewController.swift in Sources */,
+				63388525240B7FA600FA4F57 /* InfoRow.swift in Sources */,
 				24A886581F5FE873007336BD /* TapImageView.swift in Sources */,
 				242B181D1F7C75A4007963FE /* Extension.swift in Sources */,
 				242B18291F7C7ADC007963FE /* FetchBot.swift in Sources */,
@@ -2395,7 +2407,15 @@
 			repositoryURL = "https://github.com/0xfeedface1993/WebShell";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 2.3.3;
+				minimumVersion = 2.3.7;
+			};
+		};
+		63771033240BEEB300AB7A52 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.13.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2405,6 +2425,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 242C0754237323A20037D3C2 /* XCRemoteSwiftPackageReference "WebShell" */;
 			productName = WebShell;
+		};
+		63771034240BEEB300AB7A52 /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63771033240BEEB300AB7A52 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 
